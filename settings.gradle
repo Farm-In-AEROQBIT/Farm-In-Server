@@ -1,0 +1,3 @@
+rootProject.name = 'Farm-In-Server-Test'
+include 'api'
+include 'db'
