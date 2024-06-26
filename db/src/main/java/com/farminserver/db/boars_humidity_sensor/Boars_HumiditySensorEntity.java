@@ -1,4 +1,4 @@
-package com.farminserver.db.humidity_sensor;
+package com.farminserver.db.boars_humidity_sensor;
 
 import com.farminserver.db.BaseEntity;
 import jakarta.persistence.*;
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "Humidity_Sensor")
-public class HumiditySensorEntity extends BaseEntity {
+public class Boars_HumiditySensorEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String farm_name;

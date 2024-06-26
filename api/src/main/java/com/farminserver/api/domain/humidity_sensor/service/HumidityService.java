@@ -2,8 +2,8 @@ package com.farminserver.api.domain.humidity_sensor.service;
 
 import com.farminserver.api.domain.humidity_sensor.controller.model.HumidityResponse;
 import com.farminserver.api.util.ExcelExporter;
-import com.farminserver.db.humidity_sensor.HumiditySensorEntity;
-import com.farminserver.db.humidity_sensor.HumiditySensorRepository;
+import com.farminserver.db.boars_humidity_sensor.HumiditySensorEntity;
+import com.farminserver.db.boars_humidity_sensor.HumiditySensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

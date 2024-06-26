@@ -1,8 +1,8 @@
 package com.farminserver.api.domain.pm_sensor.service;
 
 import com.farminserver.api.domain.pm_sensor.controller.model.PmResponse;
-import com.farminserver.db.pm_sensor.PmSensorRepository;
-import com.farminserver.db.pm_sensor.PmSensorEntity;
+import com.farminserver.db.boars_pm_sensor.PmSensorRepository;
+import com.farminserver.db.boars_pm_sensor.PmSensorEntity;
 import com.farminserver.api.util.ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

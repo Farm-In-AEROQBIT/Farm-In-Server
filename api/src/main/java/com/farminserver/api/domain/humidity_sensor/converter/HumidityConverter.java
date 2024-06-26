@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.humidity_sensor.converter;
 
 import com.farminserver.api.domain.humidity_sensor.controller.model.HumidityResponse;
-import com.farminserver.db.humidity_sensor.HumiditySensorEntity;
+import com.farminserver.db.boars_humidity_sensor.HumiditySensorEntity;
 import org.springframework.stereotype.Component;
 
 @Component

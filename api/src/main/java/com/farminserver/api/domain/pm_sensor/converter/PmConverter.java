@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.pm_sensor.converter;
 
 import com.farminserver.api.domain.pm_sensor.controller.model.PmResponse;
-import com.farminserver.db.pm_sensor.PmSensorEntity;
+import com.farminserver.db.boars_pm_sensor.PmSensorEntity;
 import org.springframework.stereotype.Component;
 
 @Component

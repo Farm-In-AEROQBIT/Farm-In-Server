@@ -1,4 +1,4 @@
-package com.farminserver.db.nh3_sensor;
+package com.farminserver.db.boars_nh3_sensor;
 
 import com.farminserver.db.BaseEntity;
 import jakarta.persistence.*;
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "Nh3_Sensor")
-public class Nh3SensorEntity extends BaseEntity {
+public class Boars_Nh3SensorEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

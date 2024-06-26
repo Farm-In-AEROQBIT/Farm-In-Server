@@ -1,4 +1,4 @@
-package com.farminserver.db.temperature_sensor;
+package com.farminserver.db.boars_temperature_sensor;
 
 import com.farminserver.db.BaseEntity;
 import jakarta.persistence.*;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @NoArgsConstructor
 @Entity
 @Table(name = "Temperature_Sensor")
-public class TemperatureEntity extends BaseEntity {
+public class Boars_TemperatureEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // 온도 수집 데이터

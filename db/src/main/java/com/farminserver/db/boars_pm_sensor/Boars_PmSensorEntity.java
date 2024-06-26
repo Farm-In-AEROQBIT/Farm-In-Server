@@ -1,4 +1,4 @@
-package com.farminserver.db.pm_sensor;
+package com.farminserver.db.boars_pm_sensor;
 
 import com.farminserver.db.BaseEntity;
 import jakarta.persistence.*;
@@ -19,7 +19,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Table(name = "Pm_Sensor")
-public class PmSensorEntity extends BaseEntity {
+public class Boars_PmSensorEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     // 미세먼지 데이터 입력 시간

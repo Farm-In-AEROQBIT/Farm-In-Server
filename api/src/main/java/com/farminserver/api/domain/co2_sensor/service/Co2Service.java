@@ -4,8 +4,8 @@ import com.farminserver.api.domain.co2_sensor.controller.model.Co2Response;
 import com.farminserver.api.util.ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.farminserver.db.co2_sensor.CO2SensorRepository;
-import com.farminserver.db.co2_sensor.CO2SensorEntity;
+import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
+import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;

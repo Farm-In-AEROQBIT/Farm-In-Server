@@ -1,8 +1,8 @@
 package com.farminserver.api.domain.nh3_sensor.service;
 
 import com.farminserver.api.domain.nh3_sensor.controller.model.Nh3Response;
-import com.farminserver.db.nh3_sensor.Nh3SensorRepository;
-import com.farminserver.db.nh3_sensor.Nh3SensorEntity;
+import com.farminserver.db.boars_nh3_sensor.Nh3SensorRepository;
+import com.farminserver.db.boars_nh3_sensor.Nh3SensorEntity;
 import com.farminserver.api.util.ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

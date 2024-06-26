@@ -2,7 +2,7 @@ package com.farminserver.api.domain.co2_sensor.converter;
 
 import com.farminserver.api.domain.co2_sensor.controller.model.Co2Response;
 import org.springframework.stereotype.Component;
-import com.farminserver.db.co2_sensor.CO2SensorEntity;
+import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 import com.farminserver.api.common.exception.ApiException;
 import com.farminserver.api.common.error.ErrorCode;
 

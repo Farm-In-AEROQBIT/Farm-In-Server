@@ -1,4 +1,4 @@
-package com.farminserver.db.co2_sensor;
+package com.farminserver.db.boars_co2_sensor;
 
 import com.farminserver.db.BaseEntity;
 import jakarta.persistence.Entity;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "Co2_Sensor")
-public class CO2SensorEntity extends BaseEntity {
+public class Boars_CO2SensorEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.nh3_sensor.converter;
 
 import com.farminserver.api.domain.nh3_sensor.controller.model.Nh3Response;
-import com.farminserver.db.nh3_sensor.Nh3SensorEntity;
+import com.farminserver.db.boars_nh3_sensor.Nh3SensorEntity;
 import org.springframework.stereotype.Component;
 
 @Component

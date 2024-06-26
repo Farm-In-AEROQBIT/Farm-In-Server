@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.temperature_sensor.converter;
 
 import com.farminserver.api.domain.temperature_sensor.controller.model.TemperatureResponse;
-import com.farminserver.db.temperature_sensor.TemperatureEntity;
+import com.farminserver.db.boars_temperature_sensor.TemperatureEntity;
 import org.springframework.stereotype.Component;
 
 @Component
