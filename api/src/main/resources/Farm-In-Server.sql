@@ -16,6 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admin` (
+  `admin_id` varchar(45) NOT NULL,
+  `admin_pw` varchar(45) NOT NULL,
+  `user_phone_num` varchar(45) NOT NULL,
+  `farm_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`admin_id`,`farm_name`,`user_phone_num`,`admin_pw`),
+  UNIQUE KEY `Admin_id_UNIQUE` (`admin_id`),
+  UNIQUE KEY `farn_name_UNIQUE` (`farm_name`),
+  UNIQUE KEY `user_phone_num_UNIQUE` (`user_phone_num`),
+  UNIQUE KEY `admin_pw_UNIQUE` (`admin_pw`),
+  CONSTRAINT `Farm_name_8` FOREIGN KEY (`farm_name`) REFERENCES `farm_info` (`farm_name`),
+  CONSTRAINT `User_Phone_num_2` FOREIGN KEY (`user_phone_num`) REFERENCES `user` (`user_phone_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `boars_barn`
 --
 
@@ -212,12 +243,12 @@ DROP TABLE IF EXISTS `farm_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `farm_info` (
-  `user_phone_name` varchar(45) NOT NULL,
+  `user_phone_num` varchar(45) NOT NULL,
   `farm_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`user_phone_name`,`farm_name`),
-  UNIQUE KEY `user_phone_name_UNIQUE` (`user_phone_name`),
+  PRIMARY KEY (`user_phone_num`,`farm_name`),
+  UNIQUE KEY `user_phone_name_UNIQUE` (`user_phone_num`),
   UNIQUE KEY `farm_name_UNIQUE` (`farm_name`),
-  CONSTRAINT `User_phone_num` FOREIGN KEY (`user_phone_name`) REFERENCES `user` (`user_phone_num`)
+  CONSTRAINT `User_phone_num` FOREIGN KEY (`user_phone_num`) REFERENCES `user` (`user_phone_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1379,7 +1410,8 @@ CREATE TABLE `user` (
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   UNIQUE KEY `user_pw_UNIQUE` (`user_pw`),
   UNIQUE KEY `user_phone_num_UNIQUE` (`user_phone_num`),
-  UNIQUE KEY `farm_name_UNIQUE` (`farm_name`)
+  UNIQUE KEY `farm_name_UNIQUE` (`farm_name`),
+  CONSTRAINT `Farm_Name` FOREIGN KEY (`farm_name`) REFERENCES `farm_info` (`farm_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1401,4 +1433,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-26 11:12:41
+-- Dump completed on 2024-06-26 11:35:46
