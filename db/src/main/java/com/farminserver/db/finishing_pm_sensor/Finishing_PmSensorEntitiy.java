@@ -19,7 +19,7 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "finishing_pm_sensor")
 
 public class Finishing_PmSensorEntitiy {
      @Id

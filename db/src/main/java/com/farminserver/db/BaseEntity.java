@@ -20,5 +20,11 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime boars_co2InputTime;
+    private LocalDateTime finishing_co2InputTime;
+    private LocalDateTime gestation_co2InputTime;
+    private LocalDateTime growing_co2InputTime;
+    private LocalDateTime maternity_co2InputTime;
+    private LocalDateTime piglet_co2InputTime;
+    private LocalDateTime reserve_co2InputTime;
 
 }

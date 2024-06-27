@@ -1,4 +1,4 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.finishing_nh3_sensor;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -19,7 +19,7 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "finishing_nh3_sensor")
 
 public class Finishing_Nh3SensorEntitiy {
      @Id
@@ -53,5 +53,3 @@ public class Finishing_Nh3SensorEntitiy {
         }
 
     }
-
-}
