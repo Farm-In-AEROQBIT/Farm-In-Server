@@ -16,10 +16,9 @@ import java.time.LocalDateTime;
 @Data
 @SuperBuilder
 public class BaseEntity {
-    /*@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;*/
+    private LocalDateTime boars_co2InputTime;
 
 }
