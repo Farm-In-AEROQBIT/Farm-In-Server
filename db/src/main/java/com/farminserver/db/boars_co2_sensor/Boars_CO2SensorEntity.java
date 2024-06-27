@@ -19,14 +19,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Co2_Sensor")
+@Table(name = "boars_co2_sensor")
 public class Boars_CO2SensorEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String farmName;
-    private double co2Data;
-    private LocalDateTime co2InputTime;
+    private double boars_co2Data;
+    private LocalDateTime boars_co2InputTime;
 
     public String getFarmName() {
         return farmName;
@@ -36,20 +36,20 @@ public class Boars_CO2SensorEntity extends BaseEntity {
         this.farmName = farmName;
     }
 
-    public double getCo2Data() {
-        return co2Data;
+    public double getboars_Co2Data() {
+        return boars_co2Data;
     }
 
-    public void setCo2Data(double co2Data) {
-        this.co2Data = co2Data;
+    public void setboars_Co2Data(double boars_co2_data) {
+        this.boars_co2Data = boars_co2_data;
     }
 
-    public LocalDateTime getCo2InputTime() {
-        return co2InputTime;
+    public LocalDateTime getboars_co2_InputTime() {
+        return boars_co2InputTime;
     }
 
     public void setCo2InputTime(LocalDateTime co2InputTime) {
-        this.co2InputTime = co2InputTime;
+        this.boars_co2InputTime = co2InputTime;
     }
 
 }
