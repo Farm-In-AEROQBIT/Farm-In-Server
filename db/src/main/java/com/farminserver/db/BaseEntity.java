@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Data
 @SuperBuilder
 public class BaseEntity {

@@ -16,14 +16,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Nh3_Sensor")
+@Table(name = "boars_nh3_sensor")
 public class Boars_Nh3SensorEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String farmName;
-    private double nh3Data;
-    private LocalDateTime nh3InputTime;
+    private double boars_nh3Data;
+    private LocalDateTime boars_nh3InputTime;
 
     public String getFarmName() {
         return farmName;
@@ -33,20 +33,20 @@ public class Boars_Nh3SensorEntity extends BaseEntity {
         this.farmName = farmName;
     }
 
-    public double getNh3Data() {
-        return nh3Data;
+    public double getboars_Nh3Data() {
+        return boars_nh3Data;
     }
 
-    public void setNh3Data(double nh3Data) {
-        this.nh3Data = nh3Data;
+    public void setboars_Nh3Data(double boars_nh3Data) {
+        this.boars_nh3Data = boars_nh3Data;
     }
 
-    public LocalDateTime getNh3InputTime() {
-        return nh3InputTime;
+    public LocalDateTime getboars_Nh3InputTime() {
+        return boars_nh3InputTime;
     }
 
-    public void setNh3InputTime(LocalDateTime nh3InputTime) {
-        this.nh3InputTime = nh3InputTime;
+    public void setboars_Nh3InputTime(LocalDateTime boars_nh3InputTime) {
+        this.boars_nh3InputTime = boars_nh3InputTime;
     }
 
 }

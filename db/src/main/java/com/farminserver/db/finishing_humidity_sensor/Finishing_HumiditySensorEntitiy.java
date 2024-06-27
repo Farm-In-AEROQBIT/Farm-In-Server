@@ -5,20 +5,13 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
-
-
-import com.farminserver.db.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
-import org.springframework.stereotype.Service;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.time.LocalDateTime;
+
 
 @EqualsAndHashCode(callSuper = false)
 @Data
