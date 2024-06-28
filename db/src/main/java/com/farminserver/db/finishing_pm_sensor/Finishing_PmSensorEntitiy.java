@@ -1,5 +1,6 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.finishing_pm_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "finishing_pm_sensor")
 
 public class Finishing_PmSensorEntitiy {
      @Id
@@ -53,5 +54,3 @@ public class Finishing_PmSensorEntitiy {
         }
 
     }
-
-}
