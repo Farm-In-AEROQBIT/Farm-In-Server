@@ -892,10 +892,9 @@ DROP TABLE IF EXISTS `maternity_room`;
 CREATE TABLE `maternity_room` (
   `maternity_barn_num` varchar(45) NOT NULL,
   `maternity_barn_room_num` varchar(45) NOT NULL,
-  PRIMARY KEY (`maternity_barn_num`,`maternity_barn_room_num`),
   UNIQUE KEY `maternity_barn_num_UNIQUE` (`maternity_barn_num`),
   UNIQUE KEY `maternity_barn_room_num_UNIQUE` (`maternity_barn_room_num`),
-  CONSTRAINT `Maternity_Barn` FOREIGN KEY (`maternity_barn_num`) REFERENCES `reserve_sows_barn` (`reserve_sows_barn_num`)
+  CONSTRAINT `Maternity_Barn` FOREIGN KEY (`maternity_barn_num`) REFERENCES `maternity_barn` (`maternity_barn_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1433,4 +1432,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-26 11:35:46
+-- Dump completed on 2024-06-28 13:30:08
