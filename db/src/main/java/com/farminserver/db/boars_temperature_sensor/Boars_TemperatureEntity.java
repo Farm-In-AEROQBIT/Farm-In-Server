@@ -20,47 +20,43 @@ import java.time.LocalDateTime;
 @Table(name = "boars_temperature_sensor")
 public class Boars_TemperatureEntity extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //농장 이름
-    public String farmName;
-    // 온도 수집 데이터
-    public double boars_temp_data;
-    // 온도 데이터 입력 시간
-    public LocalDateTime boars_temp_input_time;
-    //온도 센서 위치 값
-    public String boars_temp_locate_data;
+    private String boarsBarnRoomNum;
 
+    private String boarsTemperData;
+    private String boarsTemperInputTime;
+    private String boarsTemperLocateData;
 
-    public String getFarmName() {
-        return farmName;
+    // Getters and Setters
+    public String getBoarsBarnRoomNum() {
+        return boarsBarnRoomNum;
     }
 
-    public void setFarmName(String farmName) {
-        this.farmName = farmName;
+    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
     }
 
-    public double getboars_temp_data() {
-        return boars_temp_data;
+    public String getBoarsTemperData() {
+        return boarsTemperData;
     }
 
-    public void setboars_temp_data(double Boars_Temp_Data) {
-        this.boars_temp_data = Boars_Temp_Data;
+    public void setBoarsTemperData(String boarsTemperData) {
+        this.boarsTemperData = boarsTemperData;
     }
 
-    public LocalDateTime getboars_TempInputTime() {
-        return boars_temp_input_time;
+    public String getBoarsTemperInputTime() {
+        return boarsTemperInputTime;
     }
 
-    public void setboars_TempInputTime(LocalDateTime Boars_TempInputTime) {
-        this.boars_temp_input_time = Boars_TempInputTime;
+    public void setBoarsTemperInputTime(String boarsTemperInputTime) {
+        this.boarsTemperInputTime = boarsTemperInputTime;
     }
 
-    public String getBoars_TempLocateData() {
-        return boars_temp_locate_data;
+    public String getBoarsTemperLocateData() {
+        return boarsTemperLocateData;
     }
 
-    public void setBoars_TempLocateData(String Boars_TempLocateData) {
-        this.boars_temp_locate_data = Boars_TempLocateData;
+    public void setBoarsTemperLocateData(String boarsTemperLocateData) {
+        this.boarsTemperLocateData = boarsTemperLocateData;
     }
 
 }
