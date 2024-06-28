@@ -1,5 +1,6 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.gestation_co2_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -19,14 +20,14 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "gestation_co2_sensor")
 
 public class Gestation_Co2SensorEntitiy {
      @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+        private double gestationco2Data;
+        private LocalDateTime gestationco2InputTime;
 
         public String getFarmName() {
             return farmName;
@@ -36,22 +37,20 @@ public class Gestation_Co2SensorEntitiy {
             this.farmName = farmName;
         }
 
-        public double getCo2Data() {
-            return co2Data;
+        public double getGestationCo2Data() {
+            return gestationco2Data;
         }
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
+        public void seGestationtCo2Data(double co2Data) {
+            this.gestationco2Data = co2Data;
         }
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
+        public LocalDateTime getGestationCo2InputTime() {
+            return gestationco2InputTime;
         }
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
+        public void setGestationCo2InputTime(LocalDateTime Gestationco2InputTime) {
+            this.gestationco2InputTime = Gestationco2InputTime;
         }
-
-    }
 
 }

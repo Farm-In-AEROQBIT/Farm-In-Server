@@ -21,13 +21,13 @@ import java.time.LocalDateTime;
 public class Boars_TemperatureEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //농장 이름
+    // 농장 이름
     public String farmName;
     // 온도 수집 데이터
     public double boars_temp_data;
     // 온도 데이터 입력 시간
     public LocalDateTime boars_temp_input_time;
-    //온도 센서 위치 값
+    // 온도 센서 위치 값
     public String boars_temp_locate_data;
 
 

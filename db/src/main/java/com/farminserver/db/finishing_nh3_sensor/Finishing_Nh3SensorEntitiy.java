@@ -1,5 +1,6 @@
 package com.farminserver.db.finishing_nh3_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
