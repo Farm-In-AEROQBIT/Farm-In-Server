@@ -1,5 +1,6 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.gestation_humidity_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
@@ -19,14 +20,14 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "gestation_humidity_sensor")
 
 public class Gestation_HumiditySensorEntitiy {
      @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+        private double gestation_humidityData;
+        private LocalDateTime gestation_humidityInputTime;
 
         public String getFarmName() {
             return farmName;
@@ -36,22 +37,20 @@ public class Gestation_HumiditySensorEntitiy {
             this.farmName = farmName;
         }
 
-        public double getCo2Data() {
-            return co2Data;
+        public double getGestation_HumidityData() {
+            return gestation_humidityData;
         }
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
+        public void setGestation_HumidityData(double co2Data) {
+            this.gestation_humidityData = co2Data;
         }
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
+        public LocalDateTime getGestation_HumidityInputTime() {
+            return gestation_humidityInputTime;
         }
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
+        public void setGestation_humidityData(LocalDateTime Gestation_HumidityInputTime) {
+            this.gestation_humidityInputTime = Gestation_HumidityInputTime;
         }
-
-    }
 
 }
