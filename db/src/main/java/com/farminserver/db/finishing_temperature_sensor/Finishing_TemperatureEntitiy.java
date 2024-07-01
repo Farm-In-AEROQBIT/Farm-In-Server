@@ -1,6 +1,5 @@
-package com.farminserver.db.finishing_temperature_sensor;
+package com.farminserver.db.finishing_humidity_sensor;
 
-import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
@@ -54,3 +53,5 @@ public class Finishing_TemperatureEntitiy {
         }
 
     }
+
+}

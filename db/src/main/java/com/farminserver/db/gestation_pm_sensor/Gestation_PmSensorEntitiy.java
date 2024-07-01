@@ -1,6 +1,5 @@
-package com.farminserver.db.gestation_pm_sensor;
+package com.farminserver.db.finishing_humidity_sensor;
 
-import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.time.LocalDateTime;
+
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -20,14 +19,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "gestation_pm_sensor")
+@Table(name = "finishing_co2_sensor")
 
 public class Gestation_PmSensorEntitiy {
      @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String farmName;
-        private double gestation_pmData;
-        private LocalDateTime gestation_pmInputTime;
+        private double co2Data;
+        private LocalDateTime co2InputTime;
 
         public String getFarmName() {
             return farmName;
@@ -37,20 +36,22 @@ public class Gestation_PmSensorEntitiy {
             this.farmName = farmName;
         }
 
-        public double getGestationCo2Data() {
-            return gestation_pmData;
+        public double getCo2Data() {
+            return co2Data;
         }
 
-        public void setGestationCo2Data(double co2Data) {
-            this.gestation_pmData = co2Data;
+        public void setCo2Data(double co2Data) {
+            this.co2Data = co2Data;
         }
 
         public LocalDateTime getCo2InputTime() {
-            return gestation_pmInputTime;
+            return co2InputTime;
         }
 
         public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.gestation_pmInputTime = co2InputTime;
+            this.co2InputTime = co2InputTime;
         }
+
+    }
 
 }

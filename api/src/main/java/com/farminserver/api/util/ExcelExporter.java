@@ -4,11 +4,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import com.farminserver.api.domain.nh3_sensor.controller.model.Nh3Response;
-import com.farminserver.api.domain.co2_sensor.controller.model.Co2Response;
-import com.farminserver.api.domain.humidity_sensor.controller.model.HumidityResponse;
-import com.farminserver.api.domain.temperature_sensor.controller.model.TemperatureResponse;
-import com.farminserver.api.domain.pm_sensor.controller.model.PmResponse;
+import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Nh3Response;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Co2Response;
+import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.HumidityResponse;
+import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.TemperatureResponse;
+import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.PmResponse;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

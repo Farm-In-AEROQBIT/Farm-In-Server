@@ -1,4 +1,4 @@
-package com.farminserver.db.gestation_nh3_sensor;
+package com.farminserver.db.finishing_humidity_sensor;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -19,14 +19,14 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "gestation_co2_sensor")
+@Table(name = "finishing_co2_sensor")
 
 public class Gestation_Nh3SensorEntitiy {
      @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String farmName;
-        private double gestation_nh3Data;
-        private LocalDateTime gestation_nh3InputTime;
+        private double co2Data;
+        private LocalDateTime co2InputTime;
 
         public String getFarmName() {
             return farmName;
@@ -36,20 +36,22 @@ public class Gestation_Nh3SensorEntitiy {
             this.farmName = farmName;
         }
 
-        public double getGestationNh3Data() {
-            return gestation_nh3Data;
+        public double getCo2Data() {
+            return co2Data;
         }
 
-        public void setGestationNh3Data(double co2Data) {
-            this.gestation_nh3Data = co2Data;
+        public void setCo2Data(double co2Data) {
+            this.co2Data = co2Data;
         }
 
-        public LocalDateTime getGestationNh3InputTime() {
-            return gestation_nh3InputTime;
+        public LocalDateTime getCo2InputTime() {
+            return co2InputTime;
         }
 
-        public void setGestationNh3InputTime(LocalDateTime GestationNh3InputTime) {
-            this.gestation_nh3InputTime = GestationNh3InputTime;
+        public void setCo2InputTime(LocalDateTime co2InputTime) {
+            this.co2InputTime = co2InputTime;
         }
+
+    }
 
 }
