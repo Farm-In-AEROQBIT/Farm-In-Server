@@ -6,8 +6,6 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -18,7 +16,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "boars_temperature_sensor")
-public class Boars_TemperatureEntity extends BaseEntity {
+public class
+Boars_TemperatureSeneorEntity extends BaseEntity {
     @Id
     private String boarsBarnRoomNum;
 
