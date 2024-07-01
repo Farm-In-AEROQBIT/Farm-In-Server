@@ -1,13 +1,12 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.reserve_temperature_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
@@ -19,39 +18,51 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "reserve_temperature_sensor")
 
-public class Reserve_TemperatureSensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+public class Reserve_TemperatureSensorEntitiy extends BaseEntity {
+    @Id
+    private String reserveSowsRoomNum;
+    private String reserveTemperatureData;
+    private String reserveTemperatureInputTime;
+    private String reserveTemperatureLocate;
 
-        public String getFarmName() {
-            return farmName;
+    public String getReserveSowsRoomNum() {
+            return reserveSowsRoomNum;
         }
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
-
-        public double getCo2Data() {
-            return co2Data;
-        }
-
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
-
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
-
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
-
+    public void setReserveSowsRoomNum(String reserveSowsRoomNum) {
+        this.reserveSowsRoomNum = reserveSowsRoomNum;
     }
 
+
+    public String getReserveTemperatureData() {
+        return reserveTemperatureData;
+    }
+
+    public void setReserveTemperatureData(String reserveTemperatureData) {
+        this.reserveTemperatureData = reserveTemperatureData;
+    }
+
+
+    public String getReserveTemperatureInputTime() {
+        return reserveTemperatureInputTime;
+    }
+
+    public void setReserveTemperatureInputTime(String reserveTemperatureInputTime) {
+        this.reserveTemperatureInputTime = reserveTemperatureInputTime;
+    }
+
+
+    public String getReserveTemperatureLocate() {
+        return reserveTemperatureLocate;
+    }
+
+    public void setReserveTemperatureLocate(String reserveTemperatureLocate) {
+        this.reserveTemperatureLocate = reserveTemperatureLocate;
+    }
+
+
+
 }
+
