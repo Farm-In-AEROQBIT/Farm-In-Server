@@ -24,7 +24,7 @@ public class FarmInfoService {
         return farmInfoBusiness.findAll();
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         farmInfoBusiness.deleteById(id);
     }
 }

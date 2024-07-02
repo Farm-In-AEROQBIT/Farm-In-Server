@@ -25,4 +25,8 @@ public class FarmInfoBusiness {
     public List<FarmInfoEntity> findAll() {
         return farmInfoRepository.findAll();
     }
+
+    public void deleteById(String id) {
+        farmInfoRepository.deleteById(id);
+    }
 }
