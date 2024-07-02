@@ -18,21 +18,21 @@ import java.util.List;
 public class AdminBusiness {
 
     @Autowired
-    private AdminRepository repository;
+    private AdminRepository adminRepository;
 
     public AdminEntity save(AdminEntity admin) {
-        return repository.save(admin);
+        return adminRepository.save(admin);
     }
 
     public AdminEntity getById(String id) {
-        return repository.findById(id).orElse(null);
+        return adminRepository.findById(id).orElse(null);
     }
 
     public List<AdminEntity> getAll() {
-        return repository.findAll();
+        return adminRepository.findAll();
     }
 
     public void deleteById(String id) {
-        repository.deleteById(id);
+        adminRepository.deleteById(id);
     }
 }

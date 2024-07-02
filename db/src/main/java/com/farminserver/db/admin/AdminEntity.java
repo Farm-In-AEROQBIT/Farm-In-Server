@@ -8,10 +8,11 @@ import javax.persistence.Table;
 @Table(name = "admin")
 public class AdminEntity {
     @Id
+    private String farm_name;
     private String adminId;
     private String adminPw;
     private String user_phone_num;
-    private String farm_name;
+
 
     // Getters and Setters
     public String getAdminId() {
