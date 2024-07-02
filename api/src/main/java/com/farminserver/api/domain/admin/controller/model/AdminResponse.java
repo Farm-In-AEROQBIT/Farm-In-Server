@@ -1,5 +1,7 @@
 package com.farminserver.api.domain.admin.controller.model;
 
+import org.springframework.data.redis.connection.stream.StreamInfo;
+
 public class AdminResponse {
     private String admin_id;
     private String admin_pw;
@@ -33,6 +35,7 @@ public class AdminResponse {
     public String getUser_phone_Num() {
         return user_phone_num;
     }
+
     public void setUser_phone_num(String user_phone_num) {
         this.user_phone_num = user_phone_num;
     }

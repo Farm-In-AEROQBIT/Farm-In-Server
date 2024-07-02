@@ -28,23 +28,23 @@ import java.io.IOException;
 @RequestMapping("/api/admin")
 public class AdminApiController {
 
-    private String adminId;
-    private String adminPassword;
+    private long adminId;
+    private long adminPassword;
 
     // Getters and Setters
-    public String getAdminId() {
+    public long getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(String adminId) {
+    public void setAdminId(long adminId) {
         this.adminId = adminId;
     }
 
-    public String getAdminPassword() {
+    public long getAdminPassword() {
         return adminPassword;
     }
 
-    public void setAdminPassword(String adminPassword) {
+    public void setAdminPassword(long adminPassword) {
         this.adminPassword = adminPassword;
     }
 

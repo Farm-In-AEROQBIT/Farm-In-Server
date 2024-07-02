@@ -33,6 +33,7 @@ public class AdminEntity {
     public String getUser_phone_num() {
         return user_phone_num;
     }
+
     public void setUser_phone_num(String user_phone_num) {
         this.user_phone_num = user_phone_num;
     }
