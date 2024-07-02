@@ -1,14 +1,12 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.maternity_pm_sensor;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 
 @EqualsAndHashCode(callSuper = false)
@@ -19,39 +17,92 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "maternity_room_num")
+
 
 public class Maternity_PmSensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
 
-        public String getFarmName() {
-            return farmName;
-        }
+    //PM1.0 수집 데이터
+    public double maternity_Pm1_Data;
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
+    //PM2.5 수집 데이터
+    public double maternity_Pm25_Data;
 
-        public double getCo2Data() {
-            return co2Data;
-        }
+    //PM10 수집 데이터
+    public double maternity_Pm10_Data;
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
+    // 미세먼지 토탈 수집 데이터
+    public double maternity_Total_Pm_Data;
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
+    // 미세먼지 데이터 입력 시간
+    public long maternity_Pm_Input_Time;
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String Maternity_Room_Num;
+    private double Maternity_Pm1_Data;
+    private double Maternity_Pm25_Data;
+    private double Maternity_Pm10_Data;
+    private double Maternity_Total_Pm_Data;
+    private LocalDateTime Maternity_Pm_Input_Time;
+
+    public String getFarmName() {
+        return Maternity_Room_Num;
     }
+
+    public void setFarmName(String Maternity_Room_Num) {
+        this.Maternity_Room_Num = Maternity_Room_Num;
+    }
+
+
+    public double getmaternity_Pm1Data() {
+        return Maternity_Pm1_Data;
+    }
+
+    public void setmaternity_Pm1Data(double Maternity_Pm1_Data) {
+        this.Maternity_Pm1_Data = Maternity_Pm1_Data;
+    }
+
+
+    public double getmaternity_Pm25Data() {
+        return Maternity_Pm25_Data;
+    }
+
+    public void setmaternity_Pm25Data(double Maternity_Pm25_Data) {
+        this.Maternity_Pm25_Data = Maternity_Pm25_Data;
+    }
+
+
+    public double getmaternity_Pm10Data() {
+        return Maternity_Pm10_Data;
+    }
+
+    public void setmaternity_Pm10Data(double Maternity_Pm10_Data) {
+        this.Maternity_Pm10_Data = Maternity_Pm10_Data;
+    }
+
+
+    public double getmaternity_TotalPmData() {
+        return Maternity_Total_Pm_Data;
+    }
+
+    public void setmaternity_TotalPmData(double Maternity_Total_Pm_Data) {
+        this.Maternity_Total_Pm_Data = Maternity_Total_Pm_Data;
+    }
+
+
+    public LocalDateTime getmaternity_Pm_Input_Time() {
+        return Maternity_Pm_Input_Time;
+    }
+
+    public void setmaternity_Pm_Input_Time(LocalDateTime Maternity_Pm_Input_Time) {
+        this.Maternity_Pm_Input_Time = Maternity_Pm_Input_Time;
+    }
+
+
+
 
 }

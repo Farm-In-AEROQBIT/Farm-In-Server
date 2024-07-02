@@ -1,4 +1,4 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.piglet_pm_sensor;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -10,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
+
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -19,39 +21,91 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "piglet_pm_sensor")
 
 public class Piglet_PmSensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
 
-        public String getFarmName() {
-            return farmName;
-        }
+    //PM1.0 수집 데이터
+    public double piglet_Pm1_Data;
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
+    //PM2.5 수집 데이터
+    public double piglet_Pm25_Data;
 
-        public double getCo2Data() {
-            return co2Data;
-        }
+    //PM10 수집 데이터
+    public double piglet_Pm10_Data;
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
+    // 미세먼지 토탈 수집 데이터
+    public double piglet_Total_Pm_Data;
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
+    // 미세먼지 데이터 입력 시간
+    public long piglet_Pm_Input_Time;
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String Piglet_Barn_Room_Num;
+    private double Piglet_Pm1_Data;
+    private double Piglet_Pm25_Data;
+    private double Piglet_Pm10_Data;
+    private double Piglet_Total_Pm_Data;
+    private LocalDateTime Piglet_Pm_Input_Time;
+
+    public String getFarmName() {
+        return Piglet_Barn_Room_Num;
     }
+
+    public void setFarmName(String Piglet_Barn_Room_Num) {
+        this.Piglet_Barn_Room_Num = Piglet_Barn_Room_Num;
+    }
+
+
+    public double getpiglet_Pm1Data() {
+        return Piglet_Pm1_Data;
+    }
+
+    public void setpiglet_Pm1Data(double Piglet_Pm1_Data) {
+        this.Piglet_Pm1_Data = Piglet_Pm1_Data;
+    }
+
+
+    public double getpiglet_Pm25Data() {
+        return Piglet_Pm25_Data;
+    }
+
+    public void setpiglet_Pm25Data(double Piglet_Pm25_Data) {
+        this.Piglet_Pm25_Data = Piglet_Pm25_Data;
+    }
+
+
+    public double getpiglet_Pm10Data() {
+        return Piglet_Pm10_Data;
+    }
+
+    public void setpiglets_Pm10Data(double Piglet_Pm10_Data) {
+        this.Piglet_Pm10_Data = Piglet_Pm10_Data;
+    }
+
+
+    public double getpiglet_TotalPmData() {
+        return Piglet_Total_Pm_Data;
+    }
+
+    public void setpiglet_TotalPmData(double Piglet_Total_Pm_Data) {
+        this.Piglet_Total_Pm_Data = Piglet_Total_Pm_Data;
+    }
+
+
+    public LocalDateTime getpiglet_Pm_Input_Time() {
+        return Piglet_Pm_Input_Time;
+    }
+
+    public void setpiglet_Pm_Input_Time(LocalDateTime Piglet_Pm_Input_Time) {
+        this.Piglet_Pm_Input_Time = Piglet_Pm_Input_Time;
+    }
+
+
+
 
 }

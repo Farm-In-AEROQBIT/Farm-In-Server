@@ -1,13 +1,11 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.piglet_temperature_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
@@ -19,39 +17,48 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "piglet_temperature_sensor")
 
-public class Piglet_TemperatureSensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+public class Piglet_TemperatureSensorEntitiy extends BaseEntity {
+    @Id
+    private String Piglet_Room_Num;
+    private double Piglet_Temper_Data;
+    private String Piglet_Temper_Input_Time;
+    private String Piglet_Temper_Locate_Data;
 
-        public String getFarmName() {
-            return farmName;
-        }
+    // Getters and Setters
+    public String getPigletRoomNum() {
+        return Piglet_Room_Num;
+    }
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
+    public void setPigletBarnRoomNum(String Piglet_Room_Num) {
+        this.Piglet_Room_Num = Piglet_Room_Num;
+    }
 
-        public double getCo2Data() {
-            return co2Data;
-        }
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
+    public double getPigletTemperData() {
+        return Piglet_Temper_Data;
+    }
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
+    public void setPigletTemperData(double Piglet_Temper_Data) {
+        this.Piglet_Temper_Data = Piglet_Temper_Data;
+    }
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
 
+    public String getPigletTemperInputTime() {
+        return Piglet_Temper_Input_Time;
+    }
+
+    public void setPigletTemperInputTime(String Piglet_Temper_Input_Time) {
+        this.Piglet_Temper_Input_Time = Piglet_Temper_Input_Time;
+    }
+
+    public String getPigletTemperLocateData() {
+        return Piglet_Temper_Locate_Data;
+    }
+
+    public void setPigletTemperLocateData(String Piglet_Temper_Locate_Data) {
+        this.Piglet_Temper_Locate_Data = Piglet_Temper_Locate_Data;
     }
 
 }

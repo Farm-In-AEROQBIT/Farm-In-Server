@@ -1,14 +1,11 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.piglet_co2_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @EqualsAndHashCode(callSuper = false)
@@ -19,39 +16,39 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "piglet_co2_sensor")
 
-public class Piglet_Co2SensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+public class Piglet_Co2SensorEntitiy extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String Piglet_Barn_Room_Num;
+    private double Piglet_Co2_Data;
+    private LocalDateTime Piglet_Co2_Input_Time;
 
-        public String getFarmName() {
-            return farmName;
-        }
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
-
-        public double getCo2Data() {
-            return co2Data;
-        }
-
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
-
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
-
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
-
+    public String getFarmName() {
+        return Piglet_Barn_Room_Num;
     }
 
+    public void setFarmName(String Piglet_Barn_Room_Num) {
+        this.Piglet_Barn_Room_Num = Piglet_Barn_Room_Num;
+    }
+
+
+    public double getpiglet_Co2Data() {
+        return Piglet_Co2_Data;
+    }
+
+    public void setpiglet_Co2Data(double Piglet_Co2_Data) {
+        this.Piglet_Co2_Data = Piglet_Co2_Data;
+    }
+
+
+    public LocalDateTime getCo2InputTime() {
+        return Piglet_Co2_Input_Time;
+    }
+
+    public void setCo2InputTime(LocalDateTime Piglet_Co2_Input_Time) {
+        this.Piglet_Co2_Input_Time = Piglet_Co2_Input_Time;
+    }
 }

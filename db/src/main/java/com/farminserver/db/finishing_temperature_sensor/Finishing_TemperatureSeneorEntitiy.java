@@ -1,5 +1,6 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.finishing_temperature_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import jakarta.persistence.Id;
 @Entity
 @Table(name = "finishing_co2_sensor")
 
-public class Maternity_HumiditySensorEntitiy {
+public class Finishing_TemperatureSeneorEntitiy extends BaseEntity {
      @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String farmName;
@@ -51,7 +52,6 @@ public class Maternity_HumiditySensorEntitiy {
         public void setCo2InputTime(LocalDateTime co2InputTime) {
             this.co2InputTime = co2InputTime;
         }
-
-    }
+        
 
 }

@@ -1,15 +1,11 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.growing_temperature_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -19,39 +15,50 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "growing_temperature_sensor")
 
-public class Growing_TemperatureSensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+public class Growing_TemperatureSensorEntitiy extends BaseEntity {
+    @Id
+    private String Growing_Room_Num;
+    private double Growing_Temper_Data;
+    private String Growing_Temper_Input_Time;
+    private String Growing_Temper_Locate_Data;
 
-        public String getFarmName() {
-            return farmName;
-        }
+    // Getters and Setters
+    public String getGrowingRoomNum() {
+        return Growing_Room_Num;
+    }
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
+    public void setGrowingRoomNum(String Growing_Barn_Room_Num) {
+        this.Growing_Room_Num = Growing_Barn_Room_Num;
+    }
 
-        public double getCo2Data() {
-            return co2Data;
-        }
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
+    public double getGrowingTemperData() {
+        return Growing_Temper_Data;
+    }
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
+    public void setGrowingTemperData(double Growing_Temper_Data) {
+        this.Growing_Temper_Data = Growing_Temper_Data;
+    }
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
 
+    public String getGrowingTemperInputTime() {
+        return Growing_Temper_Input_Time;
+    }
+
+    public void setGrowingTemperInputTime(String Growing_Temper_Input_Time) {
+        this.Growing_Temper_Input_Time = Growing_Temper_Input_Time;
+    }
+
+
+    public String getGrowingTemperLocateData() {
+        return Growing_Temper_Locate_Data;
+    }
+
+    public void setGrowingTemperLocateData(String Growing_Temper_Locate_Data) {
+        this.Growing_Temper_Locate_Data = Growing_Temper_Locate_Data;
     }
 
 }
+

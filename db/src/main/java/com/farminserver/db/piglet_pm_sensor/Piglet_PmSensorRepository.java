@@ -1,6 +1,6 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.piglet_pm_sensor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Piglet_PmSensorRepository extends JpaRepository<Reserve_TemperatureSensorEntitiy, Long >{
+public interface Piglet_PmSensorRepository extends JpaRepository<Piglet_PmSensorEntitiy, Long >{
 }

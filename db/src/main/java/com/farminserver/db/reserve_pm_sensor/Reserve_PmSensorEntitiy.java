@@ -1,4 +1,4 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.reserve_pm_sensor;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;

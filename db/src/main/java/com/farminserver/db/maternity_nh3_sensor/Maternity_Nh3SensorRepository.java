@@ -1,6 +1,6 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.maternity_nh3_sensor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Maternity_Nh3SensorRepository extends JpaRepository<Reserve_TemperatureSensorEntitiy, Long >{
+public interface Maternity_Nh3SensorRepository extends JpaRepository<Maternity_Nh3SensorEntitiy, Long >{
 }

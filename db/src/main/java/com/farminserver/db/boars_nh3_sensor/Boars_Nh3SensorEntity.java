@@ -21,32 +21,30 @@ public class Boars_Nh3SensorEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String farmName;
-    private double boars_nh3Data;
-    private LocalDateTime boars_nh3InputTime;
+    private String Boars_Barn_Room_Num;
+    private double Boars_Nh3_Data;
+    private LocalDateTime Boars_Nh3_Input_Time;
 
     public String getFarmName() {
-        return farmName;
+        return Boars_Barn_Room_Num;
     }
 
-    public void setFarmName(String farmName) {
-        this.farmName = farmName;
-    }
+    public void setFarmName(String farmName) { this.Boars_Barn_Room_Num = Boars_Barn_Room_Num; }
 
     public double getboars_Nh3Data() {
-        return boars_nh3Data;
+        return Boars_Nh3_Data;
     }
 
-    public void setboars_Nh3Data(double boars_nh3Data) {
-        this.boars_nh3Data = boars_nh3Data;
+    public void setboars_Nh3Data(double Boars_Nh3_Data) {
+        this.Boars_Nh3_Data = Boars_Nh3_Data;
     }
 
     public LocalDateTime getboars_Nh3InputTime() {
-        return boars_nh3InputTime;
+        return Boars_Nh3_Input_Time;
     }
 
-    public void setboars_Nh3InputTime(LocalDateTime boars_nh3InputTime) {
-        this.boars_nh3InputTime = boars_nh3InputTime;
+    public void setboars_Nh3InputTime(LocalDateTime Boars_Nh3_Input_Time) {
+        this.Boars_Nh3_Input_Time = Boars_Nh3_Input_Time;
     }
 
 }

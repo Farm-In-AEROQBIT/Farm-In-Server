@@ -1,6 +1,6 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.growing_pm_sensor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Growing_PmSensorRepository extends JpaRepository<Reserve_TemperatureSensorEntitiy, Long >{
+public interface Growing_PmSensorRepository extends JpaRepository<Growing_PmSensorEntity, Long >{
 }
