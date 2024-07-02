@@ -39,7 +39,7 @@ public class SecurityConfig{
     @Bean
     public PasswordEncoder passwordEncoder(){
 
-        //hash방식으로 압호;
+        //hash방식으로 암호;
         return new BCryptPasswordEncoder();
     }
 }
