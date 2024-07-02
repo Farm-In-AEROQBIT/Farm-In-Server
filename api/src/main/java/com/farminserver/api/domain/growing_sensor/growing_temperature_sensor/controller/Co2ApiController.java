@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.Co2Business;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Co2Response;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.UserBusiness;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -18,23 +18,23 @@ import java.io.IOException;
 @RequestMapping("/api/boars_co2")
 public class Co2ApiController {
 
-    private final Co2Business co2Business;
+    private final UserBusiness userBusiness;
 
     @Autowired
-    public Co2ApiController(Co2Business co2Business) {
-        this.co2Business = co2Business;
+    public Co2ApiController(UserBusiness userBusiness) {
+        this.userBusiness = userBusiness;
     }
 
     @GetMapping("/co2data")
-    public Co2Response getCo2SensorData() {
-        return co2Business.getCo2SensorData();
+    public UserResponse getCo2SensorData() {
+        return userBusiness.getCo2SensorData();
     }
 
     @GetMapping("/export")
     public ResponseEntity<Resource> exportCo2Data() {
         String filePath = "co2_data.xlsx";
         try {
-            co2Business.exportCo2DataToExcel(filePath);
+            userBusiness.exportCo2DataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
