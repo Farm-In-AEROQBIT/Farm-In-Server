@@ -1,14 +1,12 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.reserve_co2_sensor;
 
+import com.farminserver.db.BaseEntity;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 
 @EqualsAndHashCode(callSuper = false)
@@ -19,39 +17,40 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "reserve_co2_sensor")
 
-public class Reserve_Co2SensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+public class Reserve_Co2SensorEntitiy extends BaseEntity {
 
-        public String getFarmName() {
-            return farmName;
-        }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String Reserve_Sows_Room_Num;
+    private double Reserve_Co2_Data;
+    private LocalDateTime Reserve_Co2_Input_Time;
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
+    public String getFarmName() {
+        return Reserve_Sows_Room_Num;
+    }
 
-        public double getCo2Data() {
-            return co2Data;
-        }
+    public void setFarmName(String Reserve_Sows_Room_Num) {
+        this.Reserve_Sows_Room_Num = Reserve_Sows_Room_Num;
+    }
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
+    public double getreserve_Co2Data() {
+        return Reserve_Co2_Data;
+    }
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
+    public void setreserve_Co2Data(double Reserve_Co2_Data) {
+        this.Reserve_Co2_Data = Reserve_Co2_Data;
+    }
 
+
+    public LocalDateTime getCo2InputTime() {
+        return Reserve_Co2_Input_Time;
+    }
+
+    public void setCo2InputTime(LocalDateTime Reserve_Co2_Input_Time) {
+        this.Reserve_Co2_Input_Time = Reserve_Co2_Input_Time;
     }
 
 }

@@ -1,13 +1,11 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.maternity_temperature_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
@@ -19,39 +17,49 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "maternity_temperature_sensor")
 
-public class Maternity_TemperatureSensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+public class Maternity_TemperatureSensorEntitiy extends BaseEntity {
+    @Id
+    private String Maternity_Barn_Room_Num;
+    private double Maternity_Temper_Data;
+    private String Maternity_Temper_Input_Time;
+    private String Maternity_Temper_Locate_Data;
 
-        public String getFarmName() {
-            return farmName;
-        }
+    // Getters and Setters
+    public String getMaternityRoomNum() {
+        return Maternity_Barn_Room_Num;
+    }
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
+    public void setMaternityRoomNum(String Maternity_Barn_Room_Num) {
+        this.Maternity_Barn_Room_Num = Maternity_Barn_Room_Num;
+    }
 
-        public double getCo2Data() {
-            return co2Data;
-        }
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
+    public double getMaternityTemperData() {
+        return Maternity_Temper_Data;
+    }
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
+    public void setMaternityTemperData(double Maternity_Temper_Data) {
+        this.Maternity_Temper_Data = Maternity_Temper_Data;
+    }
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
 
+    public String getMaternityTemperInputTime() {
+        return Maternity_Temper_Input_Time;
+    }
+
+    public void setMaternityTemperInputTime(String Maternity_Temper_Input_Time) {
+        this.Maternity_Temper_Input_Time = Maternity_Temper_Input_Time;
+    }
+
+
+    public String getMaternityTemperLocateData() {
+        return Maternity_Temper_Locate_Data;
+    }
+
+    public void setMaternityTemperLocateData(String Maternity_Temper_Locate_Data) {
+        this.Maternity_Temper_Locate_Data = Maternity_Temper_Locate_Data;
     }
 
 }

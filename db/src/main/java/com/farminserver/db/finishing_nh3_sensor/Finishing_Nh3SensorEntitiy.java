@@ -1,5 +1,6 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.finishing_nh3_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
@@ -19,39 +20,36 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "finishing_nh3_sensor")
 
-public class Finishing_Nh3SensorEntitiy {
+public class Finishing_Nh3SensorEntitiy extends BaseEntity {
      @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+        private String Finishing_Room_Num;
+        private double Finishing_Nh3_Data;
+        private LocalDateTime Finishing_Nh3_Input_Time;
 
         public String getFarmName() {
-            return farmName;
+            return Finishing_Room_Num;
         }
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
+        public void setFarmName(String Finishing_Room_Num) {
+            this.Finishing_Room_Num = Finishing_Room_Num;
         }
 
-        public double getCo2Data() {
-            return co2Data;
+        public double getfinishimg_Nh3Data() {
+            return Finishing_Nh3_Data;
         }
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
+        public void setfinishimg_Nh3Data(double Finishing_Nh3_Data) {
+            this.Finishing_Nh3_Data = Finishing_Nh3_Data;
         }
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
+        public LocalDateTime getfinishing_Nh3InputTime() { return Finishing_Nh3_Input_Time; }
+
+        public void setfinishing_Nh3InputTime(LocalDateTime Finishing_Nh3_Input_Time) {
+            this.Finishing_Nh3_Input_Time = Finishing_Nh3_Input_Time;
         }
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
-
-    }
 
 }

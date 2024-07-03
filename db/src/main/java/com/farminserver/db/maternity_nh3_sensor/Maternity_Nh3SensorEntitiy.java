@@ -1,14 +1,11 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.maternity_nh3_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @EqualsAndHashCode(callSuper = false)
@@ -19,39 +16,36 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "maternity_bh3_sensor")
 
-public class Maternity_Nh3SensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+public class Maternity_Nh3SensorEntitiy extends BaseEntity {
 
-        public String getFarmName() {
-            return farmName;
-        }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String Maternity_Room_Num;
+    private double Maternity_Nh3_Data;
+    private LocalDateTime Maternity_Nh3_Input_Time;
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
+    public String getFarmName() {
+        return Maternity_Room_Num;
+    }
 
-        public double getCo2Data() {
-            return co2Data;
-        }
+    public void setFarmName(String Maternity_Room_Num) { this.Maternity_Room_Num = Maternity_Room_Num; }
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
+    public double getmaternity_Nh3Data() {
+        return Maternity_Nh3_Data;
+    }
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
+    public void setmaternity_Nh3Data(double Maternity_Nh3_Data) {
+        this.Maternity_Nh3_Data = Maternity_Nh3_Data;
+    }
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
+    public LocalDateTime getmaternity_Nh3InputTime() {
+        return Maternity_Nh3_Input_Time;
+    }
 
+    public void setmaternity_Nh3InputTime(LocalDateTime Maternity_Nh3_Input_Time) {
+        this.Maternity_Nh3_Input_Time = Maternity_Nh3_Input_Time;
     }
 
 }

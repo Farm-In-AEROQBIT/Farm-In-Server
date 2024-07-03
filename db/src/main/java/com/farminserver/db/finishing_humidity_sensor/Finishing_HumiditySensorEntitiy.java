@@ -21,39 +21,36 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "finishing_humidity_sensor")
 
-public class Finishing_HumiditySensorEntitiy {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String farmName;
-        private double co2Data;
-        private LocalDateTime co2InputTime;
+public class Finishing_HumiditySensorEntitiy extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String Finishing_Barn_Room_Num;
+    private double Finishing_Humidity_Data;
+    private LocalDateTime Finishing_Humidity_Input_Time;
 
-        public String getFarmName() {
-            return farmName;
+    public String getFarmName() {
+            return Finishing_Barn_Room_Num;
         }
 
-        public void setFarmName(String farmName) {
-            this.farmName = farmName;
-        }
+    public void setFarmName(String Finishing_Barn_Room_Num) {
+        this.Finishing_Barn_Room_Num = Finishing_Barn_Room_Num;
+    }
 
-        public double getCo2Data() {
-            return co2Data;
-        }
 
-        public void setCo2Data(double co2Data) {
-            this.co2Data = co2Data;
-        }
+    public double getfinishing_HumidityData() { return Finishing_Humidity_Data; }
 
-        public LocalDateTime getCo2InputTime() {
-            return co2InputTime;
-        }
+    public void setfinishing_HumidityData(double Finishing_Humidity_Data) {
+        this.Finishing_Humidity_Data = Finishing_Humidity_Data;
+    }
 
-        public void setCo2InputTime(LocalDateTime co2InputTime) {
-            this.co2InputTime = co2InputTime;
-        }
 
+    public LocalDateTime getfinishing_Humidity_Input_Time() { return Finishing_Humidity_Input_Time; }
+
+    public void setfinishing_Humidity_Input_Time(LocalDateTime Finishing_Humidity_Input_Time) {
+        this.Finishing_Humidity_Input_Time = Finishing_Humidity_Input_Time;
     }
 
 }
+

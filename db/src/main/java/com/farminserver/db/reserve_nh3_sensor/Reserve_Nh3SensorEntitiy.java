@@ -16,17 +16,36 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "reverse_nh3_sensor")
+@Table(name = "reserve_nh3_sensor")
+
 public class Reserve_Nh3SensorEntitiy extends BaseEntity {
+
     @Id
-    private String reverseSowsRoomNum;
-    private String reverseNh3Data;
-    private String reverseNh3InputTime;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String Reserve_Sows_Room_Num;
+    private double Reserve_Nh3_Data;
+    private LocalDateTime Reserve_Nh3_Input_Time;
 
-    public String getReverseSowsRoomNum() { return reverseSowsRoomNum; }
+    public String getFarmName() {
+        return Reserve_Sows_Room_Num;
+    }
 
-    public void setReverseSowsRoomNum(String reverseSowsRoomNum) {
-        this.reverseSowsRoomNum = reverseSowsRoomNum;
+    public void setFarmName(String Reserve_Sows_Room_Num) { this.Reserve_Sows_Room_Num = Reserve_Sows_Room_Num; }
+
+    public double getreserve_Nh3Data() {
+        return Reserve_Nh3_Data;
+    }
+
+    public void setreserve_Nh3Data(double Reserve_Nh3_Data) {
+        this.Reserve_Nh3_Data = Reserve_Nh3_Data;
+    }
+
+    public LocalDateTime getreserve_Nh3InputTime() {
+        return Reserve_Nh3_Input_Time;
+    }
+
+    public void setreserve_Nh3InputTime(LocalDateTime Reserve_Nh3_Input_Time) {
+        this.Reserve_Nh3_Input_Time = Reserve_Nh3_Input_Time;
     }
 
     public String getReverseNh3Data() { return reverseNh3Data; }
@@ -41,3 +60,4 @@ public class Reserve_Nh3SensorEntitiy extends BaseEntity {
 
 
 }
+

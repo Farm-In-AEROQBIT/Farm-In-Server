@@ -20,36 +20,38 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "boars_co2_sensor")
-public class Boars_CO2SensorEntity extends BaseEntity {
+public class Boars_Co2SensorEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String farmName;
-    private double boars_co2Data;
-    private LocalDateTime boars_co2InputTime;
+    private String Boars_Barn_Room_Num;
+    private double Boars_Co2_Data;
+    private LocalDateTime Boars_Co2_Input_Time;
 
     public String getFarmName() {
-        return farmName;
+        return Boars_Barn_Room_Num;
     }
 
-    public void setFarmName(String farmName) {
-        this.farmName = farmName;
+    public void setFarmName(String Boars_Barn_Room_Num) {
+        this.Boars_Barn_Room_Num = Boars_Barn_Room_Num;
     }
+
 
     public double getboars_Co2Data() {
-        return boars_co2Data;
+        return Boars_Co2_Data;
     }
 
-    public void setboars_Co2Data(double boars_co2_data) {
-        this.boars_co2Data = boars_co2_data;
+    public void setboars_Co2Data(double Boars_Co2_Data) {
+        this.Boars_Co2_Data = Boars_Co2_Data;
     }
 
-    public LocalDateTime getboars_co2_InputTime() {
-        return boars_co2InputTime;
+
+    public LocalDateTime getCo2InputTime() {
+        return Boars_Co2_Input_Time;
     }
 
-    public void setCo2InputTime(LocalDateTime co2InputTime) {
-        this.boars_co2InputTime = co2InputTime;
+    public void setCo2InputTime(LocalDateTime Boars_Co2_Input_Time) {
+        this.Boars_Co2_Input_Time = Boars_Co2_Input_Time;
     }
 
 }

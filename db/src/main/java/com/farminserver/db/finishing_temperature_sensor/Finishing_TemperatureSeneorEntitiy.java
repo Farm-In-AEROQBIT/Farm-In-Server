@@ -1,15 +1,13 @@
-package com.farminserver.db.finishing_humidity_sensor;
+package com.farminserver.db.finishing_temperature_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -19,18 +17,16 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "reserve_temperature_sensor")
 
-public class Maternity_HumiditySensorEntitiy {
+public class Finishing_TemperatureSeneorEntitiy extends BaseEntity {
      @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String farmName;
         private double co2Data;
         private LocalDateTime co2InputTime;
 
-        public String getFarmName() {
-            return farmName;
-        }
+    public String getFarmName() { return farmName; }
 
         public void setFarmName(String farmName) {
             this.farmName = farmName;
@@ -51,7 +47,6 @@ public class Maternity_HumiditySensorEntitiy {
         public void setCo2InputTime(LocalDateTime co2InputTime) {
             this.co2InputTime = co2InputTime;
         }
-
-    }
+        
 
 }
