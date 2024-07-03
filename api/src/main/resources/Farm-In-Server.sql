@@ -1213,12 +1213,12 @@ DROP TABLE IF EXISTS `reserve_co2_sensor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserve_co2_sensor` (
-  `reserve_sows_room` varchar(45) NOT NULL,
+  `reserve_sows_room_num` varchar(45) NOT NULL,
   `reserve_co2_data` varchar(45) DEFAULT NULL,
   `reserve_co2_input_time` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`reserve_sows_room`),
-  UNIQUE KEY `reserve_sows_room_UNIQUE` (`reserve_sows_room`),
-  CONSTRAINT `reserve_sows_room_num_1` FOREIGN KEY (`reserve_sows_room`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
+  PRIMARY KEY (`reserve_sows_room_num`),
+  UNIQUE KEY `reserve_sows_room_UNIQUE` (`reserve_sows_room_num`),
+  CONSTRAINT `reserve_sows_room_num_1` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1239,12 +1239,12 @@ DROP TABLE IF EXISTS `reserve_humidity_sensor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserve_humidity_sensor` (
-  `ireserve_sows_humidity_sensor` varchar(45) NOT NULL,
+  `reserve_sows_room_num` varchar(45) NOT NULL,
   `reserve_humidity_data` varchar(45) DEFAULT NULL,
   `reserve_humidity_input_time` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`ireserve_sows_humidity_sensor`),
-  UNIQUE KEY `ireserve_sows_humidity_sensor_UNIQUE` (`ireserve_sows_humidity_sensor`),
-  CONSTRAINT `reserve_sows_room_num_3` FOREIGN KEY (`ireserve_sows_humidity_sensor`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
+  PRIMARY KEY (`reserve_sows_room_num`),
+  UNIQUE KEY `ireserve_sows_humidity_sensor_UNIQUE` (`reserve_sows_room_num`),
+  CONSTRAINT `reserve_sows_room_num_3` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1293,13 +1293,13 @@ DROP TABLE IF EXISTS `reserve_sows_barn`;
 CREATE TABLE `reserve_sows_barn` (
   `farm_name` varchar(45) NOT NULL,
   `reserve_sows_barn_num` varchar(45) NOT NULL,
-  `reserve_sows_barn_room_num` varchar(45) NOT NULL,
-  PRIMARY KEY (`farm_name`,`reserve_sows_barn_num`,`reserve_sows_barn_room_num`),
+  `reserve_sows_room_num` varchar(45) NOT NULL,
+  PRIMARY KEY (`farm_name`,`reserve_sows_barn_num`,`reserve_sows_room_num`),
   UNIQUE KEY `farm_name_UNIQUE` (`farm_name`),
   UNIQUE KEY `reserve_sows_barn_num_UNIQUE` (`reserve_sows_barn_num`),
-  UNIQUE KEY `reserve_sows_barn_room_num_UNIQUE` (`reserve_sows_barn_room_num`),
+  UNIQUE KEY `reserve_sows_barn_room_num_UNIQUE` (`reserve_sows_room_num`),
   CONSTRAINT `Farm_name_2` FOREIGN KEY (`farm_name`) REFERENCES `farm_info` (`farm_name`),
-  CONSTRAINT `reserve_sows_room_num` FOREIGN KEY (`reserve_sows_barn_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
+  CONSTRAINT `reserve_sows_room_num` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1434,4 +1434,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-28 14:16:01
+-- Dump completed on 2024-07-03 15:44:35
