@@ -1,7 +1,10 @@
 package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
-import com.farminserver.api.util.ExcelExporter;
+import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
+import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorRepository;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter.Boars_Co2Converter;
+import com.farminserver.api.util.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,27 +15,33 @@ import java.util.List;
 @Service
 public class Boars_Co2Service {
 
-    private final ExcelExporter excelExporter;
+    private final Boars_Co2SensorRepository repository;
+    private final Boars_Co2Converter converter;
+    private final Boars_ExcelExporter excelExporter;
 
     @Autowired
-    public Boars_Co2Service(ExcelExporter excelExporter) {
+    public Boars_Co2Service(Boars_Co2SensorRepository repository, Boars_Co2Converter converter, Boars_ExcelExporter excelExporter) {
+        this.repository = repository;
+        this.converter = converter;
         this.excelExporter = excelExporter;
     }
 
-    public double getCo2Data() {
-        return 400.0; // 실제 센서 데이터 가져오기 로직 (임의의 값 반환)
+    public Boars_Co2Response getCo2Data(String boarsBarnRoomNum) {
+        Boars_Co2SensorEntity entity = repository.findById(boarsBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+        return converter.convert(entity);
     }
 
     public List<Boars_Co2Response> getAllCo2Data() {
-        // 예시 데이터를 반환
-        List<UserResponse> responses = new ArrayList<>();
-        responses.add(new UserResponse(400.0, "ppm", System.currentTimeMillis()));
-        responses.add(new UserResponse(401.0, "ppm", System.currentTimeMillis() - 10000));
+        List<Boars_Co2SensorEntity> entities = repository.findAll();
+        List<Boars_Co2Response> responses = new ArrayList<>();
+        for (Boars_Co2SensorEntity entity : entities) {
+            responses.add(converter.convert(entity));
+        }
         return responses;
     }
 
     public void exportCo2DataToExcel(String filePath) throws IOException {
-        List<UserResponse> userRespons = getAllCo2Data();
-        excelExporter.exportco2Data(userRespons, filePath);
+        List<Boars_Co2Response> responses = getAllCo2Data();
+        excelExporter.exportBoars_co2Data(responses, filePath);
     }
 }

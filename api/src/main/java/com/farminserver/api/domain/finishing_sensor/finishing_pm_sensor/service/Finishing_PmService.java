@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.util.ExcelExporter;
+import com.farminserver.api.util.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class Finishing_PmService {
 
-    private final ExcelExporter excelExporter;
+    private final Boars_ExcelExporter boarsExcelExporter;
 
     @Autowired
-    public Finishing_PmService(ExcelExporter excelExporter) {
-        this.excelExporter = excelExporter;
+    public Finishing_PmService(Boars_ExcelExporter boarsExcelExporter) {
+        this.boarsExcelExporter = boarsExcelExporter;
     }
 
     public double getCo2Data() {
@@ -35,6 +35,6 @@ public class Finishing_PmService {
 
     public void exportCo2DataToExcel(String filePath) throws IOException {
         List<UserResponse> userRespons = getAllCo2Data();
-        excelExporter.exportco2Data(userRespons, filePath);
+        boarsExcelExporter.exportco2Data(userRespons, filePath);
     }
 }

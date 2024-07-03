@@ -3,7 +3,7 @@ package com.farminserver.api.domain.boars_sensor.boars_pm_sensor.service;
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
 import com.farminserver.db.boars_pm_sensor.PmSensorRepository;
 import com.farminserver.db.boars_pm_sensor.PmSensorEntity;
-import com.farminserver.api.util.ExcelExporter;
+import com.farminserver.api.util.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class Boars_PmService {
 
-    private final ExcelExporter excelExporter;
+    private final Boars_ExcelExporter boarsExcelExporter;
 
     @Autowired
-    public Boars_PmService(ExcelExporter excelExporter) {
-        this.excelExporter = excelExporter;
+    public Boars_PmService(Boars_ExcelExporter boarsExcelExporter) {
+        this.boarsExcelExporter = boarsExcelExporter;
     }
 
     public Boars_PmResponse getLatestPmData(){
@@ -56,6 +56,6 @@ public class Boars_PmService {
 
     public void exportPmDataToExcel(String filePath) throws IOException {
         List<Boars_PmResponse> boarsPmRespons = getAllPmData();
-        excelExporter.exportPmData(boarsPmRespons, filePath);
+        boarsExcelExporter.exportPmData(boarsPmRespons, filePath);
     }
 }

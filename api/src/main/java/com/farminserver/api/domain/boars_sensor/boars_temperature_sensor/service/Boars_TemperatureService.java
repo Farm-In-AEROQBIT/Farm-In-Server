@@ -3,7 +3,7 @@ package com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.servic
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.db.boars_temperature_sensor.TemperatureRepository;
 import com.farminserver.db.boars_temperature_sensor.TemperatureEntity;
-import com.farminserver.api.util.ExcelExporter;
+import com.farminserver.api.util.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class Boars_TemperatureService {
 
-    private final ExcelExporter excelExporter;
+    private final Boars_ExcelExporter boarsExcelExporter;
 
     @Autowired
-    public Boars_TemperatureService(ExcelExporter excelExporter) {
-        this.excelExporter = excelExporter;
+    public Boars_TemperatureService(Boars_ExcelExporter boarsExcelExporter) {
+        this.boarsExcelExporter = boarsExcelExporter;
     }
 
     public double getTemperatureData() {
@@ -36,6 +36,6 @@ public class Boars_TemperatureService {
 
     public void exportTemperatureDataToExcel(String filePath) throws IOException {
         List<Boars_TemperatureResponse> boarsTemperatureRespons = getAllTemperatureData();
-        excelExporter.exportTemperatureData(boarsTemperatureRespons, filePath);
+        boarsExcelExporter.exportTemperatureData(boarsTemperatureRespons, filePath);
     }
 }
