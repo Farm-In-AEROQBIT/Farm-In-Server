@@ -48,5 +48,16 @@ public class Reserve_Nh3SensorEntitiy extends BaseEntity {
         this.Reserve_Nh3_Input_Time = Reserve_Nh3_Input_Time;
     }
 
+    public String getReverseNh3Data() { return reverseNh3Data; }
+
+    public void setReverseNh3Data(String ReverseNh3Data) { this.reverseNh3Data = reverseNh3Data; }
+
+    public String getReverseNh3InputTime() { return reverseNh3InputTime; }
+
+    public void setReverseNh3InputTime(String reverseNh3InputTime) {
+        this.reverseNh3InputTime = reverseNh3InputTime;
+    }
+
+
 }
 

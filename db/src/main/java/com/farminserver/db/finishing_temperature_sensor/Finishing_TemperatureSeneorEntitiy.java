@@ -5,12 +5,9 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -20,7 +17,7 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "reserve_temperature_sensor")
 
 public class Finishing_TemperatureSeneorEntitiy extends BaseEntity {
      @Id
@@ -29,9 +26,7 @@ public class Finishing_TemperatureSeneorEntitiy extends BaseEntity {
         private double co2Data;
         private LocalDateTime co2InputTime;
 
-        public String getFarmName() {
-            return farmName;
-        }
+    public String getFarmName() { return farmName; }
 
         public void setFarmName(String farmName) {
             this.farmName = farmName;
