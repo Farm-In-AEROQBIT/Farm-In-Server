@@ -3,7 +3,7 @@ package com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.service;
 import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
 import com.farminserver.db.boars_nh3_sensor.Nh3SensorRepository;
 import com.farminserver.db.boars_nh3_sensor.Nh3SensorEntity;
-import com.farminserver.api.util.ExcelExporter;
+import com.farminserver.api.util.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class Boars_Nh3Service {
 
-    private final ExcelExporter excelExporter;
+    private final Boars_ExcelExporter boarsExcelExporter;
 
     @Autowired
-    public Boars_Nh3Service(ExcelExporter excelExporter) {
-        this.excelExporter = excelExporter;
+    public Boars_Nh3Service(Boars_ExcelExporter boarsExcelExporter) {
+        this.boarsExcelExporter = boarsExcelExporter;
     }
 
     public Boars_Nh3Response getLatestNh3Data() {
@@ -36,6 +36,6 @@ public class Boars_Nh3Service {
 
     public void exportNh3DataToExcel(String filePath) throws IOException {
         List<Boars_Nh3Response> boarsNh3Respons = getAllNh3Data();
-        excelExporter.exportnh3Data(boarsNh3Respons, filePath);
+        boarsExcelExporter.exportnh3Data(boarsNh3Respons, filePath);
     }
 }

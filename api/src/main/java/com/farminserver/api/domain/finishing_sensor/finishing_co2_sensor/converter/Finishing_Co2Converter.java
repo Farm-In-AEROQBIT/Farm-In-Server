@@ -9,7 +9,7 @@ import com.farminserver.api.common.error.ErrorCode;
 import java.util.Optional;
 
 @Component
-public class Finishing_Co2Converter {
+public class Co2Converter {
 
     public UserResponse convert(double co2) {
         String unit = "ppm";

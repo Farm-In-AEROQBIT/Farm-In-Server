@@ -1,6 +1,6 @@
 package com.farminserver.api.config;
 
-import com.farminserver.api.util.ExcelExporter;
+import com.farminserver.api.util.Boars_ExcelExporter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 public class AppConfig {
 
     @Bean
-    public ExcelExporter excelExporter() {
-        return new ExcelExporter();
+    public Boars_ExcelExporter excelExporter() {
+        return new Boars_ExcelExporter();
     }
 
     @Value("${spring.datasource.url}")

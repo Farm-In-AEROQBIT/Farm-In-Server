@@ -5,7 +5,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
 import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.Boars_HumidityResponse;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
@@ -14,9 +14,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-public class ExcelExporter {
+public class Boars_ExcelExporter {
 
-    public void exportnh3Data(List<Boars_Nh3Response> boarsNh3Respons, String filePath) throws IOException {
+    public void exportBoars_nh3Data(List<Boars_Nh3Response> boarsNh3Respons, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Nh3 Data");
 
@@ -39,7 +39,7 @@ public class ExcelExporter {
         workbook.close();
     }
 
-    public void exportco2Data(List<UserResponse> userRespons, String filePath) throws IOException {
+    public void exportBoars_co2Data(List<Boars_Co2Response> userRespons, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Co2 Data");
 
@@ -49,9 +49,9 @@ public class ExcelExporter {
         headerRow.createCell(1).setCellValue("Unit");
         headerRow.createCell(2).setCellValue("Timestamp");
 
-        for (UserResponse response : userRespons) {
+        for (Boars_Co2Response response : userRespons) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getCo2());
+            row.createCell(0).setCellValue(response.getBoarsCo2());
             row.createCell(1).setCellValue(response.getUnit());
             row.createCell(2).setCellValue(response.getTimestamp());
         }

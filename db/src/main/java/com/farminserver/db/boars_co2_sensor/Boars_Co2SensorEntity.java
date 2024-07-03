@@ -28,30 +28,27 @@ public class Boars_Co2SensorEntity extends BaseEntity {
     private double Boars_Co2_Data;
     private LocalDateTime Boars_Co2_Input_Time;
 
-    public String getFarmName() {
+    public String getBoars_Barn_Room_Num() {
         return Boars_Barn_Room_Num;
     }
 
-    public void setFarmName(String Boars_Barn_Room_Num) {
+    public void setBoars_Barn_Room_Num(String Boars_Barn_Room_Num) {
         this.Boars_Barn_Room_Num = Boars_Barn_Room_Num;
     }
 
-
-    public double getboars_Co2Data() {
+    public double getBoarsCo2Data() {
         return Boars_Co2_Data;
     }
 
-    public void setboars_Co2Data(double Boars_Co2_Data) {
+    public void setBoarsCo2Data(double Boars_Co2_Data) {
         this.Boars_Co2_Data = Boars_Co2_Data;
     }
 
-
-    public LocalDateTime getCo2InputTime() {
+    public LocalDateTime getBoarsCo2InputTime() {
         return Boars_Co2_Input_Time;
     }
 
-    public void setCo2InputTime(LocalDateTime Boars_Co2_Input_Time) {
+    public void setBoarsCo2InputTime(LocalDateTime Boars_Co2_Input_Time) {
         this.Boars_Co2_Input_Time = Boars_Co2_Input_Time;
     }
-
 }

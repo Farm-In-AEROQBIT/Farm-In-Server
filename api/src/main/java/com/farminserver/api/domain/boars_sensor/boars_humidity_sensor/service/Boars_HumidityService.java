@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.service;
 
 import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.Boars_HumidityResponse;
-import com.farminserver.api.util.ExcelExporter;
+import com.farminserver.api.util.Boars_ExcelExporter;
 import com.farminserver.db.boars_humidity_sensor.HumiditySensorEntity;
 import com.farminserver.db.boars_humidity_sensor.HumiditySensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class Boars_HumidityService {
 
-    private final ExcelExporter excelExporter;
+    private final Boars_ExcelExporter boarsExcelExporter;
 
     @Autowired
-    public Boars_HumidityService(ExcelExporter excelExporter) {
-        this.excelExporter = excelExporter;
+    public Boars_HumidityService(Boars_ExcelExporter boarsExcelExporter) {
+        this.boarsExcelExporter = boarsExcelExporter;
     }
 
     public double getHumidityData() {
@@ -34,6 +34,6 @@ public class Boars_HumidityService {
 
     public void exportHumidityDataToExcel(String filePath) throws IOException {
         List<Boars_HumidityResponse> boarsHumidityRespons = getAllHumidityData();
-        excelExporter.exporthumidityData(boarsHumidityRespons, filePath);
+        boarsExcelExporter.exporthumidityData(boarsHumidityRespons, filePath);
     }
 }
