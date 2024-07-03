@@ -5,6 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import springfox.documentation.service.ApiListing;
 
+
 @Entity
 @Table(name = "user")
 public class UserEntity {

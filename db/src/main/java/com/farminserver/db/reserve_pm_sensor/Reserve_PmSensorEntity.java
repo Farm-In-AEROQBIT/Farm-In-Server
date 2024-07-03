@@ -24,7 +24,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "reserve_sows_pm_sensor")
 
-public class Reserve_PmSensorEntitiy extends BaseEntity {
+public class Reserve_PmSensorEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
 

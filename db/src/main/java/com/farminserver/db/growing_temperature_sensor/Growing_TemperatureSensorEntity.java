@@ -4,7 +4,6 @@ import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
 @EqualsAndHashCode(callSuper = false)
@@ -17,7 +16,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "growing_temperature_sensor")
 
-public class Growing_TemperatureSensorEntitiy extends BaseEntity {
+public class Growing_TemperatureSensorEntity extends BaseEntity {
     @Id
     private String Growing_Room_Num;
     private double Growing_Temper_Data;
