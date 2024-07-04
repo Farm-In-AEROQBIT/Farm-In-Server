@@ -2,13 +2,13 @@ package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.mod
 
 public class Boars_Co2Response {
     private String boarsBarnRoomNum;
-    private double BoarsCo2;
+    private double BoarsCo2Data;
     private String unit;
     private long timestamp;
 
     public Boars_Co2Response(String boarsBarnRoomNum, double boarsCo2, String unit, long timestamp) {
         this.boarsBarnRoomNum = boarsBarnRoomNum;
-        this.BoarsCo2 = boarsCo2;
+        this.BoarsCo2Data = boarsCo2;
         this.unit = unit;
         this.timestamp = timestamp;
     }
@@ -27,7 +27,7 @@ public class Boars_Co2Response {
     }
 
     public void setBoarsCo2(double boarsCo2) {
-        this.BoarsCo2 = boarsCo2;
+        this.BoarsCo2Data = boarsCo2;
     }
 
     public String getUnit() {
