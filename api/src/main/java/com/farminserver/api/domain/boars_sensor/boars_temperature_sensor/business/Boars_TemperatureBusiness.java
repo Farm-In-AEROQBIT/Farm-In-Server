@@ -2,7 +2,6 @@ package com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.busine
 
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.service.Boars_TemperatureService;
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.converter.Boars_TemperatureConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,17 +12,14 @@ import java.util.List;
 public class Boars_TemperatureBusiness {
 
     private final Boars_TemperatureService boarsTemperatureService;
-    private final Boars_TemperatureConverter boarsTemperatureConverter;
 
     @Autowired
-    public Boars_TemperatureBusiness(Boars_TemperatureService boarsTemperatureService, Boars_TemperatureConverter boarsTemperatureConverter) {
+    public Boars_TemperatureBusiness(Boars_TemperatureService boarsTemperatureService) {
         this.boarsTemperatureService = boarsTemperatureService;
-        this.boarsTemperatureConverter = boarsTemperatureConverter;
     }
 
-    public Boars_TemperatureResponse getTemperatureSensorData() {
-        double temperatureData = boarsTemperatureService.getTemperatureData();
-        return boarsTemperatureConverter.convert(temperatureData);
+    public Boars_TemperatureResponse getTemperatureSensorData(String boarsBarnRoomNum) {
+        return boarsTemperatureService.getTemperatureData(boarsBarnRoomNum);
     }
 
     public List<Boars_TemperatureResponse> getAllTemperatureData() {

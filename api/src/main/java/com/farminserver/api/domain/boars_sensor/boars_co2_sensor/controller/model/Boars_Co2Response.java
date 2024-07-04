@@ -1,23 +1,33 @@
 package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model;
 
 public class Boars_Co2Response {
-    private double BoarsCo2;
+    private String boarsBarnRoomNum;
+    private double BoarsCo2Data;
     private String unit;
     private long timestamp;
 
-    public Boars_Co2Response(double BoarsCo2, String unit, long timestamp) {
-        this.BoarsCo2 = BoarsCo2;
+    public Boars_Co2Response(String boarsBarnRoomNum, double boarsCo2, String unit, long timestamp) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
+        this.BoarsCo2Data = boarsCo2;
         this.unit = unit;
         this.timestamp = timestamp;
     }
 
     // Getters and Setters
-    public double getBoarsCo2() {
-        return BoarsCo2;
+    public String getBoarsBarnRoomNum() {
+        return boarsBarnRoomNum;
     }
 
-    public void setBoarsCo2(double BoarsCo2) {
-        this.BoarsCo2 = BoarsCo2;
+    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
+    }
+
+    public double getBoarsCo2Data() {
+        return BoarsCo2Data;
+    }
+
+    public void setBoarsCo2(double boarsCo2) {
+        this.BoarsCo2Data = boarsCo2;
     }
 
     public String getUnit() {

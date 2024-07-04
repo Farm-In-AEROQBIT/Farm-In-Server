@@ -1,7 +1,6 @@
 package com.farminserver.api.domain.boars_sensor.boars_pm_sensor.business;
 
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
-import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.converter.Boars_PmConverter;
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.service.Boars_PmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,30 +12,21 @@ import java.util.List;
 public class Boars_PmBusiness {
 
     private final Boars_PmService boarsPmService;
-    //private final PmConverter pmConverter;
 
     @Autowired
-    public Boars_PmBusiness(Boars_PmService boarsPmService, Boars_PmConverter boarsPmConverter) {
-        this.boarsPmService = boarsPmService;
-        //this.pmConverter = pmConverter;
+    public Boars_PmBusiness(Boars_PmService pmService) {
+        this.boarsPmService = pmService;
     }
 
-    public Boars_PmResponse getPmSensorData(){
-        return boarsPmService.getLatestPmData();
+    public Boars_PmResponse getPmSensorData(String boarsBarnRoomNum) {
+        return boarsPmService.getPmData(boarsBarnRoomNum);
     }
 
-    public List<Boars_PmResponse> getAllPmData(){
+    public List<Boars_PmResponse> getAllPmData() {
         return boarsPmService.getAllPmData();
     }
 
-    //public PmResponse getPmSensorData(){
-        //double pmData = pmService.getPm1_0();
-        //double pmData = pmService.getPm2_5();
-        //double pmData = pmService.getPm10();
-        //return new PmResponse(pmData, "㎛", System.currentTimeMillis());
-    //}
-
-    public void exportPmDataToExcel(String filePath) throws IOException{
+    public void exportPmDataToExcel(String filePath) throws IOException {
         boarsPmService.exportPmDataToExcel(filePath);
     }
 

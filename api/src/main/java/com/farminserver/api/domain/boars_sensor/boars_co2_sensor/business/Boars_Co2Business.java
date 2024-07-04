@@ -11,22 +11,22 @@ import java.util.List;
 @Component
 public class Boars_Co2Business {
 
-    private final Boars_Co2Service co2Service;
+    private final Boars_Co2Service boarsCo2Service;
 
     @Autowired
     public Boars_Co2Business(Boars_Co2Service co2Service) {
-        this.co2Service = co2Service;
+        this.boarsCo2Service = co2Service;
     }
 
     public Boars_Co2Response getCo2SensorData(String boarsBarnRoomNum) {
-        return co2Service.getCo2Data(boarsBarnRoomNum);
+        return boarsCo2Service.getCo2Data(boarsBarnRoomNum);
     }
 
     public List<Boars_Co2Response> getAllCo2Data() {
-        return co2Service.getAllCo2Data();
+        return boarsCo2Service.getAllCo2Data();
     }
 
     public void exportCo2DataToExcel(String filePath) throws IOException {
-        co2Service.exportCo2DataToExcel(filePath);
+        boarsCo2Service.exportCo2DataToExcel(filePath);
     }
 }

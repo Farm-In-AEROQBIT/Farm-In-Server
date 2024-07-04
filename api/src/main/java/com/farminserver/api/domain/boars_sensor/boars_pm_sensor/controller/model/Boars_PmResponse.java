@@ -1,10 +1,7 @@
 package com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model;
 
-import lombok.*;
-
-@Getter
-@Setter
 public class Boars_PmResponse {
+    private String boarsBarnRoomNum;
     private double pm1_0;
     private double pm2_5;
     private double pm10;
@@ -12,7 +9,8 @@ public class Boars_PmResponse {
     private String unit;
     private long timestamp;
 
-    public Boars_PmResponse(double pm1_0, double pm2_5, double pm10, double totalPm, String unit, long timestamp) {
+    public Boars_PmResponse(String boarsBarnRoomNum,double pm1_0, double pm2_5, double pm10, double totalPm, String unit, long timestamp) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
         this.pm1_0 = pm1_0;
         this.pm2_5 = pm2_5;
         this.pm10 = pm10;
@@ -22,6 +20,14 @@ public class Boars_PmResponse {
     }
 
     // Getters and Setters
+
+    public String getBoarsBarnRoomNum() {
+        return boarsBarnRoomNum;
+    }
+    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
+    }
+
     public double getPm1_0() {
         return pm1_0;
     }

@@ -27,16 +27,13 @@ public class Boars_HumiditySensorEntity extends BaseEntity {
     public String getFarmName() {
         return Boars_Barn_Room_Num;
     }
-
     public void setFarmName(String Boars_Barn_Room_Num) {
         this.Boars_Barn_Room_Num = Boars_Barn_Room_Num;
     }
 
-
     public double getboars_HumidityData() {
         return Boars_Humidity_Data;
     }
-
     public void setboars_HumidityData(double Boars_Humidity_Data) {
         this.Boars_Humidity_Data = Boars_Humidity_Data;
     }
@@ -44,7 +41,6 @@ public class Boars_HumiditySensorEntity extends BaseEntity {
     public LocalDateTime getboars_Humidity_Input_Time() {
         return Boars_Humidity_Input_Time;
     }
-
     public void setboars_Humidity_Input_Time(LocalDateTime Boars_Humidity_Input_Time) {
         this.Boars_Humidity_Input_Time = Boars_Humidity_Input_Time;
     }

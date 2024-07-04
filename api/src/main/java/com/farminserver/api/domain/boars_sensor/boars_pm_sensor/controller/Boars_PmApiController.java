@@ -9,13 +9,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/pm")
+@RequestMapping("/api/boars_pm")
 public class Boars_PmApiController {
 
     private final Boars_PmBusiness boarsPmBusiness;
@@ -25,9 +26,9 @@ public class Boars_PmApiController {
         this.boarsPmBusiness = boarsPmBusiness;
     }
 
-    @GetMapping("/pmdata")
-    public Boars_PmResponse getPmSensorData() {
-        return boarsPmBusiness.getPmSensorData();
+    @GetMapping("/pmdata/{boarsBarnRoomNum}")
+    public ResponseEntity<Boars_PmResponse> getPmSensorData(@PathVariable String boarsBarnRoomNum) {
+        return ResponseEntity.ok(boarsPmBusiness.getPmSensorData(boarsBarnRoomNum));
     }
 
     @GetMapping("/export")

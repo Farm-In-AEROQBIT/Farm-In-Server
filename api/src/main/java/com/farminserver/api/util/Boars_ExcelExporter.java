@@ -16,21 +16,23 @@ import java.util.List;
 
 public class Boars_ExcelExporter {
 
-    public void exportBoars_nh3Data(List<Boars_Nh3Response> boarsNh3Respons, String filePath) throws IOException {
+    public void exportBoars_Nh3Data(List<Boars_Nh3Response> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Nh3 Data");
 
         int rowNum = 0;
         Row headerRow = sheet.createRow(rowNum++);
-        headerRow.createCell(0).setCellValue("Nh3");
-        headerRow.createCell(1).setCellValue("Unit");
-        headerRow.createCell(2).setCellValue("Timestamp");
+        headerRow.createCell(0).setCellValue("Room Number");
+        headerRow.createCell(1).setCellValue("Nh3");
+        headerRow.createCell(2).setCellValue("Unit");
+        headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Boars_Nh3Response response : boarsNh3Respons) {
+        for (Boars_Nh3Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getNh3());
-            row.createCell(1).setCellValue(response.getUnit());
-            row.createCell(2).setCellValue(response.getTimestamp());
+            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
+            row.createCell(1).setCellValue(response.getBoarsNh3Data());
+            row.createCell(2).setCellValue(response.getUnit());
+            row.createCell(3).setCellValue(response.getTimestamp());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
@@ -39,21 +41,23 @@ public class Boars_ExcelExporter {
         workbook.close();
     }
 
-    public void exportBoars_co2Data(List<Boars_Co2Response> userRespons, String filePath) throws IOException {
+    public void exportBoars_co2Data(List<Boars_Co2Response> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Co2 Data");
 
         int rowNum = 0;
         Row headerRow = sheet.createRow(rowNum++);
-        headerRow.createCell(0).setCellValue("Co2");
-        headerRow.createCell(1).setCellValue("Unit");
-        headerRow.createCell(2).setCellValue("Timestamp");
+        headerRow.createCell(0).setCellValue("Room Number");
+        headerRow.createCell(1).setCellValue("Co2 Data");
+        headerRow.createCell(2).setCellValue("Unit");
+        headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Boars_Co2Response response : userRespons) {
+        for (Boars_Co2Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getBoarsCo2());
-            row.createCell(1).setCellValue(response.getUnit());
-            row.createCell(2).setCellValue(response.getTimestamp());
+            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
+            row.createCell(1).setCellValue(response.getBoarsCo2Data());
+            row.createCell(2).setCellValue(response.getUnit());
+            row.createCell(3).setCellValue(response.getTimestamp());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
@@ -62,21 +66,23 @@ public class Boars_ExcelExporter {
         workbook.close();
     }
 
-    public void exporthumidityData(List<Boars_HumidityResponse> boarsHumidityRespons, String filePath) throws IOException {
+    public void exportBoars_humidityData(List<Boars_HumidityResponse> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Humidity Data");
 
         int rowNum = 0;
         Row headerRow = sheet.createRow(rowNum++);
-        headerRow.createCell(0).setCellValue("Humidity");
-        headerRow.createCell(1).setCellValue("Unit");
-        headerRow.createCell(2).setCellValue("Timestamp");
+        headerRow.createCell(0).setCellValue("Room Number");
+        headerRow.createCell(1).setCellValue("Humidity Data");
+        headerRow.createCell(2).setCellValue("Unit");
+        headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Boars_HumidityResponse response : boarsHumidityRespons) {
+        for (Boars_HumidityResponse response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getHumidity());
-            row.createCell(1).setCellValue(response.getUnit());
-            row.createCell(2).setCellValue(response.getTimestamp());
+            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
+            row.createCell(1).setCellValue(response.getBoarsHumidityData());
+            row.createCell(2).setCellValue(response.getUnit());
+            row.createCell(3).setCellValue(response.getTimestamp());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
@@ -85,21 +91,25 @@ public class Boars_ExcelExporter {
         workbook.close();
     }
 
-    public void exportTemperatureData(List<Boars_TemperatureResponse> boarsTemperatureRespons, String filePath) throws IOException {
+    public void exportBoars_TemperatureData(List<Boars_TemperatureResponse> boarsTemperatureRespons, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Temperature Data");
 
         int rowNum = 0;
         Row headerRow = sheet.createRow(rowNum++);
-        headerRow.createCell(0).setCellValue("Temperature");
-        headerRow.createCell(1).setCellValue("Unit");
-        headerRow.createCell(2).setCellValue("Timestamp");
+        headerRow.createCell(0).setCellValue("Room Number");
+        headerRow.createCell(1).setCellValue("Temperature Data");
+        headerRow.createCell(2).setCellValue("Unit");
+        headerRow.createCell(3).setCellValue("Timestamp");
+        headerRow.createCell(4).setCellValue("Temperature locate Data");
 
         for (Boars_TemperatureResponse response : boarsTemperatureRespons) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getTemperature());
-            row.createCell(1).setCellValue(response.getUnit());
-            row.createCell(2).setCellValue(response.getTimestamp());
+            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
+            row.createCell(1).setCellValue(response.getBoarsTemperatureData());
+            row.createCell(2).setCellValue(response.getUnit());
+            row.createCell(3).setCellValue(response.getTimestamp());
+            row.createCell(4).setCellValue(response.getboarsTemperatureLocateData());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
@@ -108,7 +118,7 @@ public class Boars_ExcelExporter {
         workbook.close();
     }
 
-    public void exportPmData(List<Boars_PmResponse> boarsPmRespons, String filePath) throws IOException {
+    public void exportBoars_PmData(List<Boars_PmResponse> boarsPmRespons, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
