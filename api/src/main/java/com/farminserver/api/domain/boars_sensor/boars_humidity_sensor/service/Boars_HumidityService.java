@@ -51,6 +51,6 @@ public class Boars_HumidityService {
 
     public void exportHumidityDataToExcel(String filePath) throws IOException {
         List<Boars_HumidityResponse> boarsHumidityRespons = getAllHumidityData();
-        boarsExcelExporter.exporthumidityData(boarsHumidityRespons, filePath);
+        boarsExcelExporter.exportBoars_humidityData(boarsHumidityRespons, filePath);
     }
 }

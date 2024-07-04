@@ -36,7 +36,7 @@ public class Boars_Nh3ApiController {
     public ResponseEntity<Resource> exportNh3Data() {
         String filePath = "baors_nh3_data.xlsx";
         try {
-            boarsNh3Business.exportNh3DataToExcel(filePath);
+            boarsNh3Business.exportBoars_Nh3DataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
