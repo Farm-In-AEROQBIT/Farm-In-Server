@@ -1,29 +1,37 @@
 package com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model;
 
 public class Boars_Nh3Response {
-    private double nh3;
+    private String boarsBarnRoomNum;
+    private double BoarsNh3;
     private String unit;
     private long timestamp;
 
-    public Boars_Nh3Response(double nh3, String unit, long timestamp) {
-        this.nh3 = nh3;
+    public Boars_Nh3Response(String boarsBarnRoomNum, double boarsnh3, String unit, long timestamp) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
+        this.BoarsNh3 = boarsnh3;
         this.unit = unit;
         this.timestamp = timestamp;
     }
 
     // Getters and Setters
-    public double getNh3() {
-        return nh3;
+
+    public String getBoarsBarnRoomNum() {
+        return boarsBarnRoomNum;
+    }
+    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
     }
 
-    public void setNh3(double nh3) {
-        this.nh3 = nh3;
+    public double getBoarsNh3Data() {
+        return BoarsNh3;
+    }
+    public void setBoarsNh3Data(double boarsNh3) {
+        this.BoarsNh3 = boarsNh3 ;
     }
 
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -31,7 +39,6 @@ public class Boars_Nh3Response {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }

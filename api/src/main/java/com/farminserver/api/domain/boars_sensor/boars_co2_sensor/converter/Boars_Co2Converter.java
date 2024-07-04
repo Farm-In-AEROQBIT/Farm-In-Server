@@ -15,6 +15,7 @@ public class Boars_Co2Converter {
     public Boars_Co2Response convert(Boars_Co2SensorEntity co2SensorEntity) {
         return Optional.ofNullable(co2SensorEntity)
                 .map(entity -> new Boars_Co2Response(
+                        entity.getBoars_Barn_Room_Num(),
                         entity.getBoarsCo2Data(),
                         "ppm",
                         entity.getBoarsCo2InputTime().toEpochSecond(ZoneOffset.UTC)

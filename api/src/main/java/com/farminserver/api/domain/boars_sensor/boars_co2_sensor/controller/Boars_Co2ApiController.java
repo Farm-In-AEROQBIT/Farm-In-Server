@@ -19,23 +19,23 @@ import java.io.IOException;
 @RequestMapping("/api/boars_co2")
 public class Boars_Co2ApiController {
 
-    private final Boars_Co2Business co2Business;
+    private final Boars_Co2Business boarsCo2Business;
 
     @Autowired
     public Boars_Co2ApiController(Boars_Co2Business co2Business) {
-        this.co2Business = co2Business;
+        this.boarsCo2Business = co2Business;
     }
 
     @GetMapping("/co2data/{boarsBarnRoomNum}")
     public ResponseEntity<Boars_Co2Response> getCo2SensorData(@PathVariable String boarsBarnRoomNum) {
-        return ResponseEntity.ok(co2Business.getCo2SensorData(boarsBarnRoomNum));
+        return ResponseEntity.ok(boarsCo2Business.getCo2SensorData(boarsBarnRoomNum));
     }
 
     @GetMapping("/export")
     public ResponseEntity<Resource> exportCo2Data() {
-        String filePath = "co2_data.xlsx";
+        String filePath = "boars_co2_data.xlsx";
         try {
-            co2Business.exportCo2DataToExcel(filePath);
+            boarsCo2Business.exportCo2DataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
