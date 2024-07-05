@@ -1,29 +1,37 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model;
+package com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model;
 
-public class Co2Response {
-    private double co2;
+public class Maternity_HumidityResponse {
+    private String maternityRoomNum;
+    private double maternityHumidityData;
     private String unit;
     private long timestamp;
 
-    public Co2Response(double co2, String unit, long timestamp) {
-        this.co2 = co2;
+    public Maternity_HumidityResponse(String maternityRoomNum, double maternityHumidity, String unit, long timestamp) {
+        this.maternityRoomNum = maternityRoomNum;
+        this.maternityHumidityData = maternityHumidity;
         this.unit = unit;
         this.timestamp = timestamp;
     }
 
     // Getters and Setters
-    public double getCo2() {
-        return co2;
+
+    public String getMaternityRoomNum() {
+        return maternityRoomNum;
+    }
+    public void setMaternityRoomNum(String maternityRoomNum) {
+        this.maternityRoomNum = maternityRoomNum;
     }
 
-    public void setSensorValue(double co2) {
-        this.co2 = co2;
+    public double getMaternityHumidityData() {
+        return maternityHumidityData;
+    }
+    public void setHumidity(double maternityHumidity) {
+        this.maternityHumidityData = maternityHumidity;
     }
 
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -31,7 +39,6 @@ public class Co2Response {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }

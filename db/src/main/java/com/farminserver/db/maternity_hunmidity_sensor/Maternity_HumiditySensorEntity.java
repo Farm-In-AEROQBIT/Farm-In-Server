@@ -41,11 +41,11 @@ public class Maternity_HumiditySensorEntity {
         this.Maternity_Humidity_Data = Maternity_Humidity_Data;
     }
 
-    public LocalDateTime getmaternity_Humidity_Input_Time() {
+    public LocalDateTime getMaternity_Humidity_Input_Time() {
         return Maternity_Humidity_Input_Time;
     }
 
-    public void setmaternity_Humidity_Input_Time(LocalDateTime Maternity_Humidity_Input_Time) {
+    public void setMaternity_Humidity_Input_Time(LocalDateTime Maternity_Humidity_Input_Time) {
         this.Maternity_Humidity_Input_Time = Maternity_Humidity_Input_Time;
     }
 

@@ -1,28 +1,26 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter;
+package com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.converter;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model.Maternity_HumidityResponse;
+import com.farminserver.db.maternity_hunmidity_sensor.Maternity_HumiditySensorEntity;
+import com.farminserver.db.maternity_hunmidity_sensor.Maternity_HumiditySensorRepository;
+
 import org.springframework.stereotype.Component;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 import com.farminserver.api.common.exception.ApiException;
 import com.farminserver.api.common.error.ErrorCode;
 
+import java.time.ZoneOffset;
 import java.util.Optional;
 
 @Component
-public class Co2Converter {
+public class Maternity_HumidityConverter {
 
-    public UserResponse convert(double co2) {
-        String unit = "ppm";
-        long timestamp = System.currentTimeMillis();
-        return new UserResponse(co2, unit, timestamp);
-    }
-
-    public UserResponse toResponse(CO2SensorEntity co2SensorEntity) {
-        return Optional.ofNullable(co2SensorEntity)
-                .map(entity -> new UserResponse(
-                        entity.getCo2Data(),
-                        "ppm",
-                        entity.getCo2InputTime().atZone(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli()
+    public Maternity_HumidityResponse convert(Maternity_HumiditySensorEntity humiditySensorEntity) {
+        return Optional.ofNullable(humiditySensorEntity)
+                .map(entity -> new Maternity_HumidityResponse(
+                        entity.getMaternity_Room_Num(),
+                        entity.getMaternity_Humidity_Data(),
+                        "%",
+                        entity.getMaternity_Humidity_Input_Time().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
