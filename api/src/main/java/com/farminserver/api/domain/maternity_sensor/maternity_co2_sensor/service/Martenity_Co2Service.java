@@ -1,23 +1,25 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
+package com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
+import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
+import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorRepository;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter.Boars_Co2Converter;
+
 import com.farminserver.api.util.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class Co2Service {
+public class Martenity_Co2Service {
 
     private final Boars_ExcelExporter boarsExcelExporter;
 
     @Autowired
-    public Co2Service(Boars_ExcelExporter boarsExcelExporter) {
+    public Martenity_Co2Service(Boars_ExcelExporter boarsExcelExporter) {
         this.boarsExcelExporter = boarsExcelExporter;
     }
 

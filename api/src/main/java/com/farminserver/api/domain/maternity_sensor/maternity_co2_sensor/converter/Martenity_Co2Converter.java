@@ -1,4 +1,4 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter;
+package com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.converter;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import com.farminserver.api.common.error.ErrorCode;
 import java.util.Optional;
 
 @Component
-public class Co2Converter {
+public class Martenity_Co2Converter {
 
     public UserResponse convert(double co2) {
         String unit = "ppm";
