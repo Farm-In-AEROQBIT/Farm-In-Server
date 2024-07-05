@@ -1,10 +1,6 @@
 package com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter.Boars_Co2Converter;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
-import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
-import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorRepository;
 import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSeneorEntity;
 import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSensorRepository;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.converter.Boars_TemperatureConverter;

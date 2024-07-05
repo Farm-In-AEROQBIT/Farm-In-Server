@@ -106,10 +106,10 @@ public class Finishing_ExcelExporter {
             for (Finishing_TemperatureResponse response : boarsTemperatureRespons) {
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(response.getFinishingBarnRoomNum());
-                row.createCell(1).setCellValue(response.getFinishingTemperatureData());
+                row.createCell(1).setCellValue(response.getFinishingTemperData());
                 row.createCell(2).setCellValue(response.getUnit());
                 row.createCell(3).setCellValue(response.getTimestamp());
-                row.createCell(4).setCellValue(response.getboarsTemperatureLocateData());
+                row.createCell(4).setCellValue(response.getFinishingTemperatureLocateData());
             }
 
             try (FileOutputStream fileOut = new FileOutputStream(filePath)) {

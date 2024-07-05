@@ -1,29 +1,45 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model;
+package com.farminserver.api.domain.finishing_sensor.finishing_temperature_sensor.controller.model;
 
 public class Finishing_TemperatureResponse {
-    private double co2;
+    private String finishingBarnRoomNum;
+    private double FinishingTemperData;
     private String unit;
     private long timestamp;
+    private long finishingTemperLocateData;
 
-    public Finishing_TemperatureResponse(double co2, String unit, long timestamp) {
-        this.co2 = co2;
+    public Finishing_TemperatureResponse(String finishingBarnRoomNum, double finishingTemperData, String unit, long timestamp, long finishingTemperLocateData) {
+        this.finishingBarnRoomNum = finishingBarnRoomNum;
+        this.FinishingTemperData = finishingTemperData;
         this.unit = unit;
         this.timestamp = timestamp;
+        this.finishingTemperLocateData = finishingTemperLocateData;
     }
 
     // Getters and Setters
-    public double getCo2() {
-        return co2;
+    public String getFinishingBarnRoomNum() {
+        return finishingBarnRoomNum;
+    }
+    public void setFinishingBarnRoomNum(String finishingBarnRoomNum) {
+        this.finishingBarnRoomNum = finishingBarnRoomNum;
     }
 
-    public void setSensorValue(double co2) {
-        this.co2 = co2;
+    public double getFinishingTemperData() {
+        return FinishingTemperData;
+    }
+    public void setFinishingTemperData(double finishingTemperData) {
+        this.FinishingTemperData = finishingTemperData;
+    }
+
+    public long getFinishingTemperLocateData() {
+        return finishingTemperLocateData;
+    }
+    public void setFinishingTemperLocateData(long finishingTemperLocateData) {
+        this.finishingTemperLocateData = finishingTemperLocateData;
     }
 
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -31,7 +47,6 @@ public class Finishing_TemperatureResponse {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }

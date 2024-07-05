@@ -1,11 +1,12 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
+package com.farminserver.api.domain.finishing_sensor.finishing_temperature_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.util.Boars_ExcelExporter;
+import com.farminserver.api.domain.finishing_sensor.finishing_temperature_sensor.controller.model.Finishing_TemperatureResponse;
+import com.farminserver.db.finishing_temperature_sensor.Finishing_TemperatureSeneorEntity;
+import com.farminserver.db.finishing_temperature_sensor.Finishing_TemperatureSensorRepository;
+import com.farminserver.api.domain.finishing_sensor.finishing_temperature_sensor.converter.Finishing_TemperatureConverter;
+import com.farminserver.api.util.Finishing_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,27 +15,33 @@ import java.util.List;
 @Service
 public class Finishing_TemperatureService {
 
-    private final Boars_ExcelExporter boarsExcelExporter;
+    private final Finishing_TemperatureSensorRepository repository;
+    private final Finishing_TemperatureConverter converter;
+    private final Finishing_ExcelExporter excelExporter;
 
     @Autowired
-    public Finishing_TemperatureService(Boars_ExcelExporter boarsExcelExporter) {
-        this.boarsExcelExporter = boarsExcelExporter;
+    public Finishing_TemperatureService(Finishing_TemperatureSensorRepository repository, Finishing_TemperatureConverter converter, Finishing_ExcelExporter excelExporter) {
+        this.repository = repository;
+        this.converter = converter;
+        this.excelExporter = excelExporter;
     }
 
-    public double getCo2Data() {
-        return 400.0; // 실제 센서 데이터 가져오기 로직 (임의의 값 반환)
+    public Finishing_TemperatureResponse getTemperatureData(String finishingBarnRoomNum) {
+        Finishing_TemperatureSeneorEntity entity = repository.findById(finishingBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+        return converter.convert(entity);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        // 예시 데이터를 반환
-        List<UserResponse> responses = new ArrayList<>();
-        responses.add(new UserResponse(400.0, "ppm", System.currentTimeMillis()));
-        responses.add(new UserResponse(401.0, "ppm", System.currentTimeMillis() - 10000));
+    public List<Finishing_TemperatureResponse> getAllTemperatureData() {
+        List<Finishing_TemperatureSeneorEntity> entities = repository.findAll();
+        List<Finishing_TemperatureResponse> responses = new ArrayList<>();
+        for (Finishing_TemperatureSeneorEntity entity : entities) {
+            responses.add(converter.convert(entity));
+        }
         return responses;
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        List<UserResponse> userRespons = getAllCo2Data();
-        boarsExcelExporter.exportco2Data(userRespons, filePath);
+    public void exportTemperatureDataToExcel(String filePath) throws IOException {
+        List<Finishing_TemperatureResponse> responses = getAllTemperatureData();
+        excelExporter.exportFinishing_TemperatureData(responses, filePath);
     }
 }
