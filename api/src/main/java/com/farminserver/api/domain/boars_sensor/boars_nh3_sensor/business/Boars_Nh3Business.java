@@ -22,7 +22,7 @@ public class Boars_Nh3Business {
         return boarsNh3Service.getNh3Data(boarsBarnRoomNum);
     }
 
-    public List<Boars_Nh3Response> getAllCo2Data() {
+    public List<Boars_Nh3Response> getAllNh3Data() {
         return boarsNh3Service.getAllNh3Data();
     }
 
