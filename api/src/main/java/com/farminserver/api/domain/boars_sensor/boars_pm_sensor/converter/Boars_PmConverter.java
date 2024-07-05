@@ -1,7 +1,6 @@
 package com.farminserver.api.domain.boars_sensor.boars_pm_sensor.converter;
 
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
-import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
 import com.farminserver.db.boars_pm_sensor.Boars_PmSensorEntity;
 import org.springframework.stereotype.Component;
 import com.farminserver.api.common.exception.ApiException;
