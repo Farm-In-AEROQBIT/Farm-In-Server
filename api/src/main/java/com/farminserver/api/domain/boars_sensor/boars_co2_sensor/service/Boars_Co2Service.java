@@ -1,6 +1,6 @@
 package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boar_Co2Response;
 import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
 import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorRepository;
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter.Boars_Co2Converter;
@@ -26,14 +26,14 @@ public class Boars_Co2Service {
         this.excelExporter = excelExporter;
     }
 
-    public Boars_Co2Response getCo2Data(String boarsBarnRoomNum) {
+    public Boar_Co2Response getCo2Data(String boarsBarnRoomNum) {
         Boars_Co2SensorEntity entity = repository.findById(boarsBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }
 
-    public List<Boars_Co2Response> getAllCo2Data() {
+    public List<Boar_Co2Response> getAllCo2Data() {
         List<Boars_Co2SensorEntity> entities = repository.findAll();
-        List<Boars_Co2Response> responses = new ArrayList<>();
+        List<Boar_Co2Response> responses = new ArrayList<>();
         for (Boars_Co2SensorEntity entity : entities) {
             responses.add(converter.convert(entity));
         }
@@ -41,7 +41,7 @@ public class Boars_Co2Service {
     }
 
     public void exportCo2DataToExcel(String filePath) throws IOException {
-        List<Boars_Co2Response> responses = getAllCo2Data();
+        List<Boar_Co2Response> responses = getAllCo2Data();
         excelExporter.exportBoars_co2Data(responses, filePath);
     }
 }

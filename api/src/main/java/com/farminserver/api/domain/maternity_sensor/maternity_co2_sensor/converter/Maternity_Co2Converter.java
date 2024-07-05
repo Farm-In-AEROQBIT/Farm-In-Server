@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.converter;
 
 
-import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Martenity_Co2Response;
+import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Maternity_Co2Response;
 import com.farminserver.db.maternity_co2_sensor.Maternity_Co2SensorEntity;
 import org.springframework.stereotype.Component;
 import com.farminserver.api.common.exception.ApiException;
@@ -13,9 +13,9 @@ import java.util.Optional;
 @Component
 public class Maternity_Co2Converter {
 
-    public Martenity_Co2Response convert(Maternity_Co2SensorEntity co2SensorEntity) {
+    public Maternity_Co2Response convert(Maternity_Co2SensorEntity co2SensorEntity) {
         return Optional.ofNullable(co2SensorEntity)
-                .map(entity -> new Martenity_Co2Response(
+                .map(entity -> new Maternity_Co2Response(
                         entity.getMaternity_Room_Num(),
                         entity.getmaternity_Co2Data(),
                         "ppm",

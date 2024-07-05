@@ -1,12 +1,12 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model;
 
-public class Martenity_Co2Response {
+public class Maternity_Co2Response {
     private String maternityRoomNum;
     private double maternityCo2Data;
     private String unit;
     private long timestamp;
 
-    public Martenity_Co2Response(String maternityRoomNum, double maternityCo2, String unit, long timestamp) {
+    public Maternity_Co2Response(String maternityRoomNum, double maternityCo2, String unit, long timestamp) {
         this.maternityRoomNum = maternityRoomNum;
         this.maternityCo2Data = maternityCo2;
         this.unit = unit;
@@ -14,19 +14,19 @@ public class Martenity_Co2Response {
     }
 
     // Getters and Setters
-    public String getMartenityRoomNum() {
+    public String getMaternityRoomNum() {
         return maternityRoomNum;
     }
 
-    public void setMartenityRoomNum(String maternityRoomNum) {
+    public void setMaternityRoomNum(String maternityRoomNum) {
         this.maternityRoomNum = maternityRoomNum;
     }
 
-    public double getMartenityCo2Data() {
+    public double getMaternityCo2Data() {
         return maternityCo2Data;
     }
 
-    public void setMartenityCo2(double maternityCo2) {
+    public void setMaternityCo2(double maternityCo2) {
         this.maternityCo2Data = maternityCo2;
     }
 

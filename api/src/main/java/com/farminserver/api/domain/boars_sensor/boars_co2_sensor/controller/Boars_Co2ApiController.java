@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.Boars_Co2Business;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boar_Co2Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -27,7 +27,7 @@ public class Boars_Co2ApiController {
     }
 
     @GetMapping("/co2data/{boarsBarnRoomNum}")
-    public ResponseEntity<Boars_Co2Response> getCo2SensorData(@PathVariable String boarsBarnRoomNum) {
+    public ResponseEntity<Boar_Co2Response> getCo2SensorData(@PathVariable String boarsBarnRoomNum) {
         return ResponseEntity.ok(boarsCo2Business.getCo2SensorData(boarsBarnRoomNum));
     }
 

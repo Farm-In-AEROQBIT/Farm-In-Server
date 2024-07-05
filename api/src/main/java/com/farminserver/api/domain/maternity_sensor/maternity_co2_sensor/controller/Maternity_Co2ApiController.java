@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller;
 
-import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.business.Martenity_Co2Business;
-import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Martenity_Co2Response;
+import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.business.Maternity_Co2Business;
+import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Maternity_Co2Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -17,17 +17,17 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/maternity_co2")
-public class Martenity_Co2ApiController {
+public class Maternity_Co2ApiController {
 
-    private final Martenity_Co2Business maternityCo2Business;
+    private final Maternity_Co2Business maternityCo2Business;
 
     @Autowired
-    public Martenity_Co2ApiController(Martenity_Co2Business co2Business) {
+    public Maternity_Co2ApiController(Maternity_Co2Business co2Business) {
         this.maternityCo2Business = co2Business;
     }
 
     @GetMapping("/co2data/{maternityRoomNum}")
-    public ResponseEntity<Martenity_Co2Response> getCo2SensorData(@PathVariable String maternityRoomNum) {
+    public ResponseEntity<Maternity_Co2Response> getCo2SensorData(@PathVariable String maternityRoomNum) {
         return ResponseEntity.ok(maternityCo2Business.getCo2SensorData(maternityRoomNum));
     }
 

@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.Boars_Co2Service;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boar_Co2Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +18,11 @@ public class Boars_Co2Business {
         this.boarsCo2Service = co2Service;
     }
 
-    public Boars_Co2Response getCo2SensorData(String boarsBarnRoomNum) {
+    public Boar_Co2Response getCo2SensorData(String boarsBarnRoomNum) {
         return boarsCo2Service.getCo2Data(boarsBarnRoomNum);
     }
 
-    public List<Boars_Co2Response> getAllCo2Data() {
+    public List<Boar_Co2Response> getAllCo2Data() {
         return boarsCo2Service.getAllCo2Data();
     }
 
