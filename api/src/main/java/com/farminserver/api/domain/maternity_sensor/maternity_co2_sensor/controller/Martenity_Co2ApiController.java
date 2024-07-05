@@ -1,10 +1,7 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.Boars_Co2Business;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.UserBusiness;
-
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.business.Martenity_Co2Business;
+import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Martenity_Co2Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -19,26 +16,26 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/boars_co2")
+@RequestMapping("/api/maternity_co2")
 public class Martenity_Co2ApiController {
 
-    private final Boars_Co2Business boarsCo2Business;
+    private final Martenity_Co2Business maternityCo2Business;
 
     @Autowired
-    public Boars_Co2ApiController(Boars_Co2Business co2Business) {
-        this.boarsCo2Business = co2Business;
+    public Martenity_Co2ApiController(Martenity_Co2Business co2Business) {
+        this.maternityCo2Business = co2Business;
     }
 
-    @GetMapping("/co2data/{boarsBarnRoomNum}")
-    public ResponseEntity<Boars_Co2Response> getCo2SensorData(@PathVariable String boarsBarnRoomNum) {
-        return ResponseEntity.ok(boarsCo2Business.getCo2SensorData(boarsBarnRoomNum));
+    @GetMapping("/co2data/{maternityRoomNum}")
+    public ResponseEntity<Martenity_Co2Response> getCo2SensorData(@PathVariable String maternityRoomNum) {
+        return ResponseEntity.ok(maternityCo2Business.getCo2SensorData(maternityRoomNum));
     }
 
     @GetMapping("/export")
     public ResponseEntity<Resource> exportCo2Data() {
-        String filePath = "boars_co2_data.xlsx";
+        String filePath = "maternity_co2_data.xlsx";
         try {
-            boarsCo2Business.exportCo2DataToExcel(filePath);
+            maternityCo2Business.exportCo2DataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
