@@ -1,7 +1,5 @@
 package com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
-import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.business.Boars_TemperatureBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
