@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 
+import java.time.LocalDateTime;
+
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -23,8 +25,8 @@ public class Maternity_TemperatureSensorEntity extends BaseEntity {
     @Id
     private String Maternity_Barn_Room_Num;
     private double Maternity_Temper_Data;
-    private String Maternity_Temper_Input_Time;
-    private String Maternity_Temper_Locate_Data;
+    private LocalDateTime Maternity_Temper_Input_Time;
+    private long Maternity_Temper_Locate_Data;
 
     // Getters and Setters
     public String getMaternityRoomNum() {
@@ -45,20 +47,20 @@ public class Maternity_TemperatureSensorEntity extends BaseEntity {
     }
 
 
-    public String getMaternityTemperInputTime() {
+    public LocalDateTime getMaternityTemperInputTime() {
         return Maternity_Temper_Input_Time;
     }
 
-    public void setMaternityTemperInputTime(String Maternity_Temper_Input_Time) {
+    public void setMaternityTemperInputTime(LocalDateTime Maternity_Temper_Input_Time) {
         this.Maternity_Temper_Input_Time = Maternity_Temper_Input_Time;
     }
 
 
-    public String getMaternityTemperLocateData() {
+    public Long getMaternityTemperLocateData() {
         return Maternity_Temper_Locate_Data;
     }
 
-    public void setMaternityTemperLocateData(String Maternity_Temper_Locate_Data) {
+    public void setMaternityTemperLocateData(Long Maternity_Temper_Locate_Data) {
         this.Maternity_Temper_Locate_Data = Maternity_Temper_Locate_Data;
     }
 
