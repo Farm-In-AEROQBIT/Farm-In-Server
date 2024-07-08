@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class Co2Service {
+public class Piglet_HumidityService {
 
     private final Boars_ExcelExporter boarsExcelExporter;
 
     @Autowired
-    public Co2Service(Boars_ExcelExporter boarsExcelExporter) {
+    public Piglet_HumidityService(Boars_ExcelExporter boarsExcelExporter) {
         this.boarsExcelExporter = boarsExcelExporter;
     }
 
