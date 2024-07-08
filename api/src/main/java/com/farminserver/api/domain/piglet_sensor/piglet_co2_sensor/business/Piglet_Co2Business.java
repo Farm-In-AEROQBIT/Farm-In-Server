@@ -1,9 +1,7 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boar_Co2Response;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.Boars_Co2Service;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.controller.model.Piglet_Co2Response;
+import com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.service.Piglet_Co2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,22 +11,22 @@ import java.util.List;
 @Component
 public class Piglet_Co2Business {
 
-    private final Boars_Co2Service boarsCo2Service;
+    private final Piglet_Co2Service pigletCo2Service;
 
     @Autowired
-    public Boars_Co2Business(Boars_Co2Service co2Service) {
-        this.boarsCo2Service = co2Service;
+    public Piglet_Co2Business(Piglet_Co2Service co2Service) {
+        this.pigletCo2Service = co2Service;
     }
 
-    public Boar_Co2Response getCo2SensorData(String boarsBarnRoomNum) {
-        return boarsCo2Service.getCo2Data(boarsBarnRoomNum);
+    public Piglet_Co2Response getCo2SensorData(String pigletRoomNum) {
+        return pigletCo2Service.getCo2Data(pigletRoomNum);
     }
 
-    public List<Boar_Co2Response> getAllCo2Data() {
-        return boarsCo2Service.getAllCo2Data();
+    public List<Piglet_Co2Response> getAllCo2Data() {
+        return pigletCo2Service.getAllCo2Data();
     }
 
     public void exportCo2DataToExcel(String filePath) throws IOException {
-        boarsCo2Service.exportCo2DataToExcel(filePath);
+        pigletCo2Service.exportCo2DataToExcel(filePath);
     }
 }
