@@ -32,7 +32,7 @@ public class Gestation_ExcelExporter {
         for (Gestation_Nh3Response response : responses) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getGestationBarnRoomNum());
-            row.createCell(1).setCellValue(response.getGestationNh3Data());
+            row.createCell(1).setCellValue(response.getGestationNh3());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
@@ -107,11 +107,11 @@ public class Gestation_ExcelExporter {
 
         for (Gestation_TemperatureResponse response : boarsTemperatureRespons) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getGestationBarnRoomNum());
-            row.createCell(1).setCellValue(response.getGestationTemperData());
+            row.createCell(0).setCellValue(response.getGestationRoomNum());
+            row.createCell(1).setCellValue(response.getGestationTemperatureData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
-            row.createCell(4).setCellValue(response.getGestationTemperLocateData());
+            row.createCell(4).setCellValue(response.getGestationTemperatureLocateData());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
@@ -135,7 +135,7 @@ public class Gestation_ExcelExporter {
 
         for (Gestation_PmResponse response : boarsPmRespons) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getGestationBarnRoomNum());
+            row.createCell(0).setCellValue(response.getGestationRoomNum());
             row.createCell(1).setCellValue(response.getPm1_0());
             row.createCell(2).setCellValue(response.getPm2_5());
             row.createCell(3).setCellValue(response.getPm10());
