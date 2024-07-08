@@ -1,9 +1,6 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller;
-
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.UserBusiness;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.business.Boars_Nh3Business;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
+import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.business.Piglet_Nh3Business;
+import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller.model.Piglet_Nh3Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -18,26 +15,26 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/boars_co2")
+@RequestMapping("/api/piglet_nh3")
 public class Piglet_Nh3ApiController {
 
-    private final Boars_Nh3Business boarsNh3Business;
+    private final Piglet_Nh3Business pigletNh3Business;
 
     @Autowired
-    public Boars_Nh3ApiController(Boars_Nh3Business Nh3Business) {
-        this.boarsNh3Business = Nh3Business;
+    public Piglet_Nh3ApiController(Piglet_Nh3Business Nh3Business) {
+        this.pigletNh3Business = Nh3Business;
     }
 
-    @GetMapping("/nh3data/{boarsBarnRoomNum}")
-    public ResponseEntity<Boars_Nh3Response> getNh3SensorData(@PathVariable String boarsBarnRoomNum) {
-        return ResponseEntity.ok(boarsNh3Business.getNh3SensorData(boarsBarnRoomNum));
+    @GetMapping("/nh3data/{pigletRoomNum}")
+    public ResponseEntity<Piglet_Nh3Response> getNh3SensorData(@PathVariable String pigletRoomNum) {
+        return ResponseEntity.ok(pigletNh3Business.getNh3SensorData(pigletRoomNum));
     }
 
     @GetMapping("/export")
     public ResponseEntity<Resource> exportNh3Data() {
         String filePath = "baors_nh3_data.xlsx";
         try {
-            boarsNh3Business.exportBoars_Nh3DataToExcel(filePath);
+            pigletNh3Business.exportPiglet_Nh3DataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
