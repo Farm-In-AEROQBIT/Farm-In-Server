@@ -1,4 +1,4 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model;
+package com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.controller.model;
 
 public class Piglet_TemperatureResponse {
     private double co2;
