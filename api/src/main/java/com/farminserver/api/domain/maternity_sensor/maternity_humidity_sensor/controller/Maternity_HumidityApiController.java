@@ -1,7 +1,5 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller;
 
-import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.business.Maternity_Co2Business;
-import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.Maternity_Co2ApiController;
 import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.business.Maternity_HumidityBusiness;
 import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model.Maternity_HumidityResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/maternity_co2")
+@RequestMapping("/api/maternity_humidity")
 public class Maternity_HumidityApiController {
 
     private final Maternity_HumidityBusiness maternityHumidityBusiness;
