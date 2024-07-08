@@ -1,9 +1,7 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.controller;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.UserBusiness;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.business.Boars_TemperatureBusiness;
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.business.Maternity_TemperatureBusiness;
+import com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.controller.model.Maternity_TemperatureResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -18,26 +16,26 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/boars_co2")
+@RequestMapping("/api/maternity_temperature")
 public class Maternity_TemperatureApiController {
 
-    private final Boars_TemperatureBusiness boarsTemperatureBusiness;
+    private final Maternity_TemperatureBusiness maternityTemperatureBusiness;
 
     @Autowired
-    public Boars_TemperatureApiController(Boars_TemperatureBusiness boarsTemperatureBusiness) {
-        this.boarsTemperatureBusiness = boarsTemperatureBusiness;
+    public Maternity_TemperatureApiController(Maternity_TemperatureBusiness maternityTemperatureBusiness) {
+        this.maternityTemperatureBusiness = maternityTemperatureBusiness;
     }
 
-    @GetMapping("/temperaturedata/{boarsBarnRoomNum}")
-    public ResponseEntity<Boars_TemperatureResponse> getTemperatureSensorData(@PathVariable String boarsBarnRoomNum) {
-        return ResponseEntity.ok(boarsTemperatureBusiness.getTemperatureSensorData(boarsBarnRoomNum));
+    @GetMapping("/temperaturedata/{maternityRoomNum}")
+    public ResponseEntity<Maternity_TemperatureResponse> getTemperatureSensorData(@PathVariable String maternityRoomNum) {
+        return ResponseEntity.ok(maternityTemperatureBusiness.getTemperatureSensorData(maternityRoomNum));
     }
 
     @GetMapping("/export")
     public ResponseEntity<Resource> exportTemperatureData() {
-        String filePath = "boars_temperature_data.xlsx";
+        String filePath = "maternity_temperature_data.xlsx";
         try {
-            boarsTemperatureBusiness.exportTemperatureDataToExcel(filePath);
+            maternityTemperatureBusiness.exportTemperatureDataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
