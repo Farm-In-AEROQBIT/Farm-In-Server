@@ -2,6 +2,7 @@ package com.farminserver.api.util;
 
 import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller.model.Maternity_Nh3Response;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Maternity_Co2Response;
 import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model.Maternity_HumidityResponse;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class Maternity_ExcelExporter {
 
-    public void exportBoars_Nh3Data(List<Boars_Nh3Response> responses, String filePath) throws IOException {
+    public void exportMaternity_Nh3Data(List<Maternity_Nh3Response> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Nh3 Data");
 
@@ -30,10 +31,10 @@ public class Maternity_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Boars_Nh3Response response : responses) {
+        for (Maternity_Nh3Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
-            row.createCell(1).setCellValue(response.getBoarsNh3Data());
+            row.createCell(0).setCellValue(response.getMaternityRoomNum());
+            row.createCell(1).setCellValue(response.getMaternityNh3Data());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
