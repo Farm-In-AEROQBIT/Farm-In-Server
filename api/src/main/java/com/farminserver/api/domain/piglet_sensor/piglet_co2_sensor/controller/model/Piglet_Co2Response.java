@@ -1,33 +1,33 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.controller.model;
 
 public class Piglet_Co2Response {
-    private String boarsBarnRoomNum;
-    private double BoarsCo2Data;
+    private String pigletRoomNum;
+    private double PigletCo2Data;
     private String unit;
     private long timestamp;
 
-    public Boar_Co2Response(String boarsBarnRoomNum, double boarsCo2, String unit, long timestamp) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
-        this.BoarsCo2Data = boarsCo2;
+    public Piglet_Co2Response(String pigletRoomNum, double pigletCo2, String unit, long timestamp) {
+        this.pigletRoomNum = pigletRoomNum;
+        this.PigletCo2Data = pigletCo2;
         this.unit = unit;
         this.timestamp = timestamp;
     }
 
     // Getters and Setters
-    public String getBoarsBarnRoomNum() {
-        return boarsBarnRoomNum;
+    public String getPigletRoomNum() {
+        return pigletRoomNum;
     }
 
-    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
+    public void setPigletRoomNum(String pigletRoomNum) {
+        this.pigletRoomNum = pigletRoomNum;
     }
 
-    public double getBoarsCo2Data() {
-        return BoarsCo2Data;
+    public double getPigletCo2Data() {
+        return PigletCo2Data;
     }
 
-    public void setBoarsCo2(double boarsCo2) {
-        this.BoarsCo2Data = boarsCo2;
+    public void setPigletCo2(double pigletCo2) {
+        this.PigletCo2Data = pigletCo2;
     }
 
     public String getUnit() {
