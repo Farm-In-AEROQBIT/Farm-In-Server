@@ -16,12 +16,12 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/boars_co2")
-public class Co2ApiController {
+public class Piglet_Co2ApiController {
 
     private final UserBusiness userBusiness;
 
     @Autowired
-    public Co2ApiController(UserBusiness userBusiness) {
+    public Piglet_Co2ApiController(UserBusiness userBusiness) {
         this.userBusiness = userBusiness;
     }
 
