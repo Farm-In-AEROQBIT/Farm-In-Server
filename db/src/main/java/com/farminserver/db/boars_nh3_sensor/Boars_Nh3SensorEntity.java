@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "boars_nh3_sensor")
-public class Maternity_Nh3SensorEntity extends BaseEntity {
+public class Boars_Nh3SensorEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
