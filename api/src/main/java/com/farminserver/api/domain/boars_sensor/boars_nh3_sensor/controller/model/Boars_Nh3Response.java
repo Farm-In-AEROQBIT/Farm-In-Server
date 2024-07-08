@@ -1,12 +1,12 @@
 package com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model;
 
-public class Boars_Nh3Response {
+public class Maternity_Nh3Response {
     private String boarsBarnRoomNum;
     private double BoarsNh3;
     private String unit;
     private long timestamp;
 
-    public Boars_Nh3Response(String boarsBarnRoomNum, double boarsnh3, String unit, long timestamp) {
+    public Maternity_Nh3Response(String boarsBarnRoomNum, double boarsnh3, String unit, long timestamp) {
         this.boarsBarnRoomNum = boarsBarnRoomNum;
         this.BoarsNh3 = boarsnh3;
         this.unit = unit;
