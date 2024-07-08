@@ -20,7 +20,7 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "finishing_co2_sensor")
+@Table(name = "growing_humidity_sensor")
 
 public class Growing_HumiditySensorEntity extends BaseEntity {
     @Id

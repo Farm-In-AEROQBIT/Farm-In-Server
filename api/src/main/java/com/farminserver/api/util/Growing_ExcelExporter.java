@@ -32,8 +32,8 @@ public class Growing_ExcelExporter {
 
         for (Growing_Nh3Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getGrowingBarnRoomNum());
-            row.createCell(1).setCellValue(response.getGrowingNh3());
+            row.createCell(0).setCellValue(response.getGrowingRoomNum());
+            row.createCell(1).setCellValue(response.getGrowingNh3Data());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }

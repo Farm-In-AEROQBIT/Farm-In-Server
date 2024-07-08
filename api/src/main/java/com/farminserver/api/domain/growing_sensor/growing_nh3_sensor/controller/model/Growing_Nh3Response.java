@@ -1,29 +1,36 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model;
+package com.farminserver.api.domain.growing_sensor.growing_nh3_sensor.controller.model;
 
 public class Growing_Nh3Response {
-    private double co2;
+    private String GrowingRoomNum;
+    private double GrowingNh3Data;
     private String unit;
     private long timestamp;
 
-    public Growing_Nh3Response(double co2, String unit, long timestamp) {
-        this.co2 = co2;
+    public Growing_Nh3Response(String growingRoomNum, double growingNh3Data, String unit, long timestamp) {
+        this.GrowingRoomNum = growingRoomNum;
+        this.GrowingNh3Data = growingNh3Data;
         this.unit = unit;
         this.timestamp = timestamp;
     }
 
     // Getters and Setters
-    public double getCo2() {
-        return co2;
+    public String getGrowingRoomNum() {
+        return GrowingRoomNum;
+    }
+    public void setBoarsBarnRoomNum(String GrowingRoomNum) {
+        this.GrowingRoomNum = this.GrowingRoomNum;
     }
 
-    public void setSensorValue(double co2) {
-        this.co2 = co2;
+    public double getGrowingNh3Data() {
+        return GrowingNh3Data;
+    }
+    public void setGrowingNh3Data(double growingNh3Data) {
+        this.GrowingNh3Data = growingNh3Data ;
     }
 
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -31,7 +38,6 @@ public class Growing_Nh3Response {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }

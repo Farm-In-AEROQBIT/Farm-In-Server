@@ -1,11 +1,12 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
+package com.farminserver.api.domain.growing_sensor.growing_pm_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.util.Boars_ExcelExporter;
+import com.farminserver.api.domain.growing_sensor.growing_pm_sensor.controller.model.Growing_PmResponse;
+import com.farminserver.api.domain.growing_sensor.growing_pm_sensor.converter.Growing_PmConverter;
+import com.farminserver.db.growing_pm_sensor.Growing_PmSensorEntity;
+import com.farminserver.db.growing_pm_sensor.Growing_PmSensorRepository;
+import com.farminserver.api.util.Growing_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,27 +15,33 @@ import java.util.List;
 @Service
 public class Growing_PmService {
 
-    private final Boars_ExcelExporter boarsExcelExporter;
+    private final Growing_PmSensorRepository repository;
+    private final Growing_PmConverter converter;
+    private final Growing_ExcelExporter excelExporter;
 
     @Autowired
-    public Growing_PmService(Boars_ExcelExporter boarsExcelExporter) {
-        this.boarsExcelExporter = boarsExcelExporter;
+    public Growing_PmService(Growing_PmSensorRepository repository, Growing_PmConverter converter, Growing_ExcelExporter excelExporter) {
+        this.repository = repository;
+        this.converter = converter;
+        this.excelExporter = excelExporter;
     }
 
-    public double getCo2Data() {
-        return 400.0; // 실제 센서 데이터 가져오기 로직 (임의의 값 반환)
+    public Growing_PmResponse getPmData(String growingRoomNum) {
+        Growing_PmSensorEntity entity = repository.findById(growingRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+        return converter.convert(entity);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        // 예시 데이터를 반환
-        List<UserResponse> responses = new ArrayList<>();
-        responses.add(new UserResponse(400.0, "ppm", System.currentTimeMillis()));
-        responses.add(new UserResponse(401.0, "ppm", System.currentTimeMillis() - 10000));
+    public List<Growing_PmResponse> getAllPmData() {
+        List<Growing_PmSensorEntity> entities = repository.findAll();
+        List<Growing_PmResponse> responses = new ArrayList<>();
+        for (Growing_PmSensorEntity entity : entities) {
+            responses.add(converter.convert(entity));
+        }
         return responses;
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        List<UserResponse> userRespons = getAllCo2Data();
-        boarsExcelExporter.exportco2Data(userRespons, filePath);
+    public void exportPmDataToExcel(String filePath) throws IOException {
+        List<Growing_PmResponse> responses = getAllPmData();
+        excelExporter.exportGrowing_PmData(responses, filePath);
     }
 }

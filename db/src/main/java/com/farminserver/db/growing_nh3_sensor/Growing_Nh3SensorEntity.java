@@ -20,14 +20,14 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "growing_co2_sensor")
+@Table(name = "growing_nh3_sensor")
 
 public class Growing_Nh3SensorEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String Growing_Room_Num;
-    private double Growing_Humidity_Data;
-    private LocalDateTime Growing_Humidity_Input_Time;
+    private double Growing_Nh3_Data;
+    private LocalDateTime Growing_Nh3_Input_Time;
 
     public String getFarmName() {
         return Growing_Room_Num;
@@ -38,20 +38,20 @@ public class Growing_Nh3SensorEntity extends BaseEntity {
     }
 
 
-    public double getgrowing_HumidityData() {
-        return Growing_Humidity_Data;
+    public double getgrowing_Nh3Data() {
+        return Growing_Nh3_Data;
     }
 
-    public void setgrowing_HumidityData(double Boars_Humidity_Data) {
-        this.Growing_Humidity_Data = Growing_Humidity_Data;
+    public void setgrowing_Nh3Data(double growing_Nh3_Data) {
+        this.Growing_Nh3_Data = growing_Nh3_Data;
     }
 
     public LocalDateTime Growing_Humidity_Input_Time() {
-        return Growing_Humidity_Input_Time;
+        return Growing_Nh3_Input_Time;
     }
 
-    public void setgrowing_Growing_Input_Time(LocalDateTime Growing_Humidity_Input_Time) {
-        this.Growing_Humidity_Input_Time = Growing_Humidity_Input_Time;
+    public void setgrowing_Input_Time(LocalDateTime Growing_Nh3_Input_Time) {
+        this.Growing_Nh3_Input_Time = Growing_Nh3_Input_Time;
     }
 
 }
