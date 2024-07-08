@@ -1,11 +1,11 @@
 package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model;
 
-public class Co2Response {
+public class Piglet_PmResponse {
     private double co2;
     private String unit;
     private long timestamp;
 
-    public Co2Response(double co2, String unit, long timestamp) {
+    public Piglet_PmResponse(double co2, String unit, long timestamp) {
         this.co2 = co2;
         this.unit = unit;
         this.timestamp = timestamp;

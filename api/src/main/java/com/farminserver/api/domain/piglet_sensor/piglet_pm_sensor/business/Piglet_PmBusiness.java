@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class Co2Business {
+public class Piglet_PmBusiness {
 
     private final UserService userService;
 
     @Autowired
-    public Co2Business(UserService userService) {
+    public Piglet_PmBusiness(UserService userService) {
         this.userService = userService;
     }
 
