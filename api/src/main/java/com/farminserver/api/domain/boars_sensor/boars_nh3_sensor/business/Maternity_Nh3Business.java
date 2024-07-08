@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class Boars_Nh3Business {
+public class Maternity_Nh3Business {
 
     private final Boars_Nh3Service boarsNh3Service;
 
     @Autowired
-    public Boars_Nh3Business(Boars_Nh3Service nh3Service) {
+    public Maternity_Nh3Business(Boars_Nh3Service nh3Service) {
         this.boarsNh3Service = nh3Service;
     }
 
