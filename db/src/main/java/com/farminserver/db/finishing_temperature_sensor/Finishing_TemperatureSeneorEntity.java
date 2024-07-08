@@ -45,4 +45,11 @@ public class Finishing_TemperatureSeneorEntity extends BaseEntity {
     public void setFinishingTemperInputTime(LocalDateTime finishingTemperInputTime) {
         this.FinishingTemperInputTime = finishingTemperInputTime;
     }
+
+    public long getFinishingTemperLocateData() {
+        return FinishingTemperLocateData;
+    }
+    public void setFinishingTemperLocateData(long Finishing_Temper_Locate_Data) {
+        this.FinishingTemperLocateData = Finishing_Temper_Locate_Data;
+    }
 }

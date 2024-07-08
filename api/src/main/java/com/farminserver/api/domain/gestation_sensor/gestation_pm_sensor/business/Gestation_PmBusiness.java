@@ -1,7 +1,7 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business;
+package com.farminserver.api.domain.gestation_sensor.gestation_pm_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.gestation_sensor.gestation_pm_sensor.controller.model.Gestation_PmResponse;
+import com.farminserver.api.domain.gestation_sensor.gestation_pm_sensor.service.Gestation_PmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +11,22 @@ import java.util.List;
 @Component
 public class Gestation_PmBusiness {
 
-    private final UserService userService;
+    private final Gestation_PmService gestationPmService;
 
     @Autowired
-    public Gestation_PmBusiness(UserService userService) {
-        this.userService = userService;
+    public Gestation_PmBusiness(Gestation_PmService pmService) {
+        this.gestationPmService = pmService;
     }
 
-    public UserResponse getCo2SensorData() {
-        double co2Data = userService.getCo2Data();
-        return new UserResponse(co2Data, "ppm", System.currentTimeMillis());
+    public Gestation_PmResponse getPmSensorData(String gestationRoomNum) {
+        return gestationPmService.getPmData(gestationRoomNum);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        return userService.getAllCo2Data();
+    public List<Gestation_PmResponse> getAllPmData() {
+        return gestationPmService.getAllPmData();
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        userService.exportCo2DataToExcel(filePath);
+    public void exportPmDataToExcel(String filePath) throws IOException {
+        gestationPmService.exportPmDataToExcel(filePath);
     }
 }

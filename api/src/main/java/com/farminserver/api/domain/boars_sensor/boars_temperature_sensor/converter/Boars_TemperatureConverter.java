@@ -2,7 +2,7 @@ package com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.conver
 
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import org.springframework.stereotype.Component;
-import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSeneorEntity;
+import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSensorEntity;
 import com.farminserver.api.common.exception.ApiException;
 import com.farminserver.api.common.error.ErrorCode;
 import java.time.ZoneOffset;
@@ -12,7 +12,7 @@ import java.util.Optional;
 @Component
 public class Boars_TemperatureConverter {
 
-    public Boars_TemperatureResponse convert(Boars_TemperatureSeneorEntity temperatureSeneorEntity) {
+    public Boars_TemperatureResponse convert(Boars_TemperatureSensorEntity temperatureSeneorEntity) {
         return Optional.ofNullable(temperatureSeneorEntity)
                 .map(entity -> new Boars_TemperatureResponse(
                         entity.getBoarsBarnRoomNum(),
