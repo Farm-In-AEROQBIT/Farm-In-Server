@@ -1,9 +1,7 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.service.Boars_Nh3Service;
+import com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.controller.model.Maternity_PmResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.service.Maternity_PmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,22 +11,31 @@ import java.util.List;
 @Component
 public class Maternity_PmBusiness {
 
-    private final Boars_Nh3Service boarsNh3Service;
+    private final Maternity_PmService maternityPmService;
 
     @Autowired
-    public Boars_Nh3Business(Boars_Nh3Service nh3Service) {
-        this.boarsNh3Service = nh3Service;
+    public Maternity_PmBusiness(Maternity_PmService pmService) {
+        this.maternityPmService = pmService;
     }
 
-    public Boars_Nh3Response getNh3SensorData(String boarsBarnRoomNum) {
-        return boarsNh3Service.getNh3Data(boarsBarnRoomNum);
+    public Maternity_PmResponse getPmSensorData(String maternityRoomNum) {
+        return maternityPmService.getPmData(maternityRoomNum);
     }
 
-    public List<Boars_Nh3Response> getAllCo2Data() {
-        return boarsNh3Service.getAllNh3Data();
+    public List<Maternity_PmResponse> getAllPmData() {
+        return maternityPmService.getAllPmData();
     }
 
-    public void exportBoars_Nh3DataToExcel(String filePath) throws IOException {
-        boarsNh3Service.exportCo2DataToExcel(filePath);
+    public void exportPmDataToExcel(String filePath) throws IOException {
+        maternityPmService.exportPmDataToExcel(filePath);
     }
+
+    //public PmResponse getPmSensorData() {
+    //double pm1_0 = pmService.getPm1_0();
+    //double pm2_5 = pmService.getPm2_5();
+    //double pm10 = pmService.getPm10();
+    //double totalPm = pmService.getTotalPm();
+    //String unit = pmService.getUnit();
+    //return pmConverter.convert(pm1_0, pm2_5, pm10, unit, totalPm);
+    //}
 }
