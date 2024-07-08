@@ -20,7 +20,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Table(name = "maternity_room_num")
 
 
-public class Maternity_PmSensorEntitiy {
+public class Maternity_PmSensorEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
 

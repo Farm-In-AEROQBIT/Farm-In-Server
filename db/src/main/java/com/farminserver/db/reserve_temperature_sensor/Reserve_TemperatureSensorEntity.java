@@ -4,7 +4,6 @@ import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -20,7 +19,7 @@ import jakarta.persistence.Id;
 @Entity
 @Table(name = "reserve_temperature_sensor")
 
-public class Reserve_TemperatureSensorEntitiy extends BaseEntity {
+public class Reserve_TemperatureSensorEntity extends BaseEntity {
     @Id
     private String reserveSowsRoomNum;
     private String reserveTemperatureData;

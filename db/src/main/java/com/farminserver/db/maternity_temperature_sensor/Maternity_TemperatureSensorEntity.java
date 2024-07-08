@@ -19,7 +19,7 @@ import jakarta.persistence.Id;
 @Entity
 @Table(name = "maternity_temperature_sensor")
 
-public class Maternity_TemperatureSensorEntitiy extends BaseEntity {
+public class Maternity_TemperatureSensorEntity extends BaseEntity {
     @Id
     private String Maternity_Barn_Room_Num;
     private double Maternity_Temper_Data;

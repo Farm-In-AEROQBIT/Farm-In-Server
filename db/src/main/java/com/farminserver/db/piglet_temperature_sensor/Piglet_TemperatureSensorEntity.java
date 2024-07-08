@@ -19,7 +19,7 @@ import jakarta.persistence.Id;
 @Entity
 @Table(name = "piglet_temperature_sensor")
 
-public class Piglet_TemperatureSensorEntitiy extends BaseEntity {
+public class Piglet_TemperatureSensorEntity extends BaseEntity {
     @Id
     private String Piglet_Room_Num;
     private double Piglet_Temper_Data;

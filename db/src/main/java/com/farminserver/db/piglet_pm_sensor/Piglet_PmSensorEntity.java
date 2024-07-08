@@ -23,7 +23,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "piglet_pm_sensor")
 
-public class Piglet_PmSensorEntitiy {
+public class Piglet_PmSensorEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
 

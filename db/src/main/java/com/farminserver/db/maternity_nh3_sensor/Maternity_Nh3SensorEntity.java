@@ -18,7 +18,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "maternity_bh3_sensor")
 
-public class Maternity_Nh3SensorEntitiy extends BaseEntity {
+public class Maternity_Nh3SensorEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
