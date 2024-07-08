@@ -1,7 +1,7 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business;
+package com.farminserver.api.domain.growing_sensor.growing_humidity_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.growing_sensor.growing_humidity_sensor.controller.model.Growing_HumidityResponse;
+import com.farminserver.api.domain.growing_sensor.growing_humidity_sensor.service.Growing_HumidityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +11,22 @@ import java.util.List;
 @Component
 public class Growing_HumidityBusiness {
 
-    private final UserService userService;
+    private final Growing_HumidityService growingHumidityService;
 
     @Autowired
-    public Growing_HumidityBusiness(UserService userService) {
-        this.userService = userService;
+    public Growing_HumidityBusiness(Growing_HumidityService humidityService) {
+        this.growingHumidityService = humidityService;
     }
 
-    public UserResponse getCo2SensorData() {
-        double co2Data = userService.getCo2Data();
-        return new UserResponse(co2Data, "ppm", System.currentTimeMillis());
+    public Growing_HumidityResponse getHumiditySensorData(String growingBarnRoomNum) {
+        return growingHumidityService.getHumidityData(growingBarnRoomNum);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        return userService.getAllCo2Data();
+    public List<Growing_HumidityResponse> getAllHumidityData() {
+        return growingHumidityService.getAllHumidityData();
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        userService.exportCo2DataToExcel(filePath);
+    public void exportHumidityDataToExcel(String filePath) throws IOException {
+        growingHumidityService.exportHumidityDataToExcel(filePath);
     }
 }

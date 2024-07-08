@@ -1,7 +1,7 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business;
+package com.farminserver.api.domain.finishing_sensor.finishing_co2_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.finishing_sensor.finishing_co2_sensor.service.Finishing_Co2Service;
+import com.farminserver.api.domain.finishing_sensor.finishing_co2_sensor.controller.model.Finishing_Co2Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +11,22 @@ import java.util.List;
 @Component
 public class Finishing_Co2Business {
 
-    private final UserService userService;
+    private final Finishing_Co2Service finishingCo2Service;
 
     @Autowired
-    public Finishing_Co2Business(UserService userService) {
-        this.userService = userService;
+    public Finishing_Co2Business(Finishing_Co2Service co2Service) {
+        this.finishingCo2Service = co2Service;
     }
 
-    public UserResponse getCo2SensorData() {
-        double co2Data = userService.getCo2Data();
-        return new UserResponse(co2Data, "ppm", System.currentTimeMillis());
+    public Finishing_Co2Response getCo2SensorData(String finishingBarnRoomNum) {
+        return finishingCo2Service.getCo2Data(finishingBarnRoomNum);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        return userService.getAllCo2Data();
+    public List<Finishing_Co2Response> getAllCo2Data() {
+        return finishingCo2Service.getAllCo2Data();
     }
 
     public void exportCo2DataToExcel(String filePath) throws IOException {
-        userService.exportCo2DataToExcel(filePath);
+        finishingCo2Service.exportCo2DataToExcel(filePath);
     }
 }

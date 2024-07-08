@@ -1,11 +1,12 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
+package com.farminserver.api.domain.growing_sensor.growing_temperature_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.util.Boars_ExcelExporter;
+import com.farminserver.api.domain.growing_sensor.growing_temperature_sensor.controller.model.Growing_TemperatureResponse;
+import com.farminserver.db.growing_temperature_sensor.Growing_TemperatureSensorEntity;
+import com.farminserver.db.growing_temperature_sensor.Growing_TemperatureSensorRepository;
+import com.farminserver.api.domain.growing_sensor.growing_temperature_sensor.converter.Growing_TemperatureConverter;
+import com.farminserver.api.util.Growing_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,27 +15,33 @@ import java.util.List;
 @Service
 public class Growing_TemperatureService {
 
-    private final Boars_ExcelExporter boarsExcelExporter;
+    private final Growing_TemperatureSensorRepository repository;
+    private final Growing_TemperatureConverter converter;
+    private final Growing_ExcelExporter excelExporter;
 
     @Autowired
-    public Growing_TemperatureService(Boars_ExcelExporter boarsExcelExporter) {
-        this.boarsExcelExporter = boarsExcelExporter;
+    public Growing_TemperatureService(Growing_TemperatureSensorRepository repository, Growing_TemperatureConverter converter, Growing_ExcelExporter excelExporter) {
+        this.repository = repository;
+        this.converter = converter;
+        this.excelExporter = excelExporter;
     }
 
-    public double getCo2Data() {
-        return 400.0; // 실제 센서 데이터 가져오기 로직 (임의의 값 반환)
+    public Growing_TemperatureResponse getTemperatureData(String growingRoomNum) {
+        Growing_TemperatureSensorEntity entity = repository.findById(growingRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+        return converter.convert(entity);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        // 예시 데이터를 반환
-        List<UserResponse> responses = new ArrayList<>();
-        responses.add(new UserResponse(400.0, "ppm", System.currentTimeMillis()));
-        responses.add(new UserResponse(401.0, "ppm", System.currentTimeMillis() - 10000));
+    public List<Growing_TemperatureResponse> getAllTemperatureData() {
+        List<Growing_TemperatureSensorEntity> entities = repository.findAll();
+        List<Growing_TemperatureResponse> responses = new ArrayList<>();
+        for (Growing_TemperatureSensorEntity entity : entities) {
+            responses.add(converter.convert(entity));
+        }
         return responses;
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        List<UserResponse> userRespons = getAllCo2Data();
-        boarsExcelExporter.exportco2Data(userRespons, filePath);
+    public void exportTemperatureDataToExcel(String filePath) throws IOException {
+        List<Growing_TemperatureResponse> responses = getAllTemperatureData();
+        excelExporter.exportGrowing_TemperatureData(responses, filePath);
     }
 }

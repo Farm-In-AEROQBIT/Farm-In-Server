@@ -1,7 +1,7 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business;
+package com.farminserver.api.domain.gestation_sensor.gestation_nh3_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.gestation_sensor.gestation_nh3_sensor.service.Gestation_Nh3Service;
+import com.farminserver.api.domain.gestation_sensor.gestation_nh3_sensor.controller.model.Gestation_Nh3Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +11,22 @@ import java.util.List;
 @Component
 public class Gestation_Nh3Business {
 
-    private final UserService userService;
+    private final Gestation_Nh3Service gestationNh3Service;
 
     @Autowired
-    public Gestation_Nh3Business(UserService userService) {
-        this.userService = userService;
+    public Gestation_Nh3Business(Gestation_Nh3Service nh3Service) {
+        this.gestationNh3Service = nh3Service;
     }
 
-    public UserResponse getCo2SensorData() {
-        double co2Data = userService.getCo2Data();
-        return new UserResponse(co2Data, "ppm", System.currentTimeMillis());
+    public Gestation_Nh3Response getNh3SensorData(String boarsBarnRoomNum) {
+        return gestationNh3Service.getNh3Data(boarsBarnRoomNum);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        return userService.getAllCo2Data();
+    public List<Gestation_Nh3Response> getAllNh3Data() {
+        return gestationNh3Service.getAllNh3Data();
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        userService.exportCo2DataToExcel(filePath);
+    public void exportGestation_Nh3DataToExcel(String filePath) throws IOException {
+        gestationNh3Service.exportNh3DataToExcel(filePath);
     }
 }

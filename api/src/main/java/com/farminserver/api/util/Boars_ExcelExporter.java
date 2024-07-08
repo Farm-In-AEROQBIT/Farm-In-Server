@@ -9,11 +9,13 @@ import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.mode
 import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.Boars_HumidityResponse;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
+import org.springframework.stereotype.Component;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+@Component
 public class Boars_ExcelExporter {
 
     public void exportBoars_Nh3Data(List<Boars_Nh3Response> responses, String filePath) throws IOException {

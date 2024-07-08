@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "boars_temperature_sensor")
 public class
-Boars_TemperatureSeneorEntity extends BaseEntity {
+Boars_TemperatureSensorEntity extends BaseEntity {
     @Id
     private String BoarsBarnRoomNum;
     private double BoarsTemperData;
@@ -30,7 +30,6 @@ Boars_TemperatureSeneorEntity extends BaseEntity {
     public String getBoarsBarnRoomNum() {
         return BoarsBarnRoomNum;
     }
-
     public void setBoarsBarnRoomNum(String BoarsBarnRoomNum) {
         this.BoarsBarnRoomNum = BoarsBarnRoomNum;
     }
@@ -38,7 +37,6 @@ Boars_TemperatureSeneorEntity extends BaseEntity {
     public double getBoarsTemperData() {
         return BoarsTemperData;
     }
-
     public void setBoarsTemperData(double boarsTemperData) {
         this.BoarsTemperData = boarsTemperData;
     }
@@ -46,7 +44,6 @@ Boars_TemperatureSeneorEntity extends BaseEntity {
     public LocalDateTime getBoarsTemperInputTime() {
         return BoarsTemperInputTime;
     }
-
     public void setBoarsTemperInputTime(LocalDateTime boarsTemperInputTime) {
         this.BoarsTemperInputTime = boarsTemperInputTime;
     }
@@ -54,7 +51,6 @@ Boars_TemperatureSeneorEntity extends BaseEntity {
     public long getBoarsTemperLocateData() {
         return BoarsTemperLocateData;
     }
-
     public void setBoarsTemperLocateData(long boarsTemperLocateData) {
         this.BoarsTemperLocateData = boarsTemperLocateData;
     }

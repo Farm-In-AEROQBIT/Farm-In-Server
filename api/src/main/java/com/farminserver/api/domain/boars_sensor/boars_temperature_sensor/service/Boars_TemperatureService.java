@@ -1,11 +1,8 @@
 package com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter.Boars_Co2Converter;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
-import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
-import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorRepository;
-import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSeneorEntity;
+import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSensorEntity;
+import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSensorEntity;
 import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSensorRepository;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.converter.Boars_TemperatureConverter;
 import com.farminserver.api.util.Boars_ExcelExporter;
@@ -31,14 +28,14 @@ public class Boars_TemperatureService {
     }
 
     public Boars_TemperatureResponse getTemperatureData(String boarsBarnRoomNum) {
-        Boars_TemperatureSeneorEntity entity = repository.findById(boarsBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+        Boars_TemperatureSensorEntity entity = repository.findById(boarsBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }
 
     public List<Boars_TemperatureResponse> getAllTemperatureData() {
-        List<Boars_TemperatureSeneorEntity> entities = repository.findAll();
+        List<Boars_TemperatureSensorEntity> entities = repository.findAll();
         List<Boars_TemperatureResponse> responses = new ArrayList<>();
-        for (Boars_TemperatureSeneorEntity entity : entities) {
+        for (Boars_TemperatureSensorEntity entity : entities) {
             responses.add(converter.convert(entity));
         }
         return responses;

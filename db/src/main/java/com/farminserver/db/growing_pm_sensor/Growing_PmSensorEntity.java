@@ -37,7 +37,7 @@ public class Growing_PmSensorEntity extends BaseEntity {
     public double growing_Total_Pm_Data;
 
     // 미세먼지 데이터 입력 시간
-    public long growing_Pm_Input_Time;
+    public LocalDateTime growing_Pm_Input_Time;
 
 
     @Id

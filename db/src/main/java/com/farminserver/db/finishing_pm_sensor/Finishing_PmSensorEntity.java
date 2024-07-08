@@ -20,7 +20,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "finishing_pm_sensor")
 
-public class Finishing_PmSensorEntitiy extends BaseEntity {
+public class Finishing_PmSensorEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     //PM1.0 수집 데이터

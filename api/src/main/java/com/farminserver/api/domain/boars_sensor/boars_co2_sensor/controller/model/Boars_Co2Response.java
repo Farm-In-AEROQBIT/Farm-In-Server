@@ -17,7 +17,6 @@ public class Boars_Co2Response {
     public String getBoarsBarnRoomNum() {
         return boarsBarnRoomNum;
     }
-
     public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
         this.boarsBarnRoomNum = boarsBarnRoomNum;
     }
@@ -25,7 +24,6 @@ public class Boars_Co2Response {
     public double getBoarsCo2Data() {
         return BoarsCo2Data;
     }
-
     public void setBoarsCo2(double boarsCo2) {
         this.BoarsCo2Data = boarsCo2;
     }
@@ -33,7 +31,6 @@ public class Boars_Co2Response {
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -41,7 +38,6 @@ public class Boars_Co2Response {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }

@@ -1,28 +1,24 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter;
+package com.farminserver.api.domain.gestation_sensor.gestation_humidity_sensor.converter;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.gestation_sensor.gestation_humidity_sensor.controller.model.Gestation_HumidityResponse;
 import org.springframework.stereotype.Component;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
+import com.farminserver.db.gestation_humidity_sensor.Gestation_HumiditySensorEntity;
 import com.farminserver.api.common.exception.ApiException;
 import com.farminserver.api.common.error.ErrorCode;
+import java.time.ZoneOffset;
 
 import java.util.Optional;
 
 @Component
 public class Gestation_HumidityConverter {
 
-    public UserResponse convert(double co2) {
-        String unit = "ppm";
-        long timestamp = System.currentTimeMillis();
-        return new UserResponse(co2, unit, timestamp);
-    }
-
-    public UserResponse toResponse(CO2SensorEntity co2SensorEntity) {
-        return Optional.ofNullable(co2SensorEntity)
-                .map(entity -> new UserResponse(
-                        entity.getCo2Data(),
-                        "ppm",
-                        entity.getCo2InputTime().atZone(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli()
+    public Gestation_HumidityResponse convert(Gestation_HumiditySensorEntity humiditySensorEntity) {
+        return Optional.ofNullable(humiditySensorEntity)
+                .map(entity -> new Gestation_HumidityResponse(
+                        entity.getGestation_Room_Num(),
+                        entity.getGestation_Humidity_Data(),
+                        "%",
+                        entity.getgestation_Humidity_Input_Time().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }

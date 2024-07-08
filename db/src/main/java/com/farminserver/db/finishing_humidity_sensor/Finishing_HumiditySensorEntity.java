@@ -1,7 +1,6 @@
 package com.farminserver.db.finishing_humidity_sensor;
 
 import com.farminserver.db.BaseEntity;
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
@@ -22,8 +21,7 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @Entity
 @Table(name = "finishing_humidity_sensor")
-
-public class Finishing_HumiditySensorEntitiy extends BaseEntity {
+public class Finishing_HumiditySensorEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String Finishing_Barn_Room_Num;

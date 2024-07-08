@@ -1,9 +1,7 @@
 package com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
 import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.converter.Boars_HumidityConverter;
 import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.Boars_HumidityResponse;
-import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
 import com.farminserver.db.boars_humidity_sensor.Boars_HumiditySensorEntity;
 import com.farminserver.db.boars_humidity_sensor.Boars_HumiditySensorRepository;
 import com.farminserver.api.util.Boars_ExcelExporter;

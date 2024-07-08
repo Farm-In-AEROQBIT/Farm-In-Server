@@ -21,8 +21,7 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @Entity
 @Table(name = "finishing_nh3_sensor")
-
-public class Finishing_Nh3SensorEntitiy extends BaseEntity {
+public class Finishing_Nh3SensorEntity extends BaseEntity {
      @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String Finishing_Room_Num;

@@ -1,11 +1,12 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
+package com.farminserver.api.domain.growing_sensor.growing_humidity_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.util.Boars_ExcelExporter;
+import com.farminserver.api.domain.growing_sensor.growing_humidity_sensor.controller.model.Growing_HumidityResponse;
+import com.farminserver.api.domain.growing_sensor.growing_humidity_sensor.converter.Growing_HumidityConverter;
+import com.farminserver.db.growing_humidity_sensor.Growing_HumiditySensorEntity;
+import com.farminserver.db.growing_humidity_sensor.Growing_HumiditySensorRepository;
+import com.farminserver.api.util.Growing_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,27 +15,40 @@ import java.util.List;
 @Service
 public class Growing_HumidityService {
 
-    private final Boars_ExcelExporter boarsExcelExporter;
+    private final Growing_HumiditySensorRepository repository;
+    private final Growing_HumidityConverter converter;
+    private final Growing_ExcelExporter boarsExcelExporter;
 
     @Autowired
-    public Growing_HumidityService(Boars_ExcelExporter boarsExcelExporter) {
-        this.boarsExcelExporter = boarsExcelExporter;
+    public Growing_HumidityService(Growing_HumiditySensorRepository repository, Growing_HumidityConverter converter, Growing_ExcelExporter excelExporter) {
+        this.repository = repository;
+        this.converter = converter;
+        this.boarsExcelExporter = excelExporter;
     }
 
-    public double getCo2Data() {
-        return 400.0; // 실제 센서 데이터 가져오기 로직 (임의의 값 반환)
+    public Growing_HumidityResponse getHumidityData(String growingBarnRoomNum) {
+        Growing_HumiditySensorEntity entity = repository.findById(growingBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+        return converter.convert(entity);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        // 예시 데이터를 반환
-        List<UserResponse> responses = new ArrayList<>();
-        responses.add(new UserResponse(400.0, "ppm", System.currentTimeMillis()));
-        responses.add(new UserResponse(401.0, "ppm", System.currentTimeMillis() - 10000));
+    public List<Growing_HumidityResponse> getAllHumidityData() {
+        List<Growing_HumiditySensorEntity> entities = repository.findAll();
+        List<Growing_HumidityResponse> responses = new ArrayList<>();
+        for (Growing_HumiditySensorEntity entity : entities) {
+            responses.add(converter.convert(entity));
+        }
         return responses;
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        List<UserResponse> userRespons = getAllCo2Data();
-        boarsExcelExporter.exportco2Data(userRespons, filePath);
+    /*public List<Boars_HumidityResponse> getAllHumidityData() {
+        List<Boars_HumidityResponse> responses = new ArrayList<>();
+        responses.add(new Boars_HumidityResponse(55.0, "%", System.currentTimeMillis()));
+        responses.add(new Boars_HumidityResponse(56.0, "%", System.currentTimeMillis() - 10000));
+        return responses;
+    }*/
+
+    public void exportHumidityDataToExcel(String filePath) throws IOException {
+        List<Growing_HumidityResponse> growingHumidityResponses = getAllHumidityData();
+        boarsExcelExporter.exportGrowing_humidityData(growingHumidityResponses, filePath);
     }
 }

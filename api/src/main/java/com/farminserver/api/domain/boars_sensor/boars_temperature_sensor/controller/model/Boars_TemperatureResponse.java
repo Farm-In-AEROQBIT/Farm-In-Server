@@ -5,7 +5,7 @@ public class Boars_TemperatureResponse {
     private double BoarsTemperatureData;
     private String unit;
     private long timestamp;
-    private String boarsTemperatureLocateData;
+    private long boarsTemperatureLocateData;
 
     public Boars_TemperatureResponse(String boarsBarnRoomNum, double boarstemperaturedata, String unit, long timestamp, long boarsTemperatureLocateData) {
         this.boarsBarnRoomNum = boarsBarnRoomNum;
@@ -31,10 +31,10 @@ public class Boars_TemperatureResponse {
         this.BoarsTemperatureData = boarsTemperatureData;
     }
 
-    public String getboarsTemperatureLocateData() {
+    public long getboarsTemperatureLocateData() {
         return boarsTemperatureLocateData;
     }
-    public void setboarsTemperatureLocateData(String boarsTemperatureLocateData) {
+    public void setboarsTemperatureLocateData(long boarsTemperatureLocateData) {
         this.boarsTemperatureLocateData = boarsTemperatureLocateData;
     }
 
