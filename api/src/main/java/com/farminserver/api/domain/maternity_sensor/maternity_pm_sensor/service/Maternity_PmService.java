@@ -1,11 +1,12 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.util.Boars_ExcelExporter;
+import com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.controller.model.Maternity_PmResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.converter.Maternity_PmConverter;
+import com.farminserver.api.util.Maternity_ExcelExporter;
+import com.farminserver.db.maternity_pm_sensor.Maternity_PmSensorEntity;
+import com.farminserver.db.maternity_pm_sensor.Maternity_PmSensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,27 +15,54 @@ import java.util.List;
 @Service
 public class Maternity_PmService {
 
-    private final Boars_ExcelExporter boarsExcelExporter;
+    private final Maternity_PmSensorRepository repository;
+    private final Maternity_PmConverter converter;
+    private final Maternity_ExcelExporter excelExporter;
 
     @Autowired
-    public Maternity_PmService(Boars_ExcelExporter boarsExcelExporter) {
-        this.boarsExcelExporter = boarsExcelExporter;
+    public Maternity_PmService(Maternity_PmSensorRepository repository, Maternity_PmConverter converter, Maternity_ExcelExporter excelExporter) {
+        this.repository = repository;
+        this.converter = converter;
+        this.excelExporter = excelExporter;
     }
 
-    public double getCo2Data() {
-        return 400.0; // 실제 센서 데이터 가져오기 로직 (임의의 값 반환)
+    public Maternity_PmResponse getPmData(String MaternityRoomNum) {
+        Maternity_PmSensorEntity entity = repository.findById(MaternityRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+        return converter.convert(entity);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        // 예시 데이터를 반환
-        List<UserResponse> responses = new ArrayList<>();
-        responses.add(new UserResponse(400.0, "ppm", System.currentTimeMillis()));
-        responses.add(new UserResponse(401.0, "ppm", System.currentTimeMillis() - 10000));
+    public List<Maternity_PmResponse> getAllPmData() {
+        List<Maternity_PmSensorEntity> entities = repository.findAll();
+        List<Maternity_PmResponse> responses = new ArrayList<>();
+        for (Maternity_PmSensorEntity entity : entities) {
+            responses.add(converter.convert(entity));
+        }
         return responses;
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        List<UserResponse> userRespons = getAllCo2Data();
-        boarsExcelExporter.exportco2Data(userRespons, filePath);
+    public void exportPmDataToExcel(String filePath) throws IOException {
+        List<Maternity_PmResponse> responses = getAllPmData();
+        excelExporter.exportMaternity_PmData(responses, filePath);
     }
+
+    //public double getPm1_0() {
+    //예시 데이터 반환
+    //return 12.3;
+    //}
+
+    //public double getPm2_5() {
+    //예시 데이터 반환
+    //return 35.7;
+    //}
+
+    //public double getPm10() {
+    //예시 데이터 반환
+    //return 42.1;
+    //}
+
+    //public double getTotalPm() {
+    //예시 데이터 반환
+    //return 90.1;
+    //}
 }
+

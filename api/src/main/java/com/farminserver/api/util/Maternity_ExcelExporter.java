@@ -1,11 +1,11 @@
 package com.farminserver.api.util;
 
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller.model.Maternity_Nh3Response;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Maternity_Co2Response;
 import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model.Maternity_HumidityResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.controller.model.Maternity_PmResponse;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -122,7 +122,7 @@ public class Maternity_ExcelExporter {
         workbook.close();
     }
 
-    public void exportBoars_PmData(List<Boars_PmResponse> boarsPmRespons, String filePath) throws IOException {
+    public void exportMaternity_PmData(List<Maternity_PmResponse> maternityPmRespons, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
@@ -134,7 +134,7 @@ public class Maternity_ExcelExporter {
         headerRow.createCell(3).setCellValue("Total PM");
         headerRow.createCell(4).setCellValue("Timestamp");
 
-        for (Boars_PmResponse response : boarsPmRespons) {
+        for (Maternity_PmResponse response : maternityPmRespons) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getPm1_0());
             row.createCell(1).setCellValue(response.getPm2_5());
