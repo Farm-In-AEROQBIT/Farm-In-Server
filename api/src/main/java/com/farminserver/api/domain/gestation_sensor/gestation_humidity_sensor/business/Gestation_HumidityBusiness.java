@@ -1,7 +1,7 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business;
+package com.farminserver.api.domain.gestation_sensor.gestation_humidity_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.gestation_sensor.gestation_humidity_sensor.controller.model.Gestation_HumidityResponse;
+import com.farminserver.api.domain.gestation_sensor.gestation_humidity_sensor.service.Gestation_HumidityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +11,22 @@ import java.util.List;
 @Component
 public class Gestation_HumidityBusiness {
 
-    private final UserService userService;
+    private final Gestation_HumidityService gestationHumidityService;
 
     @Autowired
-    public Gestation_HumidityBusiness(UserService userService) {
-        this.userService = userService;
+    public Gestation_HumidityBusiness(Gestation_HumidityService humidityService) {
+        this.gestationHumidityService = humidityService;
     }
 
-    public UserResponse getCo2SensorData() {
-        double co2Data = userService.getCo2Data();
-        return new UserResponse(co2Data, "ppm", System.currentTimeMillis());
+    public Gestation_HumidityResponse getHumiditySensorData(String gestationBarnRoomNum) {
+        return gestationHumidityService.getHumidityData(gestationBarnRoomNum);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        return userService.getAllCo2Data();
+    public List<Gestation_HumidityResponse> getAllHumidityData() {
+        return gestationHumidityService.getAllHumidityData();
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        userService.exportCo2DataToExcel(filePath);
+    public void exportHumidityDataToExcel(String filePath) throws IOException {
+        gestationHumidityService.exportHumidityDataToExcel(filePath);
     }
 }
