@@ -15,11 +15,11 @@ public class Maternity_Nh3Converter {
 
     public Maternity_Nh3Response convert(Maternity_Nh3SensorEntity nh3SensorEntity) {
         return Optional.ofNullable(nh3SensorEntity)
-                .map(entity -> new Boars_Nh3Response(
-                        entity.getBoars_Barn_Room_Num(),
-                        entity.getBoars_Nh3_Data(),
+                .map(entity -> new Maternity_Nh3Response(
+                        entity.getMaternity_Room_Num(),
+                        entity.getMaternity_Nh3_Data(),
                         "ppm",
-                        entity.getBoars_Nh3_Input_Time().toEpochSecond(ZoneOffset.UTC)
+                        entity.getMaternity_Nh3_Input_Time().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
