@@ -21,17 +21,17 @@ import jakarta.persistence.*;
 public class Piglet_Co2SensorEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Piglet_Barn_Room_Num;
+    private String Piglet_Room_Num;
     private double Piglet_Co2_Data;
     private LocalDateTime Piglet_Co2_Input_Time;
 
 
     public String getFarmName() {
-        return Piglet_Barn_Room_Num;
+        return Piglet_Room_Num;
     }
 
     public void setFarmName(String Piglet_Barn_Room_Num) {
-        this.Piglet_Barn_Room_Num = Piglet_Barn_Room_Num;
+        this.Piglet_Room_Num = Piglet_Barn_Room_Num;
     }
 
 
