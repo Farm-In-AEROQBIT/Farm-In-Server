@@ -1,8 +1,6 @@
 package com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.converter;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
 import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
-import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
 import org.springframework.stereotype.Component;
 import com.farminserver.db.boars_nh3_sensor.Boars_Nh3SensorEntity;
 import com.farminserver.api.common.exception.ApiException;
