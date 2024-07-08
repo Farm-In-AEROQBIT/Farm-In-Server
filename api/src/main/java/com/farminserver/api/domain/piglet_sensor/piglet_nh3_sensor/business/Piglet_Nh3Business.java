@@ -1,9 +1,8 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.service.Boars_Nh3Service;
+
+import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller.model.Piglet_Nh3Response;
+import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.service.Piglet_Nh3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,22 +12,22 @@ import java.util.List;
 @Component
 public class Piglet_Nh3Business {
 
-    private final Boars_Nh3Service boarsNh3Service;
+    private final Piglet_Nh3Service pigletNh3Service;
 
     @Autowired
-    public Boars_Nh3Business(Boars_Nh3Service nh3Service) {
-        this.boarsNh3Service = nh3Service;
+    public Piglet_Nh3Business(Piglet_Nh3Service nh3Service) {
+        this.pigletNh3Service = nh3Service;
     }
 
-    public Boars_Nh3Response getNh3SensorData(String boarsBarnRoomNum) {
-        return boarsNh3Service.getNh3Data(boarsBarnRoomNum);
+    public Piglet_Nh3Response getNh3SensorData(String pigletRoomNum) {
+        return pigletNh3Service.getNh3Data(pigletRoomNum);
     }
 
-    public List<Boars_Nh3Response> getAllCo2Data() {
-        return boarsNh3Service.getAllNh3Data();
+    public List<Piglet_Nh3Response> getAllCo2Data() {
+        return pigletNh3Service.getAllNh3Data();
     }
 
-    public void exportBoars_Nh3DataToExcel(String filePath) throws IOException {
-        boarsNh3Service.exportCo2DataToExcel(filePath);
+    public void exportPiglet_Nh3DataToExcel(String filePath) throws IOException {
+        pigletNh3Service.exportCo2DataToExcel(filePath);
     }
 }
