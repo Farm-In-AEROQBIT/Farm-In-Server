@@ -34,7 +34,7 @@ public class Maternity_Nh3ApiController {
 
     @GetMapping("/export")
     public ResponseEntity<Resource> exportNh3Data() {
-        String filePath = "baors_nh3_data.xlsx";
+        String filePath = "maternity_nh3_data.xlsx";
         try {
             maternityNh3Business.exportMaternity_Nh3DataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
