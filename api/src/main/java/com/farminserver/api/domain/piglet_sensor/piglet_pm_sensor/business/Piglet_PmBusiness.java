@@ -1,7 +1,5 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
 import com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.controller.model.Piglet_PmResponse;
 import com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.service.Piglet_PmService;
 import org.springframework.beans.factory.annotation.Autowired;
