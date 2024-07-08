@@ -2,6 +2,8 @@ package com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.business;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.controller.model.Piglet_PmResponse;
+import com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.service.Piglet_PmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +13,31 @@ import java.util.List;
 @Component
 public class Piglet_PmBusiness {
 
-    private final UserService userService;
+    private final Piglet_PmService pigletPmService;
 
     @Autowired
-    public Piglet_PmBusiness(UserService userService) {
-        this.userService = userService;
+    public Piglet_PmBusiness(Piglet_PmService pmService) {
+        this.pigletPmService = pmService;
     }
 
-    public UserResponse getCo2SensorData() {
-        double co2Data = userService.getCo2Data();
-        return new UserResponse(co2Data, "ppm", System.currentTimeMillis());
+    public Piglet_PmResponse getPmSensorData(String pigletRoomNum) {
+        return pigletPmService.getPmData(pigletRoomNum);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        return userService.getAllCo2Data();
+    public List<Piglet_PmResponse> getAllPmData() {
+        return pigletPmService.getAllPmData();
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        userService.exportCo2DataToExcel(filePath);
+    public void exportPmDataToExcel(String filePath) throws IOException {
+        pigletPmService.exportPmDataToExcel(filePath);
     }
+
+    //public PmResponse getPmSensorData() {
+    //double pm1_0 = pmService.getPm1_0();
+    //double pm2_5 = pmService.getPm2_5();
+    //double pm10 = pmService.getPm10();
+    //double totalPm = pmService.getTotalPm();
+    //String unit = pmService.getUnit();
+    //return pmConverter.convert(pm1_0, pm2_5, pm10, unit, totalPm);
+    //}
 }
