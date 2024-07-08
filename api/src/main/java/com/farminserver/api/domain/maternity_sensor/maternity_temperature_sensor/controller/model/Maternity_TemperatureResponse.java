@@ -1,41 +1,41 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.controller.model;
 
 public class Maternity_TemperatureResponse {
-    private String boarsBarnRoomNum;
-    private double BoarsTemperatureData;
+    private String maternityRoomNum;
+    private double MaternityTemperatureData;
     private String unit;
     private long timestamp;
-    private String boarsTemperatureLocateData;
+    private long maternityTemperatureLocateData;
 
-    public Boars_TemperatureResponse(String boarsBarnRoomNum, double boarstemperaturedata, String unit, long timestamp, long boarsTemperatureLocateData) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
-        this.BoarsTemperatureData = boarstemperaturedata;
+    public Maternity_TemperatureResponse(String maternityBarnRoomNum, double maternitytemperaturedata, String unit, long timestamp, long maternityTemperatureLocateData) {
+        this.maternityRoomNum = maternityBarnRoomNum;
+        this.MaternityTemperatureData = maternitytemperaturedata;
         this.unit = unit;
         this.timestamp = timestamp;
-        this.boarsTemperatureLocateData = boarsTemperatureLocateData;
+        this.maternityTemperatureLocateData = maternityTemperatureLocateData;
     }
 
     // Getters and Setters
 
-    public String getBoarsBarnRoomNum() {
-        return boarsBarnRoomNum;
+    public String getMaternityRoomNum() {
+        return maternityRoomNum;
     }
-    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
-    }
-
-    public double getBoarsTemperatureData() {
-        return BoarsTemperatureData;
-    }
-    public void setBoarsTemperatureData(double boarsTemperatureData) {
-        this.BoarsTemperatureData = boarsTemperatureData;
+    public void setMaternityRoomNum(String maternityRoomNum) {
+        this.maternityRoomNum = maternityRoomNum;
     }
 
-    public String getboarsTemperatureLocateData() {
-        return boarsTemperatureLocateData;
+    public double getMaternityTemperatureData() {
+        return MaternityTemperatureData;
     }
-    public void setboarsTemperatureLocateData(String boarsTemperatureLocateData) {
-        this.boarsTemperatureLocateData = boarsTemperatureLocateData;
+    public void setMaternityTemperatureData(double maternityTemperatureData) {
+        this.MaternityTemperatureData = maternityTemperatureData;
+    }
+
+    public long getmaternityTemperatureLocateData() {
+        return maternityTemperatureLocateData;
+    }
+    public void setmaternityTemperatureLocateData(long maternityTemperatureLocateData) {
+        this.maternityTemperatureLocateData = maternityTemperatureLocateData;
     }
 
     public String getUnit() {
