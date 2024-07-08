@@ -1,7 +1,8 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business;
+package com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.service.Boars_HumidityService;
+import com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.controller.model.Piglet_HumidityResponse;
+import com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.service.Piglet_HumidityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +12,22 @@ import java.util.List;
 @Component
 public class Piglet_HumidityBusiness {
 
-    private final UserService userService;
+    private final Piglet_HumidityService pigletHumidityService;
 
     @Autowired
-    public Piglet_HumidityBusiness(UserService userService) {
-        this.userService = userService;
+    public Piglet_HumidityBusiness(Piglet_HumidityService humidityService) {
+        this.pigletHumidityService = humidityService;
     }
 
-    public UserResponse getCo2SensorData() {
-        double co2Data = userService.getCo2Data();
-        return new UserResponse(co2Data, "ppm", System.currentTimeMillis());
+    public Piglet_HumidityResponse getHumiditySensorData(String pigletRoomNum) {
+        return pigletHumidityService.getHumidityData(pigletRoomNum);
     }
 
-    public List<UserResponse> getAllCo2Data() {
-        return userService.getAllCo2Data();
+    public List<Piglet_HumidityResponse> getAllHumidityData() {
+        return pigletHumidityService.getAllHumidityData();
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
-        userService.exportCo2DataToExcel(filePath);
+    public void exportHumidityDataToExcel(String filePath) throws IOException {
+        pigletHumidityService.exportHumidityDataToExcel(filePath);
     }
 }

@@ -1,29 +1,37 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model;
+package com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.controller.model;
 
 public class Piglet_HumidityResponse {
-    private double co2;
+    private String boarsBarnRoomNum;
+    private double BoarsHumidityData;
     private String unit;
     private long timestamp;
 
-    public Piglet_HumidityResponse(double co2, String unit, long timestamp) {
-        this.co2 = co2;
+    public Boars_HumidityResponse(String boarsBarnRoomNum, double boarsHumidity, String unit, long timestamp) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
+        this.BoarsHumidityData = boarsHumidity;
         this.unit = unit;
         this.timestamp = timestamp;
     }
 
     // Getters and Setters
-    public double getCo2() {
-        return co2;
+
+    public String getBoarsBarnRoomNum() {
+        return boarsBarnRoomNum;
+    }
+    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
     }
 
-    public void setSensorValue(double co2) {
-        this.co2 = co2;
+    public double getBoarsHumidityData() {
+        return BoarsHumidityData;
+    }
+    public void setHumidity(double boarsHumidity) {
+        this.BoarsHumidityData = boarsHumidity;
     }
 
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -31,7 +39,6 @@ public class Piglet_HumidityResponse {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
