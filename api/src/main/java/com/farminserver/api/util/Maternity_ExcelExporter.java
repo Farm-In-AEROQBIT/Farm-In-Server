@@ -1,11 +1,10 @@
 package com.farminserver.api.util;
 
-import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller.model.Maternity_Nh3Response;
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Maternity_Co2Response;
 import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model.Maternity_HumidityResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.controller.model.Maternity_PmResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.controller.model.Maternity_TemperatureResponse;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -95,7 +94,7 @@ public class Maternity_ExcelExporter {
         workbook.close();
     }
 
-    public void exportBoars_TemperatureData(List<Boars_TemperatureResponse> boarsTemperatureRespons, String filePath) throws IOException {
+    public void exportMaternity_TemperatureData(List<Maternity_TemperatureResponse> maternityTemperatureRespons, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Temperature Data");
 
@@ -107,13 +106,13 @@ public class Maternity_ExcelExporter {
         headerRow.createCell(3).setCellValue("Timestamp");
         headerRow.createCell(4).setCellValue("Temperature locate Data");
 
-        for (Boars_TemperatureResponse response : boarsTemperatureRespons) {
+        for (Maternity_TemperatureResponse response : maternityTemperatureRespons) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
-            row.createCell(1).setCellValue(response.getBoarsTemperatureData());
+            row.createCell(0).setCellValue(response.getMaternityRoomNum());
+            row.createCell(1).setCellValue(response.getMaternityTemperatureData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
-            row.createCell(4).setCellValue(response.getboarsTemperatureLocateData());
+            row.createCell(4).setCellValue(response.getmaternityTemperatureLocateData());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {

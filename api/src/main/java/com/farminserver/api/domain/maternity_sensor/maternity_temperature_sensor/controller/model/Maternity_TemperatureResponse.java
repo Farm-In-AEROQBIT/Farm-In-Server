@@ -34,8 +34,8 @@ public class Maternity_TemperatureResponse {
     public long getmaternityTemperatureLocateData() {
         return maternityTemperatureLocateData;
     }
-    public void setmaternityTemperatureLocateData(long maternityTemperatureLocateData) {
-        this.maternityTemperatureLocateData = maternityTemperatureLocateData;
+    public void setmaternityTemperatureLocateData(long boarsTemperatureLocateData) {
+        this.maternityTemperatureLocateData = boarsTemperatureLocateData;
     }
 
     public String getUnit() {
