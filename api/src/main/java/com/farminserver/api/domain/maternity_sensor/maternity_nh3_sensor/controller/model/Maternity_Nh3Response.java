@@ -1,31 +1,31 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller.model;
 
 public class Maternity_Nh3Response {
-    private String boarsBarnRoomNum;
-    private double BoarsNh3;
+    private String MaternityRoomNum;
+    private double MaternityNh3;
     private String unit;
     private long timestamp;
 
-    public Maternity_Nh3Response(double co2, String unit, long timestamp) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
-        this.BoarsNh3 = boarsnh3;
+    public Maternity_Nh3Response(String maternityRoomNum, double maternityNh3, String unit, long timestamp) {
+        this.MaternityRoomNum = MaternityRoomNum;
+        this.MaternityNh3 = maternityNh3;
         this.unit = unit;
         this.timestamp = timestamp;
     }
 
     // Getters and Setters
-    public String getBoarsBarnRoomNum() {
-        return boarsBarnRoomNum;
+    public String getMaternityRoomNum() {
+        return MaternityRoomNum;
     }
-    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
+    public void setMaternityRoomNum(String maternityRoomNum) {
+        this.MaternityRoomNum = maternityRoomNum;
     }
 
-    public double getBoarsNh3Data() {
-        return BoarsNh3;
+    public double getMaternityNh3Data() {
+        return MaternityNh3;
     }
-    public void setBoarsNh3Data(double boarsNh3) {
-        this.BoarsNh3 = boarsNh3 ;
+    public void setMaternityNh3Data(double maternityNh3) {
+        this.MaternityNh3 = maternityNh3 ;
     }
 
     public String getUnit() {
