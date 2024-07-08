@@ -1,10 +1,8 @@
 package com.farminserver.api.domain.finishing_sensor.finishing_nh3_sensor.service;
 
-import com.farminserver.api.domain.finishing_sensor.finishing_humidity_sensor.controller.model.Finishing_HumidityResponse;
 import com.farminserver.api.domain.finishing_sensor.finishing_nh3_sensor.converter.Finishing_Nh3Converter;
 import com.farminserver.api.domain.finishing_sensor.finishing_nh3_sensor.controller.model.Finishing_Nh3Response;
 import com.farminserver.api.util.Finishing_ExcelExporter;
-import com.farminserver.db.finishing_humidity_sensor.Finishing_HumiditySensorEntity;
 import com.farminserver.db.finishing_nh3_sensor.Finishing_Nh3SensorEntity;
 import com.farminserver.db.finishing_nh3_sensor.Finishing_Nh3SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

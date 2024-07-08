@@ -9,14 +9,16 @@ import com.farminserver.api.domain.finishing_sensor.finishing_nh3_sensor.control
 import com.farminserver.api.domain.finishing_sensor.finishing_humidity_sensor.controller.model.Finishing_HumidityResponse;
 import com.farminserver.api.domain.finishing_sensor.finishing_temperature_sensor.controller.model.Finishing_TemperatureResponse;
 import com.farminserver.api.domain.finishing_sensor.finishing_pm_sensor.controller.model.Finishing_PmResponse;
+import org.springframework.stereotype.Component;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+@Component
 public class Finishing_ExcelExporter {
 
-        public void exportFinishing_Nh3Data(List<Finishing_Nh3Response> responses, String filePath) throws IOException {
+        public void exportFinishing_Nh3Data(List<Finishing_Nh3Response> finishingNh3Response, String filePath) throws IOException {
             Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("Nh3 Data");
 
@@ -27,7 +29,7 @@ public class Finishing_ExcelExporter {
             headerRow.createCell(2).setCellValue("Unit");
             headerRow.createCell(3).setCellValue("Timestamp");
 
-            for (Finishing_Nh3Response response : responses) {
+            for (Finishing_Nh3Response response : finishingNh3Response) {
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(response.getFinishingBarnRoomNum());
                 row.createCell(1).setCellValue(response.getFinishingNh3Data());
@@ -41,7 +43,7 @@ public class Finishing_ExcelExporter {
             workbook.close();
         }
 
-        public void exportFinishing_co2Data(List<Finishing_Co2Response> responses, String filePath) throws IOException {
+        public void exportFinishing_co2Data(List<Finishing_Co2Response> finishingCo2Response, String filePath) throws IOException {
             Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("Co2 Data");
 
@@ -52,7 +54,7 @@ public class Finishing_ExcelExporter {
             headerRow.createCell(2).setCellValue("Unit");
             headerRow.createCell(3).setCellValue("Timestamp");
 
-            for (Finishing_Co2Response response : responses) {
+            for (Finishing_Co2Response response : finishingCo2Response) {
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(response.getFinishingBarnRoomNum());
                 row.createCell(1).setCellValue(response.getFinishingCo2Data());
@@ -66,7 +68,7 @@ public class Finishing_ExcelExporter {
             workbook.close();
         }
 
-        public void exportFinishing_humidityData(List<Finishing_HumidityResponse> responses, String filePath) throws IOException {
+        public void exportFinishing_humidityData(List<Finishing_HumidityResponse> finishingHumidityResponse, String filePath) throws IOException {
             Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("Humidity Data");
 
@@ -77,7 +79,7 @@ public class Finishing_ExcelExporter {
             headerRow.createCell(2).setCellValue("Unit");
             headerRow.createCell(3).setCellValue("Timestamp");
 
-            for (Finishing_HumidityResponse response : responses) {
+            for (Finishing_HumidityResponse response : finishingHumidityResponse) {
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(response.getFinishingBarnRoomNum());
                 row.createCell(1).setCellValue(response.getFinishingHumidityData());
@@ -91,7 +93,7 @@ public class Finishing_ExcelExporter {
             workbook.close();
         }
 
-        public void exportFinishing_TemperatureData(List<Finishing_TemperatureResponse> boarsTemperatureRespons, String filePath) throws IOException {
+        public void exportFinishing_TemperatureData(List<Finishing_TemperatureResponse> finishingTemperatureRespons, String filePath) throws IOException {
             Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("Temperature Data");
 
@@ -103,13 +105,13 @@ public class Finishing_ExcelExporter {
             headerRow.createCell(3).setCellValue("Timestamp");
             headerRow.createCell(4).setCellValue("Temperature locate Data");
 
-            for (Finishing_TemperatureResponse response : boarsTemperatureRespons) {
+            for (Finishing_TemperatureResponse response : finishingTemperatureRespons) {
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(response.getFinishingBarnRoomNum());
                 row.createCell(1).setCellValue(response.getFinishingTemperData());
                 row.createCell(2).setCellValue(response.getUnit());
                 row.createCell(3).setCellValue(response.getTimestamp());
-                row.createCell(4).setCellValue(response.getFinishingTemperatureLocateData());
+                row.createCell(4).setCellValue(response.getFinishingTemperLocateData());
             }
 
             try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
@@ -118,7 +120,7 @@ public class Finishing_ExcelExporter {
             workbook.close();
         }
 
-        public void exportFinishing_PmData(List<Finishing_PmResponse> boarsPmRespons, String filePath) throws IOException {
+        public void exportFinishing_PmData(List<Finishing_PmResponse> finishingPmRespons, String filePath) throws IOException {
             Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("PM Data");
 
@@ -131,7 +133,7 @@ public class Finishing_ExcelExporter {
             headerRow.createCell(4).setCellValue("Total PM");
             headerRow.createCell(5).setCellValue("Timestamp");
 
-            for (Finishing_PmResponse response : boarsPmRespons) {
+            for (Finishing_PmResponse response : finishingPmRespons) {
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(response.getFinishingBarnRoomNum());
                 row.createCell(1).setCellValue(response.getPm1_0());

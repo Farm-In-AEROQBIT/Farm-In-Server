@@ -28,4 +28,5 @@ public class ApiException extends RuntimeException implements ApiExceptionIfs{
         this.errorCodeIfs = errorCodeItf;
         this.errorDescription = errorDescription;
     }
+
 }

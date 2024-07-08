@@ -27,6 +27,6 @@ public class Boars_Nh3Business {
     }
 
     public void exportBoars_Nh3DataToExcel(String filePath) throws IOException {
-        boarsNh3Service.exportCo2DataToExcel(filePath);
+        boarsNh3Service.exportNh3DataToExcel(filePath);
     }
 }

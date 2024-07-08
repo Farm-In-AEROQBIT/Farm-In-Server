@@ -1,6 +1,5 @@
 package com.farminserver.api.domain.finishing_sensor.finishing_temperature_sensor.converter;
 
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.finishing_sensor.finishing_temperature_sensor.controller.model.Finishing_TemperatureResponse;
 import org.springframework.stereotype.Component;
 import com.farminserver.db.finishing_temperature_sensor.Finishing_TemperatureSeneorEntity;
