@@ -42,7 +42,7 @@ public class Maternity_Nh3Service {
         return responses;
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
+    public void exportNh3DataToExcel(String filePath) throws IOException {
         List<Maternity_Nh3Response> responses = getAllNh3Data();
         excelExporter.exportMaternity_Nh3Data(responses, filePath);
     }

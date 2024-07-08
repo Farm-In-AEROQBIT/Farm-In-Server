@@ -22,11 +22,11 @@ public class Maternity_Nh3Business {
         return maternityNh3Service.getNh3Data(maternityRoomNum);
     }
 
-    public List<Maternity_Nh3Response> getAllCo2Data() {
+    public List<Maternity_Nh3Response> getAllNh3Data() {
         return maternityNh3Service.getAllNh3Data();
     }
 
     public void exportMaternity_Nh3DataToExcel(String filePath) throws IOException {
-        maternityNh3Service.exportCo2DataToExcel(filePath);
+        maternityNh3Service.exportNh3DataToExcel(filePath);
     }
 }
