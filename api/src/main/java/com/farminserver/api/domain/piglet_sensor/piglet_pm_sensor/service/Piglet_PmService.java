@@ -3,7 +3,6 @@ package com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.service;
 import com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.controller.model.Piglet_PmResponse;
 import com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.converter.Piglet_PmConverter;
 import com.farminserver.api.util.Piglet_ExcelExporter;
-import com.farminserver.db.boars_pm_sensor.Boars_PmSensorEntity;
 import com.farminserver.db.piglet_pm_sensor.Piglet_PmSensorEntity;
 import com.farminserver.db.piglet_pm_sensor.Piglet_PmSensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
