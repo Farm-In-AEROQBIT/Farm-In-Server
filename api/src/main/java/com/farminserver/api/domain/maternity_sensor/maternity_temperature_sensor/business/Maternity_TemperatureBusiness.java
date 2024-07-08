@@ -1,9 +1,7 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.service.Boars_TemperatureService;
+import com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.controller.model.Maternity_TemperatureResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.service.Maternity_TemperatureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,22 +11,22 @@ import java.util.List;
 @Component
 public class Maternity_TemperatureBusiness {
 
-    private final Boars_TemperatureService boarsTemperatureService;
+    private final Maternity_TemperatureService maternityTemperatureService;
 
     @Autowired
-    public Boars_TemperatureBusiness(Boars_TemperatureService boarsTemperatureService) {
-        this.boarsTemperatureService = boarsTemperatureService;
+    public Maternity_TemperatureBusiness(Maternity_TemperatureService maternityTemperatureService) {
+        this.maternityTemperatureService = maternityTemperatureService;
     }
 
-    public Boars_TemperatureResponse getTemperatureSensorData(String boarsBarnRoomNum) {
-        return boarsTemperatureService.getTemperatureData(boarsBarnRoomNum);
+    public Maternity_TemperatureResponse getTemperatureSensorData(String maternityRoomNum) {
+        return maternityTemperatureService.getTemperatureData(maternityRoomNum);
     }
 
-    public List<Boars_TemperatureResponse> getAllTemperatureData() {
-        return boarsTemperatureService.getAllTemperatureData();
+    public List<Maternity_TemperatureResponse> getAllTemperatureData() {
+        return maternityTemperatureService.getAllTemperatureData();
     }
 
     public void exportTemperatureDataToExcel(String filePath) throws IOException {
-        boarsTemperatureService.exportTemperatureDataToExcel(filePath);
+        maternityTemperatureService.exportTemperatureDataToExcel(filePath);
     }
 }
