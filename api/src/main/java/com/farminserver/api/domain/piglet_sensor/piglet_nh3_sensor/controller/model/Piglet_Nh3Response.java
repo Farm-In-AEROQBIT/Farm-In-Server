@@ -1,32 +1,32 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller.model;
 
 public class Piglet_Nh3Response {
-    private String boarsBarnRoomNum;
-    private double BoarsNh3;
+    private String pigletRoomNum;
+    private double PigletNh3;
     private String unit;
     private long timestamp;
 
-    public Boars_Nh3Response(String boarsBarnRoomNum, double boarsnh3, String unit, long timestamp) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
-        this.BoarsNh3 = boarsnh3;
+    public Piglet_Nh3Response(String pigletRoomNum, double pigletnh3, String unit, long timestamp) {
+        this.pigletRoomNum = pigletRoomNum;
+        this.PigletNh3 = pigletnh3;
         this.unit = unit;
         this.timestamp = timestamp;
     }
 
     // Getters and Setters
 
-    public String getBoarsBarnRoomNum() {
-        return boarsBarnRoomNum;
+    public String getPiglet_RoomNum() {
+        return pigletRoomNum;
     }
-    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
+    public void setPiglet_RoomNum(String pigletRoomNum) {
+        this.pigletRoomNum = pigletRoomNum;
     }
 
-    public double getBoarsNh3Data() {
-        return BoarsNh3;
+    public double getPigletNh3Data() {
+        return PigletNh3;
     }
-    public void setBoarsNh3Data(double boarsNh3) {
-        this.BoarsNh3 = boarsNh3 ;
+    public void setPigletNh3Data(double pigletNh3) {
+        this.PigletNh3 = pigletNh3 ;
     }
 
     public String getUnit() {
