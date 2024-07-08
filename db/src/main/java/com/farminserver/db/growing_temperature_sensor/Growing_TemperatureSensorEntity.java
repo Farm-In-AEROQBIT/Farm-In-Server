@@ -6,6 +6,8 @@ import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @EqualsAndHashCode(callSuper = false)
 @Data
 @SuperBuilder
@@ -20,8 +22,8 @@ public class Growing_TemperatureSensorEntity extends BaseEntity {
     @Id
     private String Growing_Room_Num;
     private double Growing_Temper_Data;
-    private String Growing_Temper_Input_Time;
-    private String Growing_Temper_Locate_Data;
+    private LocalDateTime Growing_Temper_Input_Time;
+    private long Growing_Temper_Locate_Data;
 
     // Getters and Setters
     public String getGrowingRoomNum() {
@@ -42,20 +44,20 @@ public class Growing_TemperatureSensorEntity extends BaseEntity {
     }
 
 
-    public String getGrowingTemperInputTime() {
+    public LocalDateTime getGrowingTemperInputTime() {
         return Growing_Temper_Input_Time;
     }
 
-    public void setGrowingTemperInputTime(String Growing_Temper_Input_Time) {
+    public void setGrowingTemperInputTime(LocalDateTime Growing_Temper_Input_Time) {
         this.Growing_Temper_Input_Time = Growing_Temper_Input_Time;
     }
 
 
-    public String getGrowingTemperLocateData() {
+    public long getGrowingTemperLocateData() {
         return Growing_Temper_Locate_Data;
     }
 
-    public void setGrowingTemperLocateData(String Growing_Temper_Locate_Data) {
+    public void setGrowingTemperLocateData(long Growing_Temper_Locate_Data) {
         this.Growing_Temper_Locate_Data = Growing_Temper_Locate_Data;
     }
 

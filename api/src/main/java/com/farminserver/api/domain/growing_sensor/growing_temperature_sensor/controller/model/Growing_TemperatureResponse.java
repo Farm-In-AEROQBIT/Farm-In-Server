@@ -1,29 +1,45 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model;
+package com.farminserver.api.domain.growing_sensor.growing_temperature_sensor.controller.model;
 
 public class Growing_TemperatureResponse {
-    private double co2;
+    private String GrowingRoomNum;
+    private double GrowingTemperatureData;
     private String unit;
     private long timestamp;
+    private long GrowingTemperatureLocateData;
 
-    public Growing_TemperatureResponse(double co2, String unit, long timestamp) {
-        this.co2 = co2;
+    public Growing_TemperatureResponse(String growingRoomNum, double growingtemperaturedata, String unit, long timestamp, long growingTemperatureLocateData) {
+        this.GrowingRoomNum = growingRoomNum;
+        this.GrowingTemperatureData = growingtemperaturedata;
         this.unit = unit;
         this.timestamp = timestamp;
+        this.GrowingTemperatureLocateData = growingTemperatureLocateData;
     }
 
     // Getters and Setters
-    public double getCo2() {
-        return co2;
+    public String getGrowingRoomNum() {
+        return getGrowingRoomNum();
+    }
+    public void setGrowingRoomNum(String growingRoomNum) {
+        this.GrowingRoomNum = growingRoomNum;
     }
 
-    public void setSensorValue(double co2) {
-        this.co2 = co2;
+    public double getGrowingTemperatureData() {
+        return GrowingTemperatureData;
+    }
+    public void setGrowingTemperatureData(double growingTemperatureData) {
+        this.GrowingTemperatureData = growingTemperatureData;
+    }
+
+    public long getGrowingTemperatureLocateData() {
+        return GrowingTemperatureLocateData;
+    }
+    public void setGrowingTemperatureLocateData(long growingTemperatureLocateData) {
+        this.GrowingTemperatureData = growingTemperatureLocateData;
     }
 
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -31,7 +47,6 @@ public class Growing_TemperatureResponse {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }

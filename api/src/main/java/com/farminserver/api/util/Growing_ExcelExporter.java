@@ -94,7 +94,7 @@ public class Growing_ExcelExporter {
         workbook.close();
     }
 
-    public void exportGrowing_TemperatureData(List<Growing_TemperatureResponse> boarsTemperatureRespons, String filePath) throws IOException {
+    public void exportGrowing_TemperatureData(List<Growing_TemperatureResponse> growingTemperatureResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Temperature Data");
 
@@ -106,7 +106,7 @@ public class Growing_ExcelExporter {
         headerRow.createCell(3).setCellValue("Timestamp");
         headerRow.createCell(4).setCellValue("Temperature locate Data");
 
-        for (Growing_TemperatureResponse response : growingTemperatureRespons) {
+        for (Growing_TemperatureResponse response : growingTemperatureResponse) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getGrowingRoomNum());
             row.createCell(1).setCellValue(response.getGrowingTemperatureData());
