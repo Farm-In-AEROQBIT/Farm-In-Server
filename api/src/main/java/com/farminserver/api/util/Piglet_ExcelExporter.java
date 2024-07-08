@@ -7,6 +7,7 @@ import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.controller.model.Piglet_Co2Response;
 import com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.controller.model.Piglet_HumidityResponse;
+import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller.model.Piglet_Nh3Response;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class Piglet_ExcelExporter {
 
-    public void exportBoars_Nh3Data(List<Boars_Nh3Response> responses, String filePath) throws IOException {
+    public void exportPiglet_Nh3Data(List<Piglet_Nh3Response> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Nh3 Data");
 
@@ -32,10 +33,10 @@ public class Piglet_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Boars_Nh3Response response : responses) {
+        for (Piglet_Nh3Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
-            row.createCell(1).setCellValue(response.getBoarsNh3Data());
+            row.createCell(0).setCellValue(response.getPiglet_RoomNum());
+            row.createCell(1).setCellValue(response.getPigletNh3Data());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
