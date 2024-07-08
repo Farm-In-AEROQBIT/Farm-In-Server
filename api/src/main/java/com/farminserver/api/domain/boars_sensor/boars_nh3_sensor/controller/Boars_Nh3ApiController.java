@@ -1,7 +1,7 @@
 package com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller;
 
 import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.business.Maternity_Nh3Business;
+import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.business.Boars_Nh3Business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -19,10 +19,10 @@ import java.io.IOException;
 @RequestMapping("/api/boars_nh3")
 public class Boars_Nh3ApiController {
 
-    private final Maternity_Nh3Business boarsNh3Business;
+    private final Boars_Nh3Business boarsNh3Business;
 
     @Autowired
-    public Boars_Nh3ApiController(Maternity_Nh3Business Nh3Business) {
+    public Boars_Nh3ApiController(Boars_Nh3Business Nh3Business) {
         this.boarsNh3Business = Nh3Business;
     }
 

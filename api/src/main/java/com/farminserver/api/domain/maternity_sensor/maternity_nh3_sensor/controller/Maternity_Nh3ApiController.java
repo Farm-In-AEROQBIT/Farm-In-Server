@@ -1,6 +1,7 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller;
 
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.business.Maternity_Nh3Business;
+
+import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.business.Maternity_Nh3Business;
 import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller.model.Maternity_Nh3Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
