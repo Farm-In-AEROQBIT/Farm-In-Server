@@ -1,15 +1,14 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.Boars_HumidityResponse;
-import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.converter.Boars_HumidityConverter;
-import com.farminserver.api.util.Boars_ExcelExporter;
-import com.farminserver.db.boars_humidity_sensor.Boars_HumiditySensorEntity;
-import com.farminserver.db.boars_humidity_sensor.Boars_HumiditySensorRepository;
+
+
+import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model.Maternity_HumidityResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.converter.Maternity_HumidityConverter;
+import com.farminserver.api.util.Maternity_ExcelExporter;
+import com.farminserver.db.maternity_hunmidity_sensor.Maternity_HumiditySensorEntity;
+import com.farminserver.db.maternity_hunmidity_sensor.Maternity_HumiditySensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,40 +17,40 @@ import java.util.List;
 @Service
 public class Maternity_HumidityService {
 
-    private final Boars_HumiditySensorRepository repository;
-    private final Boars_HumidityConverter converter;
-    private final Boars_ExcelExporter boarsExcelExporter;
+    private final Maternity_HumiditySensorRepository repository;
+    private final Maternity_HumidityConverter converter;
+    private final Maternity_ExcelExporter maternityExcelExporter;
 
     @Autowired
-    public Boars_HumidityService(Boars_HumiditySensorRepository repository, Boars_HumidityConverter converter, Boars_ExcelExporter excelExporter) {
+    public Maternity_HumidityService(Maternity_HumiditySensorRepository repository, Maternity_HumidityConverter converter, Maternity_ExcelExporter excelExporter) {
         this.repository = repository;
         this.converter = converter;
-        this.boarsExcelExporter = excelExporter;
+        this.maternityExcelExporter = excelExporter;
     }
 
-    public Boars_HumidityResponse getHumidityData(String boarsBarnRoomNum) {
-        Boars_HumiditySensorEntity entity = repository.findById(boarsBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+    public Maternity_HumidityResponse getHumidityData(String maternityRoomNum) {
+        Maternity_HumiditySensorEntity entity = repository.findById(maternityRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }
 
-    public List<Boars_HumidityResponse> getAllHumidityData() {
-        List<Boars_HumiditySensorEntity> entities = repository.findAll();
-        List<Boars_HumidityResponse> responses = new ArrayList<>();
-        for (Boars_HumiditySensorEntity entity : entities) {
+    public List<Maternity_HumidityResponse> getAllHumidityData() {
+        List<Maternity_HumiditySensorEntity> entities = repository.findAll();
+        List<Maternity_HumidityResponse> responses = new ArrayList<>();
+        for (Maternity_HumiditySensorEntity entity : entities) {
             responses.add(converter.convert(entity));
         }
         return responses;
     }
 
-    /*public List<Boars_HumidityResponse> getAllHumidityData() {
-        List<Boars_HumidityResponse> responses = new ArrayList<>();
-        responses.add(new Boars_HumidityResponse(55.0, "%", System.currentTimeMillis()));
-        responses.add(new Boars_HumidityResponse(56.0, "%", System.currentTimeMillis() - 10000));
+    /*public List<Maternity_HumidityResponse> getAllHumidityData() {
+        List<Maternity_HumidityResponse> responses = new ArrayList<>();
+        responses.add(new Maternity_HumidityResponse(55.0, "%", System.currentTimeMillis()));
+        responses.add(new Maternity_HumidityResponse(56.0, "%", System.currentTimeMillis() - 10000));
         return responses;
     }*/
 
     public void exportHumidityDataToExcel(String filePath) throws IOException {
-        List<Boars_HumidityResponse> boarsHumidityRespons = getAllHumidityData();
-        boarsExcelExporter.exportBoars_humidityData(boarsHumidityRespons, filePath);
+        List<Maternity_HumidityResponse> maternityHumidityRespons = getAllHumidityData();
+        maternityExcelExporter.exportMaternity_humidityData(maternityHumidityRespons, filePath);
     }
 }

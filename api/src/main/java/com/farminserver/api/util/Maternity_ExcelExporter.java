@@ -1,11 +1,10 @@
 package com.farminserver.api.util;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boar_Co2Response;
-import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.Boars_HumidityResponse;
 import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Maternity_Co2Response;
+import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model.Maternity_HumidityResponse;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -70,7 +69,7 @@ public class Maternity_ExcelExporter {
         workbook.close();
     }
 
-    public void exportBoars_humidityData(List<Boars_HumidityResponse> responses, String filePath) throws IOException {
+    public void exportMaternity_humidityData(List<Maternity_HumidityResponse> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Humidity Data");
 
@@ -81,10 +80,10 @@ public class Maternity_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Boars_HumidityResponse response : responses) {
+        for (Maternity_HumidityResponse response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
-            row.createCell(1).setCellValue(response.getBoarsHumidityData());
+            row.createCell(0).setCellValue(response.getMaternityRoomNum());
+            row.createCell(1).setCellValue(response.getMaternityHumidityData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
