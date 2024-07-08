@@ -1,9 +1,7 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.controller;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.UserBusiness;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.business.Boars_Nh3Business;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
+import com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.business.Maternity_PmBusiness;
+import com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.controller.model.Maternity_PmResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -18,30 +16,30 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/boars_co2")
+@RequestMapping("/api/maternity_pm")
 public class Maternity_PmApiController {
 
-    private final Boars_Nh3Business boarsNh3Business;
+    private final Maternity_PmBusiness maternityPmBusiness;
 
     @Autowired
-    public Boars_Nh3ApiController(Boars_Nh3Business Nh3Business) {
-        this.boarsNh3Business = Nh3Business;
+    public Maternity_PmApiController(Maternity_PmBusiness maternityPmBusiness) {
+        this.maternityPmBusiness = maternityPmBusiness;
     }
 
-    @GetMapping("/nh3data/{boarsBarnRoomNum}")
-    public ResponseEntity<Boars_Nh3Response> getNh3SensorData(@PathVariable String boarsBarnRoomNum) {
-        return ResponseEntity.ok(boarsNh3Business.getNh3SensorData(boarsBarnRoomNum));
+    @GetMapping("/pmdata/{maternityRoomNum}")
+    public ResponseEntity<Maternity_PmResponse> getPmSensorData(@PathVariable String maternityRoomNum) {
+        return ResponseEntity.ok(maternityPmBusiness.getPmSensorData(maternityRoomNum));
     }
 
     @GetMapping("/export")
-    public ResponseEntity<Resource> exportNh3Data() {
-        String filePath = "baors_nh3_data.xlsx";
+    public ResponseEntity<Resource> exportPmData() {
+        String filePath = "pm_data.xlsx";
         try {
-            boarsNh3Business.exportBoars_Nh3DataToExcel(filePath);
+            maternityPmBusiness.exportPmDataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
-            HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=nh3_data.xlsx");
+            org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=pm_data.xlsx");
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
         } catch (IOException e) {
