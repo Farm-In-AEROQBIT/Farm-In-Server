@@ -1,4 +1,4 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
+package com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.service;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
 import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
