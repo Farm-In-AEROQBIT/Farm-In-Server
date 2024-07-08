@@ -4,6 +4,8 @@ import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.Boars_
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.UserBusiness;
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boar_Co2Response;
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.business.Piglet_Co2Business;
+import com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.controller.model.Piglet_Co2Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -18,26 +20,26 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/boars_co2")
+@RequestMapping("/api/piglet_co2")
 public class Piglet_Co2ApiController {
 
-    private final Boars_Co2Business boarsCo2Business;
+    private final Piglet_Co2Business pigletCo2Business;
 
     @Autowired
-    public Boars_Co2ApiController(Boars_Co2Business co2Business) {
-        this.boarsCo2Business = co2Business;
+    public Piglet_Co2ApiController(Piglet_Co2Business co2Business) {
+        this.pigletCo2Business = co2Business;
     }
 
-    @GetMapping("/co2data/{boarsBarnRoomNum}")
-    public ResponseEntity<Boar_Co2Response> getCo2SensorData(@PathVariable String boarsBarnRoomNum) {
-        return ResponseEntity.ok(boarsCo2Business.getCo2SensorData(boarsBarnRoomNum));
+    @GetMapping("/co2data/{pigletBarnRoomNum}")
+    public ResponseEntity<Piglet_Co2Response> getCo2SensorData(@PathVariable String boarsBarnRoomNum) {
+        return ResponseEntity.ok(pigletCo2Business.getCo2SensorData(boarsBarnRoomNum));
     }
 
     @GetMapping("/export")
     public ResponseEntity<Resource> exportCo2Data() {
-        String filePath = "boars_co2_data.xlsx";
+        String filePath = "piglet_co2_data.xlsx";
         try {
-            boarsCo2Business.exportCo2DataToExcel(filePath);
+            pigletCo2Business.exportCo2DataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
