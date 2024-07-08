@@ -1,6 +1,5 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.business;
 
-import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.service.Boars_HumidityService;
 import com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.controller.model.Piglet_HumidityResponse;
 import com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.service.Piglet_HumidityService;
 import org.springframework.beans.factory.annotation.Autowired;

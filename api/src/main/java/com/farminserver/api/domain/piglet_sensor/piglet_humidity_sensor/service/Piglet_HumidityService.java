@@ -1,6 +1,6 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+
 import com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.controller.model.Piglet_HumidityResponse;
 import com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.converter.Piglet_HumidityConverter;
 import com.farminserver.api.util.Piglet_ExcelExporter;
@@ -8,8 +8,7 @@ import com.farminserver.db.piglet_humidity_sensor.Piglet_HumiditySensorEntity;
 import com.farminserver.db.piglet_humidity_sensor.Piglet_HumiditySensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.farminserver.db.boars_co2_sensor.CO2SensorRepository;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,7 +50,7 @@ public class Piglet_HumidityService {
     }*/
 
     public void exportHumidityDataToExcel(String filePath) throws IOException {
-        List<Piglet_HumidityResponse> PigletHumidityRespons = getAllHumidityData();
-        pigletExcelExporter.exportPiglet_humidityData(boarsHumidityRespons, filePath);
+        List<Piglet_HumidityResponse> PigletHumidityResponse = getAllHumidityData();
+        pigletExcelExporter.exportPiglet_humidityData(PigletHumidityResponse, filePath);
     }
 }
