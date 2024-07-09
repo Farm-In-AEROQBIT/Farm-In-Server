@@ -1,7 +1,5 @@
 package com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.UserBusiness;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
 import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.business.Reserve_Co2Business;
 import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model.Reserve_Co2Response;
 import org.springframework.beans.factory.annotation.Autowired;
