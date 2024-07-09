@@ -3,7 +3,6 @@ package com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.serv
 import com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.controller.model.Piglet_TemperatureResponse;
 import com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.converter.Piglet_TemperatureConverter;
 import com.farminserver.api.util.Piglet_ExcelExporter;
-import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSeneorEntity;
 import com.farminserver.db.piglet_temperature_sensor.Piglet_TemperatureSensorEntity;
 import com.farminserver.db.piglet_temperature_sensor.Piglet_TemperatureSensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class Piglet_TemperatureService {
     }
 
     public Piglet_TemperatureResponse getTemperatureData(String pigletRoomNum) {
-        Boars_TemperatureSeneorEntity entity = repository.findById(pigletRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+        Piglet_TemperatureSensorEntity entity = repository.findById(pigletRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }
 
@@ -43,6 +42,6 @@ public class Piglet_TemperatureService {
 
     public void exportTemperatureDataToExcel(String filePath) throws IOException {
         List<Piglet_TemperatureResponse> responses = getAllTemperatureData();
-        excelExporter.exportBoars_TemperatureData(responses, filePath);
+        excelExporter.exportPiglet_TemperatureData(responses, filePath);
     }
 }
