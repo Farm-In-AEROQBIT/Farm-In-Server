@@ -40,7 +40,7 @@ public class Boars_Nh3Service {
         return responses;
     }
 
-    public void exportCo2DataToExcel(String filePath) throws IOException {
+    public void exportNh3DataToExcel(String filePath) throws IOException {
         List<Boars_Nh3Response> responses = getAllNh3Data();
         excelExporter.exportBoars_Nh3Data(responses, filePath);
     }

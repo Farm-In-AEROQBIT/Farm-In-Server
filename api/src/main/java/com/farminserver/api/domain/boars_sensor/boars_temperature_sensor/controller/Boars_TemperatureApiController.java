@@ -39,7 +39,7 @@ public class Boars_TemperatureApiController {
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=temperature_data.xlsx");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=boars_temperature_data.xlsx");
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
         } catch (IOException e) {

@@ -39,7 +39,7 @@ public class Boars_Nh3ApiController {
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=nh3_data.xlsx");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=boars_nh3_data.xlsx");
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
         } catch (IOException e) {
