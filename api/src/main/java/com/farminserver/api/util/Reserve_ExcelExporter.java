@@ -1,12 +1,11 @@
 package com.farminserver.api.util;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
-import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.Boars_HumidityResponse;
-import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
-import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
+import com.farminserver.api.domain.reserve_sensor.reserve_nh3_sensor.controller.model.Reserve_Nh3Response;
+import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller.model.Reserve_PmResponse;
+import com.farminserver.api.domain.reserve_sensor.reserve_temperature_sensor.controller.model.Reserve_TemperatureResponse;
 import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model.Reserve_Co2Response;
 import com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.controller.model.Reserve_HumidityResponse;
+
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -109,7 +108,7 @@ public class Reserve_ExcelExporter {
 
         for (Reserve_TemperatureResponse response : reserveTemperatureRespons) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getReserveBarnRoomNum());
+            row.createCell(0).setCellValue(response.getReserveRoomNum());
             row.createCell(1).setCellValue(response.getReserveTemperatureData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
@@ -122,7 +121,7 @@ public class Reserve_ExcelExporter {
         workbook.close();
     }
 
-    public void exportReserve_PmData(List<Reserve_PmResponse> reservePmRespons, String filePath) throws IOException {
+    public void exportReserve_PmData(List<Reserve_PmResponse> reservePmResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
@@ -134,7 +133,7 @@ public class Reserve_ExcelExporter {
         headerRow.createCell(3).setCellValue("Total PM");
         headerRow.createCell(4).setCellValue("Timestamp");
 
-        for (Reserve_PmResponse response : reservePmRespons) {
+        for (Reserve_PmResponse response : reservePmResponse) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getPm1_0());
             row.createCell(1).setCellValue(response.getPm2_5());

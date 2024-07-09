@@ -1,7 +1,7 @@
-package com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller;
+package com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller;
 
-import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
-import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.business.Boars_PmBusiness;
+import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.business.Reserve_PmBusiness;
+import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller.model.Reserve_PmResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -15,31 +15,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@RestController
-@RequestMapping("/api/boars_pm")
-public class Boars_PmApiController {
 
-    private final Boars_PmBusiness boarsPmBusiness;
+@RestController
+@RequestMapping("/api/reserve_pm")
+public class Reserve_PmApiController {
+
+    private final Reserve_PmBusiness reservePmBusiness;
 
     @Autowired
-    public Boars_PmApiController(Boars_PmBusiness boarsPmBusiness) {
-        this.boarsPmBusiness = boarsPmBusiness;
+    public Reserve_PmApiController(Reserve_PmBusiness reservePmBusiness) {
+        this.reservePmBusiness = reservePmBusiness;
     }
 
-    @GetMapping("/pmdata/{boarsBarnRoomNum}")
-    public ResponseEntity<Boars_PmResponse> getPmSensorData(@PathVariable String boarsBarnRoomNum) {
-        return ResponseEntity.ok(boarsPmBusiness.getPmSensorData(boarsBarnRoomNum));
+    @GetMapping("/pmdata/{reserveRoomNum}")
+    public ResponseEntity<Reserve_PmResponse> getPmSensorData(@PathVariable String reserveRoomNum) {
+        return ResponseEntity.ok(reservePmBusiness.getPmSensorData(reserveRoomNum));
     }
 
     @GetMapping("/export")
     public ResponseEntity<Resource> exportPmData() {
-        String filePath = "boars_pm_data.xlsx";
+        String filePath = "reserve_pm_data.xlsx";
         try {
-            boarsPmBusiness.exportPmDataToExcel(filePath);
+            reservePmBusiness.exportPmDataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=boars_pm_data.xlsx");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=reserve_pm_data.xlsx");
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
         } catch (IOException e) {

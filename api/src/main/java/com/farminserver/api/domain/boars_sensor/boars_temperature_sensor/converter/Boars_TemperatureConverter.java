@@ -12,8 +12,8 @@ import java.util.Optional;
 @Component
 public class Boars_TemperatureConverter {
 
-    public Boars_TemperatureResponse convert(Boars_TemperatureSensorEntity temperatureSeneorEntity) {
-        return Optional.ofNullable(temperatureSeneorEntity)
+    public Boars_TemperatureResponse convert(Boars_TemperatureSensorEntity temperatureSensorEntity) {
+        return Optional.ofNullable(temperatureSensorEntity)
                 .map(entity -> new Boars_TemperatureResponse(
                         entity.getBoarsBarnRoomNum(),
                         entity.getBoarsTemperData(),

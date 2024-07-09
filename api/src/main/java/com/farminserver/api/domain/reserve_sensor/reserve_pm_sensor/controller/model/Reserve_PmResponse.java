@@ -1,7 +1,7 @@
-package com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model;
+package com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller.model;
 
-public class Boars_PmResponse {
-    private String boarsBarnRoomNum;
+public class Reserve_PmResponse {
+    private String reserveSowsRoomNum;
     private double pm1_0;
     private double pm2_5;
     private double pm10;
@@ -9,8 +9,8 @@ public class Boars_PmResponse {
     private String unit;
     private long timestamp;
 
-    public Boars_PmResponse(String boarsBarnRoomNum, double pm1_0, double pm2_5, double pm10, double totalPm, String unit, long timestamp) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
+    public Reserve_PmResponse(String reserveSowsRoomNum, double pm1_0, double pm2_5, double pm10, double totalPm, String unit, long timestamp) {
+        this.reserveSowsRoomNum = reserveSowsRoomNum;
         this.pm1_0 = pm1_0;
         this.pm2_5 = pm2_5;
         this.pm10 = pm10;
@@ -20,18 +20,16 @@ public class Boars_PmResponse {
     }
 
     // Getters and Setters
-
-    public String getBoarsBarnRoomNum() {
-        return boarsBarnRoomNum;
+    public String getReserveSowsRoomNum() {
+        return reserveSowsRoomNum;
     }
-    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
-        this.boarsBarnRoomNum = boarsBarnRoomNum;
+    public void setReserveSowsRoomNum(String reserveSowsRoomNum) {
+        this.reserveSowsRoomNum = reserveSowsRoomNum;
     }
 
     public double getPm1_0() {
         return pm1_0;
     }
-
     public void setPm1_0(double pm1_0) {
         this.pm1_0 = pm1_0;
     }
@@ -39,7 +37,6 @@ public class Boars_PmResponse {
     public double getPm2_5() {
         return pm2_5;
     }
-
     public void setPm2_5(double pm2_5) {
         this.pm2_5 = pm2_5;
     }
@@ -47,7 +44,6 @@ public class Boars_PmResponse {
     public double getPm10() {
         return pm10;
     }
-
     public void setPm10(double pm10) {
         this.pm10 = pm10;
     }
@@ -55,7 +51,6 @@ public class Boars_PmResponse {
     public double getTotalPm() {
         return totalPm;
     }
-
     public void setTotalPm(double totalPm) {
         this.totalPm = totalPm;
     }
@@ -63,7 +58,6 @@ public class Boars_PmResponse {
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -71,9 +65,7 @@ public class Boars_PmResponse {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
-
 }
