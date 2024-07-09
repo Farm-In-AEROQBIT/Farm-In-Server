@@ -1,8 +1,6 @@
 package com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.converter;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
 import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model.Reserve_Co2Response;
-import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
 import com.farminserver.db.reserve_co2_sensor.Reserve_Co2SensorEntity;
 import org.springframework.stereotype.Component;
 import com.farminserver.api.common.exception.ApiException;
