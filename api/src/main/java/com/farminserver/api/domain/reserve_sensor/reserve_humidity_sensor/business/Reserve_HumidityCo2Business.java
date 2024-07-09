@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class Co2Business {
+public class Reserve_HumidityCo2Business {
 
     private final UserService userService;
 
     @Autowired
-    public Co2Business(UserService userService) {
+    public Reserve_HumidityCo2Business(UserService userService) {
         this.userService = userService;
     }
 
