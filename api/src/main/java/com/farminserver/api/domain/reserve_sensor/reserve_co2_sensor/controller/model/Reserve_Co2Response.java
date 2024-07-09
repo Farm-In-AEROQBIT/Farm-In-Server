@@ -15,10 +15,10 @@ public class Reserve_Co2Response {
     }
 
     // Getters and Setters
-    public String getReserveSowRoomNum() {
+    public String getReserveBarnRoomNum() {
         return reserveSowsRoomNum;
     }
-    public void setReserveSowsRoomNum(String reserveSowsRoomNum) {
+    public void setReserveBarnRoomNum(String reserveSowsRoomNum) {
         this.reserveSowsRoomNum = reserveSowsRoomNum;
     }
 
