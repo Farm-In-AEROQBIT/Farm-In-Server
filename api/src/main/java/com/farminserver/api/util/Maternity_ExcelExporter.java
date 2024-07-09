@@ -94,7 +94,7 @@ public class Maternity_ExcelExporter {
         workbook.close();
     }
 
-    public void exportMaternity_TemperatureData(List<Maternity_TemperatureResponse> maternityTemperatureRespons, String filePath) throws IOException {
+    public void exportMaternity_TemperatureData(List<Maternity_TemperatureResponse> maternityTemperatureResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Temperature Data");
 
@@ -106,7 +106,7 @@ public class Maternity_ExcelExporter {
         headerRow.createCell(3).setCellValue("Timestamp");
         headerRow.createCell(4).setCellValue("Temperature locate Data");
 
-        for (Maternity_TemperatureResponse response : maternityTemperatureRespons) {
+        for (Maternity_TemperatureResponse response : maternityTemperatureResponse) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getMaternityRoomNum());
             row.createCell(1).setCellValue(response.getMaternityTemperatureData());
@@ -121,7 +121,7 @@ public class Maternity_ExcelExporter {
         workbook.close();
     }
 
-    public void exportMaternity_PmData(List<Maternity_PmResponse> maternityPmRespons, String filePath) throws IOException {
+    public void exportMaternity_PmData(List<Maternity_PmResponse> maternityPmResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
@@ -133,7 +133,7 @@ public class Maternity_ExcelExporter {
         headerRow.createCell(3).setCellValue("Total PM");
         headerRow.createCell(4).setCellValue("Timestamp");
 
-        for (Maternity_PmResponse response : maternityPmRespons) {
+        for (Maternity_PmResponse response : maternityPmResponse) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getPm1_0());
             row.createCell(1).setCellValue(response.getPm2_5());

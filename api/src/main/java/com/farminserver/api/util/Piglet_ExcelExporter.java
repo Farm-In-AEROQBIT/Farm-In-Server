@@ -1,6 +1,5 @@
 package com.farminserver.api.util;
 
-
 import com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.controller.model.Piglet_Co2Response;
 import com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.controller.model.Piglet_HumidityResponse;
 import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller.model.Piglet_Nh3Response;
@@ -122,7 +121,7 @@ public class Piglet_ExcelExporter {
         workbook.close();
     }
 
-    public void exportPiglet_PmData(List<Piglet_PmResponse> pigletPmRespons, String filePath) throws IOException {
+    public void exportPiglet_PmData(List<Piglet_PmResponse> pigletPmResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
@@ -134,7 +133,7 @@ public class Piglet_ExcelExporter {
         headerRow.createCell(3).setCellValue("Total PM");
         headerRow.createCell(4).setCellValue("Timestamp");
 
-        for (Piglet_PmResponse response : pigletPmRespons) {
+        for (Piglet_PmResponse response : pigletPmResponse) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getPm1_0());
             row.createCell(1).setCellValue(response.getPm2_5());
