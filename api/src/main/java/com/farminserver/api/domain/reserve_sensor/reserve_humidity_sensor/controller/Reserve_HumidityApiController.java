@@ -1,8 +1,7 @@
 package com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.controller;
 
-import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.business.Reserve_Co2Business;
-import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model.Reserve_Co2Response;
-import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.business.Reserve_Co2Business;
+import com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.business.Reserve_HumidityBusiness;
+import com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.controller.model.Reserve_HumidityResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -20,27 +19,27 @@ import java.io.IOException;
 @RequestMapping("/api/reserve_humidity")
 public class Reserve_HumidityApiController {
 
-    private final Reserve_Co2Business reserveCo2Business;
+    private final Reserve_HumidityBusiness reserveHumidityBusiness;
 
     @Autowired
-    public Reserve_Co2ApiController(Reserve_Co2Business co2Business) {
-        this.reserveCo2Business = co2Business;
+    public Reserve_HumidityApiController(Reserve_HumidityBusiness HumidityBusiness) {
+        this.reserveHumidityBusiness = HumidityBusiness;
     }
 
     @GetMapping("/humiditydata/{reserveBarnRoomNum}")
-    public ResponseEntity<Reserve_Co2Response> getCo2SensorData(@PathVariable String reserveBarnRoomNum) {
-        return ResponseEntity.ok(reserveCo2Business.getCo2SensorData(reserveBarnRoomNum));
+    public ResponseEntity<Reserve_HumidityResponse> getHumiditySensorData(@PathVariable String reserveBarnRoomNum) {
+        return ResponseEntity.ok(reserveHumidityBusiness.getHumiditySensorData(reserveBarnRoomNum));
     }
 
     @GetMapping("/export")
-    public ResponseEntity<Resource> exportCo2Data() {
-        String filePath = "reserve_co2_data.xlsx";
+    public ResponseEntity<Resource> exportHumidityData() {
+        String filePath = "reserve_humidity_data.xlsx";
         try {
-            reserveCo2Business.exportCo2DataToExcel(filePath);
+            reserveHumidityBusiness.exportHumidityDataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=reserve_humidity_data.xlsx");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=humidity_data.xlsx");
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
         } catch (IOException e) {
