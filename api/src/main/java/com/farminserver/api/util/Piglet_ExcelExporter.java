@@ -1,11 +1,11 @@
 package com.farminserver.api.util;
 
-import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
+
 import com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.controller.model.Piglet_Co2Response;
 import com.farminserver.api.domain.piglet_sensor.piglet_humidity_sensor.controller.model.Piglet_HumidityResponse;
 import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller.model.Piglet_Nh3Response;
 import com.farminserver.api.domain.piglet_sensor.piglet_pm_sensor.controller.model.Piglet_PmResponse;
+import com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.controller.model.Piglet_TemperatureResponse;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -95,7 +95,7 @@ public class Piglet_ExcelExporter {
         workbook.close();
     }
 
-    public void exportBoars_TemperatureData(List<Boars_TemperatureResponse> boarsTemperatureRespons, String filePath) throws IOException {
+    public void exportPiglet_TemperatureData(List<Piglet_TemperatureResponse> boarsTemperatureResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Temperature Data");
 
@@ -107,13 +107,13 @@ public class Piglet_ExcelExporter {
         headerRow.createCell(3).setCellValue("Timestamp");
         headerRow.createCell(4).setCellValue("Temperature locate Data");
 
-        for (Boars_TemperatureResponse response : boarsTemperatureRespons) {
+        for (Piglet_TemperatureResponse response : boarsTemperatureResponse) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
-            row.createCell(1).setCellValue(response.getBoarsTemperatureData());
+            row.createCell(0).setCellValue(response.getPigletRoomNum());
+            row.createCell(1).setCellValue(response.getPigletTemperatureData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
-            row.createCell(4).setCellValue(response.getboarsTemperatureLocateData());
+            row.createCell(4).setCellValue(response.getpigletTemperatureLocateData());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
