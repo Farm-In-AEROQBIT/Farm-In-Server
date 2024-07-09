@@ -27,9 +27,9 @@ public class Reserve_Nh3ApiController {
         this.reserveNh3Business = Nh3Business;
     }
 
-    @GetMapping("/nh3data/{reserveBarnRoomNum}")
-    public ResponseEntity<Reserve_Nh3Response> getNh3SensorData(@PathVariable String reserveRoomNum) {
-        return ResponseEntity.ok(reserveNh3Business.getNh3SensorData(reserveRoomNum));
+    @GetMapping("/nh3data/{reserveSowsRoomNum}")
+    public ResponseEntity<Reserve_Nh3Response> getNh3SensorData(@PathVariable String reserveSowsRoomNum) {
+        return ResponseEntity.ok(reserveNh3Business.getNh3SensorData(reserveSowsRoomNum));
     }
 
     @GetMapping("/export")

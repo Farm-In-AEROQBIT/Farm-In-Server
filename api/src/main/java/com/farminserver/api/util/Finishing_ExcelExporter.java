@@ -120,7 +120,7 @@ public class Finishing_ExcelExporter {
             workbook.close();
         }
 
-        public void exportFinishing_PmData(List<Finishing_PmResponse> finishingPmRespons, String filePath) throws IOException {
+        public void exportFinishing_PmData(List<Finishing_PmResponse> finishingPmResponse, String filePath) throws IOException {
             Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("PM Data");
 
@@ -133,7 +133,7 @@ public class Finishing_ExcelExporter {
             headerRow.createCell(4).setCellValue("Total PM");
             headerRow.createCell(5).setCellValue("Timestamp");
 
-            for (Finishing_PmResponse response : finishingPmRespons) {
+            for (Finishing_PmResponse response : finishingPmResponse) {
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(response.getFinishingBarnRoomNum());
                 row.createCell(1).setCellValue(response.getPm1_0());

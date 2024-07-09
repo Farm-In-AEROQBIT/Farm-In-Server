@@ -1,6 +1,5 @@
 package com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model;
 
-
 public class Reserve_Co2Response {
     private String reserveSowsRoomNum;
     private double ReserveCo2Data;

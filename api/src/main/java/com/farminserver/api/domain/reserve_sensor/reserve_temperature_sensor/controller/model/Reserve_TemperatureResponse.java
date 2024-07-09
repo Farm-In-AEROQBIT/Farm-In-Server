@@ -1,14 +1,14 @@
 package com.farminserver.api.domain.reserve_sensor.reserve_temperature_sensor.controller.model;
 
 public class Reserve_TemperatureResponse {
-    private String reserveRoomNum;
+    private String reserveSowsRoomNum;
     private double ReserveTemperatureData;
     private String unit;
     private long timestamp;
     private long reserveTemperatureLocateData;
 
-    public Reserve_TemperatureResponse(String reserveRoomNum, double reserveTemperatureData, String unit, long timestamp, long reserveTemperatureLocateData) {
-        this.reserveRoomNum = reserveRoomNum;
+    public Reserve_TemperatureResponse(String reserveSowsRoomNum, double reserveTemperatureData, String unit, long timestamp, long reserveTemperatureLocateData) {
+        this.reserveSowsRoomNum = reserveSowsRoomNum;
         this.ReserveTemperatureData = reserveTemperatureData;
         this.unit = unit;
         this.timestamp = timestamp;
@@ -16,11 +16,11 @@ public class Reserve_TemperatureResponse {
     }
 
     // Getters and Setters
-    public String getReserveRoomNum() {
-        return reserveRoomNum;
+    public String getReserveSowsRoomNum() {
+        return reserveSowsRoomNum;
     }
-    public void setReserveRoomNum(String reserveRoomNum) {
-        this.reserveRoomNum = reserveRoomNum;
+    public void setReserveSowsRoomNum(String reserveSowsRoomNum) {
+        this.reserveSowsRoomNum = reserveSowsRoomNum;
     }
 
     public double getReserveTemperatureData() {

@@ -120,7 +120,7 @@ public class Gestation_ExcelExporter {
         workbook.close();
     }
 
-    public void exportGestation_PmData(List<Gestation_PmResponse> gestationPmResponses, String filePath) throws IOException {
+    public void exportGestation_PmData(List<Gestation_PmResponse> gestationPmResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
@@ -133,7 +133,7 @@ public class Gestation_ExcelExporter {
         headerRow.createCell(4).setCellValue("Total PM");
         headerRow.createCell(5).setCellValue("Timestamp");
 
-        for (Gestation_PmResponse response : gestationPmResponses) {
+        for (Gestation_PmResponse response : gestationPmResponse) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getGestationRoomNum());
             row.createCell(1).setCellValue(response.getPm1_0());

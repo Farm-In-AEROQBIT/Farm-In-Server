@@ -121,7 +121,7 @@ public class Growing_ExcelExporter {
         workbook.close();
     }
 
-    public void exportGrowing_PmData(List<Growing_PmResponse> growingPmResponses, String filePath) throws IOException {
+    public void exportGrowing_PmData(List<Growing_PmResponse> growingPmResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
@@ -134,7 +134,7 @@ public class Growing_ExcelExporter {
         headerRow.createCell(4).setCellValue("Total PM");
         headerRow.createCell(5).setCellValue("Timestamp");
 
-        for (Growing_PmResponse response : growingPmResponses) {
+        for (Growing_PmResponse response : growingPmResponse) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getGrowingRoomNum());
             row.createCell(1).setCellValue(response.getPm1_0());

@@ -127,19 +127,21 @@ public class Piglet_ExcelExporter {
 
         int rowNum = 0;
         Row headerRow = sheet.createRow(rowNum++);
-        headerRow.createCell(0).setCellValue("PM1.0");
-        headerRow.createCell(1).setCellValue("PM2.5");
-        headerRow.createCell(2).setCellValue("PM10");
-        headerRow.createCell(3).setCellValue("Total PM");
-        headerRow.createCell(4).setCellValue("Timestamp");
+        headerRow.createCell(0).setCellValue("Room Number");
+        headerRow.createCell(1).setCellValue("PM1.0");
+        headerRow.createCell(2).setCellValue("PM2.5");
+        headerRow.createCell(3).setCellValue("PM10");
+        headerRow.createCell(4).setCellValue("Total PM");
+        headerRow.createCell(5).setCellValue("Timestamp");
 
         for (Piglet_PmResponse response : pigletPmResponse) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getPm1_0());
-            row.createCell(1).setCellValue(response.getPm2_5());
-            row.createCell(2).setCellValue(response.getPm10());
-            row.createCell(3).setCellValue(response.getTotalPm());
-            row.createCell(4).setCellValue(response.getTimestamp());
+            row.createCell(0).setCellValue(response.getPigletRoomNum());
+            row.createCell(1).setCellValue(response.getPm1_0());
+            row.createCell(2).setCellValue(response.getPm2_5());
+            row.createCell(3).setCellValue(response.getPm10());
+            row.createCell(4).setCellValue(response.getTotalPm());
+            row.createCell(5).setCellValue(response.getTimestamp());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {

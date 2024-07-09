@@ -15,17 +15,17 @@ public class Reserve_HumidityResponse {
 
     // Getters and Setters
 
-    public String getReserveBarnRoomNum() {
+    public String getReserveSowsRoomNum() {
         return reserveBarnRoomNum;
     }
-    public void setReserveBarnRoomNum(String reserveBarnRoomNum) {
+    public void setReserveSowsRoomNum(String reserveBarnRoomNum) {
         this.reserveBarnRoomNum = reserveBarnRoomNum;
     }
 
-    public double getReservesHumidityData() {
+    public double getReserveHumidityData() {
         return ReserveHumidityData;
     }
-    public void setHumidity(double ReserveHumidity) {
+    public void setReserveHumidityData(double ReserveHumidity) {
         this.ReserveHumidityData = ReserveHumidity;
     }
 

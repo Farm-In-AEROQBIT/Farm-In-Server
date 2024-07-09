@@ -15,10 +15,10 @@ public class Reserve_Co2Converter {
     public Reserve_Co2Response convert(Reserve_Co2SensorEntity co2SensorEntity) {
         return Optional.ofNullable(co2SensorEntity)
                 .map(entity -> new Reserve_Co2Response(
-                        entity.getFarmName(),
-                        entity.getreserve_Co2Data(),
+                        entity.getReserve_Sows_Room_Num(),
+                        entity.getReserve_Co2_Data(),
                         "ppm",
-                        entity.getCo2InputTime().toEpochSecond(ZoneOffset.UTC)
+                        entity.getReserve_Co2_Input_Time().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }

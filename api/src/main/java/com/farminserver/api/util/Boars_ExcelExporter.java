@@ -120,25 +120,27 @@ public class Boars_ExcelExporter {
         workbook.close();
     }
 
-    public void exportBoars_PmData(List<Boars_PmResponse> boarsPmRespons, String filePath) throws IOException {
+    public void exportBoars_PmData(List<Boars_PmResponse> boarsPmResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
         int rowNum = 0;
         Row headerRow = sheet.createRow(rowNum++);
-        headerRow.createCell(0).setCellValue("PM1.0");
-        headerRow.createCell(1).setCellValue("PM2.5");
-        headerRow.createCell(2).setCellValue("PM10");
-        headerRow.createCell(3).setCellValue("Total PM");
-        headerRow.createCell(4).setCellValue("Timestamp");
+        headerRow.createCell(0).setCellValue("Room Number");
+        headerRow.createCell(1).setCellValue("PM1.0");
+        headerRow.createCell(2).setCellValue("PM2.5");
+        headerRow.createCell(3).setCellValue("PM10");
+        headerRow.createCell(4).setCellValue("Total PM");
+        headerRow.createCell(5).setCellValue("Timestamp");
 
-        for (Boars_PmResponse response : boarsPmRespons) {
+        for (Boars_PmResponse response : boarsPmResponse) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getPm1_0());
-            row.createCell(1).setCellValue(response.getPm2_5());
-            row.createCell(2).setCellValue(response.getPm10());
-            row.createCell(3).setCellValue(response.getTotalPm());
-            row.createCell(4).setCellValue(response.getTimestamp());
+            row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
+            row.createCell(1).setCellValue(response.getPm1_0());
+            row.createCell(2).setCellValue(response.getPm2_5());
+            row.createCell(3).setCellValue(response.getPm10());
+            row.createCell(4).setCellValue(response.getTotalPm());
+            row.createCell(5).setCellValue(response.getTimestamp());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {

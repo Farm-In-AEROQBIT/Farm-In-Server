@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-
 @RestController
 @RequestMapping("/api/reserve_pm")
 public class Reserve_PmApiController {
@@ -27,9 +26,9 @@ public class Reserve_PmApiController {
         this.reservePmBusiness = reservePmBusiness;
     }
 
-    @GetMapping("/pmdata/{reserveRoomNum}")
-    public ResponseEntity<Reserve_PmResponse> getPmSensorData(@PathVariable String reserveRoomNum) {
-        return ResponseEntity.ok(reservePmBusiness.getPmSensorData(reserveRoomNum));
+    @GetMapping("/pmdata/{reserveSowsRoomNum}")
+    public ResponseEntity<Reserve_PmResponse> getPmSensorData(@PathVariable String reserveSowsRoomNum) {
+        return ResponseEntity.ok(reservePmBusiness.getPmSensorData(reserveSowsRoomNum));
     }
 
     @GetMapping("/export")

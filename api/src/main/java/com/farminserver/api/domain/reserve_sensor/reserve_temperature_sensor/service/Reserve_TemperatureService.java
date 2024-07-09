@@ -26,8 +26,8 @@ public class Reserve_TemperatureService {
         this.excelExporter = excelExporter;
     }
 
-    public Reserve_TemperatureResponse getTemperatureData(String reserveBarnRoomNum) {
-        Reserve_TemperatureSensorEntity entity = repository.findById(reserveBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
+    public Reserve_TemperatureResponse getTemperatureData(String reserveSowsRoomNum) {
+        Reserve_TemperatureSensorEntity entity = repository.findById(reserveSowsRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }
 

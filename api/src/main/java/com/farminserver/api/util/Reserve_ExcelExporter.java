@@ -1,16 +1,15 @@
 package com.farminserver.api.util;
 
-import com.farminserver.api.domain.reserve_sensor.reserve_nh3_sensor.controller.model.Reserve_Nh3Response;
-import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller.model.Reserve_PmResponse;
-import com.farminserver.api.domain.reserve_sensor.reserve_temperature_sensor.controller.model.Reserve_TemperatureResponse;
-import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model.Reserve_Co2Response;
-import com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.controller.model.Reserve_HumidityResponse;
-
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
+import com.farminserver.api.domain.reserve_sensor.reserve_nh3_sensor.controller.model.Reserve_Nh3Response;
+import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller.model.Reserve_PmResponse;
+import com.farminserver.api.domain.reserve_sensor.reserve_temperature_sensor.controller.model.Reserve_TemperatureResponse;
+import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model.Reserve_Co2Response;
+import com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.controller.model.Reserve_HumidityResponse;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,7 +31,7 @@ public class Reserve_ExcelExporter {
 
         for (Reserve_Nh3Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getReserveRoomNum());
+            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
             row.createCell(1).setCellValue(response.getReserveNh3Data());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
@@ -82,7 +81,7 @@ public class Reserve_ExcelExporter {
 
         for (Reserve_HumidityResponse response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getReserveBarnRoomNum());
+            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
             row.createCell(1).setCellValue(response.getReserveHumidityData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
@@ -94,7 +93,7 @@ public class Reserve_ExcelExporter {
         workbook.close();
     }
 
-    public void exportReserve_TemperatureData(List<Reserve_TemperatureResponse> reserveTemperatureRespons, String filePath) throws IOException {
+    public void exportReserve_TemperatureData(List<Reserve_TemperatureResponse> reserveTemperatureResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Temperature Data");
 
@@ -106,9 +105,9 @@ public class Reserve_ExcelExporter {
         headerRow.createCell(3).setCellValue("Timestamp");
         headerRow.createCell(4).setCellValue("Temperature locate Data");
 
-        for (Reserve_TemperatureResponse response : reserveTemperatureRespons) {
+        for (Reserve_TemperatureResponse response : reserveTemperatureResponse) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getReserveRoomNum());
+            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
             row.createCell(1).setCellValue(response.getReserveTemperatureData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
@@ -127,19 +126,21 @@ public class Reserve_ExcelExporter {
 
         int rowNum = 0;
         Row headerRow = sheet.createRow(rowNum++);
-        headerRow.createCell(0).setCellValue("PM1.0");
-        headerRow.createCell(1).setCellValue("PM2.5");
-        headerRow.createCell(2).setCellValue("PM10");
-        headerRow.createCell(3).setCellValue("Total PM");
-        headerRow.createCell(4).setCellValue("Timestamp");
+        headerRow.createCell(0).setCellValue("Room Number");
+        headerRow.createCell(1).setCellValue("PM1.0");
+        headerRow.createCell(2).setCellValue("PM2.5");
+        headerRow.createCell(3).setCellValue("PM10");
+        headerRow.createCell(4).setCellValue("Total PM");
+        headerRow.createCell(5).setCellValue("Timestamp");
 
         for (Reserve_PmResponse response : reservePmResponse) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getPm1_0());
-            row.createCell(1).setCellValue(response.getPm2_5());
-            row.createCell(2).setCellValue(response.getPm10());
-            row.createCell(3).setCellValue(response.getTotalPm());
-            row.createCell(4).setCellValue(response.getTimestamp());
+            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
+            row.createCell(1).setCellValue(response.getPm1_0());
+            row.createCell(2).setCellValue(response.getPm2_5());
+            row.createCell(3).setCellValue(response.getPm10());
+            row.createCell(4).setCellValue(response.getTotalPm());
+            row.createCell(5).setCellValue(response.getTimestamp());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
