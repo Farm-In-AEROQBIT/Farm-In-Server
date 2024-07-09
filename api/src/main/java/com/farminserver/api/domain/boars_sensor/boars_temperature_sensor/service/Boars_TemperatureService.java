@@ -2,7 +2,6 @@ package com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.servic
 
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSensorEntity;
-import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSensorEntity;
 import com.farminserver.db.boars_temperature_sensor.Boars_TemperatureSensorRepository;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.converter.Boars_TemperatureConverter;
 import com.farminserver.api.util.Boars_ExcelExporter;

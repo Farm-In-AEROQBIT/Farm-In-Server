@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
-
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -22,43 +22,39 @@ import jakarta.persistence.Id;
 public class Reserve_TemperatureSensorEntity extends BaseEntity {
     @Id
     private String reserveSowsRoomNum;
-    private String reserveTemperatureData;
-    private String reserveTemperatureInputTime;
-    private String reserveTemperatureLocate;
+    private double reserveTemperatureData;
+    private LocalDateTime reserveTemperatureInputTime;
+    private long reserveTemperatureLocateData;
 
     public String getReserveSowsRoomNum() {
             return reserveSowsRoomNum;
         }
-
     public void setReserveSowsRoomNum(String reserveSowsRoomNum) {
         this.reserveSowsRoomNum = reserveSowsRoomNum;
     }
 
 
-    public String getReserveTemperatureData() {
+    public double getReserveTemperatureData() {
         return reserveTemperatureData;
     }
-
-    public void setReserveTemperatureData(String reserveTemperatureData) {
+    public void setReserveTemperatureData(double reserveTemperatureData) {
         this.reserveTemperatureData = reserveTemperatureData;
     }
 
 
-    public String getReserveTemperatureInputTime() {
+    public LocalDateTime getReserveTemperatureInputTime() {
         return reserveTemperatureInputTime;
     }
-
-    public void setReserveTemperatureInputTime(String reserveTemperatureInputTime) {
+    public void setReserveTemperatureInputTime(LocalDateTime reserveTemperatureInputTime) {
         this.reserveTemperatureInputTime = reserveTemperatureInputTime;
     }
 
 
-    public String getReserveTemperatureLocate() {
-        return reserveTemperatureLocate;
+    public long getReserveTemperatureLocateData() {
+        return reserveTemperatureLocateData;
     }
-
-    public void setReserveTemperatureLocate(String reserveTemperatureLocate) {
-        this.reserveTemperatureLocate = reserveTemperatureLocate;
+    public void setReserveTemperatureLocateData(long reserveTemperatureLocateData) {
+        this.reserveTemperatureLocateData = reserveTemperatureLocateData;
     }
 
 
