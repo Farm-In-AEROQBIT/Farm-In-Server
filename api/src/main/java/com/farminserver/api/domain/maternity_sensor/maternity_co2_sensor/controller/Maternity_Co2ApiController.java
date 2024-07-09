@@ -39,7 +39,7 @@ public class Maternity_Co2ApiController {
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=co2_data.xlsx");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=maternity_co2_data.xlsx");
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
         } catch (IOException e) {

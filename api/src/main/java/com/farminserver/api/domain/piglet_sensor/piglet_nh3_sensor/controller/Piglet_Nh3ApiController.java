@@ -1,4 +1,5 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller;
+
 import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.business.Piglet_Nh3Business;
 import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller.model.Piglet_Nh3Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +33,13 @@ public class Piglet_Nh3ApiController {
 
     @GetMapping("/export")
     public ResponseEntity<Resource> exportNh3Data() {
-        String filePath = "baors_nh3_data.xlsx";
+        String filePath = "piglet_nh3_data.xlsx";
         try {
             pigletNh3Business.exportPiglet_Nh3DataToExcel(filePath);
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=nh3_data.xlsx");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=piglet_nh3_data.xlsx");
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
         } catch (IOException e) {

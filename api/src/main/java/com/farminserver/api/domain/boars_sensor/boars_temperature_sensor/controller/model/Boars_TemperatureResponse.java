@@ -7,9 +7,9 @@ public class Boars_TemperatureResponse {
     private long timestamp;
     private long boarsTemperatureLocateData;
 
-    public Boars_TemperatureResponse(String boarsBarnRoomNum, double boarstemperaturedata, String unit, long timestamp, long boarsTemperatureLocateData) {
+    public Boars_TemperatureResponse(String boarsBarnRoomNum, double boarsTemperatureData, String unit, long timestamp, long boarsTemperatureLocateData) {
         this.boarsBarnRoomNum = boarsBarnRoomNum;
-        this.BoarsTemperatureData = boarstemperaturedata;
+        this.BoarsTemperatureData = boarsTemperatureData;
         this.unit = unit;
         this.timestamp = timestamp;
         this.boarsTemperatureLocateData = boarsTemperatureLocateData;

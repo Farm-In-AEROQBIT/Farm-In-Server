@@ -31,7 +31,6 @@ public class Piglet_PmResponse {
     public double getPm1_0() {
         return pm1_0;
     }
-
     public void setPm1_0(double pm1_0) {
         this.pm1_0 = pm1_0;
     }
@@ -39,7 +38,6 @@ public class Piglet_PmResponse {
     public double getPm2_5() {
         return pm2_5;
     }
-
     public void setPm2_5(double pm2_5) {
         this.pm2_5 = pm2_5;
     }
@@ -47,7 +45,6 @@ public class Piglet_PmResponse {
     public double getPm10() {
         return pm10;
     }
-
     public void setPm10(double pm10) {
         this.pm10 = pm10;
     }
@@ -55,7 +52,6 @@ public class Piglet_PmResponse {
     public double getTotalPm() {
         return totalPm;
     }
-
     public void setTotalPm(double totalPm) {
         this.totalPm = totalPm;
     }
@@ -63,7 +59,6 @@ public class Piglet_PmResponse {
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -71,7 +66,6 @@ public class Piglet_PmResponse {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }

@@ -7,9 +7,9 @@ public class Piglet_TemperatureResponse {
     private long timestamp;
     private long pigletTemperatureLocateData;
 
-    public Piglet_TemperatureResponse(String pigletBarnRoomNum, double piglettemperaturedata, String unit, long timestamp, long pigletTemperatureLocateData) {
+    public Piglet_TemperatureResponse(String pigletBarnRoomNum, double pigletTemperatureData, String unit, long timestamp, long pigletTemperatureLocateData) {
         this.pigletBarnRoomNum = pigletBarnRoomNum;
-        this.PigletTemperatureData = piglettemperaturedata;
+        this.PigletTemperatureData = pigletTemperatureData;
         this.unit = unit;
         this.timestamp = timestamp;
         this.pigletTemperatureLocateData = pigletTemperatureLocateData;

@@ -1,6 +1,5 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.controller;
 
-
 import com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.business.Piglet_TemperatureBusiness;
 import com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.controller.model.Piglet_TemperatureResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ public class Piglet_TemperatureApiController {
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=temperature_data.xlsx");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=piglet_temperature_data.xlsx");
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
         } catch (IOException e) {

@@ -8,7 +8,6 @@ import com.farminserver.db.piglet_pm_sensor.Piglet_PmSensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

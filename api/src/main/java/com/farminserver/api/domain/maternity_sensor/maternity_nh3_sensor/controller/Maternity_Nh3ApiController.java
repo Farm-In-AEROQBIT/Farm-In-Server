@@ -1,6 +1,5 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller;
 
-
 import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.business.Maternity_Nh3Business;
 import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller.model.Maternity_Nh3Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ public class Maternity_Nh3ApiController {
             Resource resource = new FileSystemResource(filePath);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=nh3_data.xlsx");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=maternity_nh3_data.xlsx");
 
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
         } catch (IOException e) {

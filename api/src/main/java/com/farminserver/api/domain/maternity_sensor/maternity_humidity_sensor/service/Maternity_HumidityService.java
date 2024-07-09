@@ -50,7 +50,7 @@ public class Maternity_HumidityService {
     }*/
 
     public void exportHumidityDataToExcel(String filePath) throws IOException {
-        List<Maternity_HumidityResponse> maternityHumidityRespons = getAllHumidityData();
-        maternityExcelExporter.exportMaternity_humidityData(maternityHumidityRespons, filePath);
+        List<Maternity_HumidityResponse> maternityHumidityResponse = getAllHumidityData();
+        maternityExcelExporter.exportMaternity_humidityData(maternityHumidityResponse, filePath);
     }
 }

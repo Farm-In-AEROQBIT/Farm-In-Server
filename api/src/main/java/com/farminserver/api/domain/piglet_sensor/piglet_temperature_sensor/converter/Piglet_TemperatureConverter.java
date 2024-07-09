@@ -12,8 +12,8 @@ import java.util.Optional;
 @Component
 public class Piglet_TemperatureConverter {
 
-    public Piglet_TemperatureResponse convert(Piglet_TemperatureSensorEntity temperatureSeneorEntity) {
-        return Optional.ofNullable(temperatureSeneorEntity)
+    public Piglet_TemperatureResponse convert(Piglet_TemperatureSensorEntity temperatureSensorEntity) {
+        return Optional.ofNullable(temperatureSensorEntity)
                 .map(entity -> new Piglet_TemperatureResponse(
                         entity.getPigletRoomNum(),
                         entity.getPigletTemperData(),

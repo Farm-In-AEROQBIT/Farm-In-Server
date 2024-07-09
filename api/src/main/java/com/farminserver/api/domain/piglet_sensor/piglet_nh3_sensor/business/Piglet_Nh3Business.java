@@ -1,6 +1,5 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.business;
 
-
 import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller.model.Piglet_Nh3Response;
 import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.service.Piglet_Nh3Service;
 import org.springframework.beans.factory.annotation.Autowired;

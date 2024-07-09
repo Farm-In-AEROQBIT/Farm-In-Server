@@ -7,7 +7,7 @@ public class Maternity_Nh3Response {
     private long timestamp;
 
     public Maternity_Nh3Response(String maternityRoomNum, double maternityNh3, String unit, long timestamp) {
-        this.MaternityRoomNum = MaternityRoomNum;
+        this.MaternityRoomNum = maternityRoomNum;
         this.MaternityNh3 = maternityNh3;
         this.unit = unit;
         this.timestamp = timestamp;

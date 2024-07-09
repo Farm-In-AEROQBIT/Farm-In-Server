@@ -5,7 +5,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boar_Co2Response;
+import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.Boars_Co2Response;
 import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.Boars_HumidityResponse;
 import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
@@ -43,7 +43,7 @@ public class Boars_ExcelExporter {
         workbook.close();
     }
 
-    public void exportBoars_co2Data(List<Boar_Co2Response> responses, String filePath) throws IOException {
+    public void exportBoars_co2Data(List<Boars_Co2Response> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Co2 Data");
 
@@ -54,7 +54,7 @@ public class Boars_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Boar_Co2Response response : responses) {
+        for (Boars_Co2Response response : responses) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(response.getBoarsBarnRoomNum());
             row.createCell(1).setCellValue(response.getBoarsCo2Data());

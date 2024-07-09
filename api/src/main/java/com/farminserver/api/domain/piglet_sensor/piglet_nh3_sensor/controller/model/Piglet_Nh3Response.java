@@ -6,9 +6,9 @@ public class Piglet_Nh3Response {
     private String unit;
     private long timestamp;
 
-    public Piglet_Nh3Response(String pigletRoomNum, double pigletnh3, String unit, long timestamp) {
+    public Piglet_Nh3Response(String pigletRoomNum, double pigletNh3Data, String unit, long timestamp) {
         this.pigletRoomNum = pigletRoomNum;
-        this.PigletNh3 = pigletnh3;
+        this.PigletNh3 = pigletNh3Data;
         this.unit = unit;
         this.timestamp = timestamp;
     }

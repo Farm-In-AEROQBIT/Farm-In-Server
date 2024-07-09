@@ -7,9 +7,9 @@ public class Maternity_TemperatureResponse {
     private long timestamp;
     private long maternityTemperatureLocateData;
 
-    public Maternity_TemperatureResponse(String maternityBarnRoomNum, double maternitytemperaturedata, String unit, long timestamp, long maternityTemperatureLocateData) {
+    public Maternity_TemperatureResponse(String maternityBarnRoomNum, double maternityTemperatureData, String unit, long timestamp, long maternityTemperatureLocateData) {
         this.maternityRoomNum = maternityBarnRoomNum;
-        this.MaternityTemperatureData = maternitytemperaturedata;
+        this.MaternityTemperatureData = maternityTemperatureData;
         this.unit = unit;
         this.timestamp = timestamp;
         this.maternityTemperatureLocateData = maternityTemperatureLocateData;
