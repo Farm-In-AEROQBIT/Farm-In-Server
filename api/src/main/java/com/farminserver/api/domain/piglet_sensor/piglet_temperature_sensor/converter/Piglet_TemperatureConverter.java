@@ -1,28 +1,25 @@
 package com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.converter;
 
-import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
+import com.farminserver.db.piglet_temperature_sensor.Piglet_TemperatureSensorEntity;
+import com.farminserver.api.domain.piglet_sensor.piglet_temperature_sensor.controller.model.Piglet_TemperatureResponse;
 import org.springframework.stereotype.Component;
-import com.farminserver.db.boars_co2_sensor.CO2SensorEntity;
 import com.farminserver.api.common.exception.ApiException;
 import com.farminserver.api.common.error.ErrorCode;
 
+import java.time.ZoneOffset;
 import java.util.Optional;
 
 @Component
 public class Piglet_TemperatureConverter {
 
-    public UserResponse convert(double co2) {
-        String unit = "ppm";
-        long timestamp = System.currentTimeMillis();
-        return new UserResponse(co2, unit, timestamp);
-    }
-
-    public UserResponse toResponse(CO2SensorEntity co2SensorEntity) {
-        return Optional.ofNullable(co2SensorEntity)
-                .map(entity -> new UserResponse(
-                        entity.getCo2Data(),
-                        "ppm",
-                        entity.getCo2InputTime().atZone(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli()
+    public Piglet_TemperatureResponse convert(Piglet_TemperatureSensorEntity temperatureSeneorEntity) {
+        return Optional.ofNullable(temperatureSeneorEntity)
+                .map(entity -> new Piglet_TemperatureResponse(
+                        entity.getPigletRoomNum(),
+                        entity.getPigletTemperData(),
+                        "°C",
+                        entity.getPigletTemperLocateData(),
+                        entity.getPigletTemperInputTime().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
