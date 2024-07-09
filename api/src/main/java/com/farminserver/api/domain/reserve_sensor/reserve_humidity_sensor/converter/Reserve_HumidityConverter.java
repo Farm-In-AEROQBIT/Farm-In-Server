@@ -15,10 +15,10 @@ public class Reserve_HumidityConverter {
     public Reserve_HumidityResponse convert(Reserve_HumiditySensorEntity humiditySensorEntity) {
         return Optional.ofNullable(humiditySensorEntity)
                 .map(entity -> new Reserve_HumidityResponse(
-                        entity.getReserve_Barn_Room_Num(),
-                        entity.getReserve_Humidity_Data(),
+                        entity.getReserve_Sows_Room_Num(),
+                        entity.getreserve_HumidityData(),
                         "%",
-                        entity.getReserve_Humidity_Input_Time().toEpochSecond(ZoneOffset.UTC)
+                        entity.getreserve_Humidity_Input_Time().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }

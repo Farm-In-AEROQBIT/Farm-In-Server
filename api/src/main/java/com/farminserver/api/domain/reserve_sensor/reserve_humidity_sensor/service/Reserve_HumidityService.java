@@ -40,15 +40,15 @@ public class Reserve_HumidityService {
         return responses;
     }
 
-    /*public List<Boars_HumidityResponse> getAllHumidityData() {
-        List<Boars_HumidityResponse> responses = new ArrayList<>();
-        responses.add(new Boars_HumidityResponse(55.0, "%", System.currentTimeMillis()));
-        responses.add(new Boars_HumidityResponse(56.0, "%", System.currentTimeMillis() - 10000));
+    /*public List<Reserve_HumidityResponse> getAllHumidityData() {
+        List<Reserve_HumidityResponse> responses = new ArrayList<>();
+        responses.add(new Reserve_HumidityResponse(55.0, "%", System.currentTimeMillis()));
+        responses.add(new Reserve_HumidityResponse(56.0, "%", System.currentTimeMillis() - 10000));
         return responses;
     }*/
 
     public void exportHumidityDataToExcel(String filePath) throws IOException {
         List<Reserve_HumidityResponse> reserveHumidityRespons = getAllHumidityData();
-        reserveExcelExporter.exportBoars_humidityData(reserveHumidityRespons, filePath);
+        reserveExcelExporter.exportReserve_humidityData(reserveHumidityRespons, filePath);
     }
 }
