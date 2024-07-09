@@ -1,4 +1,4 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model;
+package com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.controller.model;
 
 public class Reserve_HumidityResponse {
     private double co2;

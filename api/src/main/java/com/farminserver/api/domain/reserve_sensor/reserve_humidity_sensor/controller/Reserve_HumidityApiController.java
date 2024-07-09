@@ -1,4 +1,4 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller;
+package com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.controller;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.UserBusiness;
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;

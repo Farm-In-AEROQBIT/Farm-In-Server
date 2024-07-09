@@ -1,4 +1,4 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter;
+package com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.converter;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
 import org.springframework.stereotype.Component;
