@@ -1,4 +1,4 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller;
+package com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business.UserBusiness;
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
@@ -16,12 +16,12 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/boars_co2")
-public class Co2ApiController {
+public class Reserve_Co2ApiController {
 
     private final UserBusiness userBusiness;
 
     @Autowired
-    public Co2ApiController(UserBusiness userBusiness) {
+    public Reserve_Co2ApiController(UserBusiness userBusiness) {
         this.userBusiness = userBusiness;
     }
 

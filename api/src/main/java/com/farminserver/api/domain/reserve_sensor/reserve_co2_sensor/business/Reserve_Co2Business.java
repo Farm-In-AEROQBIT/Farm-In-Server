@@ -1,4 +1,4 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.business;
+package com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.business;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service.UserService;
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class Co2Business {
+public class Reserve_Co2Business {
 
     private final UserService userService;
 
     @Autowired
-    public Co2Business(UserService userService) {
+    public Reserve_Co2Business(UserService userService) {
         this.userService = userService;
     }
 

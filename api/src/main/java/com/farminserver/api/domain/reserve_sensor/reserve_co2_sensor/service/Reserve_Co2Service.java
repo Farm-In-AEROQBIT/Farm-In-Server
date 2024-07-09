@@ -1,4 +1,4 @@
-package com.farminserver.api.domain.boars_sensor.boars_co2_sensor.service;
+package com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.service;
 
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.model.UserResponse;
 import com.farminserver.api.util.Boars_ExcelExporter;
@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class Co2Service {
+public class Reserve_Co2Service {
 
     private final Boars_ExcelExporter boarsExcelExporter;
 
     @Autowired
-    public Co2Service(Boars_ExcelExporter boarsExcelExporter) {
+    public Reserve_Co2Service(Boars_ExcelExporter boarsExcelExporter) {
         this.boarsExcelExporter = boarsExcelExporter;
     }
 
