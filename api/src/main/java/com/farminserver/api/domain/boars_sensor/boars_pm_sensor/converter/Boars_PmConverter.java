@@ -15,13 +15,13 @@ public class Boars_PmConverter {
     public Boars_PmResponse convert(Boars_PmSensorEntity pmSensorEntity) {
         return Optional.ofNullable(pmSensorEntity)
                 .map(entity -> new Boars_PmResponse(
-                        entity.getBoars_Barn_Room_Num(),
-                        entity.getBoars_Pm1_Data(),
-                        entity.getBoars_Pm25_Data(),
-                        entity.getBoars_Pm10_Data(),
-                        entity.getBoars_Total_Pm_Data(),
+                        entity.getBoarsBarnRoomNum(),
+                        entity.getBoarsPm1Data(),
+                        entity.getBoarsPm25Data(),
+                        entity.getBoarsPm10Data(),
+                        entity.getBoarsTotalPmData(),
                         "ppm",
-                        entity.getboars_Pm_Input_Time().toEpochSecond(ZoneOffset.UTC)
+                        entity.getBoarsPmInputTime().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }

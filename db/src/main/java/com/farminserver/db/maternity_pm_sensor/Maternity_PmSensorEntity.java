@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-
 @EqualsAndHashCode(callSuper = false)
 @Data
 @SuperBuilder
@@ -17,92 +16,75 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "maternity_room_num")
-
-
+@Table(name = "maternity_pm_sensor")
 public class Maternity_PmSensorEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "maternity_room_num")
+    private String maternityRoomNum;
 
-    //PM1.0 수집 데이터
-    public double maternity_Pm1_Data;
+    @Column(name = "maternity_pm1_data")
+    private double maternityPm1Data;
 
-    //PM2.5 수집 데이터
-    public double maternity_Pm25_Data;
+    @Column(name = "maeternity_pm25_data")
+    private double maternityPm25Data;
 
-    //PM10 수집 데이터
-    public double maternity_Pm10_Data;
+    @Column(name = "maeternity_pm10_data")
+    private double maternityPm10Data;
 
-    // 미세먼지 토탈 수집 데이터
-    public double maternity_Total_Pm_Data;
+    @Column(name = "maternity_pm_total_data")
+    private double maternityTotalPmData;
 
-    // 미세먼지 데이터 입력 시간
-    public long maternity_Pm_Input_Time;
+    @Column(name = "maternity_pm_input_time")
+    private LocalDateTime maternityPmInputTime;
 
+    // Getter and Setter methods
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Maternity_Room_Num;
-    private double Maternity_Pm1_Data;
-    private double Maternity_Pm25_Data;
-    private double Maternity_Pm10_Data;
-    private double Maternity_Total_Pm_Data;
-    private LocalDateTime Maternity_Pm_Input_Time;
-
-    public String getFarmName() {
-        return Maternity_Room_Num;
+    public String getMaternityRoomNum() {
+        return maternityRoomNum;
     }
 
-    public void setFarmName(String Maternity_Room_Num) {
-        this.Maternity_Room_Num = Maternity_Room_Num;
+    public void setMaternityRoomNum(String maternityRoomNum) {
+        this.maternityRoomNum = maternityRoomNum;
     }
 
-
-    public double getmaternity_Pm1Data() {
-        return Maternity_Pm1_Data;
+    public double getMaternityPm1Data() {
+        return maternityPm1Data;
     }
 
-    public void setmaternity_Pm1Data(double Maternity_Pm1_Data) {
-        this.Maternity_Pm1_Data = Maternity_Pm1_Data;
+    public void setMaternityPm1Data(double maternityPm1Data) {
+        this.maternityPm1Data = maternityPm1Data;
     }
 
-
-    public double getmaternity_Pm25Data() {
-        return Maternity_Pm25_Data;
+    public double getMaternityPm25Data() {
+        return maternityPm25Data;
     }
 
-    public void setmaternity_Pm25Data(double Maternity_Pm25_Data) {
-        this.Maternity_Pm25_Data = Maternity_Pm25_Data;
+    public void setMaternityPm25Data(double maternityPm25Data) {
+        this.maternityPm25Data = maternityPm25Data;
     }
 
-
-    public double getmaternity_Pm10Data() {
-        return Maternity_Pm10_Data;
+    public double getMaternityPm10Data() {
+        return maternityPm10Data;
     }
 
-    public void setmaternity_Pm10Data(double Maternity_Pm10_Data) {
-        this.Maternity_Pm10_Data = Maternity_Pm10_Data;
+    public void setMaternityPm10Data(double maternityPm10Data) {
+        this.maternityPm10Data = maternityPm10Data;
     }
 
-
-    public double getmaternity_TotalPmData() {
-        return Maternity_Total_Pm_Data;
+    public double getMaternityTotalPmData() {
+        return maternityTotalPmData;
     }
 
-    public void setmaternity_TotalPmData(double Maternity_Total_Pm_Data) {
-        this.Maternity_Total_Pm_Data = Maternity_Total_Pm_Data;
+    public void setMaternityTotalPmData(double maternityTotalPmData) {
+        this.maternityTotalPmData = maternityTotalPmData;
     }
 
-
-    public LocalDateTime getmaternity_Pm_Input_Time() {
-        return Maternity_Pm_Input_Time;
+    public LocalDateTime getMaternityPmInputTime() {
+        return maternityPmInputTime;
     }
 
-    public void setmaternity_Pm_Input_Time(LocalDateTime Maternity_Pm_Input_Time) {
-        this.Maternity_Pm_Input_Time = Maternity_Pm_Input_Time;
+    public void setMaternityPmInputTime(LocalDateTime maternityPmInputTime) {
+        this.maternityPmInputTime = maternityPmInputTime;
     }
-
-
-
-
 }

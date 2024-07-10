@@ -9,7 +9,6 @@ import jakarta.persistence.*;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-
 @EqualsAndHashCode(callSuper = false)
 @Data
 @SuperBuilder
@@ -19,87 +18,74 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Table(name = "finishing_pm_sensor")
-
 public class Finishing_PmSensorEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    //PM1.0 수집 데이터
-    public double finishing_Pm1_Data;
+    @Column(name = "finishing_room_num")
+    private String finishingBarnRoomNum;
 
-    //PM2.5 수집 데이터
-    public double finishing_Pm25_Data;
+    @Column(name = "finishing_pm1_data")
+    private double finishingPm1Data;
 
-    //PM10 수집 데이터
-    public double finishing_Pm10_Data;
+    @Column(name = "finishing_pm25_data")
+    private double finishingPm25Data;
 
-    // 미세먼지 토탈 수집 데이터
-    public double finishing_Total_Pm_Data;
+    @Column(name = "finishing_pm10_data")
+    private double finishingPm10Data;
 
-    // 미세먼지 데이터 입력 시간
-    public long finishing_Pm_Input_Time;
+    @Column(name = "finishing_pm_total_data")
+    private double finishingTotalPmData;
 
+    @Column(name = "finishing_pm_input_time")
+    private LocalDateTime finishingPmInputTime;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Finishing_Barn_Room_Num;
-    private double Finishing_Pm1_Data;
-    private double Finishing_Pm25_Data;
-    private double Finishing_Pm10_Data;
-    private double Finishing_Total_Pm_Data;
-    private LocalDateTime Finishing_Pm_Input_Time;
+    // Getter and Setter methods
 
-
-    public String getFarmName() {
-        return Finishing_Barn_Room_Num;
+    public String getFinishingBarnRoomNum() {
+        return finishingBarnRoomNum;
     }
 
-    public void setFarmName(String Finishing_Barn_Room_Num) {
-        this.Finishing_Barn_Room_Num = Finishing_Barn_Room_Num;
+    public void setFinishingBarnRoomNum(String finishingBarnRoomNum) {
+        this.finishingBarnRoomNum = finishingBarnRoomNum;
     }
 
-    public double getfinishing_Pm1Data() {
-        return Finishing_Pm1_Data;
+    public double getFinishingPm1Data() {
+        return finishingPm1Data;
     }
 
-    public void setfinishing_Pm1Data(double Finishing_Pm1_Data) {
-        this.Finishing_Pm1_Data = Finishing_Pm1_Data;
+    public void setFinishingPm1Data(double finishingPm1Data) {
+        this.finishingPm1Data = finishingPm1Data;
     }
 
-
-    public double getfinishing_Pm25Data() {
-        return Finishing_Pm25_Data;
+    public double getFinishingPm25Data() {
+        return finishingPm25Data;
     }
 
-    public void setfinishing_Pm25Data(double Finishing_Pm25_Data) {
-        this.Finishing_Pm25_Data = Finishing_Pm25_Data;
+    public void setFinishingPm25Data(double finishingPm25Data) {
+        this.finishingPm25Data = finishingPm25Data;
     }
 
-
-    public double getfinishing_Pm10Data() {
-        return Finishing_Pm10_Data;
+    public double getFinishingPm10Data() {
+        return finishingPm10Data;
     }
 
-    public void setfinishing_Pm10Data(double Finishing_Pm10_Data) {
-        this.Finishing_Pm10_Data = Finishing_Pm10_Data;
+    public void setFinishingPm10Data(double finishingPm10Data) {
+        this.finishingPm10Data = finishingPm10Data;
     }
 
-
-    public double getfinishing_TotalPmData() {
-        return Finishing_Total_Pm_Data;
+    public double getFinishingTotalPmData() {
+        return finishingTotalPmData;
     }
 
-    public void setfinishing_TotalPmData(double Finishing_Total_Pm_Data) {
-        this.Finishing_Total_Pm_Data = Finishing_Total_Pm_Data;
+    public void setFinishingTotalPmData(double finishingTotalPmData) {
+        this.finishingTotalPmData = finishingTotalPmData;
     }
 
-
-    public LocalDateTime getfinishing_Pm_Input_Time() {
-        return Finishing_Pm_Input_Time;
+    public LocalDateTime getFinishingPmInputTime() {
+        return finishingPmInputTime;
     }
 
-    public void setfinishing_Pm_Input_Time(LocalDateTime Finishing_Pm_Input_Time) {
-        this.Finishing_Pm_Input_Time = Finishing_Pm_Input_Time;
+    public void setFinishingPmInputTime(LocalDateTime finishingPmInputTime) {
+        this.finishingPmInputTime = finishingPmInputTime;
     }
-
-
 }

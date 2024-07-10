@@ -21,86 +21,71 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 public class Boars_PmSensorEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "boars_barn_room_num")
+    private String boarsBarnRoomNum;
 
-    //PM1.0 수집 데이터
-    public double boars_Pm1_Data;
+    @Column(name = "boars_pm1_data")
+    private double boarsPm1Data;
 
-    //PM2.5 수집 데이터
-    public double boars_Pm25_Data;
+    @Column(name = "boars_pm25_data")
+    private double boarsPm25Data;
 
-    //PM10 수집 데이터
-    public double boars_Pm10_Data;
+    @Column(name = "boars_pm10")
+    private double boarsPm10Data;
 
-    // 미세먼지 토탈 수집 데이터
-    public double boars_Total_Pm_Data;
+    @Column(name = "boars_totalpm_data")
+    private double boarsTotalPmData;
 
-    // 미세먼지 데이터 입력 시간
-    public long boars_Pm_Input_Time;
+    @Column(name = "boars_pm_input_time")
+    private LocalDateTime boarsPmInputTime;
 
+    // Getter and Setter methods
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Boars_Barn_Room_Num;
-    private double Boars_Pm1_Data;
-    private double Boars_Pm25_Data;
-    private double Boars_Pm10_Data;
-    private double Boars_Total_Pm_Data;
-    private LocalDateTime Boars_Pm_Input_Time;
-
-    public String getFarmName() {
-        return Boars_Barn_Room_Num;
+    public String getBoarsBarnRoomNum() {
+        return boarsBarnRoomNum;
     }
 
-    public void setFarmName(String Boars_Barn_Room_Num) {
-        this.Boars_Barn_Room_Num = Boars_Barn_Room_Num;
+    public void setBoarsBarnRoomNum(String boarsBarnRoomNum) {
+        this.boarsBarnRoomNum = boarsBarnRoomNum;
     }
 
-
-    public double getboars_Pm1Data() {
-        return Boars_Pm1_Data;
+    public double getBoarsPm1Data() {
+        return boarsPm1Data;
     }
 
-    public void setboars_Pm1Data(double Boars_Pm1_Data) {
-        this.Boars_Pm1_Data = Boars_Pm1_Data;
+    public void setBoarsPm1Data(double boarsPm1Data) {
+        this.boarsPm1Data = boarsPm1Data;
     }
 
-
-    public double getboars_Pm25Data() {
-        return Boars_Pm25_Data;
+    public double getBoarsPm25Data() {
+        return boarsPm25Data;
     }
 
-    public void setboars_Pm25Data(double Boars_Pm25_Data) {
-        this.Boars_Pm25_Data = Boars_Pm25_Data;
+    public void setBoarsPm25Data(double boarsPm25Data) {
+        this.boarsPm25Data = boarsPm25Data;
     }
 
-
-    public double getboars_Pm10Data() {
-        return Boars_Pm10_Data;
+    public double getBoarsPm10Data() {
+        return boarsPm10Data;
     }
 
-    public void setboars_Pm10Data(double Boars_Pm10_Data) {
-        this.Boars_Pm10_Data = Boars_Pm10_Data;
+    public void setBoarsPm10Data(double boarsPm10Data) {
+        this.boarsPm10Data = boarsPm10Data;
     }
 
-
-    public double getboars_TotalPmData() {
-        return Boars_Total_Pm_Data;
+    public double getBoarsTotalPmData() {
+        return boarsTotalPmData;
     }
 
-    public void setboars_TotalPmData(double Boars_Total_Pm_Data) {
-        this.Boars_Total_Pm_Data = Boars_Total_Pm_Data;
+    public void setBoarsTotalPmData(double boarsTotalPmData) {
+        this.boarsTotalPmData = boarsTotalPmData;
     }
 
-
-    public LocalDateTime getboars_Pm_Input_Time() {
-        return Boars_Pm_Input_Time;
+    public LocalDateTime getBoarsPmInputTime() {
+        return boarsPmInputTime;
     }
 
-    public void setboars_Pm_Input_Time(LocalDateTime Boars_Pm_Input_Time) {
-        this.Boars_Pm_Input_Time = Boars_Pm_Input_Time;
+    public void setBoarsPmInputTime(LocalDateTime boarsPmInputTime) {
+        this.boarsPmInputTime = boarsPmInputTime;
     }
-
-
-
-
 }

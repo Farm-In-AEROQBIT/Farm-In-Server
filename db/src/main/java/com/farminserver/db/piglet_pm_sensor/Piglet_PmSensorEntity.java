@@ -3,109 +3,94 @@ package com.farminserver.db.piglet_pm_sensor;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import static jakarta.persistence.GenerationType.IDENTITY;
-
+import jakarta.persistence.Table;
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
 @SuperBuilder
 @Getter
+@Setter
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "piglet_pm_sensor")
-
 public class Piglet_PmSensorEntity {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-
-    //PM1.0 수집 데이터
-    public double piglet_Pm1_Data;
-
-    //PM2.5 수집 데이터
-    public double piglet_Pm25_Data;
-
-    //PM10 수집 데이터
-    public double piglet_Pm10_Data;
-
-    // 미세먼지 토탈 수집 데이터
-    public double piglet_Total_Pm_Data;
-
-    // 미세먼지 데이터 입력 시간
-    public long piglet_Pm_Input_Time;
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Piglet_Barn_Room_Num;
-    private double Piglet_Pm1_Data;
-    private double Piglet_Pm25_Data;
-    private double Piglet_Pm10_Data;
-    private double Piglet_Total_Pm_Data;
-    private LocalDateTime Piglet_Pm_Input_Time;
+    @Column(name = "piglet_pen_room_num")
+    private String pigletBarnRoomNum;
 
-    public String getFarmName() {
-        return Piglet_Barn_Room_Num;
+    @Column(name = "piglet_pm1_data")
+    private double pigletPm1Data;
+
+    @Column(name = "piglet_pm25_data")
+    private double pigletPm25Data;
+
+    @Column(name = "piglet_pm10_data")
+    private double pigletPm10Data;
+
+    @Column(name = "piglet_pm_total_data")
+    private double pigletTotalPmData;
+
+    @Column(name = "piglet_pm_input_time")
+    private LocalDateTime pigletPmInputTime;
+
+    // Getter and Setter methods
+
+    public String getPigletBarnRoomNum() {
+        return pigletBarnRoomNum;
     }
 
-    public void setFarmName(String Piglet_Barn_Room_Num) {
-        this.Piglet_Barn_Room_Num = Piglet_Barn_Room_Num;
+    public void setPigletBarnRoomNum(String pigletBarnRoomNum) {
+        this.pigletBarnRoomNum = pigletBarnRoomNum;
     }
 
-
-    public double getpiglet_Pm1Data() {
-        return Piglet_Pm1_Data;
+    public double getPigletPm1Data() {
+        return pigletPm1Data;
     }
 
-    public void setpiglet_Pm1Data(double Piglet_Pm1_Data) {
-        this.Piglet_Pm1_Data = Piglet_Pm1_Data;
+    public void setPigletPm1Data(double pigletPm1Data) {
+        this.pigletPm1Data = pigletPm1Data;
     }
 
-
-    public double getpiglet_Pm25Data() {
-        return Piglet_Pm25_Data;
+    public double getPigletPm25Data() {
+        return pigletPm25Data;
     }
 
-    public void setpiglet_Pm25Data(double Piglet_Pm25_Data) {
-        this.Piglet_Pm25_Data = Piglet_Pm25_Data;
+    public void setPigletPm25Data(double pigletPm25Data) {
+        this.pigletPm25Data = pigletPm25Data;
     }
 
-
-    public double getpiglet_Pm10Data() {
-        return Piglet_Pm10_Data;
+    public double getPigletPm10Data() {
+        return pigletPm10Data;
     }
 
-    public void setpiglets_Pm10Data(double Piglet_Pm10_Data) {
-        this.Piglet_Pm10_Data = Piglet_Pm10_Data;
+    public void setPigletPm10Data(double pigletPm10Data) {
+        this.pigletPm10Data = pigletPm10Data;
     }
 
-
-    public double getpiglet_TotalPmData() {
-        return Piglet_Total_Pm_Data;
+    public double getPigletTotalPmData() {
+        return pigletTotalPmData;
     }
 
-    public void setpiglet_TotalPmData(double Piglet_Total_Pm_Data) {
-        this.Piglet_Total_Pm_Data = Piglet_Total_Pm_Data;
+    public void setPigletTotalPmData(double pigletTotalPmData) {
+        this.pigletTotalPmData = pigletTotalPmData;
     }
 
-
-    public LocalDateTime getpiglet_Pm_Input_Time() {
-        return Piglet_Pm_Input_Time;
+    public LocalDateTime getPigletPmInputTime() {
+        return pigletPmInputTime;
     }
 
-    public void setpiglet_Pm_Input_Time(LocalDateTime Piglet_Pm_Input_Time) {
-        this.Piglet_Pm_Input_Time = Piglet_Pm_Input_Time;
+    public void setPigletPmInputTime(LocalDateTime pigletPmInputTime) {
+        this.pigletPmInputTime = pigletPmInputTime;
     }
-
-
-
-
 }

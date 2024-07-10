@@ -15,13 +15,13 @@ public class Maternity_PmConverter {
     public Maternity_PmResponse convert(Maternity_PmSensorEntity pmSensorEntity) {
         return Optional.ofNullable(pmSensorEntity)
                 .map(entity -> new Maternity_PmResponse(
-                        entity.getMaternity_Room_Num(),
-                        entity.getMaternity_Pm1_Data(),
-                        entity.getMaternity_Pm25_Data(),
-                        entity.getMaternity_Pm10_Data(),
-                        entity.getMaternity_Total_Pm_Data(),
+                        entity.getMaternityRoomNum(),
+                        entity.getMaternityPm1Data(),
+                        entity.getMaternityPm25Data(),
+                        entity.getMaternityPm1Data(),
+                        entity.getMaternityTotalPmData(),
                         "ppm",
-                        entity.getmaternity_Pm_Input_Time().toEpochSecond(ZoneOffset.UTC)
+                        entity.getMaternityPmInputTime().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }

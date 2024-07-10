@@ -16,7 +16,7 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "maternity_bh3_sensor")
+@Table(name = "maternity_nh3_sensor")
 
 public class Maternity_Nh3SensorEntity extends BaseEntity {
 

@@ -15,13 +15,13 @@ public class Piglet_PmConverter {
     public Piglet_PmResponse convert(Piglet_PmSensorEntity pmSensorEntity) {
         return Optional.ofNullable(pmSensorEntity)
                 .map(entity -> new Piglet_PmResponse(
-                        entity.getPiglet_Barn_Room_Num(),
-                        entity.getPiglet_Pm1_Data(),
-                        entity.getPiglet_Pm25_Data(),
-                        entity.getPiglet_Pm10_Data(),
-                        entity.getPiglet_Total_Pm_Data(),
+                        entity.getPigletBarnRoomNum(),
+                        entity.getPigletPm1Data(),
+                        entity.getPigletPm25Data(),
+                        entity.getPigletPm1Data(),
+                        entity.getPigletTotalPmData(),
                         "ppm",
-                        entity.getpiglet_Pm_Input_Time().toEpochSecond(ZoneOffset.UTC)
+                        entity.getPigletPmInputTime().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }

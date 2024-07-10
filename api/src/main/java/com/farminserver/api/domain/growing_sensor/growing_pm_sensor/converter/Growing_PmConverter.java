@@ -15,13 +15,13 @@ public class Growing_PmConverter {
     public Growing_PmResponse convert(Growing_PmSensorEntity pmSensorEntity) {
         return Optional.ofNullable(pmSensorEntity)
                 .map(entity -> new Growing_PmResponse(
-                        entity.getGrowing_Room_Num(),
-                        entity.getGrowing_Pm1_Data(),
-                        entity.getGrowing_Pm25_Data(),
-                        entity.getGrowing_Pm10_Data(),
-                        entity.getGrowing_Total_Pm_Data(),
+                        entity.getGrowingRoomNum(),
+                        entity.getGrowingPm1Data(),
+                        entity.getGrowingPm25Data(),
+                        entity.getGrowingPm10Data(),
+                        entity.getGrowingTotalPmData(),
                         "ppm",
-                        entity.growing_Pm_Input_Time.toEpochSecond(ZoneOffset.UTC)
+                        entity.getGrowingPmInputTime().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
