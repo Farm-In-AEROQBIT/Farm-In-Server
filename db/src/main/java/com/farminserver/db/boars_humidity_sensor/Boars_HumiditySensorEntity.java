@@ -18,8 +18,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "boars_humidity_sensor")
 public class Boars_HumiditySensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String Boars_Barn_Room_Num;
     private double Boars_Humidity_Data;
     private LocalDateTime Boars_Humidity_Input_Time;

@@ -26,7 +26,7 @@ public class Growing_Co2Service {
         this.excelExporter = excelExporter;
     }
 
-    public Growing_Co2Response getCo2Data(String growingBarnRoomNum) {
+    public Growing_Co2Response getCo2Data(Long growingBarnRoomNum) {
         Growing_Co2SensorEntity entity = repository.findById(growingBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

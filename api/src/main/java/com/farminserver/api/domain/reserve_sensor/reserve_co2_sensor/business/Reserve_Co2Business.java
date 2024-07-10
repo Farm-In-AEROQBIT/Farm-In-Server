@@ -19,7 +19,7 @@ public class Reserve_Co2Business {
         this.reserveCo2Service = co2Service;
     }
 
-    public Reserve_Co2Response getCo2SensorData(String reserveSowsRoomNum) {
+    public Reserve_Co2Response getCo2SensorData(Long reserveSowsRoomNum) {
         return reserveCo2Service.getCo2Data(reserveSowsRoomNum);
     }
 

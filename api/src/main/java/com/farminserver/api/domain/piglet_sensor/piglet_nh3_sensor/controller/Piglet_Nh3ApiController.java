@@ -27,7 +27,7 @@ public class Piglet_Nh3ApiController {
     }
 
     @GetMapping("/nh3data/{pigletRoomNum}")
-    public ResponseEntity<Piglet_Nh3Response> getNh3SensorData(@PathVariable String pigletRoomNum) {
+    public ResponseEntity<Piglet_Nh3Response> getNh3SensorData(@PathVariable Long pigletRoomNum) {
         return ResponseEntity.ok(pigletNh3Business.getNh3SensorData(pigletRoomNum));
     }
 

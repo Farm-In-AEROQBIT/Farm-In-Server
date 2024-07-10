@@ -19,8 +19,7 @@ import jakarta.persistence.*;
 @Table(name = "gestation_humidity_sensor")
 
 public class Gestation_HumiditySensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String Gestation_Room_Num;
     private double Gestation_Humidity_Data;
     private LocalDateTime Gestation_Humidity_Input_Time;

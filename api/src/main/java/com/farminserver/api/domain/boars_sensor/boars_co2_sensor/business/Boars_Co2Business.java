@@ -18,7 +18,7 @@ public class Boars_Co2Business {
         this.boarsCo2Service = co2Service;
     }
 
-    public Boars_Co2Response getCo2SensorData(String boarsBarnRoomNum) {
+    public Boars_Co2Response getCo2SensorData(Long boarsBarnRoomNum) {
         return boarsCo2Service.getCo2Data(boarsBarnRoomNum);
     }
 

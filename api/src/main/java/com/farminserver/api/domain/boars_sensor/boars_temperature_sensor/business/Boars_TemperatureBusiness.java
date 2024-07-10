@@ -18,7 +18,7 @@ public class Boars_TemperatureBusiness {
         this.boarsTemperatureService = boarsTemperatureService;
     }
 
-    public Boars_TemperatureResponse getTemperatureSensorData(String boarsBarnRoomNum) {
+    public Boars_TemperatureResponse getTemperatureSensorData(Long boarsBarnRoomNum) {
         return boarsTemperatureService.getTemperatureData(boarsBarnRoomNum);
     }
 

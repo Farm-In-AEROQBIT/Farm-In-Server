@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Table(name = "reserve_temperature_sensor")
 
 public class Reserve_TemperatureSensorEntity extends BaseEntity {
-    @Id
+
     private String reserveSowsRoomNum;
     private double reserveTemperatureData;
     private LocalDateTime reserveTemperatureInputTime;

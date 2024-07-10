@@ -22,7 +22,6 @@ import java.time.LocalDateTime;
 
 public class Gestation_TemperatureSensorEntity extends BaseEntity {
 
-    @Id
     private String Gestation_Room_Num;
     private double Gestation_Temper_Data;
     private LocalDateTime Gestation_Temper_Input_Time;

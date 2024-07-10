@@ -17,7 +17,7 @@ public class Reserve_PmBusiness {
     public Reserve_PmBusiness(Reserve_PmService pmService) {
         this.reservePmService = pmService;
     }
-    public Reserve_PmResponse getPmSensorData(String reserveSowsRoomNum) {
+    public Reserve_PmResponse getPmSensorData(Long reserveSowsRoomNum) {
         return reservePmService.getPmData(reserveSowsRoomNum);
     }
 

@@ -5,8 +5,7 @@ import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
-
-import static jakarta.persistence.GenerationType.IDENTITY;
+import com.farminserver.db.BaseEntity;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -17,9 +16,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Table(name = "maternity_pm_sensor")
-public class Maternity_PmSensorEntity {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
+public class Maternity_PmSensorEntity extends BaseEntity {
+
     @Column(name = "maternity_room_num")
     private String maternityRoomNum;
 

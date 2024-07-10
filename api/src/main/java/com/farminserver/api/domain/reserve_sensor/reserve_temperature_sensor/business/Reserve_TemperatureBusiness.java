@@ -18,7 +18,7 @@ public class Reserve_TemperatureBusiness {
         this.reserveTemperatureService = reserveTemperatureService;
     }
 
-    public Reserve_TemperatureResponse getTemperatureSensorData(String reserveSowsRoomNum) {
+    public Reserve_TemperatureResponse getTemperatureSensorData(Long reserveSowsRoomNum) {
         return reserveTemperatureService.getTemperatureData(reserveSowsRoomNum);
     }
 

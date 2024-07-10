@@ -26,7 +26,7 @@ public class Reserve_PmService {
         this.excelExporter = excelExporter;
     }
 
-    public Reserve_PmResponse getPmData(String reserveSowsRoomNum) {
+    public Reserve_PmResponse getPmData(Long reserveSowsRoomNum) {
         Reserve_PmSensorEntity entity = repository.findById(reserveSowsRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

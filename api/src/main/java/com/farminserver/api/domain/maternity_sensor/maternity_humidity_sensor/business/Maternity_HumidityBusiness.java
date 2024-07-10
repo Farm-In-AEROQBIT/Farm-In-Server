@@ -18,7 +18,7 @@ public class Maternity_HumidityBusiness {
         this.maternityHumidityService = humidityService;
     }
 
-    public Maternity_HumidityResponse getHumiditySensorData(String maternityRoomNum) {
+    public Maternity_HumidityResponse getHumiditySensorData(Long maternityRoomNum) {
         return maternityHumidityService.getHumidityData(maternityRoomNum);
     }
 

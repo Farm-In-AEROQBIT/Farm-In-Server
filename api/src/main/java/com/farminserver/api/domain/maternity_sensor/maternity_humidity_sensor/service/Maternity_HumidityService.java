@@ -28,7 +28,7 @@ public class Maternity_HumidityService {
         this.maternityExcelExporter = excelExporter;
     }
 
-    public Maternity_HumidityResponse getHumidityData(String maternityRoomNum) {
+    public Maternity_HumidityResponse getHumidityData(Long maternityRoomNum) {
         Maternity_HumiditySensorEntity entity = repository.findById(maternityRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

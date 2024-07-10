@@ -26,7 +26,7 @@ public class Growing_HumidityService {
         this.boarsExcelExporter = excelExporter;
     }
 
-    public Growing_HumidityResponse getHumidityData(String growingBarnRoomNum) {
+    public Growing_HumidityResponse getHumidityData(Long growingBarnRoomNum) {
         Growing_HumiditySensorEntity entity = repository.findById(growingBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

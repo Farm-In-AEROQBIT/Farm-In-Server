@@ -22,8 +22,7 @@ import jakarta.persistence.Id;
 @Entity
 @Table(name = "finishing_nh3_sensor")
 public class Finishing_Nh3SensorEntity extends BaseEntity {
-     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+
         private String Finishing_Room_Num;
         private double Finishing_Nh3_Data;
         private LocalDateTime Finishing_Nh3_Input_Time;

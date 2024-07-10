@@ -26,7 +26,7 @@ public class Piglet_TemperatureService {
         this.excelExporter = excelExporter;
     }
 
-    public Piglet_TemperatureResponse getTemperatureData(String pigletRoomNum) {
+    public Piglet_TemperatureResponse getTemperatureData(Long pigletRoomNum) {
         Piglet_TemperatureSensorEntity entity = repository.findById(pigletRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

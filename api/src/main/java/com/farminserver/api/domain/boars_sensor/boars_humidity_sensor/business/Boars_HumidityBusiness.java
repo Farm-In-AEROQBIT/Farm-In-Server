@@ -18,7 +18,7 @@ public class Boars_HumidityBusiness {
         this.boarsHumidityService = humidityService;
     }
 
-    public Boars_HumidityResponse getHumiditySensorData(String boarsBarnRoomNum) {
+    public Boars_HumidityResponse getHumiditySensorData(Long boarsBarnRoomNum) {
         return boarsHumidityService.getHumidityData(boarsBarnRoomNum);
     }
 

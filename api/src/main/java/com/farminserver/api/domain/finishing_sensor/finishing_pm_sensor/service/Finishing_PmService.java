@@ -26,7 +26,7 @@ public class Finishing_PmService {
         this.excelExporter = excelExporter;
     }
 
-    public Finishing_PmResponse getPmData(String finishingBarnRoomNum) {
+    public Finishing_PmResponse getPmData(Long finishingBarnRoomNum) {
         Finishing_PmSensorEntity entity = repository.findById(finishingBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

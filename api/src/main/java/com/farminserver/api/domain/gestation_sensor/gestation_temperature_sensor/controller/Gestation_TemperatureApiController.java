@@ -27,7 +27,7 @@ public class Gestation_TemperatureApiController {
     }
 
     @GetMapping("/temperaturedata/{gestationRoomNum}")
-    public ResponseEntity<Gestation_TemperatureResponse> getTemperatureSensorData(@PathVariable String gestationRoomNum) {
+    public ResponseEntity<Gestation_TemperatureResponse> getTemperatureSensorData(@PathVariable Long gestationRoomNum) {
         return ResponseEntity.ok(gestationTemperatureBusiness.getTemperatureSensorData(gestationRoomNum));
     }
 

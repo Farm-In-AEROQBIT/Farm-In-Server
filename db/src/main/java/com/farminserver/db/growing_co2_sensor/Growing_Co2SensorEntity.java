@@ -20,8 +20,6 @@ import jakarta.persistence.*;
 
 public class Growing_Co2SensorEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String Growing_Room_Num;
     private double Growing_Co2_Data;
     private LocalDateTime Growing_Co2_Input_Time;

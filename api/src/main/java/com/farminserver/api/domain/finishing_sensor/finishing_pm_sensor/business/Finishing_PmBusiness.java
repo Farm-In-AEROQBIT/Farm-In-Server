@@ -18,7 +18,7 @@ public class Finishing_PmBusiness {
         this.finishingPmService = pmService;
     }
 
-    public Finishing_PmResponse getPmSensorData(String boarsBarnRoomNum) {
+    public Finishing_PmResponse getPmSensorData(Long boarsBarnRoomNum) {
         return finishingPmService.getPmData(boarsBarnRoomNum);
     }
 

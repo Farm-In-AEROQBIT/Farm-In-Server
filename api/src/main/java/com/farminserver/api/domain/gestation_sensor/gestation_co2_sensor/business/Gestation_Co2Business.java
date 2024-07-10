@@ -18,7 +18,7 @@ public class Gestation_Co2Business {
         this.gestationCo2Service = co2Service;
     }
 
-    public Gestation_Co2Response getCo2SensorData(String gestationBarnRoomNum) {
+    public Gestation_Co2Response getCo2SensorData(Long gestationBarnRoomNum) {
         return gestationCo2Service.getCo2Data(gestationBarnRoomNum);
     }
 

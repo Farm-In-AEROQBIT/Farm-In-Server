@@ -3,11 +3,12 @@ package com.farminserver.db.farm_info;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import com.farminserver.db.BaseEntity;
 
 @Entity
 @Table(name = "farm_info")
-public class FarmInfoEntity {
-    @Id
+public class FarmInfoEntity extends BaseEntity {
+
     private String user_phone_num;
     private String farm_name;
 

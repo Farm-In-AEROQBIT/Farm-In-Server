@@ -26,7 +26,7 @@ public class Piglet_PmService {
         this.excelExporter = excelExporter;
     }
 
-    public Piglet_PmResponse getPmData(String pigletRoomNum) {
+    public Piglet_PmResponse getPmData(Long pigletRoomNum) {
         Piglet_PmSensorEntity entity = repository.findById(pigletRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

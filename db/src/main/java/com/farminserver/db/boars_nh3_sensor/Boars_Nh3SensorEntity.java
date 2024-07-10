@@ -19,8 +19,6 @@ import java.time.LocalDateTime;
 @Table(name = "boars_nh3_sensor")
 public class Boars_Nh3SensorEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String Boars_Barn_Room_Num;
     private double Boars_Nh3_Data;
     private LocalDateTime Boars_Nh3_Input_Time;

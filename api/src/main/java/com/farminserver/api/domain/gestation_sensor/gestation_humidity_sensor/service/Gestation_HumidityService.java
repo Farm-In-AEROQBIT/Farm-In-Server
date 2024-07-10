@@ -28,7 +28,7 @@ public class Gestation_HumidityService {
         this.gestation_HumiditySensorRepository = gestation_HumiditySensorRepository;
     }
 
-    public Gestation_HumidityResponse getHumidityData(String gestationBarnRoomNum) {
+    public Gestation_HumidityResponse getHumidityData(Long gestationBarnRoomNum) {
         Gestation_HumiditySensorEntity entity = repository.findById(gestationBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

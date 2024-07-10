@@ -26,7 +26,7 @@ public class Finishing_Nh3Service {
         this.excelExporter = excelExporter;
     }
 
-    public Finishing_Nh3Response getNh3Data(String finishingBarnRoomNum) {
+    public Finishing_Nh3Response getNh3Data(Long finishingBarnRoomNum) {
         Finishing_Nh3SensorEntity entity = repository.findById(finishingBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

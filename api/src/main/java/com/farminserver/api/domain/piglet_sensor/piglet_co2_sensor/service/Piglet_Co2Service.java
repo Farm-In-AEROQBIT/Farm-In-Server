@@ -28,7 +28,7 @@ public class Piglet_Co2Service {
         this.excelExporter = excelExporter;
     }
 
-    public Piglet_Co2Response getCo2Data(String pigletRoomNum) {
+    public Piglet_Co2Response getCo2Data(Long pigletRoomNum) {
         Piglet_Co2SensorEntity entity = repository.findById(pigletRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

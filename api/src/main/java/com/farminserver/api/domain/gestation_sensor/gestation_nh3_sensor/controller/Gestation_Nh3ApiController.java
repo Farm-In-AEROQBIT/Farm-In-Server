@@ -27,7 +27,7 @@ public class Gestation_Nh3ApiController {
     }
 
     @GetMapping("/nh3data/{gestationBarnRoomNum}")
-    public ResponseEntity<Gestation_Nh3Response> getNh3SensorData(@PathVariable String gestationRoomNum) {
+    public ResponseEntity<Gestation_Nh3Response> getNh3SensorData(@PathVariable Long gestationRoomNum) {
         return ResponseEntity.ok(gestationNh3Business.getNh3SensorData(gestationRoomNum));
     }
 

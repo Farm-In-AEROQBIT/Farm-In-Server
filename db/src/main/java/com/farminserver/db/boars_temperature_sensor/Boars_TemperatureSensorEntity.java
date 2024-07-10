@@ -18,9 +18,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "boars_temperature_sensor")
-public class
-Boars_TemperatureSensorEntity extends BaseEntity {
-    @Id
+public class Boars_TemperatureSensorEntity extends BaseEntity {
+
     private String BoarsBarnRoomNum;
     private double BoarsTemperData;
     private LocalDateTime BoarsTemperInputTime;

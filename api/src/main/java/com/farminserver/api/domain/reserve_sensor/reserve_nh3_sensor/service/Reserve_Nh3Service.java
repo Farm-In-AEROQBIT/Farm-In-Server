@@ -26,7 +26,7 @@ public class Reserve_Nh3Service {
         this.excelExporter = excelExporter;
     }
 
-    public Reserve_Nh3Response getNh3Data(String ReserveSowsRoomNum) {
+    public Reserve_Nh3Response getNh3Data(Long ReserveSowsRoomNum) {
         Reserve_Nh3SensorEntity entity = repository.findById(ReserveSowsRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

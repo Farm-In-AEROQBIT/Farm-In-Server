@@ -19,8 +19,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "boars_pm_sensor")
 public class Boars_PmSensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "boars_barn_room_num")
     private String boarsBarnRoomNum;
 

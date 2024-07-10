@@ -27,7 +27,7 @@ public class Reserve_PmApiController {
     }
 
     @GetMapping("/pmdata/{reserveSowsRoomNum}")
-    public ResponseEntity<Reserve_PmResponse> getPmSensorData(@PathVariable String reserveSowsRoomNum) {
+    public ResponseEntity<Reserve_PmResponse> getPmSensorData(@PathVariable Long reserveSowsRoomNum) {
         return ResponseEntity.ok(reservePmBusiness.getPmSensorData(reserveSowsRoomNum));
     }
 

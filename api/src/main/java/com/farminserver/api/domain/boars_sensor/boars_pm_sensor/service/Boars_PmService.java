@@ -26,7 +26,7 @@ public class Boars_PmService {
         this.excelExporter = excelExporter;
     }
 
-    public Boars_PmResponse getPmData(String boarsBarnRoomNum) {
+    public Boars_PmResponse getPmData(Long boarsBarnRoomNum) {
         Boars_PmSensorEntity entity = repository.findById(boarsBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

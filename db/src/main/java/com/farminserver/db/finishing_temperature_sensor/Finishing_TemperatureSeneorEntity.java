@@ -18,7 +18,7 @@ import jakarta.persistence.*;
 @Table(name = "reserve_temperature_sensor")
 
 public class Finishing_TemperatureSeneorEntity extends BaseEntity {
-    @Id
+
     private String FinishingBarnRoomNum;
     private double FinishingTemperData;
     private LocalDateTime FinishingTemperInputTime;

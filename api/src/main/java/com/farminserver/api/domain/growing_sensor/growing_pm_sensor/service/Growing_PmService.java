@@ -26,7 +26,7 @@ public class Growing_PmService {
         this.excelExporter = excelExporter;
     }
 
-    public Growing_PmResponse getPmData(String growingRoomNum) {
+    public Growing_PmResponse getPmData(Long growingRoomNum) {
         Growing_PmSensorEntity entity = repository.findById(growingRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

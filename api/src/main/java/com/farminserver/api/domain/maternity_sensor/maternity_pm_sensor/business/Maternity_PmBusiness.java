@@ -18,7 +18,7 @@ public class Maternity_PmBusiness {
         this.maternityPmService = pmService;
     }
 
-    public Maternity_PmResponse getPmSensorData(String maternityRoomNum) {
+    public Maternity_PmResponse getPmSensorData(Long maternityRoomNum) {
         return maternityPmService.getPmData(maternityRoomNum);
     }
 

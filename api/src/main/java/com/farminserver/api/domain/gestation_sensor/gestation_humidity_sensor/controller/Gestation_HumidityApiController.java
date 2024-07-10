@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/gestation_co2")
+@RequestMapping("/api/gestation_humidity")
 public class Gestation_HumidityApiController {
 
     private final Gestation_HumidityBusiness gestationHumidityBusiness;
@@ -27,7 +27,7 @@ public class Gestation_HumidityApiController {
     }
 
     @GetMapping("/humiditydata/{gestationBarnRoomNum}")
-    public ResponseEntity<Gestation_HumidityResponse> getHumiditySensorData(@PathVariable String gestationBarnRoomNum) {
+    public ResponseEntity<Gestation_HumidityResponse> getHumiditySensorData(@PathVariable Long gestationBarnRoomNum) {
         return ResponseEntity.ok(gestationHumidityBusiness.getHumiditySensorData(gestationBarnRoomNum));
     }
 

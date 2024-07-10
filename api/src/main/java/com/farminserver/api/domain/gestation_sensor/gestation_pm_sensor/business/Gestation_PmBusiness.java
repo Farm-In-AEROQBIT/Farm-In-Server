@@ -18,7 +18,7 @@ public class Gestation_PmBusiness {
         this.gestationPmService = pmService;
     }
 
-    public Gestation_PmResponse getPmSensorData(String gestationRoomNum) {
+    public Gestation_PmResponse getPmSensorData(Long gestationRoomNum) {
         return gestationPmService.getPmData(gestationRoomNum);
     }
 

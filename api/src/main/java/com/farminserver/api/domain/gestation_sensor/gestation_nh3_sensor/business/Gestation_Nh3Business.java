@@ -18,7 +18,7 @@ public class Gestation_Nh3Business {
         this.gestationNh3Service = nh3Service;
     }
 
-    public Gestation_Nh3Response getNh3SensorData(String boarsBarnRoomNum) {
+    public Gestation_Nh3Response getNh3SensorData(Long boarsBarnRoomNum) {
         return gestationNh3Service.getNh3Data(boarsBarnRoomNum);
     }
 

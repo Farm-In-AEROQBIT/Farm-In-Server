@@ -26,7 +26,7 @@ public class Gestation_Nh3Service {
         this.excelExporter = excelExporter;
     }
 
-    public Gestation_Nh3Response getNh3Data(String gestationRoomNum) {
+    public Gestation_Nh3Response getNh3Data(Long gestationRoomNum) {
         Gestation_Nh3SensorEntity entity = repository.findById(gestationRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

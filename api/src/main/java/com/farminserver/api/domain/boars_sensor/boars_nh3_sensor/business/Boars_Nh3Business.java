@@ -18,7 +18,7 @@ public class Boars_Nh3Business {
         this.boarsNh3Service = nh3Service;
     }
 
-    public Boars_Nh3Response getNh3SensorData(String boarsBarnRoomNum) {
+    public Boars_Nh3Response getNh3SensorData(Long boarsBarnRoomNum) {
         return boarsNh3Service.getNh3Data(boarsBarnRoomNum);
     }
 

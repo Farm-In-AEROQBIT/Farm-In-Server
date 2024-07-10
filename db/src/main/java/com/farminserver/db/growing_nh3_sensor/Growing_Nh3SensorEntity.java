@@ -23,8 +23,7 @@ import jakarta.persistence.Id;
 @Table(name = "growing_nh3_sensor")
 
 public class Growing_Nh3SensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String Growing_Room_Num;
     private double Growing_Nh3_Data;
     private LocalDateTime Growing_Nh3_Input_Time;

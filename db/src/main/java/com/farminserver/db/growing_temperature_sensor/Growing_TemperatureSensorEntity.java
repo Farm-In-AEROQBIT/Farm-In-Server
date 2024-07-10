@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Table(name = "growing_temperature_sensor")
 
 public class Growing_TemperatureSensorEntity extends BaseEntity {
-    @Id
+
     private String Growing_Room_Num;
     private double Growing_Temper_Data;
     private LocalDateTime Growing_Temper_Input_Time;

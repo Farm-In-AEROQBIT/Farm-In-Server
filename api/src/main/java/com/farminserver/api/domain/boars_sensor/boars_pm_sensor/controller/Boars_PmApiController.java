@@ -27,7 +27,7 @@ public class Boars_PmApiController {
     }
 
     @GetMapping("/pmdata/{boarsBarnRoomNum}")
-    public ResponseEntity<Boars_PmResponse> getPmSensorData(@PathVariable String boarsBarnRoomNum) {
+    public ResponseEntity<Boars_PmResponse> getPmSensorData(@PathVariable Long boarsBarnRoomNum) {
         return ResponseEntity.ok(boarsPmBusiness.getPmSensorData(boarsBarnRoomNum));
     }
 

@@ -26,7 +26,7 @@ public class Maternity_Co2Service {
         this.excelExporter = excelExporter;
     }
 
-    public Maternity_Co2Response getCo2Data(String maternityRoomNum) {
+    public Maternity_Co2Response getCo2Data(Long maternityRoomNum) {
         Maternity_Co2SensorEntity entity = repository.findById(maternityRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

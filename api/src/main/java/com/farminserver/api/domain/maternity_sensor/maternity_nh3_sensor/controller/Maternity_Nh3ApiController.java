@@ -27,7 +27,7 @@ public class Maternity_Nh3ApiController {
     }
 
     @GetMapping("/nh3data/{maternityRoomNum}")
-    public ResponseEntity<Maternity_Nh3Response> getNh3SensorData(@PathVariable String maternityRoomNum) {
+    public ResponseEntity<Maternity_Nh3Response> getNh3SensorData(@PathVariable Long maternityRoomNum) {
         return ResponseEntity.ok(maternityNh3Business.getNh3SensorData(maternityRoomNum));
     }
 

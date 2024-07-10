@@ -27,7 +27,7 @@ public class Maternity_Co2ApiController {
     }
 
     @GetMapping("/co2data/{maternityRoomNum}")
-    public ResponseEntity<Maternity_Co2Response> getCo2SensorData(@PathVariable String maternityRoomNum) {
+    public ResponseEntity<Maternity_Co2Response> getCo2SensorData(@PathVariable Long maternityRoomNum) {
         return ResponseEntity.ok(maternityCo2Business.getCo2SensorData(maternityRoomNum));
     }
 

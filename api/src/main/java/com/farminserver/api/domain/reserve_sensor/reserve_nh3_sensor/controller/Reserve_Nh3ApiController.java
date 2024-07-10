@@ -28,7 +28,7 @@ public class Reserve_Nh3ApiController {
     }
 
     @GetMapping("/nh3data/{reserveSowsRoomNum}")
-    public ResponseEntity<Reserve_Nh3Response> getNh3SensorData(@PathVariable String reserveSowsRoomNum) {
+    public ResponseEntity<Reserve_Nh3Response> getNh3SensorData(@PathVariable Long reserveSowsRoomNum) {
         return ResponseEntity.ok(reserveNh3Business.getNh3SensorData(reserveSowsRoomNum));
     }
 

@@ -18,7 +18,7 @@ public class Reserve_Nh3Business {
         this.reserveNh3Service = nh3Service;
     }
 
-    public Reserve_Nh3Response getNh3SensorData(String reserveRoomNum) {
+    public Reserve_Nh3Response getNh3SensorData(Long reserveRoomNum) {
         return reserveNh3Service.getNh3Data(reserveRoomNum);
     }
 

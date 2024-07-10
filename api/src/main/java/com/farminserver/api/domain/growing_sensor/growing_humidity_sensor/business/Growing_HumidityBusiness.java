@@ -18,7 +18,7 @@ public class Growing_HumidityBusiness {
         this.growingHumidityService = humidityService;
     }
 
-    public Growing_HumidityResponse getHumiditySensorData(String growingBarnRoomNum) {
+    public Growing_HumidityResponse getHumiditySensorData(Long growingBarnRoomNum) {
         return growingHumidityService.getHumidityData(growingBarnRoomNum);
     }
 

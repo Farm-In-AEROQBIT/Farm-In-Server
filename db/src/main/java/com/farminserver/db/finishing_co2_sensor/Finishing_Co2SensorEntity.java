@@ -18,8 +18,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "finishing_co2_sensor")
 public class Finishing_Co2SensorEntity extends BaseEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String Finishing_Barn_Room_Num;
     private double Finishing_Co2_Data;
     private LocalDateTime Finishing_Co2_Input_Time;

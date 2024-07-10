@@ -18,7 +18,7 @@ public class Finishing_TemperatureBusiness {
         this.finishingTemperatureService = finishingTemperatureService;
     }
 
-    public Finishing_TemperatureResponse getTemperatureSensorData(String finishingBarnRoomNum) {
+    public Finishing_TemperatureResponse getTemperatureSensorData(Long finishingBarnRoomNum) {
         return finishingTemperatureService.getTemperatureData(finishingBarnRoomNum);
     }
 

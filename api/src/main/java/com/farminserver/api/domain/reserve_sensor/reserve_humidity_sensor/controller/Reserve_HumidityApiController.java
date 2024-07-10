@@ -27,7 +27,7 @@ public class Reserve_HumidityApiController {
     }
 
     @GetMapping("/humiditydata/{reserveBarnRoomNum}")
-    public ResponseEntity<Reserve_HumidityResponse> getHumiditySensorData(@PathVariable String reserveBarnRoomNum) {
+    public ResponseEntity<Reserve_HumidityResponse> getHumiditySensorData(@PathVariable Long reserveBarnRoomNum) {
         return ResponseEntity.ok(reserveHumidityBusiness.getHumiditySensorData(reserveBarnRoomNum));
     }
 

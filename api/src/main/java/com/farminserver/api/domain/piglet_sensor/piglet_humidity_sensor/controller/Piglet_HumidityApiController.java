@@ -27,7 +27,7 @@ public class Piglet_HumidityApiController {
     }
 
     @GetMapping("/humiditydata/{pigletRoomNum}")
-    public ResponseEntity<Piglet_HumidityResponse> getHumiditySensorData(@PathVariable String pigletRoomNum) {
+    public ResponseEntity<Piglet_HumidityResponse> getHumiditySensorData(@PathVariable Long pigletRoomNum) {
         return ResponseEntity.ok(pigletHumidityBusiness.getHumiditySensorData(pigletRoomNum));
     }
 

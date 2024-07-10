@@ -1,9 +1,9 @@
 package com.farminserver.db.piglet_pm_sensor;
 
+import com.farminserver.db.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,10 +22,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "piglet_pm_sensor")
-public class Piglet_PmSensorEntity {
+public class Piglet_PmSensorEntity  extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "piglet_pen_room_num")
     private String pigletBarnRoomNum;
 

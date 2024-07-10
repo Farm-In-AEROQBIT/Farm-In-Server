@@ -19,8 +19,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "growing_pm_sensor")
 public class Growing_PmSensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "growing_room_num")
     private String growingRoomNum;
 

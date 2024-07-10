@@ -27,7 +27,7 @@ public class Piglet_PmApiController {
     }
 
     @GetMapping("/pmdata/{pigletRoomNum}")
-    public ResponseEntity<Piglet_PmResponse> getPmSensorData(@PathVariable String pigletRoomNum) {
+    public ResponseEntity<Piglet_PmResponse> getPmSensorData(@PathVariable Long pigletRoomNum) {
         return ResponseEntity.ok(pigletPmBusiness.getPmSensorData(pigletRoomNum));
     }
 

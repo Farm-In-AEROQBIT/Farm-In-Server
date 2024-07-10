@@ -18,7 +18,7 @@ public class Growing_PmBusiness {
         this.growingPmService = pmService;
     }
 
-    public Growing_PmResponse getPmSensorData(String growingRoomNum) {
+    public Growing_PmResponse getPmSensorData(Long growingRoomNum) {
         return growingPmService.getPmData(growingRoomNum);
     }
 

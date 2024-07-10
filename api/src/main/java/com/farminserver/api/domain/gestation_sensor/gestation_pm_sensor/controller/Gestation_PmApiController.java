@@ -27,7 +27,7 @@ public class Gestation_PmApiController {
     }
 
     @GetMapping("/pmdata/{gestationRoomNum}")
-    public ResponseEntity<Gestation_PmResponse> getPmSensorData(@PathVariable String gestationRoomNum) {
+    public ResponseEntity<Gestation_PmResponse> getPmSensorData(@PathVariable Long gestationRoomNum) {
         return ResponseEntity.ok(gestationPmBusiness.getPmSensorData(gestationRoomNum));
     }
 

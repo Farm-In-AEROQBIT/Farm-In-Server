@@ -18,7 +18,7 @@ public class Growing_Nh3Business {
         this.growingNh3Service = nh3Service;
     }
 
-    public Growing_Nh3Response getNh3SensorData(String growingBarnRoomNum) {
+    public Growing_Nh3Response getNh3SensorData(Long growingBarnRoomNum) {
         return growingNh3Service.getNh3Data(growingBarnRoomNum);
     }
 

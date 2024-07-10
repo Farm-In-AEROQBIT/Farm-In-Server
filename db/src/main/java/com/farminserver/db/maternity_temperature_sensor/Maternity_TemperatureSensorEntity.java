@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 
 import java.time.LocalDateTime;
 
-
 @EqualsAndHashCode(callSuper = false)
 @Data
 @SuperBuilder
@@ -22,7 +21,7 @@ import java.time.LocalDateTime;
 @Table(name = "maternity_temperature_sensor")
 
 public class Maternity_TemperatureSensorEntity extends BaseEntity {
-    @Id
+
     private String Maternity_Barn_Room_Num;
     private double Maternity_Temper_Data;
     private LocalDateTime Maternity_Temper_Input_Time;

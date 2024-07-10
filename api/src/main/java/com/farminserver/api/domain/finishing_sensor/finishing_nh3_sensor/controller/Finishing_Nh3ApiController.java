@@ -27,7 +27,7 @@ public class Finishing_Nh3ApiController {
     }
 
     @GetMapping("/nh3data/{finishingBarnRoomNum}")
-    public ResponseEntity<Finishing_Nh3Response> getNh3SensorData(@PathVariable String finishingBarnRoomNum) {
+    public ResponseEntity<Finishing_Nh3Response> getNh3SensorData(@PathVariable Long finishingBarnRoomNum) {
         return ResponseEntity.ok(finishingNh3Business.getNh3SensorData(finishingBarnRoomNum));
     }
 

@@ -27,7 +27,7 @@ public class Growing_Co2ApiController {
     }
 
     @GetMapping("/co2data/{growingBarnRoomNum}")
-    public ResponseEntity<Growing_Co2Response> getCo2SensorData(@PathVariable String growingBarnRoomNum) {
+    public ResponseEntity<Growing_Co2Response> getCo2SensorData(@PathVariable Long growingBarnRoomNum) {
         return ResponseEntity.ok(growingCo2Business.getCo2SensorData(growingBarnRoomNum));
     }
 

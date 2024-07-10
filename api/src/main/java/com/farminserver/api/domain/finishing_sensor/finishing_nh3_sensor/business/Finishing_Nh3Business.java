@@ -18,7 +18,7 @@ public class Finishing_Nh3Business {
         this.finishingNh3Service = nh3Service;
     }
 
-    public Finishing_Nh3Response getNh3SensorData(String finishingBarnRoomNum) {
+    public Finishing_Nh3Response getNh3SensorData(Long finishingBarnRoomNum) {
         return finishingNh3Service.getNh3Data(finishingBarnRoomNum);
     }
 

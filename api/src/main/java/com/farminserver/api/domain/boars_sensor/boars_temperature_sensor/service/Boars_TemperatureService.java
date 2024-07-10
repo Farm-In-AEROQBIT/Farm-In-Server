@@ -26,7 +26,7 @@ public class Boars_TemperatureService {
         this.excelExporter = excelExporter;
     }
 
-    public Boars_TemperatureResponse getTemperatureData(String boarsBarnRoomNum) {
+    public Boars_TemperatureResponse getTemperatureData(Long boarsBarnRoomNum) {
         Boars_TemperatureSensorEntity entity = repository.findById(boarsBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
-
 @EqualsAndHashCode(callSuper = false)
 @Data
 @SuperBuilder
@@ -19,8 +18,7 @@ import jakarta.persistence.*;
 @Table(name = "piglet_nh3_sensor")
 
 public class Piglet_Nh3SensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String Piglet_Room_Num;
     private double Piglet_Nh3_Data;
     private LocalDateTime Piglet_Nh3_Input_Time;

@@ -27,7 +27,7 @@ public class Piglet_TemperatureApiController {
     }
 
     @GetMapping("/temperaturedata/{pigletRoomNum}")
-    public ResponseEntity<Piglet_TemperatureResponse> getTemperatureSensorData(@PathVariable String pigletRoomNum) {
+    public ResponseEntity<Piglet_TemperatureResponse> getTemperatureSensorData(@PathVariable Long pigletRoomNum) {
         return ResponseEntity.ok(pigletTemperatureBusiness.getTemperatureSensorData(pigletRoomNum));
     }
 

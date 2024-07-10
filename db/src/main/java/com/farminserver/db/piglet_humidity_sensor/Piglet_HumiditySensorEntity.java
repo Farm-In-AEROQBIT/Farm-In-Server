@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-
 @EqualsAndHashCode(callSuper = false)
 @Data
 @SuperBuilder
@@ -23,8 +22,7 @@ import jakarta.persistence.Id;
 @Table(name = "piglet_humidity_sensor")
 
 public class Piglet_HumiditySensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String Piglet_Room_Num;
     private double Piglet_Humidity_Data;
     private LocalDateTime Piglet_Humidity_Input_Time;

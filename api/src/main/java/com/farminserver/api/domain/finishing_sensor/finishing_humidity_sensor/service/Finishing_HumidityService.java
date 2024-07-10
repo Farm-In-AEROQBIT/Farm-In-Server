@@ -26,7 +26,7 @@ public class Finishing_HumidityService {
         this.finishingExcelExporter = excelExporter;
     }
 
-    public Finishing_HumidityResponse getHumidityData(String finishingBarnRoomNum) {
+    public Finishing_HumidityResponse getHumidityData(Long finishingBarnRoomNum) {
         Finishing_HumiditySensorEntity entity = repository.findById(finishingBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

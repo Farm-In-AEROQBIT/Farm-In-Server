@@ -18,7 +18,7 @@ public class Piglet_HumidityBusiness {
         this.pigletHumidityService = humidityService;
     }
 
-    public Piglet_HumidityResponse getHumiditySensorData(String pigletRoomNum) {
+    public Piglet_HumidityResponse getHumiditySensorData(Long pigletRoomNum) {
         return pigletHumidityService.getHumidityData(pigletRoomNum);
     }
 

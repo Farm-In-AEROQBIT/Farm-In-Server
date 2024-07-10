@@ -18,7 +18,7 @@ public class Growing_Co2Business {
         this.growingCo2Service = co2Service;
     }
 
-    public Growing_Co2Response getCo2SensorData(String growingBarnRoomNum) {
+    public Growing_Co2Response getCo2SensorData(Long growingBarnRoomNum) {
         return growingCo2Service.getCo2Data(growingBarnRoomNum);
     }
 

@@ -18,7 +18,7 @@ public class Finishing_Co2Business {
         this.finishingCo2Service = co2Service;
     }
 
-    public Finishing_Co2Response getCo2SensorData(String finishingBarnRoomNum) {
+    public Finishing_Co2Response getCo2SensorData(Long finishingBarnRoomNum) {
         return finishingCo2Service.getCo2Data(finishingBarnRoomNum);
     }
 

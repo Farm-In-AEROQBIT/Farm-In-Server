@@ -27,7 +27,7 @@ public class Finishing_PmApiController {
     }
 
     @GetMapping("/pmdata/{finishingBarnRoomNum}")
-    public ResponseEntity<Finishing_PmResponse> getPmSensorData(@PathVariable String finishingBarnRoomNum) {
+    public ResponseEntity<Finishing_PmResponse> getPmSensorData(@PathVariable Long finishingBarnRoomNum) {
         return ResponseEntity.ok(finishingPmBusiness.getPmSensorData(finishingBarnRoomNum));
     }
 

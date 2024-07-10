@@ -18,7 +18,7 @@ public class Piglet_PmBusiness {
         this.pigletPmService = pmService;
     }
 
-    public Piglet_PmResponse getPmSensorData(String pigletRoomNum) {
+    public Piglet_PmResponse getPmSensorData(Long pigletRoomNum) {
         return pigletPmService.getPmData(pigletRoomNum);
     }
 

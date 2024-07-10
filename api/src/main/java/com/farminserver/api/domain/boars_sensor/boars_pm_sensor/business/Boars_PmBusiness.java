@@ -18,7 +18,7 @@ public class Boars_PmBusiness {
         this.boarsPmService = pmService;
     }
 
-    public Boars_PmResponse getPmSensorData(String boarsBarnRoomNum) {
+    public Boars_PmResponse getPmSensorData(Long boarsBarnRoomNum) {
         return boarsPmService.getPmData(boarsBarnRoomNum);
     }
 

@@ -18,7 +18,7 @@ public class Finishing_HumidityBusiness {
         this.finishingHumidityService = humidityService;
     }
 
-    public Finishing_HumidityResponse getHumiditySensorData(String finishingBarnRoomNum) {
+    public Finishing_HumidityResponse getHumiditySensorData(Long finishingBarnRoomNum) {
         return finishingHumidityService.getHumidityData(finishingBarnRoomNum);
     }
 

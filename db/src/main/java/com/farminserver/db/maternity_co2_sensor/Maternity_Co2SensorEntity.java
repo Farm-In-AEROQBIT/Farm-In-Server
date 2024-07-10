@@ -19,8 +19,6 @@ import jakarta.persistence.*;
 
 public class Maternity_Co2SensorEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String Maternity_Room_Num;
     private double Maternity_Co2_Data;
     private LocalDateTime Maternity_Co2_Input_Time;

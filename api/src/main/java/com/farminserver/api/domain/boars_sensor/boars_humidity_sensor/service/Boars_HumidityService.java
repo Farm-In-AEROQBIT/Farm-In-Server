@@ -26,7 +26,7 @@ public class Boars_HumidityService {
         this.boarsExcelExporter = excelExporter;
     }
 
-    public Boars_HumidityResponse getHumidityData(String boarsBarnRoomNum) {
+    public Boars_HumidityResponse getHumidityData(Long boarsBarnRoomNum) {
         Boars_HumiditySensorEntity entity = repository.findById(boarsBarnRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }
@@ -48,7 +48,7 @@ public class Boars_HumidityService {
     }*/
 
     public void exportHumidityDataToExcel(String filePath) throws IOException {
-        List<Boars_HumidityResponse> boarsHumidityRespons = getAllHumidityData();
-        boarsExcelExporter.exportBoars_humidityData(boarsHumidityRespons, filePath);
+        List<Boars_HumidityResponse> boarsHumidityResponse = getAllHumidityData();
+        boarsExcelExporter.exportBoars_humidityData(boarsHumidityResponse, filePath);
     }
 }

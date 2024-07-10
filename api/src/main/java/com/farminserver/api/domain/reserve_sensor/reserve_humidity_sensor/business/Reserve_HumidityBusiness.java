@@ -18,7 +18,7 @@ public class Reserve_HumidityBusiness {
         this.reserveHumidityService = humidityService;
     }
 
-    public Reserve_HumidityResponse getHumiditySensorData(String reserveBarnRoomNum) {
+    public Reserve_HumidityResponse getHumiditySensorData(Long reserveBarnRoomNum) {
         return reserveHumidityService.getHumidityData(reserveBarnRoomNum);
     }
 

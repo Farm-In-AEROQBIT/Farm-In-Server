@@ -26,7 +26,7 @@ public class Piglet_Nh3Service {
         this.excelExporter = excelExporter;
     }
 
-    public Piglet_Nh3Response getNh3Data(String pigletRoomNum) {
+    public Piglet_Nh3Response getNh3Data(Long pigletRoomNum) {
         Piglet_Nh3SensorEntity entity = repository.findById(pigletRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

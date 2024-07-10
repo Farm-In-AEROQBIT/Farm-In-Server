@@ -17,7 +17,7 @@ public class Piglet_TemperatureBusiness {
     public Piglet_TemperatureBusiness(Piglet_TemperatureService pigletTemperatureService) {
         this.pigletTemperatureService = pigletTemperatureService;
     }
-    public Piglet_TemperatureResponse getTemperatureSensorData(String pigletRoomNum) {
+    public Piglet_TemperatureResponse getTemperatureSensorData(Long pigletRoomNum) {
         return pigletTemperatureService.getTemperatureData(pigletRoomNum);
     }
 

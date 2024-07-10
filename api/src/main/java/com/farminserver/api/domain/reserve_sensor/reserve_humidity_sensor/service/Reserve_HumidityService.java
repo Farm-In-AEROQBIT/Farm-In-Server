@@ -26,7 +26,7 @@ public class Reserve_HumidityService {
         this.reserveExcelExporter = excelExporter;
     }
 
-    public Reserve_HumidityResponse getHumidityData(String reserveSowsRoomNum) {
+    public Reserve_HumidityResponse getHumidityData(Long reserveSowsRoomNum) {
         Reserve_HumiditySensorEntity entity = repository.findById(reserveSowsRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

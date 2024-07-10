@@ -19,8 +19,7 @@ import jakarta.persistence.*;
 @Table(name = "gestation_co2_sensor")
 
 public class Gestation_Co2SensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String Gestation_Room_Num;
     private double Gestation_Co2_Data;
     private LocalDateTime Gestation_Co2_Input_Time;

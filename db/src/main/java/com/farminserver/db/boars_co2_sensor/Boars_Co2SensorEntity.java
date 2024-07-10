@@ -22,8 +22,6 @@ import java.time.LocalDateTime;
 @Table(name = "boars_co2_sensor")
 public class Boars_Co2SensorEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String Boars_Barn_Room_Num;
     private double Boars_Co2_Data;
     private LocalDateTime Boars_Co2_Input_Time;

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-
 @EqualsAndHashCode(callSuper = false)
 @Data
 @SuperBuilder
@@ -21,8 +20,6 @@ import java.time.LocalDateTime;
 
 public class Reserve_Co2SensorEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String Reserve_Sows_Room_Num;
     private double Reserve_Co2_Data;
     private LocalDateTime Reserve_Co2_Input_Time;

@@ -22,8 +22,7 @@ import jakarta.persistence.Id;
 @Entity
 @Table(name = "finishing_humidity_sensor")
 public class Finishing_HumiditySensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String Finishing_Barn_Room_Num;
     private double Finishing_Humidity_Data;
     private LocalDateTime Finishing_Humidity_Input_Time;

@@ -18,7 +18,7 @@ public class Piglet_Nh3Business {
         this.pigletNh3Service = nh3Service;
     }
 
-    public Piglet_Nh3Response getNh3SensorData(String pigletRoomNum) {
+    public Piglet_Nh3Response getNh3SensorData(Long pigletRoomNum) {
         return pigletNh3Service.getNh3Data(pigletRoomNum);
     }
 

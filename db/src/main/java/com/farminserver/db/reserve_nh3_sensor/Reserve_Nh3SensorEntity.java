@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
-
 @EqualsAndHashCode(callSuper = false)
 @Data
 @SuperBuilder
@@ -20,8 +19,6 @@ import jakarta.persistence.*;
 
 public class Reserve_Nh3SensorEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String Reserve_Sows_Room_Num;
     private double Reserve_Nh3_Data;
     private LocalDateTime Reserve_Nh3_Input_Time;

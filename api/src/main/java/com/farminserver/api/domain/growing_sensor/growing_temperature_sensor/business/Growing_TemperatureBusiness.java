@@ -18,7 +18,7 @@ public class Growing_TemperatureBusiness {
         this.growingTemperatureService = growingTemperatureService;
     }
 
-    public Growing_TemperatureResponse getTemperatureSensorData(String growingRoomNum) {
+    public Growing_TemperatureResponse getTemperatureSensorData(Long growingRoomNum) {
         return growingTemperatureService.getTemperatureData(growingRoomNum);
     }
 

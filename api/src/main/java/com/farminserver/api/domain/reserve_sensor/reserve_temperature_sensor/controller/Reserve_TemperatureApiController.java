@@ -27,7 +27,7 @@ public class Reserve_TemperatureApiController {
     }
 
     @GetMapping("/temperaturedata/{reserveSowsRoomNum}")
-    public ResponseEntity<Reserve_TemperatureResponse> getTemperatureSensorData(@PathVariable String reserveSowsRoomNum) {
+    public ResponseEntity<Reserve_TemperatureResponse> getTemperatureSensorData(@PathVariable Long reserveSowsRoomNum) {
         return ResponseEntity.ok(reserveTemperatureBusiness.getTemperatureSensorData(reserveSowsRoomNum));
     }
 

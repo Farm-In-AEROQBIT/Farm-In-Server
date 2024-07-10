@@ -26,7 +26,7 @@ public class Piglet_HumidityService {
         this.pigletExcelExporter = excelExporter;
     }
 
-    public Piglet_HumidityResponse getHumidityData(String pigletRoomNum) {
+    public Piglet_HumidityResponse getHumidityData(Long pigletRoomNum) {
         Piglet_HumiditySensorEntity entity = repository.findById(pigletRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

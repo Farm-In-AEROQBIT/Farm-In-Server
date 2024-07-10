@@ -26,7 +26,7 @@ public class Gestation_PmService {
         this.excelExporter = excelExporter;
     }
 
-    public Gestation_PmResponse getPmData(String gestationRoomNum) {
+    public Gestation_PmResponse getPmData(Long gestationRoomNum) {
         Gestation_PmSensorEntity entity = repository.findById(gestationRoomNum).orElseThrow(() -> new RuntimeException("Sensor data not found"));
         return converter.convert(entity);
     }

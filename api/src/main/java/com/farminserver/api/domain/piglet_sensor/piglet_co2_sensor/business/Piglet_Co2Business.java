@@ -18,7 +18,7 @@ public class Piglet_Co2Business {
         this.pigletCo2Service = co2Service;
     }
 
-    public Piglet_Co2Response getCo2SensorData(String pigletRoomNum) {
+    public Piglet_Co2Response getCo2SensorData(Long pigletRoomNum) {
         return pigletCo2Service.getCo2Data(pigletRoomNum);
     }
 

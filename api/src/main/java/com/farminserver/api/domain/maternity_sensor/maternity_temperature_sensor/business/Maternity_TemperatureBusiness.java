@@ -18,7 +18,7 @@ public class Maternity_TemperatureBusiness {
         this.maternityTemperatureService = maternityTemperatureService;
     }
 
-    public Maternity_TemperatureResponse getTemperatureSensorData(String maternityRoomNum) {
+    public Maternity_TemperatureResponse getTemperatureSensorData(Long maternityRoomNum) {
         return maternityTemperatureService.getTemperatureData(maternityRoomNum);
     }
 

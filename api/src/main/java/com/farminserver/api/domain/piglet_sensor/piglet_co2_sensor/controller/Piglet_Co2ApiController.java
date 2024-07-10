@@ -27,7 +27,7 @@ public class Piglet_Co2ApiController {
     }
 
     @GetMapping("/co2data/{pigletBarnRoomNum}")
-    public ResponseEntity<Piglet_Co2Response> getCo2SensorData(@PathVariable String pigletRoomNum) {
+    public ResponseEntity<Piglet_Co2Response> getCo2SensorData(@PathVariable Long pigletRoomNum) {
         return ResponseEntity.ok(pigletCo2Business.getCo2SensorData(pigletRoomNum));
     }
 

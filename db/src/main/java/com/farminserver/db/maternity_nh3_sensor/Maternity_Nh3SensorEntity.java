@@ -20,8 +20,6 @@ import jakarta.persistence.*;
 
 public class Maternity_Nh3SensorEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String Maternity_Room_Num;
     private double Maternity_Nh3_Data;
     private LocalDateTime Maternity_Nh3_Input_Time;
