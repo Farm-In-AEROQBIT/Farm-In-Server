@@ -1,6 +1,5 @@
 package com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.converter;
 
-import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model.Boars_PmResponse;
 import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller.model.Reserve_PmResponse;
 import com.farminserver.db.reserve_pm_sensor.Reserve_PmSensorEntity;
 import org.springframework.stereotype.Component;
@@ -16,13 +15,13 @@ public class Reserve_PmConverter {
     public Reserve_PmResponse convert(Reserve_PmSensorEntity pmSensorEntity) {
         return Optional.ofNullable(pmSensorEntity)
                 .map(entity -> new Reserve_PmResponse(
-                        entity.getReserve_Sows_Room_Num(),
-                        entity.getReserve_Pm1_Data(),
-                        entity.getreserve_Pm25Data(),
-                        entity.getReserve_Pm10_Data(),
-                        entity.getreserve_TotalPmData(),
+                        entity.getReserveSowsRoomNum(),
+                        entity.getReservePm1Data(),
+                        entity.getReservePm25Data(),
+                        entity.getReservePm10Data(),
+                        entity.getReserveTotalPmData(),
                         "ppm",
-                        entity.getreserve_Pm_Input_Time().toEpochSecond(ZoneOffset.UTC)
+                        entity.getReservePmInputTime().toEpochSecond(ZoneOffset.UTC)
                 ))
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
