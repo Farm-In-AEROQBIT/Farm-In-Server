@@ -10,37 +10,36 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import java.util.List;
-
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig{
-    private List<String> SWAGGER = List.of(
+public class SecurityConfig {
+
+    private static final String[] SWAGGER_WHITELIST = {
             "/swagger-ui.html",
             "/swagger-ui/**",
             "/v3/api-docs/**",
-            "/**"
-//            "/api/**"
-    );
+            "/swagger-resources/**",
+            "/webjars/**",
+            "/configuration/ui",
+            "/configuration/security"
+    };
+
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(it->{
-                    it
+                .authorizeHttpRequests(auth -> {
+                    auth
                             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                            .requestMatchers(SWAGGER.toArray(new String[0])).permitAll()
+                            .requestMatchers(SWAGGER_WHITELIST).permitAll()
                             .anyRequest().authenticated();
-
                 });
+
         return httpSecurity.build();
-
     }
-    @Bean
-    public PasswordEncoder passwordEncoder(){
 
-        //hash방식으로 암호;
+    @Bean
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
-
