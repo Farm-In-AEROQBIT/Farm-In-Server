@@ -16,36 +16,32 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Humidity_Sensor")
+@Table(name = "boars_humidity_sensor")
 public class Boars_HumiditySensorEntity extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String farm_name;
-    private double humidity_data;
-    private LocalDateTime humidity_input_time;
+
+    private String Boars_Barn_Room_Num;
+    private double Boars_Humidity_Data;
+    private LocalDateTime Boars_Humidity_Input_Time;
 
     public String getFarmName() {
-        return farm_name;
+        return Boars_Barn_Room_Num;
+    }
+    public void setFarmName(String Boars_Barn_Room_Num) {
+        this.Boars_Barn_Room_Num = Boars_Barn_Room_Num;
     }
 
-    public void setFarmName(String farm_name) {
-        this.farm_name = farm_name;
+    public double getboars_HumidityData() {
+        return Boars_Humidity_Data;
+    }
+    public void setboars_HumidityData(double Boars_Humidity_Data) {
+        this.Boars_Humidity_Data = Boars_Humidity_Data;
     }
 
-    public double getHumidityData() {
-        return humidity_data;
+    public LocalDateTime getboars_Humidity_Input_Time() {
+        return Boars_Humidity_Input_Time;
     }
-
-    public void setHumidityData(double humidity_data) {
-        this.humidity_data = humidity_data;
-    }
-
-    public LocalDateTime getHumidity_Input_Time() {
-        return humidity_input_time;
-    }
-
-    public void setHumidity_Input_Time(LocalDateTime humidity_input_time) {
-        this.humidity_input_time = humidity_input_time;
+    public void setboars_Humidity_Input_Time(LocalDateTime Boars_Humidity_Input_Time) {
+        this.Boars_Humidity_Input_Time = Boars_Humidity_Input_Time;
     }
 
 }

@@ -16,37 +16,33 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Nh3_Sensor")
+@Table(name = "boars_nh3_sensor")
 public class Boars_Nh3SensorEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String farmName;
-    private double nh3Data;
-    private LocalDateTime nh3InputTime;
+    private String Boars_Barn_Room_Num;
+    private double Boars_Nh3_Data;
+    private LocalDateTime Boars_Nh3_Input_Time;
 
     public String getFarmName() {
-        return farmName;
+        return Boars_Barn_Room_Num;
     }
 
-    public void setFarmName(String farmName) {
-        this.farmName = farmName;
+    public void setFarmName(String farmName) { this.Boars_Barn_Room_Num = Boars_Barn_Room_Num; }
+
+    public double getboars_Nh3Data() {
+        return Boars_Nh3_Data;
     }
 
-    public double getNh3Data() {
-        return nh3Data;
+    public void setboars_Nh3Data(double Boars_Nh3_Data) {
+        this.Boars_Nh3_Data = Boars_Nh3_Data;
     }
 
-    public void setNh3Data(double nh3Data) {
-        this.nh3Data = nh3Data;
+    public LocalDateTime getboars_Nh3InputTime() {
+        return Boars_Nh3_Input_Time;
     }
 
-    public LocalDateTime getNh3InputTime() {
-        return nh3InputTime;
-    }
-
-    public void setNh3InputTime(LocalDateTime nh3InputTime) {
-        this.nh3InputTime = nh3InputTime;
+    public void setboars_Nh3InputTime(LocalDateTime Boars_Nh3_Input_Time) {
+        this.Boars_Nh3_Input_Time = Boars_Nh3_Input_Time;
     }
 
 }

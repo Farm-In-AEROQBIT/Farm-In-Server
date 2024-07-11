@@ -12,14 +12,12 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Data
 @SuperBuilder
 public class BaseEntity {
-    /*@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;*/
 
 }

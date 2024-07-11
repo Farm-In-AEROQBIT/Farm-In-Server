@@ -883,6 +883,87 @@ LOCK TABLES `maternity_co2_sensor` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `maternity_humidity_sensor`
+--
+
+DROP TABLE IF EXISTS `maternity_humidity_sensor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `maternity_humidity_sensor` (
+  `maternity_room_num` varchar(45) NOT NULL,
+  `maternity_humidity_data` varchar(45) DEFAULT NULL,
+  `maternity_humidity_input_time` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`maternity_room_num`),
+  UNIQUE KEY `maternity_room_num_UNIQUE` (`maternity_room_num`),
+  CONSTRAINT `maternity_room_num_2` FOREIGN KEY (`maternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `maternity_humidity_sensor`
+--
+
+LOCK TABLES `maternity_humidity_sensor` WRITE;
+/*!40000 ALTER TABLE `maternity_humidity_sensor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `maternity_humidity_sensor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `maternity_nh3_sensor`
+--
+
+DROP TABLE IF EXISTS `maternity_nh3_sensor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `maternity_nh3_sensor` (
+  `maternity_room_num` varchar(45) NOT NULL,
+  `maternity_nh3_data` varchar(45) DEFAULT NULL,
+  `maternity_nh3_input_time` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`maternity_room_num`),
+  UNIQUE KEY `meternity_room_num_UNIQUE` (`maternity_room_num`),
+  CONSTRAINT `maternity_room_num_3` FOREIGN KEY (`maternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `maternity_nh3_sensor`
+--
+
+LOCK TABLES `maternity_nh3_sensor` WRITE;
+/*!40000 ALTER TABLE `maternity_nh3_sensor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `maternity_nh3_sensor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `maternity_pm_sensor`
+--
+
+DROP TABLE IF EXISTS `maternity_pm_sensor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `maternity_pm_sensor` (
+  `maternity_room_num` varchar(45) NOT NULL,
+  `maternity_pm1_data` varchar(45) DEFAULT NULL,
+  `maeternity_pm25_data` varchar(45) DEFAULT NULL,
+  `maeternity_pm10_data` varchar(45) DEFAULT NULL,
+  `maternity_pm_total_data` varchar(45) DEFAULT NULL,
+  `maternity_pm_input_time` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`maternity_room_num`),
+  UNIQUE KEY `meternity_room_num_UNIQUE` (`maternity_room_num`),
+  CONSTRAINT `maternity_room_num_5` FOREIGN KEY (`maternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `maternity_pm_sensor`
+--
+
+LOCK TABLES `maternity_pm_sensor` WRITE;
+/*!40000 ALTER TABLE `maternity_pm_sensor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `maternity_pm_sensor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `maternity_room`
 --
 
@@ -895,7 +976,7 @@ CREATE TABLE `maternity_room` (
   PRIMARY KEY (`maternity_barn_num`,`maternity_barn_room_num`),
   UNIQUE KEY `maternity_barn_num_UNIQUE` (`maternity_barn_num`),
   UNIQUE KEY `maternity_barn_room_num_UNIQUE` (`maternity_barn_room_num`),
-  CONSTRAINT `Maternity_Barn` FOREIGN KEY (`maternity_barn_num`) REFERENCES `reserve_sows_barn` (`reserve_sows_barn_num`)
+  CONSTRAINT `Maternity_Barn` FOREIGN KEY (`maternity_barn_num`) REFERENCES `maternity_barn` (`maternity_barn_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -909,110 +990,30 @@ LOCK TABLES `maternity_room` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `meternity_humidity_sensor`
+-- Table structure for table `maternity_temperature_sensor`
 --
 
-DROP TABLE IF EXISTS `meternity_humidity_sensor`;
+DROP TABLE IF EXISTS `maternity_temperature_sensor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `meternity_humidity_sensor` (
-  `meternity_room_num` varchar(45) NOT NULL,
-  `meternity_humidity_data` varchar(45) DEFAULT NULL,
-  `meternity_humidity_input_time` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`meternity_room_num`),
-  CONSTRAINT `meternity_room_num_3` FOREIGN KEY (`meternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
+CREATE TABLE `maternity_temperature_sensor` (
+  `maternity_room_num` varchar(45) NOT NULL,
+  `maternity_temper_data` varchar(45) DEFAULT NULL,
+  `maternity_temper_input_time` varchar(45) DEFAULT NULL,
+  `maternity_temper_locate` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`maternity_room_num`),
+  UNIQUE KEY `meternity_room_num_UNIQUE` (`maternity_room_num`),
+  CONSTRAINT `maternity_room_num_4` FOREIGN KEY (`maternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `meternity_humidity_sensor`
+-- Dumping data for table `maternity_temperature_sensor`
 --
 
-LOCK TABLES `meternity_humidity_sensor` WRITE;
-/*!40000 ALTER TABLE `meternity_humidity_sensor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `meternity_humidity_sensor` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `meternity_nh3_sensor`
---
-
-DROP TABLE IF EXISTS `meternity_nh3_sensor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `meternity_nh3_sensor` (
-  `meternity_room_num` varchar(45) NOT NULL,
-  `meternity_nh3_data` varchar(45) DEFAULT NULL,
-  `meternity_nh3_input_time` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`meternity_room_num`),
-  UNIQUE KEY `meternity_room_num_UNIQUE` (`meternity_room_num`),
-  CONSTRAINT `meternity_room_num_2` FOREIGN KEY (`meternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `meternity_nh3_sensor`
---
-
-LOCK TABLES `meternity_nh3_sensor` WRITE;
-/*!40000 ALTER TABLE `meternity_nh3_sensor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `meternity_nh3_sensor` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `meternity_pm_sensor`
---
-
-DROP TABLE IF EXISTS `meternity_pm_sensor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `meternity_pm_sensor` (
-  `meternity_room_num` varchar(45) NOT NULL,
-  `meternity_pm1_data` varchar(45) DEFAULT NULL,
-  `meternity_pm25_data` varchar(45) DEFAULT NULL,
-  `meternity_pm10_data` varchar(45) DEFAULT NULL,
-  `meternity_pm_total_data` varchar(45) DEFAULT NULL,
-  `meternity_pm_input_time` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`meternity_room_num`),
-  UNIQUE KEY `meternity_room_num_UNIQUE` (`meternity_room_num`),
-  CONSTRAINT `meternity_room_num_5` FOREIGN KEY (`meternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `meternity_pm_sensor`
---
-
-LOCK TABLES `meternity_pm_sensor` WRITE;
-/*!40000 ALTER TABLE `meternity_pm_sensor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `meternity_pm_sensor` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `meternity_temperature_sensor`
---
-
-DROP TABLE IF EXISTS `meternity_temperature_sensor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `meternity_temperature_sensor` (
-  `meternity_room_num` varchar(45) NOT NULL,
-  `meternity_temper_data` varchar(45) DEFAULT NULL,
-  `meternity_temper_input_time` varchar(45) DEFAULT NULL,
-  `meternity_temper_locate` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`meternity_room_num`),
-  UNIQUE KEY `meternity_room_num_UNIQUE` (`meternity_room_num`),
-  CONSTRAINT `meternity_room_num` FOREIGN KEY (`meternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `meternity_temperature_sensor`
---
-
-LOCK TABLES `meternity_temperature_sensor` WRITE;
-/*!40000 ALTER TABLE `meternity_temperature_sensor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `meternity_temperature_sensor` ENABLE KEYS */;
+LOCK TABLES `maternity_temperature_sensor` WRITE;
+/*!40000 ALTER TABLE `maternity_temperature_sensor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `maternity_temperature_sensor` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1212,12 +1213,12 @@ DROP TABLE IF EXISTS `reserve_co2_sensor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserve_co2_sensor` (
-  `reserve_sows_room` varchar(45) NOT NULL,
+  `reserve_sows_room_num` varchar(45) NOT NULL,
   `reserve_co2_data` varchar(45) DEFAULT NULL,
   `reserve_co2_input_time` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`reserve_sows_room`),
-  UNIQUE KEY `reserve_sows_room_UNIQUE` (`reserve_sows_room`),
-  CONSTRAINT `reserve_sows_room_num_1` FOREIGN KEY (`reserve_sows_room`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
+  PRIMARY KEY (`reserve_sows_room_num`),
+  UNIQUE KEY `reserve_sows_room_UNIQUE` (`reserve_sows_room_num`),
+  CONSTRAINT `reserve_sows_room_num_1` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1238,12 +1239,12 @@ DROP TABLE IF EXISTS `reserve_humidity_sensor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserve_humidity_sensor` (
-  `ireserve_sows_humidity_sensor` varchar(45) NOT NULL,
+  `reserve_sows_room_num` varchar(45) NOT NULL,
   `reserve_humidity_data` varchar(45) DEFAULT NULL,
   `reserve_humidity_input_time` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`ireserve_sows_humidity_sensor`),
-  UNIQUE KEY `ireserve_sows_humidity_sensor_UNIQUE` (`ireserve_sows_humidity_sensor`),
-  CONSTRAINT `reserve_sows_room_num_3` FOREIGN KEY (`ireserve_sows_humidity_sensor`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
+  PRIMARY KEY (`reserve_sows_room_num`),
+  UNIQUE KEY `ireserve_sows_humidity_sensor_UNIQUE` (`reserve_sows_room_num`),
+  CONSTRAINT `reserve_sows_room_num_3` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1292,13 +1293,13 @@ DROP TABLE IF EXISTS `reserve_sows_barn`;
 CREATE TABLE `reserve_sows_barn` (
   `farm_name` varchar(45) NOT NULL,
   `reserve_sows_barn_num` varchar(45) NOT NULL,
-  `reserve_sows_barn_room_num` varchar(45) NOT NULL,
-  PRIMARY KEY (`farm_name`,`reserve_sows_barn_num`,`reserve_sows_barn_room_num`),
+  `reserve_sows_room_num` varchar(45) NOT NULL,
+  PRIMARY KEY (`farm_name`,`reserve_sows_barn_num`,`reserve_sows_room_num`),
   UNIQUE KEY `farm_name_UNIQUE` (`farm_name`),
   UNIQUE KEY `reserve_sows_barn_num_UNIQUE` (`reserve_sows_barn_num`),
-  UNIQUE KEY `reserve_sows_barn_room_num_UNIQUE` (`reserve_sows_barn_room_num`),
+  UNIQUE KEY `reserve_sows_barn_room_num_UNIQUE` (`reserve_sows_room_num`),
   CONSTRAINT `Farm_name_2` FOREIGN KEY (`farm_name`) REFERENCES `farm_info` (`farm_name`),
-  CONSTRAINT `reserve_sows_room_num` FOREIGN KEY (`reserve_sows_barn_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
+  CONSTRAINT `reserve_sows_room_num` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1433,4 +1434,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-26 11:35:46
+-- Dump completed on 2024-07-03 15:44:35
