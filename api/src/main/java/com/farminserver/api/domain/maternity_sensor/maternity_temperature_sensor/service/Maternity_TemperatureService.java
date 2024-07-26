@@ -1,9 +1,8 @@
 package com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.service;
 
-import com.farminserver.api.domain.boars_sensor.boars_temperature_sensor.controller.model.Boars_TemperatureResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.controller.model.Maternity_TemperatureResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.converter.Maternity_TemperatureConverter;
-import com.farminserver.api.util.Maternity_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Maternity_ExcelExporter;
 import com.farminserver.db.maternity_temperature_sensor.Maternity_TemperatureSensorEntity;
 import com.farminserver.db.maternity_temperature_sensor.Maternity_TemperatureSensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

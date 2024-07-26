@@ -1,16 +1,28 @@
 package com.farminserver.api.domain.admin.service;
 
-import com.farminserver.db.admin.AdminEntity;
+import com.farminserver.api.common.error.TokenErrorCode;
+import com.farminserver.api.util.Jwt.JwtUtil;
 import com.farminserver.api.domain.admin.business.AdminBusiness;
+import com.farminserver.db.admin.AdminEntity;
+import com.farminserver.db.user.UserEntity;
+import com.farminserver.db.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService {
+
     @Autowired
     private AdminBusiness business;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     public AdminEntity save(AdminEntity admin) {
         return business.save(admin);
@@ -26,5 +38,27 @@ public class AdminService {
 
     public void deleteById(String id) {
         business.deleteById(id);
+    }
+
+    public boolean authenticateAdmin(AdminEntity adminEntity) {
+        Optional<AdminEntity> admin = Optional.ofNullable(business.getById(adminEntity.getAdminId()));
+        return admin.isPresent() && admin.get().getAdminPw().equals(adminEntity.getAdminPw());
+    }
+
+    public boolean isAuthorized(String token, String role) {
+        Optional<TokenErrorCode> tokenError = jwtUtil.validateToken(token);
+        if (tokenError.isPresent()) {
+            return false;
+        }
+        String tokenRole = jwtUtil.extractRole(token);
+        return tokenRole.equals(role) || tokenRole.equals("ADMIN");
+    }
+
+    public List<UserEntity> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public Optional<UserEntity> getUserById(String userId) {
+        return userRepository.findById(userId);
     }
 }

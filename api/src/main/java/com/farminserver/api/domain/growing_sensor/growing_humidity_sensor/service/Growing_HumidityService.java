@@ -4,7 +4,7 @@ import com.farminserver.api.domain.growing_sensor.growing_humidity_sensor.contro
 import com.farminserver.api.domain.growing_sensor.growing_humidity_sensor.converter.Growing_HumidityConverter;
 import com.farminserver.db.growing_humidity_sensor.Growing_HumiditySensorEntity;
 import com.farminserver.db.growing_humidity_sensor.Growing_HumiditySensorRepository;
-import com.farminserver.api.util.Growing_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Growing_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

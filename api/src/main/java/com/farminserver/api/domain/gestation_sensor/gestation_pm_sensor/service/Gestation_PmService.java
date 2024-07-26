@@ -4,7 +4,7 @@ import com.farminserver.api.domain.gestation_sensor.gestation_pm_sensor.controll
 import com.farminserver.api.domain.gestation_sensor.gestation_pm_sensor.converter.Gestation_PmConverter;
 import com.farminserver.db.gestation_pm_sensor.Gestation_PmSensorRepository;
 import com.farminserver.db.gestation_pm_sensor.Gestation_PmSensorEntity;
-import com.farminserver.api.util.Gestation_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Gestation_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

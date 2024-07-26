@@ -13,7 +13,7 @@ public class FarmInfoConverter {
             return null;
         }
         return new FarmInfoResponse(
-                farmInfoEntity.getUser_phone_num(), farmInfoEntity.getFarm_name()
+                farmInfoEntity.getFarm_name()
         );
     }
 }

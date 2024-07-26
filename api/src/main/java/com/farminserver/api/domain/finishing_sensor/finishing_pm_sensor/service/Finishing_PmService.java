@@ -2,7 +2,7 @@ package com.farminserver.api.domain.finishing_sensor.finishing_pm_sensor.service
 
 import com.farminserver.api.domain.finishing_sensor.finishing_pm_sensor.controller.model.Finishing_PmResponse;
 import com.farminserver.api.domain.finishing_sensor.finishing_pm_sensor.converter.Finishing_PmConverter;
-import com.farminserver.api.util.Finishing_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Finishing_ExcelExporter;
 import com.farminserver.db.finishing_pm_sensor.Finishing_PmSensorRepository;
 import com.farminserver.db.finishing_pm_sensor.Finishing_PmSensorEntity;
 import org.springframework.beans.factory.annotation.Autowired;

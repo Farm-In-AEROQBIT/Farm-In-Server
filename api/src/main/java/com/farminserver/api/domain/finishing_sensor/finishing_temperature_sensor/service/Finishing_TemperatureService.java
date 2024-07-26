@@ -4,7 +4,7 @@ import com.farminserver.api.domain.finishing_sensor.finishing_temperature_sensor
 import com.farminserver.db.finishing_temperature_sensor.Finishing_TemperatureSeneorEntity;
 import com.farminserver.db.finishing_temperature_sensor.Finishing_TemperatureSensorRepository;
 import com.farminserver.api.domain.finishing_sensor.finishing_temperature_sensor.converter.Finishing_TemperatureConverter;
-import com.farminserver.api.util.Finishing_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Finishing_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

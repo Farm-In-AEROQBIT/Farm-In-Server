@@ -2,7 +2,7 @@ package com.farminserver.api.domain.finishing_sensor.finishing_humidity_sensor.s
 
 import com.farminserver.api.domain.finishing_sensor.finishing_humidity_sensor.controller.model.Finishing_HumidityResponse;
 import com.farminserver.api.domain.finishing_sensor.finishing_humidity_sensor.converter.Finishing_HumidityConverter;
-import com.farminserver.api.util.Finishing_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Finishing_ExcelExporter;
 import com.farminserver.db.finishing_humidity_sensor.Finishing_HumiditySensorEntity;
 import com.farminserver.db.finishing_humidity_sensor.Finishing_HumiditySensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

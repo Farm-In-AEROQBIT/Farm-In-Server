@@ -1,24 +1,25 @@
-package com.farminserver.api.util;
+package com.farminserver.api.util.ExcelExporter;
 
+import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller.model.Maternity_Nh3Response;
+import com.farminserver.api.domain.maternity_sensor.maternity_co2_sensor.controller.model.Maternity_Co2Response;
+import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model.Maternity_HumidityResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_pm_sensor.controller.model.Maternity_PmResponse;
+import com.farminserver.api.domain.maternity_sensor.maternity_temperature_sensor.controller.model.Maternity_TemperatureResponse;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
-import com.farminserver.api.domain.reserve_sensor.reserve_nh3_sensor.controller.model.Reserve_Nh3Response;
-import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller.model.Reserve_PmResponse;
-import com.farminserver.api.domain.reserve_sensor.reserve_temperature_sensor.controller.model.Reserve_TemperatureResponse;
-import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model.Reserve_Co2Response;
-import com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.controller.model.Reserve_HumidityResponse;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
 @Component
-public class Reserve_ExcelExporter {
 
-    public void exportReserve_Nh3Data(List<Reserve_Nh3Response> responses, String filePath) throws IOException {
+public class Maternity_ExcelExporter {
+
+    public void exportMaternity_Nh3Data(List<Maternity_Nh3Response> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Nh3 Data");
 
@@ -29,10 +30,10 @@ public class Reserve_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Reserve_Nh3Response response : responses) {
+        for (Maternity_Nh3Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
-            row.createCell(1).setCellValue(response.getReserveNh3Data());
+            row.createCell(0).setCellValue(response.getMaternityRoomNum());
+            row.createCell(1).setCellValue(response.getMaternityNh3Data());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
@@ -43,7 +44,7 @@ public class Reserve_ExcelExporter {
         workbook.close();
     }
 
-    public void exportReserve_co2Data(List<Reserve_Co2Response> responses, String filePath) throws IOException {
+    public void exportMaternity_co2Data(List<Maternity_Co2Response> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Co2 Data");
 
@@ -54,10 +55,10 @@ public class Reserve_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Reserve_Co2Response response : responses) {
+        for (Maternity_Co2Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getReserveBarnRoomNum());
-            row.createCell(1).setCellValue(response.getReserveCo2Data());
+            row.createCell(0).setCellValue(response.getMaternityRoomNum());
+            row.createCell(1).setCellValue(response.getMaternityCo2Data());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
@@ -68,7 +69,7 @@ public class Reserve_ExcelExporter {
         workbook.close();
     }
 
-    public void exportReserve_humidityData(List<Reserve_HumidityResponse> responses, String filePath) throws IOException {
+    public void exportMaternity_humidityData(List<Maternity_HumidityResponse> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Humidity Data");
 
@@ -79,10 +80,10 @@ public class Reserve_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Reserve_HumidityResponse response : responses) {
+        for (Maternity_HumidityResponse response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
-            row.createCell(1).setCellValue(response.getReserveHumidityData());
+            row.createCell(0).setCellValue(response.getMaternityRoomNum());
+            row.createCell(1).setCellValue(response.getMaternityHumidityData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
@@ -93,7 +94,7 @@ public class Reserve_ExcelExporter {
         workbook.close();
     }
 
-    public void exportReserve_TemperatureData(List<Reserve_TemperatureResponse> reserveTemperatureResponse, String filePath) throws IOException {
+    public void exportMaternity_TemperatureData(List<Maternity_TemperatureResponse> maternityTemperatureResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Temperature Data");
 
@@ -105,13 +106,13 @@ public class Reserve_ExcelExporter {
         headerRow.createCell(3).setCellValue("Timestamp");
         headerRow.createCell(4).setCellValue("Temperature locate Data");
 
-        for (Reserve_TemperatureResponse response : reserveTemperatureResponse) {
+        for (Maternity_TemperatureResponse response : maternityTemperatureResponse) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
-            row.createCell(1).setCellValue(response.getReserveTemperatureData());
+            row.createCell(0).setCellValue(response.getMaternityRoomNum());
+            row.createCell(1).setCellValue(response.getMaternityTemperatureData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
-            row.createCell(4).setCellValue(response.getReserveTemperatureLocateData());
+            row.createCell(4).setCellValue(response.getmaternityTemperatureLocateData());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
@@ -120,7 +121,7 @@ public class Reserve_ExcelExporter {
         workbook.close();
     }
 
-    public void exportReserve_PmData(List<Reserve_PmResponse> reservePmResponse, String filePath) throws IOException {
+    public void exportMaternity_PmData(List<Maternity_PmResponse> maternityPmResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
@@ -133,9 +134,9 @@ public class Reserve_ExcelExporter {
         headerRow.createCell(4).setCellValue("Total PM");
         headerRow.createCell(5).setCellValue("Timestamp");
 
-        for (Reserve_PmResponse response : reservePmResponse) {
+        for (Maternity_PmResponse response : maternityPmResponse) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
+            row.createCell(0).setCellValue(response.getMaternityRoomNum());
             row.createCell(1).setCellValue(response.getPm1_0());
             row.createCell(2).setCellValue(response.getPm2_5());
             row.createCell(3).setCellValue(response.getPm10());
@@ -150,5 +151,4 @@ public class Reserve_ExcelExporter {
 
 
     }
-
 }

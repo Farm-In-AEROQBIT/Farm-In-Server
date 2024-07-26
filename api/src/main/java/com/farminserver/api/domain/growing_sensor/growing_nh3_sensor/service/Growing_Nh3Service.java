@@ -4,7 +4,7 @@ import com.farminserver.api.domain.growing_sensor.growing_nh3_sensor.converter.G
 import com.farminserver.api.domain.growing_sensor.growing_nh3_sensor.controller.model.Growing_Nh3Response;
 import com.farminserver.db.growing_nh3_sensor.Growing_Nh3SensorRepository;
 import com.farminserver.db.growing_nh3_sensor.Growing_Nh3SensorEntity;
-import com.farminserver.api.util.Growing_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Growing_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
