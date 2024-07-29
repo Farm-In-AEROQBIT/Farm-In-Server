@@ -11,7 +11,7 @@ public class FarmInfoEntity extends BaseEntity {
 
     private String farm_name;
 
-    //Getters and Setters
-    public String getFarm_name() {return farm_name;}
-    public void setFarm_name(String farm_name) {this.farm_name = farm_name;}
+    // Getters and Setters
+    public String getFarm_name() { return farm_name; }
+    public void setFarm_name(String farm_name) { this.farm_name = farm_name; }
 }
