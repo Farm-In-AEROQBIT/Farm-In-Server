@@ -4,7 +4,7 @@ import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.controller.mode
 import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorEntity;
 import com.farminserver.db.boars_co2_sensor.Boars_Co2SensorRepository;
 import com.farminserver.api.domain.boars_sensor.boars_co2_sensor.converter.Boars_Co2Converter;
-import com.farminserver.api.util.Boars_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

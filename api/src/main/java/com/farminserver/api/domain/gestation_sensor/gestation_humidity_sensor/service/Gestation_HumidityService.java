@@ -4,7 +4,7 @@ import com.farminserver.api.domain.gestation_sensor.gestation_humidity_sensor.co
 import com.farminserver.api.domain.gestation_sensor.gestation_humidity_sensor.converter.Gestation_HumidityConverter;
 import com.farminserver.db.gestation_humidity_sensor.Gestation_HumiditySensorEntity;
 import com.farminserver.db.gestation_humidity_sensor.Gestation_HumiditySensorRepository;
-import com.farminserver.api.util.Gestation_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Gestation_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

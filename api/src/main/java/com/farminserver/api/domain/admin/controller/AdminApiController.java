@@ -1,45 +1,92 @@
 package com.farminserver.api.domain.admin.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.farminserver.api.common.error.UserError;
+import com.farminserver.api.domain.admin.controller.model.AdminResponse;
+import com.farminserver.api.domain.admin.converter.AdminConverter;
+import com.farminserver.api.domain.admin.service.AdminService;
+import com.farminserver.api.domain.user.controller.model.UserResponse;
+import com.farminserver.api.domain.user.converter.UserConverter;
+import com.farminserver.api.util.Jwt.JwtUtil;
+import com.farminserver.db.admin.AdminEntity;
+import com.farminserver.db.user.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import com.farminserver.api.common.error.TokenErrorCode;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/admin")
 public class AdminApiController {
 
-    private long adminId;
-    private long adminPw;
-    private long user_phone_num;
-    private long farm_name;
+    @Autowired
+    private AdminService adminService;
 
-    // Getters and Setters
-    public long getAdminId() {
-        return adminId;
-    }
+    @Autowired
+    private AdminConverter adminConverter;
 
-    public void setAdminId(long adminId) {
-        this.adminId = adminId;
-    }
+    @Autowired
+    private UserConverter userConverter;
 
-    public long getAdminPw() {
-        return adminPw;
-    }
+    @Autowired
+    private JwtUtil jwtUtil;
 
-    public void setAdminPw(long adminPassword) {
-        this.adminPw = adminPassword;
+    @PostMapping("/create")
+    public ResponseEntity<AdminResponse> createAdmin(@RequestBody AdminEntity adminEntity) {
+        AdminEntity savedAdmin = adminService.save(adminEntity);
+        AdminResponse response = adminConverter.convertToResponse(savedAdmin);
+        return ResponseEntity.ok(response);
     }
 
-    public long getUser_phone_num() {
-        return user_phone_num;
-    }
-    public void setUser_phone_num(long userPhoneNum) {
-        this.user_phone_num = userPhoneNum;
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody AdminEntity adminEntity) {
+        boolean isAuthenticated = adminService.authenticateAdmin(adminEntity);
+        if (isAuthenticated) {
+            String token = jwtUtil.generateToken(adminEntity.getAdminId(), "ADMIN");
+            return ResponseEntity.ok(token);
+        } else {
+            return ResponseEntity.status(401).body("Login failed");
+        }
     }
 
-    public long getFarm_name() {
-        return farm_name;
+    @GetMapping("/users")
+    public ResponseEntity<?> getAllUsers(@RequestHeader("Authorization") String token) {
+        if (!adminService.isAuthorized(token, "ADMIN")) {
+            return ResponseEntity.status(UserError.AUTHORIZATION_ACCESS_NOT_FOUNT.getHttpStatusCode())
+                    .body(UserError.AUTHORIZATION_ACCESS_NOT_FOUNT.getDescription());
+        }
+        List<UserEntity> users = adminService.getAllUsers();
+        List<UserResponse> userResponses = users.stream()
+                .map(userConverter::toResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(userResponses);
     }
-    public void setFarm_name(long farmName) {
-        this.farm_name = farmName;
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<UserResponse> getUserById(@RequestHeader("Authorization") String token, @PathVariable String id) {
+        Optional<TokenErrorCode> tokenError = jwtUtil.validateToken(token);
+        if (tokenError.isPresent()) {
+            TokenErrorCode errorCode = tokenError.get();
+            return ResponseEntity.status(errorCode.getHttpStatusCode())
+                    .body(new UserResponse(errorCode.getDescription()));
+        }
+
+        if (!adminService.isAuthorized(token, "USER")) {
+            return ResponseEntity.status(UserError.AUTHORIZATION_ACCESS_NOT_FOUNT.getHttpStatusCode())
+                    .body(new UserResponse(UserError.AUTHORIZATION_ACCESS_NOT_FOUNT.getDescription()));
+        }
+
+        String usernameFromToken = jwtUtil.extractUsername(token);
+        if (!usernameFromToken.equals(id) && !jwtUtil.extractRole(token).equals("ADMIN")) {
+            return ResponseEntity.status(UserError.AUTHORIZATION_ACCESS_NOT_FOUNT.getHttpStatusCode())
+                    .body(new UserResponse(UserError.AUTHORIZATION_ACCESS_NOT_FOUNT.getDescription()));
+        }
+
+        Optional<UserEntity> user = adminService.getUserById(id);
+        return user.map(userEntity -> ResponseEntity.ok(userConverter.toResponse(userEntity)))
+                .orElseGet(() -> ResponseEntity.status(404).body(new UserResponse("User not found")));
     }
 }

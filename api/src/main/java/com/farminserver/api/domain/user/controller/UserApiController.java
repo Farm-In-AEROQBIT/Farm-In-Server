@@ -2,41 +2,46 @@ package com.farminserver.api.domain.user.controller;
 
 import com.farminserver.api.domain.user.business.UserBusiness;
 import com.farminserver.api.domain.user.controller.model.UserResponse;
+import com.farminserver.api.domain.user.converter.UserConverter;
+import com.farminserver.db.user.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserApiController {
 
-    private String userId;
-    private String userPw;
-    private String userName;
-    private String userPhoneNum;
-    private String farmName;
+    @Autowired
+    private UserBusiness userBusiness;
 
-    // Getter and Setter
-    public String getUserId(){return userId;}
-    public void setUserId(String userId){this.userId = userId;}
+    @Autowired
+    private UserConverter userConverter;
 
-    public String getUserPw(){return userPw;}
-    public void setUserPw(String userPw){this.userPw = userPw;}
+    @GetMapping("/{id}")
+    public UserResponse getUserById(@PathVariable String id) {
+        UserEntity userEntity = userBusiness.getById(id);
+        return userConverter.toResponse(userEntity);
+    }
 
-    public String getUserName(){return userName;}
-    public void setUserName(String userName){this.userName = userName;}
+    @GetMapping("/all")
+    public List<UserResponse> getAllUsers() {
+        List<UserEntity> userEntities = userBusiness.getAll();
+        return userEntities.stream()
+                .map(userConverter::toResponse)
+                .collect(Collectors.toList());
+    }
 
-    public String getUserPhoneNum(){return userPhoneNum;}
-    public void setUserPhoneNum(String userPhoneNum){this.userPhoneNum = userPhoneNum;}
+    @PostMapping("/save")
+    public UserResponse saveUser(@RequestBody UserEntity userEntity) {
+        UserEntity savedUser = userBusiness.save(userEntity);
+        return userConverter.toResponse(savedUser);
+    }
 
-    public String getFarmName(){return farmName;}
-    public void setFarmName(String farmName){this.farmName = farmName;}
+    @DeleteMapping("/delete/{id}")
+    public void deleteUserById(@PathVariable String id) {
+        userBusiness.deleteById(id);
+    }
 }

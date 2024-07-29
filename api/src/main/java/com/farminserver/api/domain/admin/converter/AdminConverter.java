@@ -14,7 +14,7 @@ public class AdminConverter {
         }
 
         return new AdminResponse(
-                admin.getAdminId(), admin.getAdminPw(), admin.getUser_phone_num(), admin.getFarm_name()
+                admin.getAdminId(), admin.getAdminPw()
         );
     }
 }

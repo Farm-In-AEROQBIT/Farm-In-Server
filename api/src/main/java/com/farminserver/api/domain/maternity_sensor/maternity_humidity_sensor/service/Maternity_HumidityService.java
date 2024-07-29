@@ -4,7 +4,7 @@ package com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.s
 
 import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.controller.model.Maternity_HumidityResponse;
 import com.farminserver.api.domain.maternity_sensor.maternity_humidity_sensor.converter.Maternity_HumidityConverter;
-import com.farminserver.api.util.Maternity_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Maternity_ExcelExporter;
 import com.farminserver.db.maternity_hunmidity_sensor.Maternity_HumiditySensorEntity;
 import com.farminserver.db.maternity_hunmidity_sensor.Maternity_HumiditySensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

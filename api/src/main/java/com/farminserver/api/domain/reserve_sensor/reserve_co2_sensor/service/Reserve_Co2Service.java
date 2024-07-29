@@ -3,7 +3,7 @@ package com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.service;
 
 import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model.Reserve_Co2Response;
 import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.converter.Reserve_Co2Converter;
-import com.farminserver.api.util.Reserve_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Reserve_ExcelExporter;
 import com.farminserver.db.reserve_co2_sensor.Reserve_Co2SensorEntity;
 import com.farminserver.db.reserve_co2_sensor.Reserve_Co2SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

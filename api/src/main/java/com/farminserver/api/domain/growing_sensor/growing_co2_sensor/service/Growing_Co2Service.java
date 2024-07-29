@@ -4,7 +4,7 @@ import com.farminserver.api.domain.growing_sensor.growing_co2_sensor.controller.
 import com.farminserver.db.growing_co2_sensor.Growing_Co2SensorEntity;
 import com.farminserver.db.growing_co2_sensor.Growing_Co2SensorRepository;
 import com.farminserver.api.domain.growing_sensor.growing_co2_sensor.converter.Growing_Co2Converter;
-import com.farminserver.api.util.Growing_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Growing_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

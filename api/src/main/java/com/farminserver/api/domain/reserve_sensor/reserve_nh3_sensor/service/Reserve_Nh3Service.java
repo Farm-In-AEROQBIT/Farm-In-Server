@@ -4,7 +4,7 @@ import com.farminserver.api.domain.reserve_sensor.reserve_nh3_sensor.converter.R
 import com.farminserver.api.domain.reserve_sensor.reserve_nh3_sensor.controller.model.Reserve_Nh3Response;
 import com.farminserver.db.reserve_nh3_sensor.Reserve_Nh3SensorEntity;
 import com.farminserver.db.reserve_nh3_sensor.Reserve_Nh3SensorRepository;
-import com.farminserver.api.util.Reserve_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Reserve_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,25 +1,24 @@
-package com.farminserver.api.util;
-
+package com.farminserver.api.util.ExcelExporter;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import com.farminserver.api.domain.growing_sensor.growing_co2_sensor.controller.model.Growing_Co2Response;
-import com.farminserver.api.domain.growing_sensor.growing_nh3_sensor.controller.model.Growing_Nh3Response;
-import com.farminserver.api.domain.growing_sensor.growing_humidity_sensor.controller.model.Growing_HumidityResponse;
-import com.farminserver.api.domain.growing_sensor.growing_temperature_sensor.controller.model.Growing_TemperatureResponse;
-import com.farminserver.api.domain.growing_sensor.growing_pm_sensor.controller.model.Growing_PmResponse;
 import org.springframework.stereotype.Component;
+import com.farminserver.api.domain.reserve_sensor.reserve_nh3_sensor.controller.model.Reserve_Nh3Response;
+import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller.model.Reserve_PmResponse;
+import com.farminserver.api.domain.reserve_sensor.reserve_temperature_sensor.controller.model.Reserve_TemperatureResponse;
+import com.farminserver.api.domain.reserve_sensor.reserve_co2_sensor.controller.model.Reserve_Co2Response;
+import com.farminserver.api.domain.reserve_sensor.reserve_humidity_sensor.controller.model.Reserve_HumidityResponse;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
 @Component
-public class Growing_ExcelExporter {
+public class Reserve_ExcelExporter {
 
-    public void exportGrowing_Nh3Data(List<Growing_Nh3Response> responses, String filePath) throws IOException {
+    public void exportReserve_Nh3Data(List<Reserve_Nh3Response> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Nh3 Data");
 
@@ -30,10 +29,10 @@ public class Growing_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Growing_Nh3Response response : responses) {
+        for (Reserve_Nh3Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getGrowingRoomNum());
-            row.createCell(1).setCellValue(response.getGrowingNh3Data());
+            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
+            row.createCell(1).setCellValue(response.getReserveNh3Data());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
@@ -44,7 +43,7 @@ public class Growing_ExcelExporter {
         workbook.close();
     }
 
-    public void exportGrowing_co2Data(List<Growing_Co2Response> responses, String filePath) throws IOException {
+    public void exportReserve_co2Data(List<Reserve_Co2Response> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Co2 Data");
 
@@ -55,10 +54,10 @@ public class Growing_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Growing_Co2Response response : responses) {
+        for (Reserve_Co2Response response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getGrowingBarnRoomNum());
-            row.createCell(1).setCellValue(response.getGrowingCo2Data());
+            row.createCell(0).setCellValue(response.getReserveBarnRoomNum());
+            row.createCell(1).setCellValue(response.getReserveCo2Data());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
@@ -69,7 +68,7 @@ public class Growing_ExcelExporter {
         workbook.close();
     }
 
-    public void exportGrowing_humidityData(List<Growing_HumidityResponse> responses, String filePath) throws IOException {
+    public void exportReserve_humidityData(List<Reserve_HumidityResponse> responses, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Humidity Data");
 
@@ -80,10 +79,10 @@ public class Growing_ExcelExporter {
         headerRow.createCell(2).setCellValue("Unit");
         headerRow.createCell(3).setCellValue("Timestamp");
 
-        for (Growing_HumidityResponse response : responses) {
+        for (Reserve_HumidityResponse response : responses) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getGrowingBarnRoomNum());
-            row.createCell(1).setCellValue(response.getGrowingHumidityData());
+            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
+            row.createCell(1).setCellValue(response.getReserveHumidityData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
         }
@@ -94,7 +93,7 @@ public class Growing_ExcelExporter {
         workbook.close();
     }
 
-    public void exportGrowing_TemperatureData(List<Growing_TemperatureResponse> growingTemperatureResponse, String filePath) throws IOException {
+    public void exportReserve_TemperatureData(List<Reserve_TemperatureResponse> reserveTemperatureResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Temperature Data");
 
@@ -106,13 +105,13 @@ public class Growing_ExcelExporter {
         headerRow.createCell(3).setCellValue("Timestamp");
         headerRow.createCell(4).setCellValue("Temperature locate Data");
 
-        for (Growing_TemperatureResponse response : growingTemperatureResponse) {
+        for (Reserve_TemperatureResponse response : reserveTemperatureResponse) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getGrowingRoomNum());
-            row.createCell(1).setCellValue(response.getGrowingTemperatureData());
+            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
+            row.createCell(1).setCellValue(response.getReserveTemperatureData());
             row.createCell(2).setCellValue(response.getUnit());
             row.createCell(3).setCellValue(response.getTimestamp());
-            row.createCell(4).setCellValue(response.getGrowingTemperatureLocateData());
+            row.createCell(4).setCellValue(response.getReserveTemperatureLocateData());
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
@@ -121,7 +120,7 @@ public class Growing_ExcelExporter {
         workbook.close();
     }
 
-    public void exportGrowing_PmData(List<Growing_PmResponse> growingPmResponse, String filePath) throws IOException {
+    public void exportReserve_PmData(List<Reserve_PmResponse> reservePmResponse, String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("PM Data");
 
@@ -134,9 +133,9 @@ public class Growing_ExcelExporter {
         headerRow.createCell(4).setCellValue("Total PM");
         headerRow.createCell(5).setCellValue("Timestamp");
 
-        for (Growing_PmResponse response : growingPmResponse) {
+        for (Reserve_PmResponse response : reservePmResponse) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(response.getGrowingRoomNum());
+            row.createCell(0).setCellValue(response.getReserveSowsRoomNum());
             row.createCell(1).setCellValue(response.getPm1_0());
             row.createCell(2).setCellValue(response.getPm2_5());
             row.createCell(3).setCellValue(response.getPm10());

@@ -2,7 +2,7 @@ package com.farminserver.api.domain.gestation_sensor.gestation_temperature_senso
 
 import com.farminserver.api.domain.gestation_sensor.gestation_temperature_sensor.controller.model.Gestation_TemperatureResponse;
 import com.farminserver.api.domain.gestation_sensor.gestation_temperature_sensor.converter.Gestation_TemperatureConverter;
-import com.farminserver.api.util.Gestation_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Gestation_ExcelExporter;
 import com.farminserver.db.gestation_temperature_sensor.Gestation_TemperatureSensorEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

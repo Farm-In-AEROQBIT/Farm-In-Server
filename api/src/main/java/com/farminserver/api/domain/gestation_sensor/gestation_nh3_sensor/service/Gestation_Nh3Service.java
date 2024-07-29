@@ -4,7 +4,7 @@ import com.farminserver.api.domain.gestation_sensor.gestation_nh3_sensor.convert
 import com.farminserver.api.domain.gestation_sensor.gestation_nh3_sensor.controller.model.Gestation_Nh3Response;
 import com.farminserver.db.gestation_nh3_sensor.Gestation_Nh3SensorRepository;
 import com.farminserver.db.gestation_nh3_sensor.Gestation_Nh3SensorEntity;
-import com.farminserver.api.util.Gestation_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Gestation_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
