@@ -23,17 +23,11 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin` (
-  `admin_id` varchar(45) NOT NULL,
-  `admin_pw` varchar(45) NOT NULL,
-  `user_phone_num` varchar(45) NOT NULL,
-  `farm_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`admin_id`,`farm_name`,`user_phone_num`,`admin_pw`),
+  `admin_id` varchar(255) NOT NULL,
+  `admin_pw` varchar(255) NOT NULL,
+  PRIMARY KEY (`admin_id`,`admin_pw`),
   UNIQUE KEY `Admin_id_UNIQUE` (`admin_id`),
-  UNIQUE KEY `farn_name_UNIQUE` (`farm_name`),
-  UNIQUE KEY `user_phone_num_UNIQUE` (`user_phone_num`),
-  UNIQUE KEY `admin_pw_UNIQUE` (`admin_pw`),
-  CONSTRAINT `Farm_name_8` FOREIGN KEY (`farm_name`) REFERENCES `farm_info` (`farm_name`),
-  CONSTRAINT `User_Phone_num_2` FOREIGN KEY (`user_phone_num`) REFERENCES `user` (`user_phone_num`)
+  UNIQUE KEY `admin_pw_UNIQUE` (`admin_pw`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -43,6 +37,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES ('farmin','farmin230130*');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,8 +79,8 @@ DROP TABLE IF EXISTS `boars_co2_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `boars_co2_sensor` (
   `boars_barn_room_num` varchar(45) NOT NULL,
-  `boars_co2_data` varchar(45) DEFAULT NULL,
-  `boars_co2_input_time` varchar(45) DEFAULT NULL,
+  `boars_co2_data` double NOT NULL,
+  `boars_co2_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`boars_barn_room_num`),
   UNIQUE KEY `boars_barn_room_num_UNIQUE` (`boars_barn_room_num`),
   CONSTRAINT `boars_room_num_1` FOREIGN KEY (`boars_barn_room_num`) REFERENCES `boars_room` (`boars_barn_room_num`)
@@ -110,8 +105,8 @@ DROP TABLE IF EXISTS `boars_humidity_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `boars_humidity_sensor` (
   `boars_barn_room_num` varchar(45) NOT NULL,
-  `boars_humidity_data` varchar(45) DEFAULT NULL,
-  `boars_humidity_input_time` varchar(45) DEFAULT NULL,
+  `boars_humidity_data` double NOT NULL,
+  `boars_humidity_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`boars_barn_room_num`),
   UNIQUE KEY `boars_barn_room_num_UNIQUE` (`boars_barn_room_num`),
   CONSTRAINT `boars_room_num_3` FOREIGN KEY (`boars_barn_room_num`) REFERENCES `boars_room` (`boars_barn_room_num`)
@@ -136,8 +131,9 @@ DROP TABLE IF EXISTS `boars_nh3_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `boars_nh3_sensor` (
   `boars_baen_room_num` varchar(45) NOT NULL,
-  `boars_nh3_data` varchar(45) DEFAULT NULL,
-  `boars_nh3_input_time` varchar(45) DEFAULT NULL,
+  `boars_nh3_data` double NOT NULL,
+  `boars_nh3_input_time` datetime(6) DEFAULT NULL,
+  `boars_barn_room_num` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`boars_baen_room_num`),
   UNIQUE KEY `boars_baen_room_num_UNIQUE` (`boars_baen_room_num`),
   CONSTRAINT `boars_barn_room_num_2` FOREIGN KEY (`boars_baen_room_num`) REFERENCES `boars_room` (`boars_barn_room_num`)
@@ -162,11 +158,11 @@ DROP TABLE IF EXISTS `boars_pm_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `boars_pm_sensor` (
   `boars_barn_room_num` varchar(45) NOT NULL,
-  `boars_pm1_data` varchar(45) DEFAULT NULL,
-  `boars_pm25_data` varchar(45) DEFAULT NULL,
-  `boars_pm10` varchar(45) DEFAULT NULL,
-  `boars_totalpm_data` varchar(45) DEFAULT NULL,
-  `boars_pm_input_time` varchar(45) DEFAULT NULL,
+  `boars_pm1_data` double DEFAULT NULL,
+  `boars_pm25_data` double DEFAULT NULL,
+  `boars_pm10` double DEFAULT NULL,
+  `boars_totalpm_data` double DEFAULT NULL,
+  `boars_pm_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`boars_barn_room_num`),
   UNIQUE KEY `boars_barn_room_num_UNIQUE` (`boars_barn_room_num`),
   CONSTRAINT `boars_barn_room_num_5` FOREIGN KEY (`boars_barn_room_num`) REFERENCES `boars_room` (`boars_barn_room_num`)
@@ -217,9 +213,9 @@ DROP TABLE IF EXISTS `boars_temperature_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `boars_temperature_sensor` (
   `boars_barn_room_num` varchar(45) NOT NULL,
-  `boars_temper_data` varchar(45) DEFAULT NULL,
-  `boars_temper_input_time` varchar(45) DEFAULT NULL,
-  `boars_temper_locate_data` varchar(45) DEFAULT NULL,
+  `boars_temper_data` double NOT NULL,
+  `boars_temper_input_time` datetime(6) DEFAULT NULL,
+  `boars_temper_locate_data` bigint NOT NULL,
   PRIMARY KEY (`boars_barn_room_num`),
   UNIQUE KEY `boars_barn_room_num_UNIQUE` (`boars_barn_room_num`),
   CONSTRAINT `boars_room_name_4` FOREIGN KEY (`boars_barn_room_num`) REFERENCES `boars_room` (`boars_barn_room_num`)
@@ -243,12 +239,10 @@ DROP TABLE IF EXISTS `farm_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `farm_info` (
-  `user_phone_num` varchar(45) NOT NULL,
   `farm_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`user_phone_num`,`farm_name`),
-  UNIQUE KEY `user_phone_name_UNIQUE` (`user_phone_num`),
+  PRIMARY KEY (`farm_name`),
   UNIQUE KEY `farm_name_UNIQUE` (`farm_name`),
-  CONSTRAINT `User_phone_num` FOREIGN KEY (`user_phone_num`) REFERENCES `user` (`user_phone_num`)
+  CONSTRAINT `Farm_Name` FOREIGN KEY (`farm_name`) REFERENCES `user` (`farm_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -270,8 +264,9 @@ DROP TABLE IF EXISTS `finishing_co2_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `finishing_co2_sensor` (
   `finishing_room_num` varchar(45) NOT NULL,
-  `finishing_co2_data` varchar(45) DEFAULT NULL,
-  `finishing_co2_input_time` varchar(45) DEFAULT NULL,
+  `finishing_co2_data` double NOT NULL,
+  `finishing_co2_input_time` datetime(6) DEFAULT NULL,
+  `finishing_barn_room_num` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`finishing_room_num`),
   UNIQUE KEY `finishing_room_num_UNIQUE` (`finishing_room_num`),
   CONSTRAINT `finising_room_num_1` FOREIGN KEY (`finishing_room_num`) REFERENCES `finishing_room` (`finishing_room_num`)
@@ -296,8 +291,10 @@ DROP TABLE IF EXISTS `finishing_humidity_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `finishing_humidity_sensor` (
   `finishing_room_num` varchar(45) NOT NULL,
-  `finishing_humidity_data` varchar(45) DEFAULT NULL,
+  `finishing_humidity_data` double NOT NULL,
   `finishing_humidity_input_data` varchar(45) DEFAULT NULL,
+  `finishing_barn_room_num` varchar(255) DEFAULT NULL,
+  `finishing_humidity_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`finishing_room_num`),
   UNIQUE KEY `finishing_room_num_UNIQUE` (`finishing_room_num`),
   CONSTRAINT `finishing_room_num_3` FOREIGN KEY (`finishing_room_num`) REFERENCES `finishing_room` (`finishing_room_num`)
@@ -322,8 +319,8 @@ DROP TABLE IF EXISTS `finishing_nh3_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `finishing_nh3_sensor` (
   `finishing_room_num` varchar(45) NOT NULL,
-  `finishing_nh3_data` varchar(45) DEFAULT NULL,
-  `finishing_nh3_input_time` varchar(45) DEFAULT NULL,
+  `finishing_nh3_data` double NOT NULL,
+  `finishing_nh3_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`finishing_room_num`),
   UNIQUE KEY `finishing_room_num_UNIQUE` (`finishing_room_num`),
   CONSTRAINT `finising_room_num_2` FOREIGN KEY (`finishing_room_num`) REFERENCES `finishing_room` (`finishing_room_num`)
@@ -350,7 +347,7 @@ CREATE TABLE `finishing_pen` (
   `farm_name` varchar(45) NOT NULL,
   `finishing_pen_num` varchar(45) NOT NULL,
   `finishing_pen_room_num` varchar(45) NOT NULL,
-  PRIMARY KEY (`farm_name`,`finishing_pen_num`,`finishing_pen_room_num`),
+  PRIMARY KEY (`finishing_pen_num`,`finishing_pen_room_num`),
   UNIQUE KEY `farm_name_UNIQUE` (`farm_name`),
   UNIQUE KEY `finishing_pen_num_UNIQUE` (`finishing_pen_num`),
   UNIQUE KEY `finishing_pen_room_num_UNIQUE` (`finishing_pen_room_num`),
@@ -376,11 +373,11 @@ DROP TABLE IF EXISTS `finishing_pm_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `finishing_pm_sensor` (
   `finishing_room_num` varchar(45) NOT NULL,
-  `finishing_pm1_data` varchar(45) DEFAULT NULL,
-  `finishing_pm25_data` varchar(45) DEFAULT NULL,
-  `finishing_pm10_data` varchar(45) DEFAULT NULL,
-  `finishing_pm_total_data` varchar(45) DEFAULT NULL,
-  `finishing_pm_input_time` varchar(45) DEFAULT NULL,
+  `finishing_pm1_data` double DEFAULT NULL,
+  `finishing_pm25_data` double DEFAULT NULL,
+  `finishing_pm10_data` double DEFAULT NULL,
+  `finishing_pm_total_data` double DEFAULT NULL,
+  `finishing_pm_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`finishing_room_num`),
   UNIQUE KEY `finishing_room_num_UNIQUE` (`finishing_room_num`),
   CONSTRAINT `finishing_room_num_5` FOREIGN KEY (`finishing_room_num`) REFERENCES `finishing_room` (`finishing_room_num`)
@@ -458,8 +455,8 @@ DROP TABLE IF EXISTS `gestation_co2_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gestation_co2_sensor` (
   `gestation_room_num` varchar(45) NOT NULL,
-  `gestation_co2_data` varchar(45) DEFAULT NULL,
-  `gestation_co2_input_time` varchar(45) DEFAULT NULL,
+  `gestation_co2_data` double NOT NULL,
+  `gestation_co2_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`gestation_room_num`),
   UNIQUE KEY `gestation_room_num_UNIQUE` (`gestation_room_num`),
   CONSTRAINT `gestation_room_num_1` FOREIGN KEY (`gestation_room_num`) REFERENCES `gestation_room` (`gestation_room_num`)
@@ -513,8 +510,8 @@ DROP TABLE IF EXISTS `gestation_humidity_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gestation_humidity_sensor` (
   `gestation_room_num` varchar(45) NOT NULL,
-  `gestation_humidity_data` varchar(45) DEFAULT NULL,
-  `gestation_humidity_input_time` varchar(45) DEFAULT NULL,
+  `gestation_humidity_data` double NOT NULL,
+  `gestation_humidity_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`gestation_room_num`),
   UNIQUE KEY `gestation_room_num_UNIQUE` (`gestation_room_num`),
   CONSTRAINT `gestation_room_num_3` FOREIGN KEY (`gestation_room_num`) REFERENCES `gestation_room` (`gestation_room_num`)
@@ -539,8 +536,8 @@ DROP TABLE IF EXISTS `gestation_nh3_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gestation_nh3_sensor` (
   `gestation_room_num` varchar(45) NOT NULL,
-  `gestation_nh3_data` varchar(45) DEFAULT NULL,
-  `gestation_nh3_input_time` varchar(45) DEFAULT NULL,
+  `gestation_nh3_data` double NOT NULL,
+  `gestation_nh3_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`gestation_room_num`),
   UNIQUE KEY `gestation_room_num_UNIQUE` (`gestation_room_num`),
   CONSTRAINT `gestation_room_num_2` FOREIGN KEY (`gestation_room_num`) REFERENCES `gestation_room` (`gestation_room_num`)
@@ -565,11 +562,11 @@ DROP TABLE IF EXISTS `gestation_pm_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gestation_pm_sensor` (
   `gestation_room_num` varchar(45) NOT NULL,
-  `gestation_pm1_data` varchar(45) DEFAULT NULL,
-  `gestation_pm25_data` varchar(45) DEFAULT NULL,
-  `gestation_pm10_data` varchar(45) DEFAULT NULL,
-  `gestation_pm_total` varchar(45) DEFAULT NULL,
-  `gestation_pm_input_time` varchar(45) DEFAULT NULL,
+  `gestation_pm1_data` double DEFAULT NULL,
+  `gestation_pm25_data` double DEFAULT NULL,
+  `gestation_pm10_data` double DEFAULT NULL,
+  `gestation_pm_total` double DEFAULT NULL,
+  `gestation_pm_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`gestation_room_num`),
   UNIQUE KEY `gestation_room_num_UNIQUE` (`gestation_room_num`),
   CONSTRAINT `gestation_room_num_5` FOREIGN KEY (`gestation_room_num`) REFERENCES `gestation_room` (`gestation_room_num`)
@@ -620,9 +617,10 @@ DROP TABLE IF EXISTS `gestation_temperature`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gestation_temperature` (
   `gestation_room_num` varchar(45) NOT NULL,
-  `gestation_temper_data` varchar(45) DEFAULT NULL,
-  `gestation_temper_input_time` varchar(45) DEFAULT NULL,
+  `gestation_temper_data` double NOT NULL,
+  `gestation_temper_input_time` datetime(6) DEFAULT NULL,
   `gestation_temper_locate` varchar(45) DEFAULT NULL,
+  `gestation_temper_locate_data` bigint NOT NULL,
   PRIMARY KEY (`gestation_room_num`),
   UNIQUE KEY `gestation_room_num_UNIQUE` (`gestation_room_num`),
   CONSTRAINT `gestation_room_num_4` FOREIGN KEY (`gestation_room_num`) REFERENCES `gestation_room` (`gestation_room_num`)
@@ -676,8 +674,8 @@ DROP TABLE IF EXISTS `growing_co2_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `growing_co2_sensor` (
   `growing_room_num` varchar(45) NOT NULL,
-  `growing_co2_data` varchar(45) DEFAULT NULL,
-  `growing_co2_input_time` varchar(45) DEFAULT NULL,
+  `growing_co2_data` double NOT NULL,
+  `growing_co2_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`growing_room_num`),
   UNIQUE KEY `growing_room_num_UNIQUE` (`growing_room_num`),
   CONSTRAINT `growing_room_num_1` FOREIGN KEY (`growing_room_num`) REFERENCES `growing_room_num` (`growing_room_num`)
@@ -702,8 +700,8 @@ DROP TABLE IF EXISTS `growing_humidity_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `growing_humidity_sensor` (
   `growing_room_num` varchar(45) NOT NULL,
-  `growing_humidity_data` varchar(45) DEFAULT NULL,
-  `growing_humidity_input_time` varchar(45) DEFAULT NULL,
+  `growing_humidity_data` double NOT NULL,
+  `growing_humidity_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`growing_room_num`),
   UNIQUE KEY `growing_room_num_UNIQUE` (`growing_room_num`),
   CONSTRAINT `growing_room_num_3` FOREIGN KEY (`growing_room_num`) REFERENCES `growing_room_num` (`growing_room_num`)
@@ -728,8 +726,8 @@ DROP TABLE IF EXISTS `growing_nh3_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `growing_nh3_sensor` (
   `growing_room_num` varchar(45) NOT NULL,
-  `growing_nh3_data` varchar(45) DEFAULT NULL,
-  `growing_nh3_input_time` varchar(45) DEFAULT NULL,
+  `growing_nh3_data` double NOT NULL,
+  `growing_nh3_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`growing_room_num`),
   UNIQUE KEY `growing_room_num_UNIQUE` (`growing_room_num`),
   CONSTRAINT `growing_room_num_2` FOREIGN KEY (`growing_room_num`) REFERENCES `growing_room_num` (`growing_room_num`)
@@ -754,11 +752,11 @@ DROP TABLE IF EXISTS `growing_pm_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `growing_pm_sensor` (
   `growing_room_num` varchar(45) NOT NULL,
-  `growing_pm1_data` varchar(45) DEFAULT NULL,
-  `growing_pm25_data` varchar(45) DEFAULT NULL,
-  `growing_pm10_data` varchar(45) DEFAULT NULL,
-  `growing_pm_total` varchar(45) DEFAULT NULL,
-  `growing_pm_input_time` varchar(45) DEFAULT NULL,
+  `growing_pm1_data` double DEFAULT NULL,
+  `growing_pm25_data` double DEFAULT NULL,
+  `growing_pm10_data` double DEFAULT NULL,
+  `growing_pm_total` double DEFAULT NULL,
+  `growing_pm_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`growing_room_num`),
   UNIQUE KEY `growing_room_num_UNIQUE` (`growing_room_num`),
   CONSTRAINT `growing_room_num_5` FOREIGN KEY (`growing_room_num`) REFERENCES `growing_room_num` (`growing_room_num`)
@@ -809,9 +807,10 @@ DROP TABLE IF EXISTS `growing_temperature_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `growing_temperature_sensor` (
   `growing_room_num` varchar(45) NOT NULL,
-  `growing_temper_data` varchar(45) DEFAULT NULL,
-  `growing_temper_input_time` varchar(45) DEFAULT NULL,
+  `growing_temper_data` double NOT NULL,
+  `growing_temper_input_time` datetime(6) DEFAULT NULL,
   `growing_temper_locate` varchar(45) DEFAULT NULL,
+  `growing_temper_locate_data` bigint NOT NULL,
   PRIMARY KEY (`growing_room_num`),
   UNIQUE KEY `growing_room_num_UNIQUE` (`growing_room_num`),
   CONSTRAINT `growing_room_num_4` FOREIGN KEY (`growing_room_num`) REFERENCES `growing_room_num` (`growing_room_num`)
@@ -865,8 +864,9 @@ DROP TABLE IF EXISTS `maternity_co2_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `maternity_co2_sensor` (
   `maternity_room_num` varchar(45) NOT NULL,
-  `maternity_co2_data` int DEFAULT NULL,
+  `maternity_co2_data` double NOT NULL,
   `maternity_co2_input_data` varchar(45) DEFAULT NULL,
+  `maternity_co2_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`maternity_room_num`),
   UNIQUE KEY `maternity_room_num_UNIQUE` (`maternity_room_num`),
   CONSTRAINT `maternity_room_num_1` FOREIGN KEY (`maternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
@@ -891,8 +891,8 @@ DROP TABLE IF EXISTS `maternity_humidity_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `maternity_humidity_sensor` (
   `maternity_room_num` varchar(45) NOT NULL,
-  `maternity_humidity_data` varchar(45) DEFAULT NULL,
-  `maternity_humidity_input_time` varchar(45) DEFAULT NULL,
+  `maternity_humidity_data` double NOT NULL,
+  `maternity_humidity_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`maternity_room_num`),
   UNIQUE KEY `maternity_room_num_UNIQUE` (`maternity_room_num`),
   CONSTRAINT `maternity_room_num_2` FOREIGN KEY (`maternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
@@ -917,8 +917,8 @@ DROP TABLE IF EXISTS `maternity_nh3_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `maternity_nh3_sensor` (
   `maternity_room_num` varchar(45) NOT NULL,
-  `maternity_nh3_data` varchar(45) DEFAULT NULL,
-  `maternity_nh3_input_time` varchar(45) DEFAULT NULL,
+  `maternity_nh3_data` double NOT NULL,
+  `maternity_nh3_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`maternity_room_num`),
   UNIQUE KEY `meternity_room_num_UNIQUE` (`maternity_room_num`),
   CONSTRAINT `maternity_room_num_3` FOREIGN KEY (`maternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
@@ -943,11 +943,11 @@ DROP TABLE IF EXISTS `maternity_pm_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `maternity_pm_sensor` (
   `maternity_room_num` varchar(45) NOT NULL,
-  `maternity_pm1_data` varchar(45) DEFAULT NULL,
-  `maeternity_pm25_data` varchar(45) DEFAULT NULL,
-  `maeternity_pm10_data` varchar(45) DEFAULT NULL,
-  `maternity_pm_total_data` varchar(45) DEFAULT NULL,
-  `maternity_pm_input_time` varchar(45) DEFAULT NULL,
+  `maternity_pm1_data` double DEFAULT NULL,
+  `maeternity_pm25_data` double DEFAULT NULL,
+  `maeternity_pm10_data` double DEFAULT NULL,
+  `maternity_pm_total_data` double DEFAULT NULL,
+  `maternity_pm_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`maternity_room_num`),
   UNIQUE KEY `meternity_room_num_UNIQUE` (`maternity_room_num`),
   CONSTRAINT `maternity_room_num_5` FOREIGN KEY (`maternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
@@ -998,9 +998,11 @@ DROP TABLE IF EXISTS `maternity_temperature_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `maternity_temperature_sensor` (
   `maternity_room_num` varchar(45) NOT NULL,
-  `maternity_temper_data` varchar(45) DEFAULT NULL,
-  `maternity_temper_input_time` varchar(45) DEFAULT NULL,
+  `maternity_temper_data` double NOT NULL,
+  `maternity_temper_input_time` datetime(6) DEFAULT NULL,
   `maternity_temper_locate` varchar(45) DEFAULT NULL,
+  `maternity_barn_room_num` varchar(255) DEFAULT NULL,
+  `maternity_temper_locate_data` bigint NOT NULL,
   PRIMARY KEY (`maternity_room_num`),
   UNIQUE KEY `meternity_room_num_UNIQUE` (`maternity_room_num`),
   CONSTRAINT `maternity_room_num_4` FOREIGN KEY (`maternity_room_num`) REFERENCES `maternity_room` (`maternity_barn_room_num`)
@@ -1025,8 +1027,9 @@ DROP TABLE IF EXISTS `piglet_co2_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `piglet_co2_sensor` (
   `piglet_pen_room_num` varchar(45) NOT NULL,
-  `piglet_co2_data` varchar(45) DEFAULT NULL,
-  `piglet_co2_input_time` varchar(45) DEFAULT NULL,
+  `piglet_co2_data` double NOT NULL,
+  `piglet_co2_input_time` datetime(6) DEFAULT NULL,
+  `piglet_room_num` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`piglet_pen_room_num`),
   UNIQUE KEY `piglet_pen_room_num_UNIQUE` (`piglet_pen_room_num`),
   CONSTRAINT `piglet_pen_room_num_1` FOREIGN KEY (`piglet_pen_room_num`) REFERENCES `piglet_pen_room` (`piglet_pen_room_num`)
@@ -1051,8 +1054,9 @@ DROP TABLE IF EXISTS `piglet_humidity_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `piglet_humidity_sensor` (
   `piglet_pen_room_num` varchar(45) NOT NULL,
-  `piglet_humidity_data` varchar(45) DEFAULT NULL,
-  `piglet_humidity_input_time` varchar(45) DEFAULT NULL,
+  `piglet_humidity_data` double NOT NULL,
+  `piglet_humidity_input_time` datetime(6) DEFAULT NULL,
+  `piglet_room_num` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`piglet_pen_room_num`),
   UNIQUE KEY `piglet_pen_room_num_UNIQUE` (`piglet_pen_room_num`),
   CONSTRAINT `piglet_pen_room_num_3` FOREIGN KEY (`piglet_pen_room_num`) REFERENCES `piglet_pen_room` (`piglet_pen_room_num`)
@@ -1077,8 +1081,9 @@ DROP TABLE IF EXISTS `piglet_nh3_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `piglet_nh3_sensor` (
   `piglet_pen_room_num` varchar(45) NOT NULL,
-  `piglet_nh3_data` varchar(45) DEFAULT NULL,
-  `piglet_nh3_input_time` varchar(45) DEFAULT NULL,
+  `piglet_nh3_data` double NOT NULL,
+  `piglet_nh3_input_time` datetime(6) DEFAULT NULL,
+  `piglet_room_num` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`piglet_pen_room_num`),
   UNIQUE KEY `piglet_pen_room_num_UNIQUE` (`piglet_pen_room_num`),
   CONSTRAINT `piglet_pen_room_num_2` FOREIGN KEY (`piglet_pen_room_num`) REFERENCES `piglet_pen_room` (`piglet_pen_room_num`)
@@ -1158,11 +1163,11 @@ DROP TABLE IF EXISTS `piglet_pm_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `piglet_pm_sensor` (
   `piglet_pen_room_num` varchar(45) NOT NULL,
-  `piglet_pm1_data` varchar(45) DEFAULT NULL,
-  `piglet_pm25_data` varchar(45) DEFAULT NULL,
-  `piglet_pm10_data` varchar(45) DEFAULT NULL,
-  `piglet_pm_total_data` varchar(45) DEFAULT NULL,
-  `piglet_pm_input_time` varchar(45) DEFAULT NULL,
+  `piglet_pm1_data` double DEFAULT NULL,
+  `piglet_pm25_data` double DEFAULT NULL,
+  `piglet_pm10_data` double DEFAULT NULL,
+  `piglet_pm_total_data` double DEFAULT NULL,
+  `piglet_pm_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`piglet_pen_room_num`),
   UNIQUE KEY `piglet_pen_room_num_UNIQUE` (`piglet_pen_room_num`),
   CONSTRAINT `piglet_pen_room_num_5` FOREIGN KEY (`piglet_pen_room_num`) REFERENCES `piglet_pen_room` (`piglet_pen_room_num`)
@@ -1187,9 +1192,11 @@ DROP TABLE IF EXISTS `piglet_temperature_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `piglet_temperature_sensor` (
   `piglet_pen_room_num` varchar(45) NOT NULL,
-  `piglet_temper_data` varchar(45) DEFAULT NULL,
-  `piglet_temper_input_time` varchar(45) DEFAULT NULL,
+  `piglet_temper_data` double NOT NULL,
+  `piglet_temper_input_time` datetime(6) DEFAULT NULL,
   `piglet_temper_locate` varchar(45) DEFAULT NULL,
+  `piglet_room_num` varchar(255) DEFAULT NULL,
+  `piglet_temper_locate_data` bigint NOT NULL,
   PRIMARY KEY (`piglet_pen_room_num`),
   UNIQUE KEY `piglet_pen_room_num_UNIQUE` (`piglet_pen_room_num`),
   CONSTRAINT `piglet_pen_room_num_4` FOREIGN KEY (`piglet_pen_room_num`) REFERENCES `piglet_pen_room` (`piglet_pen_room_num`)
@@ -1214,8 +1221,8 @@ DROP TABLE IF EXISTS `reserve_co2_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserve_co2_sensor` (
   `reserve_sows_room_num` varchar(45) NOT NULL,
-  `reserve_co2_data` varchar(45) DEFAULT NULL,
-  `reserve_co2_input_time` varchar(45) DEFAULT NULL,
+  `reserve_co2_data` double NOT NULL,
+  `reserve_co2_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`reserve_sows_room_num`),
   UNIQUE KEY `reserve_sows_room_UNIQUE` (`reserve_sows_room_num`),
   CONSTRAINT `reserve_sows_room_num_1` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
@@ -1240,8 +1247,8 @@ DROP TABLE IF EXISTS `reserve_humidity_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserve_humidity_sensor` (
   `reserve_sows_room_num` varchar(45) NOT NULL,
-  `reserve_humidity_data` varchar(45) DEFAULT NULL,
-  `reserve_humidity_input_time` varchar(45) DEFAULT NULL,
+  `reserve_humidity_data` double NOT NULL,
+  `reserve_humidity_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`reserve_sows_room_num`),
   UNIQUE KEY `ireserve_sows_humidity_sensor_UNIQUE` (`reserve_sows_room_num`),
   CONSTRAINT `reserve_sows_room_num_3` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
@@ -1266,8 +1273,8 @@ DROP TABLE IF EXISTS `reserve_nh3_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserve_nh3_sensor` (
   `reserve_sows_room_num` varchar(45) NOT NULL,
-  `reserve_nh3_data` varchar(45) DEFAULT NULL,
-  `reserve_nh3_input_time` varchar(45) DEFAULT NULL,
+  `reserve_nh3_data` double NOT NULL,
+  `reserve_nh3_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`reserve_sows_room_num`),
   UNIQUE KEY `reserve_sows_room_num_UNIQUE` (`reserve_sows_room_num`),
   CONSTRAINT `reserve_sows_room_num_2` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
@@ -1321,11 +1328,11 @@ DROP TABLE IF EXISTS `reserve_sows_pm_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserve_sows_pm_sensor` (
   `reserve_sows_room_num` varchar(45) NOT NULL,
-  `reserve_sows_pm1_data` varchar(45) DEFAULT NULL,
-  `reserve_sows_pm25_data` varchar(45) DEFAULT NULL,
-  `reserve_sows_pm10_data` varchar(45) DEFAULT NULL,
-  `reserve_sows_pm_total_data` varchar(45) DEFAULT NULL,
-  `reserve_sows_pm_input_time` varchar(45) DEFAULT NULL,
+  `reserve_sows_pm1_data` double DEFAULT NULL,
+  `reserve_sows_pm25_data` double DEFAULT NULL,
+  `reserve_sows_pm10_data` double DEFAULT NULL,
+  `reserve_sows_pm_total_data` double DEFAULT NULL,
+  `reserve_sows_pm_input_time` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`reserve_sows_room_num`),
   UNIQUE KEY `reserve_sows_room_num_UNIQUE` (`reserve_sows_room_num`),
   CONSTRAINT `reserve_sows_room_num_5` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
@@ -1376,9 +1383,14 @@ DROP TABLE IF EXISTS `reserve_temperature_sensor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserve_temperature_sensor` (
   `reserve_sows_room_num` varchar(45) NOT NULL,
-  `reserve_temperature_data` varchar(45) DEFAULT NULL,
-  `reserve_temperature_input_time` varchar(45) DEFAULT NULL,
+  `reserve_temperature_data` double NOT NULL,
+  `reserve_temperature_input_time` datetime(6) DEFAULT NULL,
   `reserve_temperature_locate` varchar(45) DEFAULT NULL,
+  `finishing_barn_room_num` varchar(255) DEFAULT NULL,
+  `finishing_temper_data` double NOT NULL,
+  `finishing_temper_input_time` datetime(6) DEFAULT NULL,
+  `finishing_temper_locate_data` bigint NOT NULL,
+  `reserve_temperature_locate_data` bigint NOT NULL,
   PRIMARY KEY (`reserve_sows_room_num`),
   UNIQUE KEY `reserve_sows_room_num_UNIQUE` (`reserve_sows_room_num`),
   CONSTRAINT `reserve_sows_room_num_4` FOREIGN KEY (`reserve_sows_room_num`) REFERENCES `reserve_sows_room` (`reserve_sows_room_num`)
@@ -1402,17 +1414,16 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `user_id` varchar(45) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `user_pw` varchar(45) NOT NULL,
-  `user_name` varchar(45) NOT NULL,
-  `user_phone_num` varchar(45) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `user_phone_num` varchar(255) NOT NULL,
   `farm_name` varchar(45) NOT NULL,
   PRIMARY KEY (`user_id`,`user_pw`,`user_phone_num`,`farm_name`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   UNIQUE KEY `user_pw_UNIQUE` (`user_pw`),
   UNIQUE KEY `user_phone_num_UNIQUE` (`user_phone_num`),
-  UNIQUE KEY `farm_name_UNIQUE` (`farm_name`),
-  CONSTRAINT `Farm_Name` FOREIGN KEY (`farm_name`) REFERENCES `farm_info` (`farm_name`)
+  UNIQUE KEY `farm_name_UNIQUE` (`farm_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1434,4 +1445,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-03 15:44:35
+-- Dump completed on 2024-07-30 11:09:27
