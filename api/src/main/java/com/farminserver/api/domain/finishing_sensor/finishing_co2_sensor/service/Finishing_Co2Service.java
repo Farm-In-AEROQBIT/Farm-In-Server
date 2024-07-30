@@ -2,7 +2,7 @@ package com.farminserver.api.domain.finishing_sensor.finishing_co2_sensor.servic
 
 import com.farminserver.api.domain.finishing_sensor.finishing_co2_sensor.converter.Finishing_Co2Converter;
 import com.farminserver.api.domain.finishing_sensor.finishing_co2_sensor.controller.model.Finishing_Co2Response;
-import com.farminserver.api.util.Finishing_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Finishing_ExcelExporter;
 import com.farminserver.db.finishing_co2_sensor.Finishing_Co2SensorEntity;
 import com.farminserver.db.finishing_co2_sensor.Finishing_Co2SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

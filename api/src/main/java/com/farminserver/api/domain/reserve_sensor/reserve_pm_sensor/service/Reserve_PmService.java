@@ -4,7 +4,7 @@ import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.controller.m
 import com.farminserver.api.domain.reserve_sensor.reserve_pm_sensor.converter.Reserve_PmConverter;
 import com.farminserver.db.reserve_pm_sensor.Reserve_PmSensorRepository;
 import com.farminserver.db.reserve_pm_sensor.Reserve_PmSensorEntity;
-import com.farminserver.api.util.Reserve_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Reserve_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

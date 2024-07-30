@@ -4,7 +4,7 @@ import com.farminserver.api.domain.gestation_sensor.gestation_co2_sensor.control
 import com.farminserver.db.gestation_co2_sensor.Gestation_Co2SensorEntity;
 import com.farminserver.db.gestation_co2_sensor.Gestation_Co2SensorRepository;
 import com.farminserver.api.domain.gestation_sensor.gestation_co2_sensor.converter.Gestation_Co2Converter;
-import com.farminserver.api.util.Gestation_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Gestation_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

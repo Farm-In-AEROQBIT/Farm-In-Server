@@ -4,7 +4,7 @@ import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.converter.
 import com.farminserver.api.domain.boars_sensor.boars_humidity_sensor.controller.model.Boars_HumidityResponse;
 import com.farminserver.db.boars_humidity_sensor.Boars_HumiditySensorEntity;
 import com.farminserver.db.boars_humidity_sensor.Boars_HumiditySensorRepository;
-import com.farminserver.api.util.Boars_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

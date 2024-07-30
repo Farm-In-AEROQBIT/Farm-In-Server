@@ -2,7 +2,7 @@ package com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.servic
 
 import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.converter.Maternity_Nh3Converter;
 import com.farminserver.api.domain.maternity_sensor.maternity_nh3_sensor.controller.model.Maternity_Nh3Response;
-import com.farminserver.api.util.Maternity_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Maternity_ExcelExporter;
 
 import com.farminserver.db.maternity_nh3_sensor.Maternity_Nh3SensorEntity;
 import com.farminserver.db.maternity_nh3_sensor.Maternity_Nh3SensorRepository;

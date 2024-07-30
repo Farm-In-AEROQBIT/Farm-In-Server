@@ -2,7 +2,7 @@ package com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.service;
 
 import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.controller.model.Piglet_Nh3Response;
 import com.farminserver.api.domain.piglet_sensor.piglet_nh3_sensor.converter.Piglet_Nh3Converter;
-import com.farminserver.api.util.Piglet_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Piglet_ExcelExporter;
 import com.farminserver.db.piglet_nh3_sensor.Piglet_Nh3SensorEntity;
 import com.farminserver.db.piglet_nh3_sensor.Piglet_Nh3SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,7 +3,7 @@ package com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.service;
 import com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.controller.model.Piglet_Co2Response;
 import com.farminserver.api.domain.piglet_sensor.piglet_co2_sensor.converter.Piglet_Co2Converter;
 
-import com.farminserver.api.util.Piglet_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Piglet_ExcelExporter;
 import com.farminserver.db.piglet_co2_sensor.Piglet_Co2SensorEntity;
 import com.farminserver.db.piglet_co2_sensor.Piglet_Co2SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

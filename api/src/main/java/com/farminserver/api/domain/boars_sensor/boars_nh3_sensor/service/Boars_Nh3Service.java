@@ -4,7 +4,7 @@ import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.converter.Boars
 import com.farminserver.api.domain.boars_sensor.boars_nh3_sensor.controller.model.Boars_Nh3Response;
 import com.farminserver.db.boars_nh3_sensor.Boars_Nh3SensorRepository;
 import com.farminserver.db.boars_nh3_sensor.Boars_Nh3SensorEntity;
-import com.farminserver.api.util.Boars_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

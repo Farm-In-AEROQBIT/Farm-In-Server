@@ -4,7 +4,7 @@ import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.controller.model
 import com.farminserver.api.domain.boars_sensor.boars_pm_sensor.converter.Boars_PmConverter;
 import com.farminserver.db.boars_pm_sensor.Boars_PmSensorRepository;
 import com.farminserver.db.boars_pm_sensor.Boars_PmSensorEntity;
-import com.farminserver.api.util.Boars_ExcelExporter;
+import com.farminserver.api.util.ExcelExporter.Boars_ExcelExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
