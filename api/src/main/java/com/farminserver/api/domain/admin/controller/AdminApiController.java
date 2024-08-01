@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.farminserver.api.common.error.TokenErrorCode;
+import com.farminserver.api.util.PassWord.PasswordValidator;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +37,9 @@ public class AdminApiController {
 
     @PostMapping("/create")
     public ResponseEntity<AdminResponse> createAdmin(@RequestBody AdminEntity adminEntity) {
+        if (!PasswordValidator.containsSpecialCharacter(adminEntity.getAdminPw())) {
+            return ResponseEntity.badRequest().body(new AdminResponse("Password must contain a special character."));
+        }
         AdminEntity savedAdmin = adminService.save(adminEntity);
         AdminResponse response = adminConverter.convertToResponse(savedAdmin);
         return ResponseEntity.ok(response);

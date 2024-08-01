@@ -2,6 +2,7 @@ package com.farminserver.api.domain.admin.service;
 
 import com.farminserver.api.common.error.TokenErrorCode;
 import com.farminserver.api.util.Jwt.JwtUtil;
+import com.farminserver.api.util.PassWord.PasswordValidator;
 import com.farminserver.api.domain.admin.business.AdminBusiness;
 import com.farminserver.db.admin.AdminEntity;
 import com.farminserver.db.user.UserEntity;
@@ -42,7 +43,12 @@ public class AdminService {
 
     public boolean authenticateAdmin(AdminEntity adminEntity) {
         Optional<AdminEntity> admin = Optional.ofNullable(business.getById(adminEntity.getAdminId()));
-        return admin.isPresent() && admin.get().getAdminPw().equals(adminEntity.getAdminPw());
+        if (admin.isPresent()) {
+            String storedPassword = admin.get().getAdminPw();
+            String providedPassword = adminEntity.getAdminPw();
+            return storedPassword.equals(providedPassword) && PasswordValidator.containsSpecialCharacter(providedPassword);
+        }
+        return false;
     }
 
     public boolean isAuthorized(String token, String role) {
