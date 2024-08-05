@@ -57,7 +57,7 @@ public class JwtUtil {
         } catch (JwtException e) {
             return Optional.of(TokenErrorCode.INVALID_TOKEN);
         } catch (Exception e) {
-            return Optional.of(TokenErrorCode.TOKEN_EXCEPTUON);
+            return Optional.of(TokenErrorCode.TOKEN_EXCEPTION);
         }
     }
 }
