@@ -25,8 +25,15 @@ public class UserApiController {
     @Autowired
     private JwtUtil jwtUtil;
 
+    private boolean validateToken(String token) {
+        return jwtUtil.validateToken(token).isEmpty();
+    }
+
     @GetMapping("/info")
     public UserResponse getUserInfo(@RequestHeader("Authorization") String token) {
+        if (!validateToken(token)) {
+            throw new RuntimeException("Invalid token");
+        }
         String userId = jwtUtil.extractUsername(token); // JWT에서 userId 추출
         UserEntity userEntity = userBusiness.getById(userId);
         return userConverter.toResponse(userEntity);
@@ -34,6 +41,9 @@ public class UserApiController {
 
     @GetMapping("/farm")
     public String getUserFarmInfo(@RequestHeader("Authorization") String token) {
+        if (!validateToken(token)) {
+            throw new RuntimeException("Invalid token");
+        }
         String userId = jwtUtil.extractUsername(token); // JWT에서 userId 추출
         UserEntity userEntity = userBusiness.getById(userId);
         return userEntity.getFarm_name();
