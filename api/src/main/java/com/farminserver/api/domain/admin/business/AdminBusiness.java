@@ -4,11 +4,9 @@ import com.farminserver.db.admin.AdminEntity;
 import com.farminserver.db.admin.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.farminserver.api.common.annotation.Business;
 
 import java.util.List;
 
-@Business
 @Component
 public class AdminBusiness {
 

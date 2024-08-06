@@ -42,9 +42,9 @@ public class AdminService {
     }
 
     public boolean authenticateAdmin(AdminEntity adminEntity) {
-        Optional<AdminEntity> admin = Optional.ofNullable(business.getById(adminEntity.getAdminId()));
-        if (admin.isPresent()) {
-            String storedPassword = admin.get().getAdminPw();
+        AdminEntity admin = business.getById(adminEntity.getAdminId());
+        if (admin != null) {
+            String storedPassword = admin.getAdminPw();
             String providedPassword = adminEntity.getAdminPw();
             return storedPassword.equals(providedPassword) && PasswordValidator.containsSpecialCharacter(providedPassword);
         }
