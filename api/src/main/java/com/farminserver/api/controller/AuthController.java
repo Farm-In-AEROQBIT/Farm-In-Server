@@ -31,7 +31,7 @@ public class AuthController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        String jwt = jwtUtil.generateToken(loginRequest.getUsername(), "ROLE_USER"); // 역할에 맞게 설정
+        String jwt = jwtUtil.generateAccessToken(loginRequest.getUsername(), "ROLE_USER"); // 수정된 부분
         return ResponseEntity.ok(new JwtResponse(jwt));
     }
 }

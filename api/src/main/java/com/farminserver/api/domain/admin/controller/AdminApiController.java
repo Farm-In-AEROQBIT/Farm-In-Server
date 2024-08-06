@@ -49,7 +49,7 @@ public class AdminApiController {
     public ResponseEntity<String> login(@RequestBody AdminEntity adminEntity) {
         boolean isAuthenticated = adminService.authenticateAdmin(adminEntity);
         if (isAuthenticated) {
-            String token = jwtUtil.generateToken(adminEntity.getAdminId(), "ADMIN");
+            String token = jwtUtil.generateAccessToken(adminEntity.getAdminId(), "ADMIN");
             return ResponseEntity.ok(token);
         } else {
             return ResponseEntity.status(401).body("Login failed");
