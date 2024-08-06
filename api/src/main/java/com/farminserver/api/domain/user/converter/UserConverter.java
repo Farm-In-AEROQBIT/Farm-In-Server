@@ -17,9 +17,10 @@ public class UserConverter {
         return new UserResponse(
                 userEntity.getUserId(),
                 userEntity.getUserPw(),
-                userEntity.getUser_phone_num(),
+                userEntity.getUserPhoneNum(),
                 userEntity.getUserName(),
-                userEntity.getFarm_name()
+                userEntity.getFarmName(),
+                userEntity.getRole()
         );
     }
 }

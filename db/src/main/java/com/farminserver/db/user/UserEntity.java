@@ -12,7 +12,8 @@ public class UserEntity {
     private String userPw;
     private String userName;
     private String userPhoneNum;
-    private String farm_name;
+    private String farmName;
+    private String role;
 
     // Getter and Setters
     public String getUserId() { return userId; }
@@ -21,12 +22,15 @@ public class UserEntity {
     public String getUserPw() { return userPw; }
     public void setUserPw(String userPw) { this.userPw = userPw; }
 
-    public String getUser_phone_num() { return userPhoneNum; }
-    public void setUser_phone_num(String userPhoneNum) { this.userPhoneNum = userPhoneNum; }
+    public String getUserPhoneNum() { return userPhoneNum; }
+    public void setUserPhoneNum(String userPhoneNum) { this.userPhoneNum = userPhoneNum; }
 
     public String getUserName() { return userName; }
     public void setUserName(String userName) { this.userName = userName; }
 
-    public String getFarm_name() { return farm_name; }
-    public void setFarm_name(String farm_name) { this.farm_name = farm_name; }
+    public String getFarmName() { return farmName; }
+    public void setFarmName(String farmName) { this.farmName = farmName; }
+
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
 }

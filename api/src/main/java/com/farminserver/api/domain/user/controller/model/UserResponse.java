@@ -1,19 +1,21 @@
 package com.farminserver.api.domain.user.controller.model;
 
 public class UserResponse {
-    private String user_id;
-    private String user_pw;
-    private String user_phone_num;
-    private String user_name;
-    private String farm_name;
+    private String userId;
+    private String userPw;
+    private String userPhoneNum;
+    private String userName;
+    private String farmName;
+    private String role; // 추가된 필드
     private String message;
 
-    public UserResponse(String user_id, String user_pw, String user_phone_num, String user_name, String farm_name) {
-        this.user_id = user_id;
-        this.user_pw = user_pw;
-        this.user_phone_num = user_phone_num;
-        this.user_name = user_name;
-        this.farm_name = farm_name;
+    public UserResponse(String userId, String userPw, String userPhoneNum, String userName, String farmName, String role) {
+        this.userId = userId;
+        this.userPw = userPw;
+        this.userPhoneNum = userPhoneNum;
+        this.userName = userName;
+        this.farmName = farmName;
+        this.role = role;
     }
 
     // Error message constructor
@@ -22,20 +24,23 @@ public class UserResponse {
     }
 
     // Getters and Setters
-    public String getUserId() { return user_id; }
-    public void setUserId(String user_id) { this.user_id = user_id; }
+    public String getUserId() { return userId; }
+    public void setUserId(String userId) { this.userId = userId; }
 
-    public String getUserPw() { return user_pw; }
-    public void setUserPw(String user_pw) { this.user_pw = user_pw; }
+    public String getUserPw() { return userPw; }
+    public void setUserPw(String userPw) { this.userPw = userPw; }
 
-    public String getUserPhoneNum() { return user_phone_num; }
-    public void setUserPhoneNum(String user_phone_num) { this.user_phone_num = user_phone_num; }
+    public String getUserPhoneNum() { return userPhoneNum; }
+    public void setUserPhoneNum(String userPhoneNum) { this.userPhoneNum = userPhoneNum; }
 
-    public String getUserName() { return user_name; }
-    public void setUserName(String user_name) { this.user_name = user_name; }
+    public String getUserName() { return userName; }
+    public void setUserName(String userName) { this.userName = userName; }
 
-    public String getFarmName() { return farm_name; }
-    public void setFarmName(String farm_name) { this.farm_name = farm_name; }
+    public String getFarmName() { return farmName; }
+    public void setFarmName(String farmName) { this.farmName = farmName; }
+
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
 
     public String getMessage() { return message; }
     public void setMessage(String message) { this.message = message; }

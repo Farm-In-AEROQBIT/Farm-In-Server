@@ -2,17 +2,16 @@ package com.farminserver.api.config.security;
 
 import com.farminserver.api.util.Jwt.JwtUtil;
 import com.farminserver.api.util.Jwt.JwtRefreshFilter;
-import com.farminserver.api.service.CustomUserDetailsService;
-import com.farminserver.api.config.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -25,14 +24,12 @@ public class SecurityConfig {
 
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final JwtUtil jwtUtil;
-    private final CustomUserDetailsService customUserDetailsService;
-    private final AuthenticationManagerBuilder authenticationManagerBuilder;
+    private final AuthenticationConfiguration authenticationConfiguration;
 
-    public SecurityConfig(CustomAuthenticationEntryPoint customAuthenticationEntryPoint, JwtUtil jwtUtil, CustomUserDetailsService customUserDetailsService, AuthenticationManagerBuilder authenticationManagerBuilder) {
+    public SecurityConfig(CustomAuthenticationEntryPoint customAuthenticationEntryPoint, JwtUtil jwtUtil, AuthenticationConfiguration authenticationConfiguration) {
         this.customAuthenticationEntryPoint = customAuthenticationEntryPoint;
         this.jwtUtil = jwtUtil;
-        this.customUserDetailsService = customUserDetailsService;
-        this.authenticationManagerBuilder = authenticationManagerBuilder;
+        this.authenticationConfiguration = authenticationConfiguration;
     }
 
     private static final String[] SWAGGER_WHITELIST = {
@@ -66,16 +63,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        authenticationManagerBuilder.authenticationProvider(daoAuthenticationProvider());
-        return authenticationManagerBuilder.build();
-    }
-
-    @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(customUserDetailsService);
-        provider.setPasswordEncoder(passwordEncoder());
-        return provider;
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
@@ -85,7 +73,21 @@ public class SecurityConfig {
 
     @Bean
     public JwtRefreshFilter jwtRefreshFilter() throws Exception {
-        return new JwtRefreshFilter(jwtUtil, customUserDetailsService);
+        return new JwtRefreshFilter(jwtUtil, userDetailsService());
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(User.withUsername("user")
+                .password(passwordEncoder().encode("farmin230130*"))
+                .roles("USER")
+                .build());
+        manager.createUser(User.withUsername("admin")
+                .password(passwordEncoder().encode("farmin230130*"))
+                .roles("ADMIN")
+                .build());
+        return manager;
     }
 
     @Bean

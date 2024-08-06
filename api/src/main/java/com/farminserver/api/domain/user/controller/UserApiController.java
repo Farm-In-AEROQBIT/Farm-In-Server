@@ -46,7 +46,7 @@ public class UserApiController {
         }
         String userId = jwtUtil.extractUsername(token); // JWT에서 userId 추출
         UserEntity userEntity = userBusiness.getById(userId);
-        return userEntity.getFarm_name();
+        return userEntity.getFarmName();
     }
 
     @GetMapping("/{id}")

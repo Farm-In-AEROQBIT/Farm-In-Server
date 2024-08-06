@@ -23,7 +23,7 @@ public class UserBusiness {
 
         // 새로운 FarmInfoEntity를 생성하고 저장
         FarmInfoEntity farmInfo = new FarmInfoEntity();
-        farmInfo.setFarm_name(user.getFarm_name());
+        farmInfo.setFarm_name(user.getFarmName());
         farmInfoBusiness.save(farmInfo);
 
         return savedUser;
