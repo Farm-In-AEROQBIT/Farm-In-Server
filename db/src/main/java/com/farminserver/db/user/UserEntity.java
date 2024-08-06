@@ -17,7 +17,7 @@ public class UserEntity {
     private String farmName;
     private String role;
 
-    // 기본 생성자 추가
+    // 기본 생성자
     public UserEntity() {
     }
 

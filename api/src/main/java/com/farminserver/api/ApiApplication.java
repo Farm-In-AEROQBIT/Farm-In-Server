@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import io.github.cdimascio.dotenv.Dotenv;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.farminserver.api", "com.farminserver.db.user"})
 public class ApiApplication {
 
 	public static void main(String[] args) {
