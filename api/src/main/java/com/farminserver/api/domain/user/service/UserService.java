@@ -10,8 +10,13 @@ import java.util.List;
 
 @Service
 public class UserService {
+
+    private final UserBusiness userBusiness;
+
     @Autowired
-    private UserBusiness userBusiness;
+    public UserService(UserBusiness userBusiness) {
+        this.userBusiness = userBusiness;
+    }
 
     public UserEntity save(UserEntity user) {
         if (!PasswordValidator.containsSpecialCharacter(user.getUserPw())) {

@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class FarmInfoService {
+
     @Autowired
     private FarmInfoBusiness farmInfoBusiness;
 
@@ -16,15 +17,15 @@ public class FarmInfoService {
         return farmInfoBusiness.save(farmInfoEntity);
     }
 
-    public FarmInfoEntity getById(Long id) {
+    public FarmInfoEntity getById(String id) {  // 변경된 부분
         return farmInfoBusiness.getById(id);
     }
 
     public List<FarmInfoEntity> findAll() {
-        return farmInfoBusiness.findAll();
+        return farmInfoBusiness.getAll();  // 'getAll' 메서드 호출로 수정
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(String id) {  // 변경된 부분
         farmInfoBusiness.deleteById(id);
     }
 }

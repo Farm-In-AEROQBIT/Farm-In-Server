@@ -1,21 +1,22 @@
 package com.farminserver.api.domain.user.business;
 
-import com.farminserver.api.common.annotation.Business;
 import com.farminserver.db.user.UserEntity;
 import com.farminserver.db.user.UserRepository;
 import com.farminserver.db.farm_info.FarmInfoEntity;
 import com.farminserver.api.domain.farm_info.business.FarmInfoBusiness;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Business
 @Component
 @RequiredArgsConstructor
 public class UserBusiness {
 
     private final UserRepository userRepository;
+
+    @Lazy
     private final FarmInfoBusiness farmInfoBusiness;
 
     public UserEntity save(UserEntity user) {
