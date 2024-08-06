@@ -1,5 +1,6 @@
 package com.farminserver.api.config.security;
 
+import com.farminserver.api.service.CustomUserDetailsService;
 import com.farminserver.api.util.Jwt.JwtUtil;
 import com.farminserver.api.util.Jwt.JwtRefreshFilter;
 import org.springframework.context.annotation.Bean;
@@ -9,9 +10,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -25,11 +24,16 @@ public class SecurityConfig {
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final JwtUtil jwtUtil;
     private final AuthenticationConfiguration authenticationConfiguration;
+    private final CustomUserDetailsService customUserDetailsService;
 
-    public SecurityConfig(CustomAuthenticationEntryPoint customAuthenticationEntryPoint, JwtUtil jwtUtil, AuthenticationConfiguration authenticationConfiguration) {
+    public SecurityConfig(CustomAuthenticationEntryPoint customAuthenticationEntryPoint,
+                          JwtUtil jwtUtil,
+                          AuthenticationConfiguration authenticationConfiguration,
+                          CustomUserDetailsService customUserDetailsService) {
         this.customAuthenticationEntryPoint = customAuthenticationEntryPoint;
         this.jwtUtil = jwtUtil;
         this.authenticationConfiguration = authenticationConfiguration;
+        this.customUserDetailsService = customUserDetailsService;
     }
 
     private static final String[] SWAGGER_WHITELIST = {
@@ -73,21 +77,12 @@ public class SecurityConfig {
 
     @Bean
     public JwtRefreshFilter jwtRefreshFilter() throws Exception {
-        return new JwtRefreshFilter(jwtUtil, userDetailsService());
+        return new JwtRefreshFilter(jwtUtil, customUserDetailsService);
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername("user")
-                .password(passwordEncoder().encode("farmin230130*"))
-                .roles("USER")
-                .build());
-        manager.createUser(User.withUsername("admin")
-                .password(passwordEncoder().encode("farmin230130*"))
-                .roles("ADMIN")
-                .build());
-        return manager;
+        return customUserDetailsService;
     }
 
     @Bean

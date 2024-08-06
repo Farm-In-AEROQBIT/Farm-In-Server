@@ -29,12 +29,20 @@ public class UserApiController {
         return jwtUtil.validateToken(token).isEmpty();
     }
 
+    private String getUserIdFromToken(String token) {
+        return jwtUtil.extractUsername(token);
+    }
+
+    private String getRoleFromToken(String token) {
+        return jwtUtil.extractRole(token); // 역할을 추출하는 메서드가 필요합니다.
+    }
+
     @GetMapping("/info")
     public UserResponse getUserInfo(@RequestHeader("Authorization") String token) {
         if (!validateToken(token)) {
             throw new RuntimeException("Invalid token");
         }
-        String userId = jwtUtil.extractUsername(token); // JWT에서 userId 추출
+        String userId = getUserIdFromToken(token); // JWT에서 userId 추출
         UserEntity userEntity = userBusiness.getById(userId);
         return userConverter.toResponse(userEntity);
     }
@@ -44,7 +52,7 @@ public class UserApiController {
         if (!validateToken(token)) {
             throw new RuntimeException("Invalid token");
         }
-        String userId = jwtUtil.extractUsername(token); // JWT에서 userId 추출
+        String userId = getUserIdFromToken(token); // JWT에서 userId 추출
         UserEntity userEntity = userBusiness.getById(userId);
         return userEntity.getFarmName();
     }
@@ -56,8 +64,17 @@ public class UserApiController {
     }
 
     @GetMapping("/all")
-    public List<UserResponse> getAllUsers() {
-        List<UserEntity> userEntities = userBusiness.getAll();
+    public List<UserResponse> getAllUsers(@RequestHeader("Authorization") String token) {
+        if (!validateToken(token)) {
+            throw new RuntimeException("Invalid token");
+        }
+        String role = getRoleFromToken(token); // JWT에서 역할 추출
+        List<UserEntity> userEntities;
+        if ("ROLE_ADMIN".equals(role)) {
+            userEntities = userBusiness.getAll(); // Admin 역할일 경우 모든 사용자 정보 반환
+        } else {
+            throw new RuntimeException("Access denied");
+        }
         return userEntities.stream()
                 .map(userConverter::toResponse)
                 .collect(Collectors.toList());

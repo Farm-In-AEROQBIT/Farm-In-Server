@@ -2,7 +2,6 @@ package com.farminserver.api.service;
 
 import com.farminserver.db.user.UserEntity;
 import com.farminserver.db.user.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,20 +11,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    // 생성자 주입
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 데이터베이스에서 사용자 정보 조회
-        UserEntity user = userRepository.findById(userId)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with userId: " + userId));
+        UserEntity user = userRepository.findByUserName(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
         // UserDetails 객체 생성 및 반환
         return User.builder()
                 .username(user.getUserId())
-                .password(user.getUserPw()) // 비밀번호는 암호화된 상태로 저장되어야 합니다.
-                .roles("USER") // 역할을 적절히 설정합니다. 필요에 따라 ADMIN 등을 추가할 수 있습니다.
+                .password(user.getUserPw()) // 비밀번호는 암호화된 상태로 저장
+                .roles(user.getRole()) // 단일 역할 문자열을 직접 설정
                 .build();
     }
 }
