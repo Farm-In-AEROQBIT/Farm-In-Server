@@ -2,12 +2,13 @@ package com.farminserver.api.config.security;
 
 import com.farminserver.api.util.Jwt.JwtUtil;
 import com.farminserver.api.util.Jwt.JwtRefreshFilter;
-import com.farminserver.api.config.security.JwtAuthenticationFilter;
 import com.farminserver.api.service.CustomUserDetailsService;
+import com.farminserver.api.config.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -24,14 +25,14 @@ public class SecurityConfig {
 
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final JwtUtil jwtUtil;
-    private final AuthenticationConfiguration authenticationConfiguration;
     private final CustomUserDetailsService customUserDetailsService;
+    private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
-    public SecurityConfig(CustomAuthenticationEntryPoint customAuthenticationEntryPoint, JwtUtil jwtUtil, AuthenticationConfiguration authenticationConfiguration, CustomUserDetailsService customUserDetailsService) {
+    public SecurityConfig(CustomAuthenticationEntryPoint customAuthenticationEntryPoint, JwtUtil jwtUtil, CustomUserDetailsService customUserDetailsService, AuthenticationManagerBuilder authenticationManagerBuilder) {
         this.customAuthenticationEntryPoint = customAuthenticationEntryPoint;
         this.jwtUtil = jwtUtil;
-        this.authenticationConfiguration = authenticationConfiguration;
         this.customUserDetailsService = customUserDetailsService;
+        this.authenticationManagerBuilder = authenticationManagerBuilder;
     }
 
     private static final String[] SWAGGER_WHITELIST = {
@@ -65,7 +66,16 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+        authenticationManagerBuilder.authenticationProvider(daoAuthenticationProvider());
+        return authenticationManagerBuilder.build();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(customUserDetailsService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
     }
 
     @Bean
