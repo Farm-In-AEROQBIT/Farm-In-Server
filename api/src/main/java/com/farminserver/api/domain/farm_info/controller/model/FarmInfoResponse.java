@@ -1,13 +1,13 @@
 package com.farminserver.api.domain.farm_info.controller.model;
 
 public class FarmInfoResponse {
-    private String farm_name;
+    private String farmName;
 
-    public FarmInfoResponse(String Farm_Name) {
-        this.farm_name = Farm_Name;
+    public FarmInfoResponse(String farmName) {
+        this.farmName = farmName;
     }
 
-    //Getter and Setters
-    public String getFarm_name() {return farm_name;}
-    public void setFarm_name(String farm_name) {this.farm_name = farm_name;}
+    // Getters and Setters
+    public String getFarmName() { return farmName; }
+    public void setFarmName(String farmName) { this.farmName = farmName; }
 }

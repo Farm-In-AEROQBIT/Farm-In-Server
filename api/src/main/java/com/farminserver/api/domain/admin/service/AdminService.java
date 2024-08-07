@@ -29,7 +29,7 @@ public class AdminService {
         return business.save(admin);
     }
 
-    public AdminEntity getById(String id) {
+    public AdminEntity getById(Long id) {
         return business.getById(id);
     }
 
@@ -37,7 +37,7 @@ public class AdminService {
         return business.getAll();
     }
 
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
         business.deleteById(id);
     }
 
@@ -64,7 +64,7 @@ public class AdminService {
         return userRepository.findAll();
     }
 
-    public Optional<UserEntity> getUserById(String userId) {
+    public Optional<UserEntity> getUserById(Long userId) {
         return userRepository.findById(userId);
     }
 }

@@ -1,19 +1,47 @@
 package com.farminserver.api.domain.farm_info.controller;
 
 import com.farminserver.api.domain.farm_info.service.FarmInfoService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.farminserver.api.domain.farm_info.controller.model.FarmInfoResponse;
+import com.farminserver.api.domain.farm_info.converter.FarmInfoConverter;
+import com.farminserver.db.farm_info.FarmInfoEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/farminfo")
 public class FarmInfoApiController {
 
-    private long farm_name;
+    @Autowired
+    private FarmInfoService farmInfoService;
 
-    public long getFarm_name() {
-        return farm_name;
+    @Autowired
+    private FarmInfoConverter farmInfoConverter;
+
+    @GetMapping("/{id}")
+    public FarmInfoResponse getFarmInfoById(@PathVariable Long id) {
+        FarmInfoEntity farmInfoEntity = farmInfoService.getById(id);
+        return farmInfoConverter.toResponse(farmInfoEntity);
     }
-    public void setFarm_name(long farmName) {
-        this.farm_name = farmName;
+
+    @GetMapping("/all")
+    public List<FarmInfoResponse> getAllFarmInfos() {
+        List<FarmInfoEntity> farmInfoEntities = farmInfoService.findAll();
+        return farmInfoEntities.stream()
+                .map(farmInfoConverter::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    @PostMapping("/save")
+    public FarmInfoResponse saveFarmInfo(@RequestBody FarmInfoEntity farmInfoEntity) {
+        FarmInfoEntity savedFarmInfo = farmInfoService.save(farmInfoEntity);
+        return farmInfoConverter.toResponse(savedFarmInfo);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteFarmInfoById(@PathVariable Long id) {
+        farmInfoService.deleteById(id);
     }
 }

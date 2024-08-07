@@ -1,24 +1,25 @@
 package com.farminserver.api.config.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.farminserver.api.util.Jwt.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.farminserver.api.util.Jwt.JwtUtil;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final JwtUtil jwtUtil;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
-        super.setAuthenticationManager(authenticationManager); // 추가
+        super.setAuthenticationManager(authenticationManager);
         this.jwtUtil = jwtUtil;
         setFilterProcessesUrl("/api/user/login"); // 로그인 URL 설정
     }
@@ -38,7 +39,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String role = "ROLE_USER"; // 역할을 지정. 실제 구현에 맞게 수정 필요
+        String role = "ROLE_USER"; // 실제 역할을 동적으로 설정해야 함
         String token = jwtUtil.generateAccessToken(authResult.getName(), role);
         response.addHeader("Authorization", "Bearer " + token);
         chain.doFilter(request, response);

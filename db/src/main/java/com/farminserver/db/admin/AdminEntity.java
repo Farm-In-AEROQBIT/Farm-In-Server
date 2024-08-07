@@ -1,23 +1,27 @@
 package com.farminserver.db.admin;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "admin")
+@Table(name = "admins")
 public class AdminEntity {
-    @Id
-    private String adminId;
-    private String adminPw;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long adminId;
+    private String adminPw;
+    private String adminRole;
 
     // Getters and Setters
-    public String getAdminId() {
+    public Long getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(String adminId) {
+    public void setAdminId(Long adminId) {
         this.adminId = adminId;
     }
 
@@ -29,4 +33,11 @@ public class AdminEntity {
         this.adminPw = adminPw;
     }
 
+    public String getAdminRole() {
+        return adminRole;
+    }
+
+    public void setAdminRole(String adminRole) {
+        this.adminRole = adminRole;
+    }
 }

@@ -17,15 +17,15 @@ public class FarmInfoService {
         return farmInfoBusiness.save(farmInfoEntity);
     }
 
-    public FarmInfoEntity getById(String id) {  // 변경된 부분
+    public FarmInfoEntity getById(Long id) {
         return farmInfoBusiness.getById(id);
     }
 
     public List<FarmInfoEntity> findAll() {
-        return farmInfoBusiness.getAll();  // 'getAll' 메서드 호출로 수정
+        return farmInfoBusiness.getAll();
     }
 
-    public void deleteById(String id) {  // 변경된 부분
+    public void deleteById(Long id) {
         farmInfoBusiness.deleteById(id);
     }
 }

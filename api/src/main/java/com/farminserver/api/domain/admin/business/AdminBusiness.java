@@ -17,7 +17,7 @@ public class AdminBusiness {
         return adminRepository.save(admin);
     }
 
-    public AdminEntity getById(String id) {
+    public AdminEntity getById(Long id) {
         return adminRepository.findById(id).orElse(null);
     }
 
@@ -25,7 +25,7 @@ public class AdminBusiness {
         return adminRepository.findAll();
     }
 
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
         adminRepository.deleteById(id);
     }
 }

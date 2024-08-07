@@ -24,13 +24,13 @@ public class UserBusiness {
 
         // 새로운 FarmInfoEntity를 생성하고 저장
         FarmInfoEntity farmInfo = new FarmInfoEntity();
-        farmInfo.setFarm_name(user.getFarmName());
+        farmInfo.setFarmName(user.getFarmName());
         farmInfoBusiness.save(farmInfo);
 
         return savedUser;
     }
 
-    public UserEntity getById(String id) {
+    public UserEntity getById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
@@ -38,7 +38,19 @@ public class UserBusiness {
         return userRepository.findAll();
     }
 
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public List<UserEntity> findByRole(String role) {
+        return userRepository.findByRole(role);
+    }
+
+    public UserEntity getByUserName(String userName) {
+        return userRepository.findByUserName(userName).orElse(null);
+    }
+
+    public UserEntity getByUserId(String userId) {
+        return userRepository.findByUserId(userId).orElse(null);
     }
 }

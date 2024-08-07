@@ -3,7 +3,6 @@ package com.farminserver.api.domain.farm_info.business;
 import com.farminserver.db.farm_info.FarmInfoEntity;
 import com.farminserver.db.farm_info.FarmInfoRepository;
 import org.springframework.stereotype.Component;
-import com.farminserver.api.common.annotation.Business;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -18,15 +17,15 @@ public class FarmInfoBusiness {
         return farmInfoRepository.save(farmInfo);
     }
 
-    public FarmInfoEntity getById(String id) {  // ID 타입을 String으로 변경
+    public FarmInfoEntity getById(Long id) {
         return farmInfoRepository.findById(id).orElse(null);
     }
 
-    public List<FarmInfoEntity> getAll() {  // 메서드 이름 수정
+    public List<FarmInfoEntity> getAll() {
         return farmInfoRepository.findAll();
     }
 
-    public void deleteById(String id) {  // ID 타입을 String으로 변경
+    public void deleteById(Long id) {
         farmInfoRepository.deleteById(id);
     }
 }

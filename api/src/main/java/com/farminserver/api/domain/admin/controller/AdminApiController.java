@@ -49,7 +49,7 @@ public class AdminApiController {
     public ResponseEntity<String> login(@RequestBody AdminEntity adminEntity) {
         boolean isAuthenticated = adminService.authenticateAdmin(adminEntity);
         if (isAuthenticated) {
-            String token = jwtUtil.generateAccessToken(adminEntity.getAdminId(), "ADMIN");
+            String token = jwtUtil.generateAccessToken(adminEntity.getAdminId().toString(), "ADMIN");
             return ResponseEntity.ok(token);
         } else {
             return ResponseEntity.status(401).body("Login failed");
@@ -70,7 +70,7 @@ public class AdminApiController {
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<UserResponse> getUserById(@RequestHeader("Authorization") String token, @PathVariable String id) {
+    public ResponseEntity<UserResponse> getUserById(@RequestHeader("Authorization") String token, @PathVariable Long id) {
         Optional<TokenErrorCode> tokenError = jwtUtil.validateToken(token);
         if (tokenError.isPresent()) {
             TokenErrorCode errorCode = tokenError.get();
@@ -84,7 +84,7 @@ public class AdminApiController {
         }
 
         String usernameFromToken = jwtUtil.extractUsername(token);
-        if (!usernameFromToken.equals(id) && !jwtUtil.extractRole(token).equals("ADMIN")) {
+        if (!usernameFromToken.equals(id.toString()) && !jwtUtil.extractRole(token).equals("ADMIN")) {
             return ResponseEntity.status(UserError.AUTHORIZATION_ACCESS_NOT_FOUNT.getHttpStatusCode())
                     .body(new UserResponse(UserError.AUTHORIZATION_ACCESS_NOT_FOUNT.getDescription()));
         }

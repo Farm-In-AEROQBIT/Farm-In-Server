@@ -1,16 +1,14 @@
 package com.farminserver.db.user;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import com.farminserver.db.BaseEntity;
 
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class UserEntity extends BaseEntity {
 
-    @Id
     private String userId;
-
     private String userPw;
     private String userName;
     private String userPhoneNum;
@@ -21,7 +19,7 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    // Getter and Setters
+    // Getters and Setters
     public String getUserId() {
         return userId;
     }

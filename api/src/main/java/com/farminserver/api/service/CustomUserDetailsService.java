@@ -13,18 +13,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    // 생성자 주입
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // 데이터베이스에서 사용자 정보 조회
         UserEntity user = userRepository.findByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
-        // UserDetails 객체 생성 및 반환
         return User.builder()
                 .username(user.getUserId())
                 .password(user.getUserPw()) // 비밀번호는 암호화된 상태로 저장
