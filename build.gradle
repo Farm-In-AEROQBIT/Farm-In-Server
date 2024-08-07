@@ -80,6 +80,11 @@ subprojects {
         implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
         runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
         runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+        //SLF4J
+        implementation 'ch.qos.logback:logback-classic:1.5.6'
+        implementation 'ch.qos.logback:logback-core:1.5.6'
+        implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
     }
 
     bootJar {
