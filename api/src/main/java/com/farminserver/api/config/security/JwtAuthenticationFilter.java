@@ -1,6 +1,5 @@
 package com.farminserver.api.config.security;
 
-import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.farminserver.api.util.Jwt.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,15 +7,17 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Slf4j
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
+    private static final Logger log = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
     private final JwtUtil jwtUtil;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
@@ -33,8 +34,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             LoginRequest loginRequest = mapper.readValue(request.getInputStream(), LoginRequest.class);
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
+            log.debug("Authentication token created: {}", authenticationToken);
             return getAuthenticationManager().authenticate(authenticationToken);
         } catch (IOException e) {
+            log.error("Failed to parse authentication request", e);
             throw new RuntimeException("Failed to parse authentication request", e);
         } finally {
             log.debug("Finished attempting authentication for request: {}", request);
@@ -45,12 +48,14 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         String role = "ROLE_USER"; // 실제 역할을 동적으로 설정해야 함
         String token = jwtUtil.generateAccessToken(authResult.getName(), role);
+        log.debug("Authentication successful, generated token: {}", token);
         response.addHeader("Authorization", "Bearer " + token);
         chain.doFilter(request, response);
     }
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
+        log.debug("Authentication failed: {}", failed.getMessage());
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.getWriter().write("Authentication failed: " + failed.getMessage());
     }

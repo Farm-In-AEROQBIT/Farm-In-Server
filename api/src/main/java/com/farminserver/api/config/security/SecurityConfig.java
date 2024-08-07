@@ -21,6 +21,12 @@ import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private static final String[] SWAGGER_WHITELIST = {
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/swagger-ui.html"
+    };
+
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final JwtUtil jwtUtil;
     private final AuthenticationConfiguration authenticationConfiguration;
@@ -35,16 +41,6 @@ public class SecurityConfig {
         this.authenticationConfiguration = authenticationConfiguration;
         this.customUserDetailsService = customUserDetailsService;
     }
-
-    private static final String[] SWAGGER_WHITELIST = {
-            "/swagger-ui.html",
-            "/swagger-ui/**",
-            "/v3/api-docs/**",
-            "/swagger-resources/**",
-            "/webjars/**",
-            "/configuration/ui",
-            "/configuration/security"
-    };
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
