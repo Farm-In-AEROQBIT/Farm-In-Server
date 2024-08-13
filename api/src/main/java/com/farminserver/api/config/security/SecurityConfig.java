@@ -68,7 +68,7 @@ public class SecurityConfig {
 
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
-        return new JwtAuthenticationFilter(authenticationManagerBean(), jwtUtil);
+        return new JwtAuthenticationFilter(authenticationManagerBean(), jwtUtil, customUserDetailsService);
     }
 
     @Bean

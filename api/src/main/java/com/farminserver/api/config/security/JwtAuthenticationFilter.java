@@ -1,11 +1,13 @@
 package com.farminserver.api.config.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.farminserver.api.service.CustomUserDetailsService;
 import com.farminserver.api.util.Jwt.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,16 +15,19 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private static final Logger log = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
     private final JwtUtil jwtUtil;
+    private final CustomUserDetailsService userDetailsService;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, JwtUtil jwtUtil, CustomUserDetailsService userDetailsService) {
         super.setAuthenticationManager(authenticationManager);
         this.jwtUtil = jwtUtil;
+        this.userDetailsService = userDetailsService;
         setFilterProcessesUrl("/api/user/login"); // 로그인 URL 설정
     }
 
@@ -46,8 +51,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String role = "ROLE_USER"; // 실제 역할을 동적으로 설정해야 함
-        String token = jwtUtil.generateAccessToken(authResult.getName(), role);
+        String username = authResult.getName();
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        String role = userDetails.getAuthorities().stream()
+                .map(grantedAuthority -> grantedAuthority.getAuthority())
+                .findFirst()
+                .orElse("ROLE_USER"); // 기본 역할 설정
+        String token = jwtUtil.generateAccessToken(username, role);
         log.debug("Authentication successful, generated token: {}", token);
         response.addHeader("Authorization", "Bearer " + token);
         chain.doFilter(request, response);
