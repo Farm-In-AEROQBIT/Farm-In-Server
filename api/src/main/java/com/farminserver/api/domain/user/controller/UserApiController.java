@@ -15,6 +15,7 @@ public class UserApiController {
     private UserService userService;
 
     @GetMapping("/{id}")
+
     public UserEntity getUserById(@PathVariable Long id) {
         return userService.getById(id);
     }

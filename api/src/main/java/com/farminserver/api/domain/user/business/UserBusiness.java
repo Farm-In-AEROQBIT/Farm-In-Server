@@ -20,14 +20,18 @@ public class UserBusiness {
     private final FarmInfoBusiness farmInfoBusiness;
 
     public UserEntity save(UserEntity user) {
-        UserEntity savedUser = userRepository.save(user);
+        // FarmInfoEntity 생성 또는 기존 entity 설정
+        FarmInfoEntity farmInfo = user.getFarmInfo();
+        if (farmInfo == null) {
+            farmInfo = new FarmInfoEntity();
+        }
+        farmInfo.setFarmName(user.getFarmInfo().getFarmName());
 
-        // 새로운 FarmInfoEntity를 생성하고 저장
-        FarmInfoEntity farmInfo = new FarmInfoEntity();
-        farmInfo.setFarmName(user.getFarmName());
         farmInfoBusiness.save(farmInfo);
 
-        return savedUser;
+        user.setFarmInfo(farmInfo);  // 사용자와 FarmInfo 연결
+
+        return userRepository.save(user);
     }
 
     public UserEntity getById(Long id) {

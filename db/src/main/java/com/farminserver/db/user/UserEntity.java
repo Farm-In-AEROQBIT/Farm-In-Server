@@ -1,6 +1,10 @@
 package com.farminserver.db.user;
 
+import com.farminserver.db.farm_info.FarmInfoEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import com.farminserver.db.BaseEntity;
 
@@ -12,7 +16,12 @@ public class UserEntity extends BaseEntity {
     private String userPw;
     private String userName;
     private String userPhoneNum;
-    private String farmName;
+
+    @ManyToOne
+    @JoinColumn(name = "farm_info_id")
+    @JsonBackReference
+    private FarmInfoEntity farmInfo;
+
     private String role;
 
     // 기본 생성자
@@ -52,12 +61,12 @@ public class UserEntity extends BaseEntity {
         this.userPhoneNum = userPhoneNum;
     }
 
-    public String getFarmName() {
-        return farmName;
+    public FarmInfoEntity getFarmInfo() {
+        return farmInfo;
     }
 
-    public void setFarmName(String farmName) {
-        this.farmName = farmName;
+    public void setFarmInfo(FarmInfoEntity farmInfo) {
+        this.farmInfo = farmInfo;
     }
 
     public String getRole() {

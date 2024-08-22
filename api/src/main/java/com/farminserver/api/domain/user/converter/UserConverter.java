@@ -14,12 +14,14 @@ public class UserConverter {
             return null;
         }
 
+        String farmName = userEntity.getFarmInfo() != null ? userEntity.getFarmInfo().getFarmName() : null;
+
         return new UserResponse(
                 userEntity.getUserId(),
                 userEntity.getUserPw(),
                 userEntity.getUserPhoneNum(),
                 userEntity.getUserName(),
-                userEntity.getFarmName(),
+                farmName,
                 userEntity.getRole()
         );
     }

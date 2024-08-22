@@ -17,6 +17,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -32,62 +34,28 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        log.debug("Attempting authentication for request: {}", request);
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            LoginRequest loginRequest = mapper.readValue(request.getInputStream(), LoginRequest.class);
-            UsernamePasswordAuthenticationToken authenticationToken =
-                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
-            log.debug("Authentication token created: {}", authenticationToken);
-            return getAuthenticationManager().authenticate(authenticationToken);
-        } catch (IOException e) {
-            log.error("Failed to parse authentication request", e);
-            throw new RuntimeException("Failed to parse authentication request", e);
-        } finally {
-            log.debug("Finished attempting authentication for request: {}", request);
-        }
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
+                                            FilterChain chain, Authentication authResult) throws IOException, ServletException {
+        UserDetails userDetails = (UserDetails) authResult.getPrincipal();
+        String accessToken = jwtUtil.generateAccessToken(userDetails.getUsername(), userDetails.getAuthorities().iterator().next().getAuthority());
+        String refreshToken = jwtUtil.generateRefreshToken(userDetails.getUsername());
+
+        Map<String, String> tokens = new HashMap<>();
+        tokens.put("accessToken", accessToken);
+        tokens.put("refreshToken", refreshToken);
+
+        response.setContentType("application/json");
+        new ObjectMapper().writeValue(response.getOutputStream(), tokens);
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String username = authResult.getName();
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        String role = userDetails.getAuthorities().stream()
-                .map(grantedAuthority -> grantedAuthority.getAuthority())
-                .findFirst()
-                .orElse("ROLE_USER"); // 기본 역할 설정
-        String token = jwtUtil.generateAccessToken(username, role);
-        log.debug("Authentication successful, generated token: {}", token);
-        response.addHeader("Authorization", "Bearer " + token);
-        chain.doFilter(request, response);
-    }
-
-    @Override
-    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
-        log.debug("Authentication failed: {}", failed.getMessage());
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
+                                              AuthenticationException failed) throws IOException, ServletException {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        response.getWriter().write("Authentication failed: " + failed.getMessage());
+        response.setContentType("application/json");
+        Map<String, String> error = new HashMap<>();
+        error.put("error", "Authentication failed: " + failed.getMessage());
+        new ObjectMapper().writeValue(response.getOutputStream(), error);
     }
 
-    private static class LoginRequest {
-        private String username;
-        private String password;
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-    }
 }

@@ -3,6 +3,7 @@ package com.farminserver.api.config.security;
 import com.farminserver.api.service.CustomUserDetailsService;
 import com.farminserver.api.util.Jwt.JwtUtil;
 import com.farminserver.api.util.Jwt.JwtRefreshFilter;
+import com.farminserver.api.config.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,6 +28,11 @@ public class SecurityConfig {
             "/swagger-ui.html"
     };
 
+    private static final String[] PUBLIC_ENDPOINTS = {
+            "/api/user/login",    // 로그인 엔드포인트
+            "/api/user/register"  // 회원가입 엔드포인트
+    };
+
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final JwtUtil jwtUtil;
     private final AuthenticationConfiguration authenticationConfiguration;
@@ -45,18 +51,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> {
-                    auth
-                            .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                            .requestMatchers(SWAGGER_WHITELIST).permitAll()
-                            .requestMatchers("/api/user/login").permitAll()
-                            .anyRequest().authenticated();
-                })
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/user/login").permitAll()
+                        .requestMatchers(SWAGGER_WHITELIST).permitAll()
+                        .requestMatchers(PUBLIC_ENDPOINTS).permitAll()
+                        .anyRequest().authenticated()
+                )
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(customAuthenticationEntryPoint))
-                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(jwtRefreshFilter(), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class) // 로그인 필터 추가
+                .addFilterBefore(jwtRefreshFilter(), UsernamePasswordAuthenticationFilter.class);  // 리프레시 필터 추가
 
         return httpSecurity.build();
     }
@@ -85,4 +90,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

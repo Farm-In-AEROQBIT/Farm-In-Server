@@ -89,6 +89,9 @@ subprojects {
         //flyway
         implementation 'org.flywaydb:flyway-mysql'
         implementation 'org.flywaydb:flyway-core'
+
+        //validation
+        //implementation group: 'org.springframwork.boot', name: 'spring-boot-starter-validation', version: '2.5.6'
     }
 
     bootJar {
