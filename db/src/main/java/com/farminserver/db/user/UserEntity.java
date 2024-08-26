@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import com.farminserver.db.BaseEntity;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class UserEntity extends BaseEntity {
 
     private String userId;

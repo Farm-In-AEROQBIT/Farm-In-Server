@@ -4,25 +4,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.farminserver.api.service.CustomUserDetailsService;
 import com.farminserver.api.util.Jwt.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private static final Logger log = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
     private final JwtUtil jwtUtil;
     private final CustomUserDetailsService userDetailsService;
 
@@ -57,5 +53,4 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         error.put("error", "Authentication failed: " + failed.getMessage());
         new ObjectMapper().writeValue(response.getOutputStream(), error);
     }
-
 }

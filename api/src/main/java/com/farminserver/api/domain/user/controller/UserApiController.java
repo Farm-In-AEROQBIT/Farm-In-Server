@@ -1,5 +1,6 @@
 package com.farminserver.api.domain.user.controller;
 
+import com.farminserver.api.domain.user.controller.model.UserRegistrationRequest;
 import com.farminserver.api.domain.user.service.UserService;
 import com.farminserver.db.user.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,10 @@ public class UserApiController {
     @GetMapping("/userid/{userId}")
     public UserEntity getUserByUserId(@PathVariable String userId) {
         return userService.getByUserId(userId);
+    }
+
+    @PostMapping("/register")
+    public UserEntity registerUser(@RequestBody UserRegistrationRequest request) {
+        return userService.registerUser(request);
     }
 }

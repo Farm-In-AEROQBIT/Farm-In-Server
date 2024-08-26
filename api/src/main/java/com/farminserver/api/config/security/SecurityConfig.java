@@ -61,7 +61,7 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(customAuthenticationEntryPoint))
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class) // 로그인 필터 추가
-                .addFilterBefore(jwtRefreshFilter(), UsernamePasswordAuthenticationFilter.class);  // 리프레시 필터 추가
+                .addFilterAfter(jwtRefreshFilter(), UsernamePasswordAuthenticationFilter.class);  // 리프레시 필터 추가
 
         return httpSecurity.build();
     }

@@ -68,6 +68,4 @@ public class JwtRefreshFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
         log.debug("Exiting JwtRefreshFilter: {}", request.getRequestURI());
     }
-
-
 }
