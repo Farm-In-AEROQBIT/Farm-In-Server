@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/piglet_co2")
+@RequestMapping("v1/api/piglet_co2")
 public class Piglet_Co2ApiController {
 
     private final Piglet_Co2Business pigletCo2Business;

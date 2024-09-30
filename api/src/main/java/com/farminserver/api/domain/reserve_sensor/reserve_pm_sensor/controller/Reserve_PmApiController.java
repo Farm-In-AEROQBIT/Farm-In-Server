@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/reserve_pm")
+@RequestMapping("v1/api/reserve_pm")
 public class Reserve_PmApiController {
 
     private final Reserve_PmBusiness reservePmBusiness;

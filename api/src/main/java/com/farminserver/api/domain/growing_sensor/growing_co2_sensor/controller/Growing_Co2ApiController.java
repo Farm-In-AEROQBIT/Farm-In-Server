@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/growing_co2")
+@RequestMapping("v1/api/growing_co2")
 public class Growing_Co2ApiController {
 
     private final Growing_Co2Business growingCo2Business;

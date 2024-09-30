@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/maternity_temperature")
+@RequestMapping("v1/api/maternity_temperature")
 public class Maternity_TemperatureApiController {
 
     private final Maternity_TemperatureBusiness maternityTemperatureBusiness;

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/maternity_pm")
+@RequestMapping("v1/api/maternity_pm")
 public class Maternity_PmApiController {
 
     private final Maternity_PmBusiness maternityPmBusiness;

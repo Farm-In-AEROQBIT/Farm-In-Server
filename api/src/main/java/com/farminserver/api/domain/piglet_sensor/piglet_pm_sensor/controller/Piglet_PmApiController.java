@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/piglet_pm")
+@RequestMapping("v1/api/piglet_pm")
 public class Piglet_PmApiController {
 
     private final Piglet_PmBusiness pigletPmBusiness;

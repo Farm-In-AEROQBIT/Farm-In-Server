@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/gestation_nh3")
+@RequestMapping("v1/api/gestation_nh3")
 public class Gestation_Nh3ApiController {
 
     private final Gestation_Nh3Business gestationNh3Business;

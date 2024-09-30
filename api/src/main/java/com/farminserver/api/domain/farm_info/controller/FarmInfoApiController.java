@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/farminfo")
+@RequestMapping("v1/api/farminfo")
 public class FarmInfoApiController {
 
     @Autowired

@@ -1,30 +1,21 @@
-<<<<<<< HEAD
+
 -- MySQL dump 10.13  Distrib 8.3.0, for macos14.2 (arm64)
 --
 -- Host: localhost    Database: Farm-In-Server
-=======
--- MySQL dump 10.13  Distrib 8.0.34, for macos13 (arm64)
---
--- Host: 127.0.0.1    Database: Farm-In-Server
->>>>>>> 93c8a23ff01af8a88b0d4720bf024bde9a15dc32
+
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-<<<<<<< HEAD
 /*!50503 SET NAMES utf8mb4 */;
-=======
-/*!50503 SET NAMES utf8 */;
->>>>>>> 93c8a23ff01af8a88b0d4720bf024bde9a15dc32
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-<<<<<<< HEAD
 
 --
 -- Table structure for table `admin`
@@ -1445,9 +1436,8 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
 UNLOCK TABLES;
-=======
->>>>>>> 93c8a23ff01af8a88b0d4720bf024bde9a15dc32
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1458,8 +1448,6 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
+
 -- Dump completed on 2024-07-30 11:09:27
-=======
--- Dump completed on 2024-07-29 16:10:28
->>>>>>> 93c8a23ff01af8a88b0d4720bf024bde9a15dc32
+

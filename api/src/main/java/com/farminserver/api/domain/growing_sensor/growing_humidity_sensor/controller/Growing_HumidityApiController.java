@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/growing_humidity")
+@RequestMapping("v1/api/growing_humidity")
 public class Growing_HumidityApiController {
 
     private final Growing_HumidityBusiness growingHumidityBusiness;
