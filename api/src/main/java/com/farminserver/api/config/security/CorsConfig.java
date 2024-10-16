@@ -19,7 +19,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://14.51.17.64:8081") // 실제 도메인 또는 IP
+                        .allowedOrigins("http://118.42.54.88:3000", "http://localhost:3000") // 실제 도메인 또는 IP
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
@@ -30,7 +30,7 @@ public class CorsConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://14.51.17.64:8081")); // 실제 도메인 또는 IP
+        configuration.setAllowedOrigins(List.of("http://118.42.54.88:3000", "http://localhost:3000" )); // 실제 도메인 또는 IP
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);

@@ -91,6 +91,9 @@ subprojects {
         implementation 'org.flywaydb:flyway-mysql'
         implementation 'org.flywaydb:flyway-core'
 
+        //FTP
+        implementation 'commons-net:commons-net:3.8.0'
+
         //validation
         //implementation group: 'org.springframwork.boot', name: 'spring-boot-starter-validation', version: '2.5.6'
     }
