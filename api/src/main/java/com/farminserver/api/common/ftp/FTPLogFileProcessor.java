@@ -1,6 +1,7 @@
 package com.farminserver.api.common.ftp;
 
 import org.apache.commons.net.ftp.FTPClient;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
@@ -14,18 +15,20 @@ public class FTPLogFileProcessor {
     private static final String FTP_SERVER = "farm-in.ipdisk.co.kr";
     private static final String FTP_USER = "farmin";  // FTP 서버 계정 정보
     private static final String FTP_PASSWORD = "farmin230130";
-    private static final String FTP_LOG_DIRECTORY = "/HDD1/monitoring";  // .log 파일이 저장된 FTP 경로
+    private static final String FTP_LOG_DIRECTORY = "/HDD1/monitoring/dse";  // .log 파일이 저장된 FTP 경로
     private static final String LOCAL_SAVE_DIRECTORY = "/home/farmin/바탕화면/log";  // 로컬에 저장할 경로
 
     private static final String DB_URL = "jdbc:mysql://192.168.0.20:3306/FarmInServer";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "230130";
 
-    @PostConstruct // 애플리케이션 시작 시 실행
+    @PostConstruct
     public void init() {
+        // 애플리케이션 시작 시 한 번만 실행
         processFTPLogs();
     }
 
+    @Scheduled(fixedRate = 300000) // 5분마다 실행 (300,000밀리초 = 5분)
     public void processFTPLogs() {
         FTPClient ftpClient = new FTPClient();
         int retryCount = 0;
@@ -44,7 +47,7 @@ public class FTPLogFileProcessor {
                 System.out.println("FTP 서버 연결 실패. 재시도 중..." + retryCount);
                 e.printStackTrace(); // 연결 실패 원인 출력
                 try {
-                    Thread.sleep(3000); // 3초 대기 후 재시도
+                    Thread.sleep(5000); // 5초 대기 후 재시도
                 } catch (InterruptedException interruptedException) {
                     interruptedException.printStackTrace();
                 }
@@ -98,7 +101,7 @@ public class FTPLogFileProcessor {
         try (BufferedReader reader = new BufferedReader(new FileReader(logFile))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // 로그 파일의 내용을 DB에 저장 (예시)
+                // 로그 파일의 내용을 DB에 저장
                 saveLogToDatabase(line, logFile.getName());
             }
         } catch (IOException e) {
