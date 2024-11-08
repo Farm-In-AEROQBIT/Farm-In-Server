@@ -15,7 +15,7 @@ public class FTPLogFileProcessor {
     private static final String FTP_SERVER = "farm-in.ipdisk.co.kr";
     private static final String FTP_USER = "farmin";  // FTP 서버 계정 정보
     private static final String FTP_PASSWORD = "farmin230130";
-    private static final String FTP_LOG_DIRECTORY = "/HDD1/monitoring/dse";  // .log 파일이 저장된 FTP 경로
+    private static final String FTP_LOG_DIRECTORY = "/HDD1/monitoring/fi1030";  // .log 파일이 저장된 FTP 경로
     private static final String LOCAL_SAVE_DIRECTORY = "/home/farmin/바탕화면/log";  // 로컬에 저장할 경로
 
     private static final String DB_URL = "jdbc:mysql://192.168.0.20:3306/FarmInServer";
